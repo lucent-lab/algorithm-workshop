@@ -10,9 +10,11 @@
 - [x] Configure ESLint, Prettier, and CI workflow integration
 
 ## Milestone 0.2.0 – Procedural & AI Expansion (In Progress)
-- [ ] Implement Simplex noise and Worley noise generators with tests
+- [x] Implement Simplex noise generator with tests
+- [ ] Implement Worley noise generator with tests
 - [ ] Add boids flocking simulation and unit coverage
-- [ ] Extend spatial toolkit with circle-ray intersection and swept AABB checks
+- [x] Add circle-ray intersection helper
+- [ ] Implement swept AABB collision checks
 - [ ] Document new modules in `docs/index.d.ts` and examples folder
 - [ ] Achieve >80% coverage across new modules
 
