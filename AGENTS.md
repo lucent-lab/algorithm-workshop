@@ -24,19 +24,31 @@ This repository is optimised for collaboration with human developers and code-ge
 4. Commit changes atomically with descriptive messages (e.g., `feat: add behaviour tree module`).
 5. Open a pull request targeting `main`.
 
-## 3. Coding Guidelines
+## 3. Development Principles
+
+- **YAGNI:** deliver only what is needed for the active milestone or issue.
+- **DRY:** centralise shared utilities/configuration; avoid copy/paste implementations.
+- **SOLID:** keep modules cohesive with clear responsibilities and exported APIs.
+- **Assert + guard:** assert internal invariants, validate external inputs, and surface friendly errors.
+- **Clear boundary:** consumers interact through `src/index.ts` exports and the contract documented in `docs/index.d.ts`.
+- Prefer early returns/guard clauses for readability.
+- Keep functions small and well named; comment only when additional context adds value.
+- Ship tests alongside code changes and ensure CI passes before merging.
+- Use readable fixtures and golden files when they clarify behaviour.
+
+## 4. Coding Guidelines
 - Use modern TypeScript, strict typing, and keep functions pure when possible.
 - Provide rich JSDoc (description, “Useful for” line, typed params/returns, runnable `@example`s).
 - Default to ASCII and keep comments concise.
 - Prefer options objects for functions with more than three parameters.
 - Handle edge cases gracefully; expose internal helpers through `__internals` only when needed for testing.
 
-## 4. Testing Philosophy
+## 5. Testing Philosophy
 - Every new algorithm must ship with unit coverage exercising typical and edge scenarios.
 - When randomness is involved, use deterministic seeding to keep tests reproducible.
 - Example snippets should run without external dependencies (Node 18+).
 
-## 5. LLM-Friendly Design
+## 6. LLM-Friendly Design
 - Maintain consistent naming and file structure so LLMs can map `docs/index.d.ts` descriptions to actual implementations.
 - Provide narrative comments only for non-obvious logic; avoid redundant remarks.
 - Keep exports centralised in `src/index.ts` to simplify import instructions in prompts.
