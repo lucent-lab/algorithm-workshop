@@ -92,6 +92,7 @@ export const examples: {
     readonly createWeightedAliasSampler: 'examples/weightedAlias.ts';
     readonly createObjectPool: 'examples/objectPool.ts';
     readonly fisherYatesShuffle: 'examples/fisherYates.ts';
+    readonly createFixedTimestepLoop: 'examples/fixedTimestep.ts';
   };
   readonly ai: {
     readonly seek: 'examples/steering.ts';
@@ -858,6 +859,36 @@ export function createObjectPool<T>(options: ObjectPoolOptions<T>): ObjectPool<T
  * Import: util/fisherYates.ts
  */
 export function fisherYatesShuffle<T>(items: T[], options?: { random?: () => number }): T[];
+
+/**
+ * Fixed timestep options for deterministic update loops.
+ * Use for: game loops, physics updates, consistent simulations.
+ * Import: util/fixedTimestep.ts
+ */
+export interface FixedTimestepOptions {
+  step: number;
+  maxDelta?: number;
+  update: (context: { alpha: number; accumulator: number; elapsed: number }) => void;
+  render?: (context: { alpha: number; accumulator: number; elapsed: number }) => void;
+}
+
+/**
+ * Fixed timestep loop interface.
+ * Import: util/fixedTimestep.ts
+ */
+export interface FixedTimestepLoop {
+  start(): void;
+  stop(): void;
+  isRunning(): boolean;
+}
+
+/**
+ * Creates a fixed timestep loop for deterministic updates.
+ * Use for: gameplay loops, physics, consistent tick simulation.
+ * Performance: O(n) updates per frame capped by maxDelta
+ * Import: util/fixedTimestep.ts
+ */
+export function createFixedTimestepLoop(options: FixedTimestepOptions): FixedTimestepLoop;
 
 /**
  * Least recently used cache.
