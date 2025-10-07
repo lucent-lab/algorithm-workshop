@@ -88,6 +88,7 @@ export const examples = {
     createWeightedAliasSampler: 'examples/weightedAlias.ts',
     createObjectPool: 'examples/objectPool.ts',
     fisherYatesShuffle: 'examples/fisherYates.ts',
+    createFixedTimestepLoop: 'examples/fixedTimestep.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -430,6 +431,13 @@ export { createObjectPool } from './util/objectPool.js';
  * Example file: examples/fisherYates.ts
  */
 export { fisherYatesShuffle } from './util/fisherYates.js';
+
+/**
+ * Fixed timestep loop for deterministic gameplay updates.
+ *
+ * Example file: examples/fixedTimestep.ts
+ */
+export { createFixedTimestepLoop } from './util/fixedTimestep.js';
 
 /**
  * Virtual scroll type exports to help define rendering contracts.

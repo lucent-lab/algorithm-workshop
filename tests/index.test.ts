@@ -23,6 +23,7 @@ describe('package entry point', () => {
     expect(examples.performance.createWeightedAliasSampler).toBe('examples/weightedAlias.ts');
     expect(examples.performance.createObjectPool).toBe('examples/objectPool.ts');
     expect(examples.performance.fisherYatesShuffle).toBe('examples/fisherYates.ts');
+    expect(examples.performance.createFixedTimestepLoop).toBe('examples/fixedTimestep.ts');
     expect(examples.performance.createWeightedAliasSampler).toBe('examples/weightedAlias.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
@@ -87,6 +88,7 @@ describe('package entry point', () => {
       | 'createWeightedAliasSampler'
       | 'createObjectPool'
       | 'fisherYatesShuffle'
+      | 'createFixedTimestepLoop'
     >();
   });
 });

@@ -44,7 +44,7 @@
   - [x] Dungeon generation suite (BSP subdivision, rooms & corridors variants)
   - [ ] Maze algorithms pack (Recursive backtracking ✅, Prim's ✅, Kruskal's ✅, Wilson's ✅, Aldous–Broder ✅, Recursive Division ✅)
 - Gameplay systems & utilities:
-  - [ ] Fixed-timestep game loop utility with interpolation helpers
+  - [x] Fixed-timestep game loop utility with interpolation helpers
   - [ ] Delta-time manager for frame-independent timing
   - [x] Object pool helper for reusable entities
   - [x] Weighted random selector (alias method)
