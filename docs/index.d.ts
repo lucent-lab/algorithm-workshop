@@ -51,6 +51,7 @@ export const examples: {
     readonly computeVoronoiDiagram: 'examples/voronoi.ts';
     readonly diamondSquare: 'examples/diamondSquare.ts';
     readonly generateLSystem: 'examples/lSystem.ts';
+    readonly generateBspDungeon: 'examples/dungeonBsp.ts';
   };
   readonly spatial: {
     readonly Quadtree: 'examples/sat.ts';
@@ -525,6 +526,58 @@ export interface LSystemResult {
  * Import: procedural/lSystem.ts
  */
 export function generateLSystem(options: LSystemOptions): LSystemResult;
+
+/**
+ * BSP dungeon generation options.
+ * Use for: configuring room sizes, recursion depth, deterministic seeds.
+ * Import: procedural/dungeonBsp.ts
+ */
+export interface DungeonGeneratorOptions {
+  width: number;
+  height: number;
+  minimumRoomSize?: number;
+  maximumRoomSize?: number;
+  maxDepth?: number;
+  corridorWidth?: number;
+  seed?: number;
+}
+
+/**
+ * BSP dungeon room description.
+ * Use for: placing furniture, connecting gameplay triggers.
+ * Import: procedural/dungeonBsp.ts
+ */
+export interface DungeonRoom extends Rect {
+  id: number;
+  center: Point;
+}
+
+/**
+ * Corridor carved between rooms in a BSP dungeon.
+ * Import: procedural/dungeonBsp.ts
+ */
+export interface DungeonCorridor {
+  path: Point[];
+}
+
+/**
+ * Result returned by the BSP dungeon generator.
+ * Use for: rendering tiles, analysing connectivity, gameplay logic.
+ * Import: procedural/dungeonBsp.ts
+ */
+export interface DungeonBspResult {
+  grid: number[][];
+  rooms: DungeonRoom[];
+  corridors: DungeonCorridor[];
+}
+
+/**
+ * Generates a room-and-corridor dungeon using binary space partitioning.
+ * Use for: roguelike maps, procedural dungeons, level blocking.
+ * Performance: O(width × height) carving plus O(nodes) splitting.
+ * Import: procedural/dungeonBsp.ts
+ */
+export function generateBspDungeon(options: DungeonGeneratorOptions): DungeonBspResult;
 
 /**
  * Simplex noise generator for smooth gradients without directional artifacts.

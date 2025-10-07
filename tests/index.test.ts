@@ -13,6 +13,7 @@ describe('package entry point', () => {
     expect(examples.procedural.computeVoronoiDiagram).toBe('examples/voronoi.ts');
     expect(examples.procedural.diamondSquare).toBe('examples/diamondSquare.ts');
     expect(examples.procedural.generateLSystem).toBe('examples/lSystem.ts');
+    expect(examples.procedural.generateBspDungeon).toBe('examples/dungeonBsp.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
   });
@@ -56,6 +57,7 @@ describe('package entry point', () => {
       | 'computeVoronoiDiagram'
       | 'diamondSquare'
       | 'generateLSystem'
+      | 'generateBspDungeon'
     >();
   });
 });
