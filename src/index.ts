@@ -31,6 +31,13 @@ export { levenshteinDistance } from './search/levenshtein.js';
 export { diff } from './data/diff.js';
 export { deepClone } from './data/deepClone.js';
 export { groupBy } from './data/groupBy.js';
+export { diffJson, applyJsonDiff } from './data/jsonDiff.js';
+export type {
+  JsonDiffOperation,
+  JsonPathSegment,
+  JsonPrimitive,
+  JsonValue,
+} from './data/jsonDiff.js';
 
 export { graphBFS, graphDFS, topologicalSort } from './graph/traversal.js';
 

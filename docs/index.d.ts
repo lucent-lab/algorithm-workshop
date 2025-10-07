@@ -315,6 +315,22 @@ export function diff<T>(
 ): DiffOperation<T>[];
 
 /**
+ * Nested JSON diff/patch helpers.
+ * Use for: syncing application state, sending incremental updates, audit logging.
+ * Performance: O(n) relative to traversed keys.
+ * Import: data/jsonDiff.ts
+ */
+export type JsonPrimitive = string | number | boolean | null;
+export type JsonValue = JsonPrimitive | JsonValue[] | { [key: string]: JsonValue };
+export type JsonPathSegment = string | number;
+export type JsonDiffOperation =
+  | { op: 'add'; path: JsonPathSegment[]; value: JsonValue }
+  | { op: 'remove'; path: JsonPathSegment[] }
+  | { op: 'replace'; path: JsonPathSegment[]; value: JsonValue };
+export function diffJson(previous: JsonValue, next: JsonValue): JsonDiffOperation[];
+export function applyJsonDiff<T extends JsonValue>(value: T, diff: JsonDiffOperation[]): JsonValue;
+
+/**
  * Deep clone structured data.
  * Use for: immutability, snapshots, undo buffers.
  * Performance: O(n) relative to structure size.
