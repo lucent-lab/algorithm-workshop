@@ -171,6 +171,86 @@ export function generateKruskalMaze({
   return { grid, start, end };
 }
 
+/**
+ * Generates a maze using Wilson's loop-erased random walk algorithm.
+ * Useful for: unbiased mazes with uniform spanning tree properties.
+ */
+export function generateWilsonMaze({
+  width,
+  height,
+  seed = Date.now(),
+}: MazeOptions): MazeResult {
+  validateDimensions(width, height);
+
+  const grid = Array.from({ length: height }, () => Array<number>(width).fill(WALL));
+  const random = createLinearCongruentialGenerator(seed);
+
+  const cells: Cell[] = [];
+  const unvisited = new Set<string>();
+  for (let y = 1; y < height; y += 2) {
+    for (let x = 1; x < width; x += 2) {
+      const key = cellKey(x, y);
+      unvisited.add(key);
+      cells.push({ x, y });
+    }
+  }
+
+  const start = cells[0] ?? { x: 1, y: 1 };
+  carveCell(grid, start);
+  const startKey = cellKey(start.x, start.y);
+  unvisited.delete(startKey);
+
+  const tree = new Set<string>([startKey]);
+
+  while (unvisited.size > 0) {
+    const keys = Array.from(unvisited);
+    const initialKey = keys[Math.floor(random() * keys.length)];
+    if (!initialKey) {
+      continue;
+    }
+    let current = parseCellKey(initialKey);
+    const path: Cell[] = [current];
+    const visitedInWalk = new Map<string, number>([[initialKey, 0]]);
+
+    while (!tree.has(cellKey(current.x, current.y))) {
+      const next = randomOddNeighbour(current, grid, random);
+      const key = cellKey(next.x, next.y);
+      const existing = visitedInWalk.get(key);
+      if (existing !== undefined) {
+        path.length = existing + 1;
+      } else {
+        path.push(next);
+        visitedInWalk.set(key, path.length - 1);
+      }
+      current = next;
+    }
+
+    for (let i = 0; i < path.length; i += 1) {
+      const cell = path[i];
+      if (!cell) {
+        continue;
+      }
+      const key = cellKey(cell.x, cell.y);
+      if (!tree.has(key)) {
+        tree.add(key);
+        unvisited.delete(key);
+        carveCell(grid, cell);
+      }
+      if (i < path.length - 1) {
+        const nextCell = path[i + 1];
+        if (nextCell) {
+          carveCorridorBetween(grid, cell, nextCell);
+        }
+      }
+    }
+  }
+
+  const end = findFarthestCell(start, grid);
+  carveCell(grid, end);
+
+  return { grid, start, end };
+}
+
 function validateDimensions(width: number, height: number): void {
   if (!Number.isInteger(width) || !Number.isInteger(height)) {
     throw new Error('width and height must be integers.');
@@ -270,11 +350,37 @@ function cellKey(x: number, y: number): string {
   return `${x}:${y}`;
 }
 
+function parseCellKey(key: string): Cell {
+  const [x, y] = key.split(':').map((value) => Number.parseInt(value, 10));
+  return { x, y };
+}
+
 function shuffle<T>(items: T[], random: () => number): void {
   for (let i = items.length - 1; i > 0; i -= 1) {
     const j = Math.floor(random() * (i + 1));
     [items[i], items[j]] = [items[j], items[i]];
   }
+}
+
+function randomOddNeighbour(cell: Cell, grid: number[][], random: () => number): Cell {
+  const offsets: Array<[number, number]> = [
+    [0, -2],
+    [2, 0],
+    [0, 2],
+    [-2, 0],
+  ];
+  const order = offsets.slice();
+  shuffle(order, random);
+  const width = grid[0]?.length ?? 0;
+  const height = grid.length;
+  for (const [dx, dy] of order) {
+    const nx = cell.x + dx;
+    const ny = cell.y + dy;
+    if (ny > 0 && ny < height && nx > 0 && nx < width) {
+      return { x: nx, y: ny };
+    }
+  }
+  return cell;
 }
 
 function createDisjointSet(size: number): Int32Array {
