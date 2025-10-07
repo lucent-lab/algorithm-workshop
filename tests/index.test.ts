@@ -87,6 +87,7 @@ describe('package entry point', () => {
       | 'calculateVirtualRange'
       | 'createWeightedAliasSampler'
       | 'createObjectPool'
+      | 'createDeltaTimeManager'
       | 'fisherYatesShuffle'
       | 'createFixedTimestepLoop'
     >();

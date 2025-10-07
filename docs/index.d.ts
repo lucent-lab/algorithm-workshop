@@ -854,6 +854,35 @@ export interface ObjectPool<T> {
 export function createObjectPool<T>(options: ObjectPoolOptions<T>): ObjectPool<T>;
 
 /**
+ * Delta-time manager configuration.
+ * Use for: clamping frame spikes, tuning smoothing windows.
+ * Import: util/deltaTime.ts
+ */
+export interface DeltaTimeOptions {
+  maxDelta?: number;
+  smoothing?: number;
+}
+
+/**
+ * Delta-time manager API.
+ * Use for: sampling frame durations and resetting loops.
+ * Import: util/deltaTime.ts
+ */
+export interface DeltaTimeManager {
+  update(timestamp: number): number;
+  getDelta(): number;
+  reset(): void;
+}
+
+/**
+ * Creates a delta-time manager that smooths and clamps frame durations.
+ * Use for: game loops, animation systems, interpolation factors.
+ * Performance: O(1) per update with small smoothing window maintenance.
+ * Import: util/deltaTime.ts
+ */
+export function createDeltaTimeManager(options?: DeltaTimeOptions): DeltaTimeManager;
+
+/**
  * Shuffles an array in place using Fisher–Yates.
  * Use for: unbiased permutations, testing, random ordering.
  * Import: util/fisherYates.ts

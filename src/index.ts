@@ -87,6 +87,7 @@ export const examples = {
     calculateVirtualRange: 'examples/virtualScroll.ts',
     createWeightedAliasSampler: 'examples/weightedAlias.ts',
     createObjectPool: 'examples/objectPool.ts',
+    createDeltaTimeManager: 'examples/deltaTime.ts',
     fisherYatesShuffle: 'examples/fisherYates.ts',
     createFixedTimestepLoop: 'examples/fixedTimestep.ts',
   },
@@ -426,6 +427,13 @@ export { createWeightedAliasSampler } from './util/weightedAlias.js';
 export { createObjectPool } from './util/objectPool.js';
 
 /**
+ * Delta-time manager that clamps spikes and smooths frame durations.
+ *
+ * Example file: examples/deltaTime.ts
+ */
+export { createDeltaTimeManager } from './util/deltaTime.js';
+
+/**
  * Fisher–Yates shuffling utility for unbiased permutations.
  *
  * Example file: examples/fisherYates.ts
@@ -447,6 +455,11 @@ export type {
   VirtualItem,
   VirtualScrollOptions,
 } from './util/virtualScroll.js';
+
+/**
+ * Delta-time manager types for smoothing configuration and runtime control.
+ */
+export type { DeltaTimeOptions, DeltaTimeManager } from './util/deltaTime.js';
 
 // ============================================================================
 // 🔍 SEARCH & STRING UTILITIES
