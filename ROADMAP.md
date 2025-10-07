@@ -36,7 +36,7 @@
   - [x] Cellular automata cave/organic generator utilities
   - [x] Poisson disk sampling for even point distribution
   - [x] Voronoi diagram helpers for biome/territory generation
-  - [ ] Diamond-square terrain height map generator
+  - [x] Diamond-square terrain height map generator
   - [ ] L-system generator for foliage and organic structures
   - [ ] Dungeon generation suite (BSP subdivision, rooms & corridors variants)
   - [ ] Maze algorithms pack (Recursive backtracking, Prim's, Kruskal's, Wilson's, Aldous–Broder, Recursive Division)
