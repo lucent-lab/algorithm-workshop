@@ -23,7 +23,7 @@
 - [x] Introduce request deduplication helper
 - [x] Ship virtual scrolling utilities
 - [x] Add diff/patch helpers for nested JSON structures
-- [ ] Create benchmarking scripts to compare algorithm variants
+- [x] Create benchmarking scripts to compare algorithm variants
 - [ ] Expand CI to include coverage gating and bundle size checks
 
 ## Milestone 1.0.0 – Production Readiness
