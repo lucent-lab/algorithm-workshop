@@ -919,6 +919,94 @@ export interface FixedTimestepLoop {
  */
 export function createFixedTimestepLoop(options: FixedTimestepOptions): FixedTimestepLoop;
 
+// ============================================================================
+// 🕹️ GAMEPLAY SYSTEMS
+// ============================================================================
+
+/**
+ * Camera bounds limiting camera travel.
+ * Use for: constraining view to world dimensions.
+ * Import: gameplay/camera2D.ts
+ */
+export interface CameraBounds {
+  minX: number;
+  maxX: number;
+  minY: number;
+  maxY: number;
+}
+
+/**
+ * Deadzone rectangle keeping targets centred only when they exit the buffer.
+ * Use for: platformer cameras, cinematic offsets.
+ * Import: gameplay/camera2D.ts
+ */
+export interface CameraDeadzone {
+  width: number;
+  height: number;
+}
+
+/**
+ * Camera shake configuration.
+ * Use for: explosions, damage feedback, cinematic moments.
+ * Import: gameplay/camera2D.ts
+ */
+export interface CameraShakeOptions {
+  duration?: number;
+  magnitude: number;
+  frequency?: number;
+}
+
+/**
+ * 2D camera configuration options.
+ * Use for: smooth follow cameras with bounds and dead zones.
+ * Import: gameplay/camera2D.ts
+ */
+export interface Camera2DOptions {
+  viewportWidth: number;
+  viewportHeight: number;
+  position?: Point;
+  bounds?: CameraBounds;
+  deadzone?: CameraDeadzone;
+  smoothing?: number;
+  random?: () => number;
+}
+
+/**
+ * Camera update input.
+ * Use for: advancing the camera each frame with delta time and target.
+ * Import: gameplay/camera2D.ts
+ */
+export interface CameraUpdateOptions {
+  target: Point;
+  delta: number;
+}
+
+/**
+ * 2D camera runtime API.
+ * Use for: retrieving view rects, configuring behaviour, triggering shake.
+ * Import: gameplay/camera2D.ts
+ */
+export interface Camera2D {
+  update(options: CameraUpdateOptions): Rect;
+  getView(): Rect;
+  getPosition(): Point;
+  getCenter(): Point;
+  setBounds(bounds?: CameraBounds): void;
+  setDeadzone(deadzone?: CameraDeadzone): void;
+  setSmoothing(value: number): void;
+  applyShake(options: CameraShakeOptions): void;
+  isShaking(): boolean;
+  reset(position?: Point): void;
+}
+
+/**
+ * Creates a 2D camera with smoothing, dead zones, and screen shake support.
+ * Use for: side-scrollers, top-down games, cinematic sequences.
+ * Performance: O(1) per update.
+ * Import: gameplay/camera2D.ts
+ */
+export function createCamera2D(options: Camera2DOptions): Camera2D;
+
 /**
  * Least recently used cache.
  * Use for: memoizing responses, data loaders, pagination caches.

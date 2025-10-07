@@ -87,9 +87,12 @@ export const examples = {
     calculateVirtualRange: 'examples/virtualScroll.ts',
     createWeightedAliasSampler: 'examples/weightedAlias.ts',
     createObjectPool: 'examples/objectPool.ts',
-    createDeltaTimeManager: 'examples/deltaTime.ts',
     fisherYatesShuffle: 'examples/fisherYates.ts',
+  },
+  gameplay: {
+    createDeltaTimeManager: 'examples/deltaTime.ts',
     createFixedTimestepLoop: 'examples/fixedTimestep.ts',
+    createCamera2D: 'examples/camera2D.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -428,25 +431,11 @@ export { createWeightedAliasSampler } from './util/weightedAlias.js';
 export { createObjectPool } from './util/objectPool.js';
 
 /**
- * Delta-time manager that clamps spikes and smooths frame durations.
- *
- * Example file: examples/deltaTime.ts
- */
-export { createDeltaTimeManager } from './util/deltaTime.js';
-
-/**
  * Fisher–Yates shuffling utility for unbiased permutations.
  *
  * Example file: examples/fisherYates.ts
  */
 export { fisherYatesShuffle } from './util/fisherYates.js';
-
-/**
- * Fixed timestep loop for deterministic gameplay updates.
- *
- * Example file: examples/fixedTimestep.ts
- */
-export { createFixedTimestepLoop } from './util/fixedTimestep.js';
 
 /**
  * Virtual scroll type exports to help define rendering contracts.
@@ -457,10 +446,54 @@ export type {
   VirtualScrollOptions,
 } from './util/virtualScroll.js';
 
+
+// ============================================================================
+// 🕹️ GAMEPLAY SYSTEMS
+// ============================================================================
+
+/**
+ * Delta-time manager that clamps spikes and smooths frame durations.
+ *
+ * Example file: examples/deltaTime.ts
+ */
+export { createDeltaTimeManager } from './util/deltaTime.js';
+
 /**
  * Delta-time manager types for smoothing configuration and runtime control.
  */
 export type { DeltaTimeOptions, DeltaTimeManager } from './util/deltaTime.js';
+
+/**
+ * Fixed timestep loop for deterministic gameplay updates.
+ *
+ * Example file: examples/fixedTimestep.ts
+ */
+export { createFixedTimestepLoop } from './util/fixedTimestep.js';
+
+/**
+ * Fixed timestep loop option and runtime types.
+ */
+export type { FixedTimestepOptions, FixedTimestepLoop } from './util/fixedTimestep.js';
+
+/**
+ * 2D camera helper supporting smoothing, dead zones, and screen shake.
+ *
+ * Example file: examples/camera2D.ts
+ */
+export { createCamera2D } from './gameplay/camera2D.js';
+
+/**
+ * Camera system typed interfaces for configuration and updates.
+ */
+export type {
+  Camera2D,
+  Camera2DOptions,
+  CameraUpdateOptions,
+  CameraBounds,
+  CameraDeadzone,
+  CameraShakeOptions,
+} from './gameplay/camera2D.js';
+
 
 // ============================================================================
 // 🔍 SEARCH & STRING UTILITIES

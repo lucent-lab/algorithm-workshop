@@ -38,7 +38,8 @@ npm run build
 | Grid pathfinding | `astar`, `dijkstra`, `jumpPointSearch`, `computeFlowField`, `buildNavMesh`, `findNavMeshPath`, `manhattanDistance`, `gridFromString` | `pathfinding/astar.ts`, `pathfinding/dijkstra.ts`, `pathfinding/jumpPointSearch.ts`, `pathfinding/flowField.ts`, `pathfinding/navMesh.ts` | `examples/astar.ts`, `examples/flowField.ts`, `examples/navMesh.ts` |
 | Procedural textures & terrain | `perlin`, `perlin3D`, `simplex2D`, `simplex3D`, `worley`, `worleySample`, `waveFunctionCollapse`, `cellularAutomataCave`, `poissonDiskSampling`, `computeVoronoiDiagram`, `diamondSquare`, `generateLSystem`, `generateBspDungeon`, `generateRecursiveMaze`, `generatePrimMaze`, `generateKruskalMaze`, `generateWilsonMaze`, `generateAldousBroderMaze`, `generateRecursiveDivisionMaze` | `procedural/*.ts` | `examples/simplex.ts`, `examples/worley.ts`, `examples/waveFunctionCollapse.ts`, `examples/cellularAutomata.ts`, `examples/poissonDisk.ts`, `examples/voronoi.ts`, `examples/diamondSquare.ts`, `examples/lSystem.ts`, `examples/dungeonBsp.ts`, `examples/mazeRecursive.ts`, `examples/mazePrim.ts`, `examples/mazeKruskal.ts`, `examples/mazeWilson.ts`, `examples/mazeAldous.ts`, `examples/mazeDivision.ts` |
 | Spatial queries & collision | `Quadtree`, `aabbCollision`, `aabbIntersection`, `satCollision`, `circleRayIntersection`, `sweptAABB` | `spatial/*.ts` | `examples/sat.ts` |
-| Web performance & UI throttling | `debounce`, `throttle`, `LRUCache`, `memoize`, `deduplicateRequest`, `clearRequestDedup`, `calculateVirtualRange`, `createWeightedAliasSampler`, `createObjectPool`, `fisherYatesShuffle`, `createFixedTimestepLoop` | `util/*.ts` | `examples/requestDedup.ts`, `examples/virtualScroll.ts`, `examples/weightedAlias.ts`, `examples/objectPool.ts`, `examples/fisherYates.ts`, `examples/fixedTimestep.ts` |
+| Web performance & UI throttling | `debounce`, `throttle`, `LRUCache`, `memoize`, `deduplicateRequest`, `clearRequestDedup`, `calculateVirtualRange`, `createWeightedAliasSampler`, `createObjectPool`, `fisherYatesShuffle` | `util/*.ts` | `examples/requestDedup.ts`, `examples/virtualScroll.ts`, `examples/weightedAlias.ts`, `examples/objectPool.ts`, `examples/fisherYates.ts` |
+| Gameplay systems | `createDeltaTimeManager`, `createFixedTimestepLoop`, `createCamera2D` | `util/deltaTime.ts`, `util/fixedTimestep.ts`, `gameplay/camera2D.ts` | `examples/deltaTime.ts`, `examples/fixedTimestep.ts`, `examples/camera2D.ts` |
 | Text & search | `fuzzySearch`, `fuzzyScore`, `Trie`, `binarySearch`, `levenshteinDistance` | `search/*.ts` | `examples/search.ts` |
 | Data transforms & diffing | `diff`, `deepClone`, `groupBy`, `diffJson`, `applyJsonDiff` | `data/*.ts` | `examples/jsonDiff.ts` |
 | Graph traversal | `graphBFS`, `graphDFS`, `topologicalSort` | `graph/traversal.ts` | `examples/graph.ts` |
@@ -60,6 +61,7 @@ llm-algorithms/
 │   ├── ai/
 │   ├── data/
 │   ├── geometry/
+│   ├── gameplay/
 │   ├── graph/
 │   ├── pathfinding/
 │   ├── procedural/
@@ -91,11 +93,12 @@ Consistency between runtime code, documentation, and TypeScript declarations kee
 - **Pathfinding:** A*, Dijkstra, Jump Point Search, flow field integration, Manhattan heuristic, grid string parser.
 - **Procedural:** 2D/3D Perlin, Worley noise, Wave Function Collapse tile synthesis.
 - **Spatial:** Quadtree, AABB helpers, SAT convex polygon collision.
-- **Performance utilities:** Debounce, throttle, LRU cache, memoize, request deduplication, virtual scrolling.
+- **Performance utilities:** Debounce, throttle, LRU cache, memoize, request deduplication, virtual scrolling, weighted alias sampling, object pooling, Fisher–Yates shuffle.
+- **Gameplay systems:** Delta-time manager, fixed timestep loop, 2D camera with smoothing and shake.
 - **Search:** Fuzzy search + scoring, Trie-based autocomplete, binary search, Levenshtein distance.
 - **Data tools:** Diff operations (LCS), deep clone, groupBy, JSON diff/patch helpers.
 - **Graph:** BFS distance map, DFS traversal, topological sort.
-- **Geometry & visuals:** Convex hull, line intersection, point-in-polygon, easing presets, quadratic/cubic Bezier evaluation.
+- **Geometry & visuals:** Convex hull, line intersection, point-in-polygon, Bresenham line rasterisation, easing presets, quadratic/cubic Bezier evaluation.
 - **AI behaviours:** Steering behaviours (seek, flee, arrive, pursue, wander), boids, behaviour trees, RVO crowd steering.
 
 ---

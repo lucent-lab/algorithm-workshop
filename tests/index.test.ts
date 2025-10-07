@@ -23,8 +23,10 @@ describe('package entry point', () => {
     expect(examples.performance.createWeightedAliasSampler).toBe('examples/weightedAlias.ts');
     expect(examples.performance.createObjectPool).toBe('examples/objectPool.ts');
     expect(examples.performance.fisherYatesShuffle).toBe('examples/fisherYates.ts');
-    expect(examples.performance.createFixedTimestepLoop).toBe('examples/fixedTimestep.ts');
     expect(examples.performance.createWeightedAliasSampler).toBe('examples/weightedAlias.ts');
+    expect(examples.gameplay.createDeltaTimeManager).toBe('examples/deltaTime.ts');
+    expect(examples.gameplay.createFixedTimestepLoop).toBe('examples/fixedTimestep.ts');
+    expect(examples.gameplay.createCamera2D).toBe('examples/camera2D.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
   });
@@ -38,6 +40,7 @@ describe('package entry point', () => {
       | 'ai'
       | 'data'
       | 'performance'
+      | 'gameplay'
       | 'graph'
       | 'geometry'
       | 'visual'
@@ -87,9 +90,13 @@ describe('package entry point', () => {
       | 'calculateVirtualRange'
       | 'createWeightedAliasSampler'
       | 'createObjectPool'
-      | 'createDeltaTimeManager'
       | 'fisherYatesShuffle'
+    >();
+
+    expectTypeOf<ExampleName<'gameplay'>>().toEqualTypeOf<
+      | 'createDeltaTimeManager'
       | 'createFixedTimestepLoop'
+      | 'createCamera2D'
     >();
   });
 });
