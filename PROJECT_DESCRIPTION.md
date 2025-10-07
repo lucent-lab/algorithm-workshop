@@ -103,6 +103,7 @@ Consistency between runtime code, documentation, and TypeScript declarations kee
 
 - Additional noise types (Simplex, Worley) and cellular automata helpers.
 - Extended AI suite (boids, behaviour trees) and optimisation algorithms (genetic, simulated annealing).
+- Crowd steering via reciprocal velocity obstacles (RVO) for dense-agent navigation.
 - Richer collision toolkit (circle-ray, swept AABB) and physics utilities.
 - Expanded example gallery with browser + Node showcases and interactive demos.
 
