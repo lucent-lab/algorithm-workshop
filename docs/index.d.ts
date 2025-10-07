@@ -90,6 +90,7 @@ export const examples: {
     readonly clearRequestDedup: 'examples/requestDedup.ts';
     readonly calculateVirtualRange: 'examples/virtualScroll.ts';
     readonly createWeightedAliasSampler: 'examples/weightedAlias.ts';
+    readonly createObjectPool: 'examples/objectPool.ts';
   };
   readonly ai: {
     readonly seek: 'examples/steering.ts';
@@ -818,6 +819,37 @@ export interface WeightedAliasSampler<T = string> {
 export function createWeightedAliasSampler<T>(
   entries: ReadonlyArray<WeightedAliasEntry<T>>
 ): WeightedAliasSampler<T>;
+
+/**
+ * Object pool options.
+ * Use for: configuring factories, reset functions, and pool sizing.
+ * Import: util/objectPool.ts
+ */
+export interface ObjectPoolOptions<T> {
+  factory: () => T;
+  reset?: (item: T) => void;
+  initialSize?: number;
+  maxSize?: number;
+}
+
+/**
+ * Object pool API exposing acquire/release.
+ * Import: util/objectPool.ts
+ */
+export interface ObjectPool<T> {
+  acquire(): T;
+  release(item: T): void;
+  available(): number;
+  size(): number;
+}
+
+/**
+ * Creates an object pool for reusing allocations.
+ * Use for: performance sensitive systems and resource recycling.
+ * Performance: O(1) acquire/release with optional reset handling.
+ * Import: util/objectPool.ts
+ */
+export function createObjectPool<T>(options: ObjectPoolOptions<T>): ObjectPool<T>;
 
 /**
  * Least recently used cache.

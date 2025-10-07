@@ -21,6 +21,8 @@ describe('package entry point', () => {
     expect(examples.procedural.generateAldousBroderMaze).toBe('examples/mazeAldous.ts');
     expect(examples.procedural.generateRecursiveDivisionMaze).toBe('examples/mazeDivision.ts');
     expect(examples.performance.createWeightedAliasSampler).toBe('examples/weightedAlias.ts');
+    expect(examples.performance.createObjectPool).toBe('examples/objectPool.ts');
+    expect(examples.performance.createWeightedAliasSampler).toBe('examples/weightedAlias.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
   });
@@ -71,6 +73,18 @@ describe('package entry point', () => {
       | 'generateWilsonMaze'
       | 'generateAldousBroderMaze'
       | 'generateRecursiveDivisionMaze'
+    >();
+
+    expectTypeOf<ExampleName<'performance'>>().toEqualTypeOf<
+      | 'debounce'
+      | 'throttle'
+      | 'LRUCache'
+      | 'memoize'
+      | 'deduplicateRequest'
+      | 'clearRequestDedup'
+      | 'calculateVirtualRange'
+      | 'createWeightedAliasSampler'
+      | 'createObjectPool'
     >();
   });
 });

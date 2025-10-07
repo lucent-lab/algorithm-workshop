@@ -46,7 +46,7 @@
 - Gameplay systems & utilities:
   - [ ] Fixed-timestep game loop utility with interpolation helpers
   - [ ] Delta-time manager for frame-independent timing
-  - [ ] Object pool helper for reusable entities
+  - [x] Object pool helper for reusable entities
   - [x] Weighted random selector (alias method)
   - [ ] Fisher–Yates shuffle implementation
   - [ ] Bresenham line / raster traversal helpers
