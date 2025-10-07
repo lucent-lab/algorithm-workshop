@@ -1,15 +1,17 @@
 # LLM Algorithms Roadmap
 
 ## Milestone 0.1.0 – Foundational Toolkit
+
 - [x] Scaffold project structure, npm metadata, and documentation
 - [x] Migrate runtime codebase to strict TypeScript with shared type definitions
-- [x] Implement core algorithms (A*, Dijkstra, Perlin, Quadtree, AABB, data/search utilities)
+- [x] Implement core algorithms (A\*, Dijkstra, Perlin, Quadtree, AABB, data/search utilities)
 - [x] Add steering behaviours and SAT collision module
 - [x] Provide Vitest coverage for representative algorithms
-- [x] Ship runnable TypeScript examples (A*, steering, SAT)
+- [x] Ship runnable TypeScript examples (A\*, steering, SAT)
 - [x] Configure ESLint, Prettier, and CI workflow integration
 
 ## Milestone 0.2.0 – Procedural & AI Expansion (In Progress)
+
 - [x] Implement Simplex noise generator with tests
 - [x] Implement Worley noise generator with tests
 - [x] Add boids flocking simulation and unit coverage
@@ -24,6 +26,7 @@
 - [x] Provide navigation mesh (navmesh) helper for irregular terrain
 
 ## Milestone 0.3.0 – Web Performance & Data Pipelines
+
 - [x] Introduce request deduplication helper
 - [x] Ship virtual scrolling utilities
 - [x] Add diff/patch helpers for nested JSON structures
@@ -37,7 +40,7 @@
   - [x] Poisson disk sampling for even point distribution
   - [x] Voronoi diagram helpers for biome/territory generation
   - [x] Diamond-square terrain height map generator
-  - [ ] L-system generator for foliage and organic structures
+  - [x] L-system generator for foliage and organic structures
   - [ ] Dungeon generation suite (BSP subdivision, rooms & corridors variants)
   - [ ] Maze algorithms pack (Recursive backtracking, Prim's, Kruskal's, Wilson's, Aldous–Broder, Recursive Division)
 - Gameplay systems & utilities:
@@ -68,6 +71,7 @@
   - [ ] Screen transition utilities (fades, wipes, letterboxing)
 
 ## Milestone 0.5.0 – Algorithm Vault & Data Structures (Planned)
+
 - **AI & behaviour expansions**
   - [ ] Finite state machine (FSM) toolkit
   - [ ] Genetic algorithm utilities
@@ -111,6 +115,7 @@
   - [ ] Closest pair of points solver for geometry toolkit
 
 ## Milestone 1.0.0 – Production Readiness
+
 - [ ] Publish to npm with semver automation and changelog management
 - [ ] Provide comprehensive documentation site (e.g., VitePress) with interactive demos
 - [ ] Offer ESM + CJS build outputs and tree-shaking test cases
@@ -119,14 +124,16 @@
 ---
 
 ## Recently Completed Tasks
+
 - TypeScript migration with strict compiler settings
 - Added steering behaviours and SAT collision detection
 - Set up Vitest suites and GitHub Actions CI pipeline
 - Authored usage examples to accelerate onboarding
 
 ## Upcoming Focus
+
 1. Procedural generation enhancements (Worley refinements, Worley-based effects, upcoming Worley variants like Worley F1/F2)
 2. Behavioural AI additions (crowd steering via RVO, flow-field integration, behaviour tree decorators)
 3. Procedural & systems expansion (Wave Function Collapse, dungeon suite, L-systems, diamond-square, full game systems toolkit)
 4. Advanced collision utilities (swept volumes with rotation, broad-phase acceleration structures)
-Note: tasks will move to the completed section once merged via the standard branch + PR workflow.
+   Note: tasks will move to the completed section once merged via the standard branch + PR workflow.
