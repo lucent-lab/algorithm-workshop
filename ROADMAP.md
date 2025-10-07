@@ -17,11 +17,11 @@
 - [x] Add circle-ray intersection helper
 - [x] Implement swept AABB collision checks
 - [x] Document new modules in `docs/index.d.ts` and examples folder
-- [ ] Achieve >80% coverage across new modules
+- [x] Achieve >80% coverage across new modules
 
 ## Milestone 0.3.0 – Web Performance & Data Pipelines
 - [x] Introduce request deduplication helper
-- [ ] Ship virtual scrolling utilities
+- [x] Ship virtual scrolling utilities
 - [ ] Add diff/patch helpers for nested JSON structures
 - [ ] Create benchmarking scripts to compare algorithm variants
 - [ ] Expand CI to include coverage gating and bundle size checks
