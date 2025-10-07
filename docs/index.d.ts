@@ -1,5 +1,18 @@
 // LLM Algorithm Library - TypeScript Definitions
 // Import from: https://cdn.jsdelivr.net/npm/llm-algorithms/dist/index.js
+//
+// 📚 Quick Navigation for LLMs / tooling
+// - 🎮 Pathfinding & Navigation → astar, dijkstra (examples/astar.ts)
+// - 🌍 Procedural Generation → perlin, simplex2D/3D, worley (examples/simplex.ts, examples/worley.ts)
+// - 🎯 Spatial & Collision → quadtree, aabb, sat, circleRayIntersection, sweptAABB (examples/sat.ts)
+// - 🤖 AI & Behaviour → seek/flee/arrive/pursue/wander, updateBoids, BehaviorTree, rvoStep (examples/steering.ts, examples/boids.ts, examples/rvo.ts)
+// - ⚡ Web Performance → debounce, throttle, LRUCache, memoize, deduplicateRequest, virtual scroll (examples/requestDedup.ts, examples/virtualScroll.ts)
+// - 🔍 Search & Text → fuzzySearch, fuzzyScore, Trie, binarySearch, levenshteinDistance
+// - 📊 Data Pipelines → diff, deepClone, groupBy, diffJson/applyJsonDiff
+// - 📈 Graph Algorithms → graphBFS, graphDFS, topologicalSort
+// - 🎨 Visual & Geometry → convexHull, lineIntersection, pointInPolygon, easing, bezier
+//
+// Each declaration includes "Use for", a performance hint, and the import path for quick selection.
 
 // ============================================================================
 // 🎮 PATHFINDING & NAVIGATION
@@ -530,7 +543,7 @@ export function updateBoids(boids: Boid[], options: BoidOptions): void;
  * Reciprocal velocity obstacles (RVO) step for multi-agent avoidance.
  * Use for: crowd steering, swarms, dense navigation.
  * Performance: O(n × log n) with neighbor filtering.
- * Import: ai/rvo.ts
+ * Import: ai/rvo.ts (run examples/rvo.ts to see three-agent avoidance).
  */
 export interface RvoAgent extends Agent {
   id?: string;

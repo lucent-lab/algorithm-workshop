@@ -2,20 +2,76 @@ import type { RvoAgent, Vector2D } from '../types.js';
 
 const EPSILON = 1e-6;
 
+/**
+ * Configuration for the RVO solver.
+ * Useful for: tuning responsiveness, limiting neighbor checks, scaling deflection strength.
+ */
 export interface RvoOptions {
+  /** Seconds to look ahead when predicting collisions. */
   timeHorizon?: number;
+  /** Maximum neighbors each agent considers for avoidance. */
   maxNeighbors?: number;
+  /** Multiplier controlling how strongly agents slide away from conflicts. */
   avoidanceStrength?: number;
 }
 
+/**
+ * Velocity update returned by {@link rvoStep}.
+ */
 export interface RvoResult {
+  /** Optional identifier carried over from the input agent. */
   id?: string;
+  /** Steering-adjusted velocity vector that remains under the agent max speed. */
   velocity: Vector2D;
 }
 
 /**
  * Computes collision-avoiding agent velocities using reciprocal velocity obstacles (RVO).
  * Useful for: crowd steering, swarm navigation, multi-agent avoidance.
+ *
+ * @param agents - Collection of crowd agents with their state and preferred velocities.
+ * @param options - Optional tuning parameters (time horizon, neighbor limits, avoidance strength).
+ * @returns Velocity updates per agent, preserving their `id` when provided.
+ *
+ * @example
+ * import { rvoStep } from 'llm-algorithms';
+ *
+ * const agents = [
+ *   {
+ *     id: 'alpha',
+ *     position: { x: -1, y: 0 },
+ *     velocity: { x: 1, y: 0 },
+ *     preferredVelocity: { x: 1, y: 0 },
+ *     radius: 0.35,
+ *     maxSpeed: 1.5,
+ *   },
+ *   {
+ *     id: 'beta',
+ *     position: { x: 1, y: 0 },
+ *     velocity: { x: -1, y: 0 },
+ *     preferredVelocity: { x: -1, y: 0 },
+ *     radius: 0.35,
+ *     maxSpeed: 1.5,
+ *   },
+ * ];
+ *
+ * const updated = rvoStep(agents, { timeHorizon: 2.5 });
+ * // updated[0].velocity.y and updated[1].velocity.y have opposite signs for lateral avoidance.
+ *
+ * @example
+ * import { rvoStep } from 'llm-algorithms';
+ *
+ * const swarm = new Array(25).fill(null).map((_, index) => ({
+ *   id: `agent-${index}`,
+ *   position: { x: Math.cos((index / 25) * Math.PI * 2), y: Math.sin((index / 25) * Math.PI * 2) },
+ *   velocity: { x: 0, y: 0 },
+ *   preferredVelocity: { x: 0.6, y: 0 },
+ *   radius: 0.25,
+ *   maxSpeed: 0.8,
+ * }));
+ *
+ * const step = rvoStep(swarm, { maxNeighbors: 10, avoidanceStrength: 0.5 });
+ * // step contains safe velocities that can be fed into your integration loop.
  */
 export function rvoStep(
   agents: ReadonlyArray<RvoAgent>,
