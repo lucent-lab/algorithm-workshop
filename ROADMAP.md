@@ -51,7 +51,7 @@
   - [x] Fisher–Yates shuffle implementation
   - [x] Bresenham line / raster traversal helpers
 - Real-time systems:
-  - [ ] 2D camera system (smooth follow, dead zones, screen shake)
+  - [x] 2D camera system (smooth follow, dead zones, screen shake)
   - [ ] Particle system with configurable emitters
   - [ ] Sprite animation controller (frame timing, events)
   - [ ] Tween/lerp utility for smooth interpolation
