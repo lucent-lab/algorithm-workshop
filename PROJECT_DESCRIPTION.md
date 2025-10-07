@@ -42,7 +42,7 @@ npm run build
 | Data transforms             | Diff (LCS) / Deep clone / Group by                   | `data/*.ts`                                    |
 | Graph traversal             | BFS distances / DFS callbacks / Topological sort     | `graph/traversal.ts`                           |
 | Geometry & visuals          | Convex hull / Segment intersection / Point-in-poly / Bezier / Easings | `geometry/*.ts`, `visual/*.ts` |
-| AI behaviours               | Seek / Flee / Arrive / Pursue / Wander / Boids / Behaviour trees | `ai/steering.ts`, `ai/boids.ts`, `ai/behaviorTree.ts` |
+| AI behaviours               | Seek / Flee / Arrive / Pursue / Wander / Boids / Behaviour trees / RVO crowd steering | `ai/steering.ts`, `ai/boids.ts`, `ai/behaviorTree.ts`, `ai/rvo.ts` |
 
 ---
 
@@ -95,7 +95,7 @@ Consistency between runtime code, documentation, and TypeScript declarations kee
 - **Data tools:** Diff operations (LCS), deep clone, groupBy.
 - **Graph:** BFS distance map, DFS traversal, topological sort.
 - **Geometry & visuals:** Convex hull, line intersection, point-in-polygon, easing presets, quadratic/cubic Bezier evaluation.
-- **AI behaviours:** Steering behaviours (seek, flee, arrive, pursue, wander).
+- **AI behaviours:** Steering behaviours (seek, flee, arrive, pursue, wander), boids, behaviour trees, RVO crowd steering.
 
 ---
 

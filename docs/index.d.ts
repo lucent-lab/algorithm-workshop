@@ -527,6 +527,28 @@ export interface BoidOptions {
 export function updateBoids(boids: Boid[], options: BoidOptions): void;
 
 /**
+ * Reciprocal velocity obstacles (RVO) step for multi-agent avoidance.
+ * Use for: crowd steering, swarms, dense navigation.
+ * Performance: O(n × log n) with neighbor filtering.
+ * Import: ai/rvo.ts
+ */
+export interface RvoAgent extends Agent {
+  id?: string;
+  radius: number;
+  preferredVelocity: Vector2D;
+}
+export interface RvoOptions {
+  timeHorizon?: number;
+  maxNeighbors?: number;
+  avoidanceStrength?: number;
+}
+export interface RvoResult {
+  id?: string;
+  velocity: Vector2D;
+}
+export function rvoStep(agents: ReadonlyArray<RvoAgent>, options?: RvoOptions): RvoResult[];
+
+/**
  * Behavior tree orchestrator for AI decision making.
  * Use for: hierarchical NPC logic, modular behaviour scripting, goal selection.
  * Performance: O(tree nodes) per tick.
