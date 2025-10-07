@@ -55,6 +55,21 @@ export interface DijkstraResult {
 }
 export function dijkstra(options: DijkstraOptions): DijkstraResult | null;
 
+/**
+ * Jump Point Search optimisation for uniform-cost grids.
+ * Use for: large grid navigation, RTS unit movement, pathfinding on open terrain.
+ * Performance: O(b^d) best-case with heavy pruning.
+ * Import: pathfinding/jumpPointSearch.ts
+ */
+export interface JumpPointSearchOptions {
+  grid: number[][];
+  start: Point;
+  goal: Point;
+  allowDiagonal?: boolean;
+  heuristic?: (a: Point, b: Point) => number;
+}
+export function jumpPointSearch(options: JumpPointSearchOptions): Point[] | null;
+
 // ============================================================================
 // 🌍 PROCEDURAL GENERATION
 // ============================================================================
