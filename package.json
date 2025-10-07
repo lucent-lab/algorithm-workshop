@@ -25,10 +25,12 @@
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "test:watch": "vitest",
     "lint": "eslint 'src/**/*.ts' 'tests/**/*.ts'",
     "format": "prettier --write .",
-    "benchmark": "node benchmarks/runBenchmarks.mjs"
+    "benchmark": "node benchmarks/runBenchmarks.mjs",
+    "size": "size-limit"
   },
   "keywords": [
     "algorithms",
@@ -44,6 +46,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@size-limit/preset-small-lib": "^11.0.3",
     "@types/node": "^20.11.24",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
@@ -51,7 +54,15 @@
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.2.5",
+    "size-limit": "^11.0.3",
     "typescript": "^5.4.3",
     "vitest": "^1.4.0"
-  }
+  },
+  "size-limit": [
+    {
+      "name": "bundle",
+      "path": "dist/index.js",
+      "limit": "40 KB"
+    }
+  ]
 }
