@@ -13,6 +13,9 @@
 // - 🎨 Visual & Geometry → convexHull, lineIntersection, pointInPolygon, easing, bezier
 //
 // Each declaration includes "Use for", a performance hint, and the import path for quick selection.
+// Planned expansions (Milestone 0.4) cover Wave Function Collapse, dungeon generation suites,
+// L-systems, diamond-square, maze packs, and full game systems (loop, camera, particles, physics,
+// tilemaps, FOV, inventory, combat, quest/dialog, lighting, wave spawner, sound, input, save/load, transitions).
 
 // ============================================================================
 // 🎮 PATHFINDING & NAVIGATION
