@@ -32,17 +32,17 @@ npm run build
 
 ## 🎯 Algorithm Selection Guide
 
-| Need                        | Algorithm(s)                                        | Module                                         |
-| --------------------------- | ---------------------------------------------------- | ---------------------------------------------- |
-| Grid pathfinding            | A* (diagonals optional) / Dijkstra (weighted graphs) | `pathfinding/astar.ts`, `pathfinding/dijkstra.ts` |
-| Procedural textures         | Perlin noise grid / 3D sample / Simplex noise / Worley | `procedural/perlin.ts`, `procedural/simplex.ts`, `procedural/worley.ts` |
-| Spatial queries             | Quadtree partitioning / AABB helpers / SAT / Ray-circle / Swept AABB | `spatial/quadtree.ts`, `spatial/aabb.ts`, `spatial/sat.ts`, `spatial/circleRay.ts`, `spatial/sweptAabb.ts` |
-| Web performance             | Debounce / Throttle / LRU Cache / Memoize / Request dedup | `util/*.ts`                                   |
-| Text & search               | Fuzzy search & score / Trie / Binary search / Levenshtein | `search/*.ts`                              |
-| Data transforms             | Diff (LCS) / Deep clone / Group by                   | `data/*.ts`                                    |
-| Graph traversal             | BFS distances / DFS callbacks / Topological sort     | `graph/traversal.ts`                           |
-| Geometry & visuals          | Convex hull / Segment intersection / Point-in-poly / Bezier / Easings | `geometry/*.ts`, `visual/*.ts` |
-| AI behaviours               | Seek / Flee / Arrive / Pursue / Wander / Boids / Behaviour trees / RVO crowd steering | `ai/steering.ts`, `ai/boids.ts`, `ai/behaviorTree.ts`, `ai/rvo.ts` |
+| Need | Algorithm(s) | Module | Example |
+| ---- | ------------ | ------ | ------- |
+| Grid pathfinding | `astar`, `dijkstra`, `manhattanDistance`, `gridFromString` | `pathfinding/astar.ts`, `pathfinding/dijkstra.ts` | `examples/astar.ts` |
+| Procedural textures & terrain | `perlin`, `perlin3D`, `simplex2D`, `simplex3D`, `worley`, `worleySample` | `procedural/*.ts` | `examples/simplex.ts`, `examples/worley.ts` |
+| Spatial queries & collision | `Quadtree`, `aabbCollision`, `aabbIntersection`, `satCollision`, `circleRayIntersection`, `sweptAABB` | `spatial/*.ts` | `examples/sat.ts` |
+| Web performance & UI throttling | `debounce`, `throttle`, `LRUCache`, `memoize`, `deduplicateRequest`, `clearRequestDedup`, `calculateVirtualRange` | `util/*.ts` | `examples/requestDedup.ts`, `examples/virtualScroll.ts` |
+| Text & search | `fuzzySearch`, `fuzzyScore`, `Trie`, `binarySearch`, `levenshteinDistance` | `search/*.ts` | `tests/search.test.ts` |
+| Data transforms & diffing | `diff`, `deepClone`, `groupBy`, `diffJson`, `applyJsonDiff` | `data/*.ts` | `tests/jsonDiff.test.ts` |
+| Graph traversal | `graphBFS`, `graphDFS`, `topologicalSort` | `graph/traversal.ts` | `tests/graph.test.ts` |
+| Geometry & visuals | `convexHull`, `lineIntersection`, `pointInPolygon`, `easing`, `quadraticBezier`, `cubicBezier` | `geometry/*.ts`, `visual/*.ts` | `tests/geometry.test.ts`, `tests/visual.test.ts` |
+| AI behaviours & crowds | `seek`, `flee`, `arrive`, `pursue`, `wander`, `updateBoids`, `BehaviorTree`, `rvoStep` | `ai/steering.ts`, `ai/boids.ts`, `ai/behaviorTree.ts`, `ai/rvo.ts` | `examples/steering.ts`, `examples/boids.ts`, `examples/rvo.ts` |
 
 ---
 
@@ -90,9 +90,9 @@ Consistency between runtime code, documentation, and TypeScript declarations kee
 - **Pathfinding:** A*, Dijkstra, Manhattan heuristic, grid string parser.
 - **Procedural:** 2D Perlin grid generator, 3D Perlin sampler.
 - **Spatial:** Quadtree, AABB helpers, SAT convex polygon collision.
-- **Performance utilities:** Debounce, throttle, LRU cache, memoize.
+- **Performance utilities:** Debounce, throttle, LRU cache, memoize, request deduplication, virtual scrolling.
 - **Search:** Fuzzy search + scoring, Trie-based autocomplete, binary search, Levenshtein distance.
-- **Data tools:** Diff operations (LCS), deep clone, groupBy.
+- **Data tools:** Diff operations (LCS), deep clone, groupBy, JSON diff/patch helpers.
 - **Graph:** BFS distance map, DFS traversal, topological sort.
 - **Geometry & visuals:** Convex hull, line intersection, point-in-polygon, easing presets, quadratic/cubic Bezier evaluation.
 - **AI behaviours:** Steering behaviours (seek, flee, arrive, pursue, wander), boids, behaviour trees, RVO crowd steering.
@@ -103,7 +103,7 @@ Consistency between runtime code, documentation, and TypeScript declarations kee
 
 - Additional noise types (Simplex, Worley) and cellular automata helpers.
 - Extended AI suite (boids, behaviour trees) and optimisation algorithms (genetic, simulated annealing).
-- Crowd steering via reciprocal velocity obstacles (RVO) for dense-agent navigation.
+- Advanced crowd steering variants (RVO + static obstacles, flow-field blends).
 - Richer collision toolkit (circle-ray, swept AABB) and physics utilities.
 - Expanded example gallery with browser + Node showcases and interactive demos.
 

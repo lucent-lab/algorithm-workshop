@@ -51,6 +51,10 @@ export interface Boid extends SteeringAgent {
   acceleration: Vector2D;
 }
 
+/**
+ * Crowd agent input used by the RVO solver.
+ * Useful for: crowd navigation, swarms, multi-agent avoidance.
+ */
 export interface RvoAgent extends Agent {
   id?: string;
   radius: number;

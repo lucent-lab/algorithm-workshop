@@ -21,15 +21,18 @@ CDN usage:
 ```
 
 ## Included Modules (v0.1.0)
-- **Pathfinding:** A*, Dijkstra, Manhattan heuristic, grid string parser
-- **Procedural:** 2D/3D Perlin noise, Simplex noise, Worley (cellular) noise
-- **Spatial:** Quadtree, AABB helpers, SAT polygon intersection, circle-ray intersection, swept AABB
-- **Search & Text:** Fuzzy search/scoring, Trie autocomplete, binary search, Levenshtein distance
-- **Data:** Diff (LCS), deep clone, groupBy, JSON diff/patch helpers
-- **Web performance:** Debounce, throttle, LRU cache, memoize, request deduplication helper, virtual scrolling range calculator
-- **Graph:** BFS distance map, DFS traversal, topological sort
-- **Visual & Geometry:** Convex hull, line intersection, point-in-polygon, easing presets, Bezier helpers
-- **AI Behaviours:** Steering behaviours (seek, flee, arrive, pursue, wander), boids flocking update, behaviour trees, reciprocal velocity obstacles (RVO)
+
+| Goal | Algorithms | Import From | Example |
+| ---- | ---------- | ----------- | ------- |
+| Pathfinding & navigation | `astar`, `dijkstra`, `manhattanDistance`, `gridFromString` | `pathfinding/astar.ts`, `pathfinding/dijkstra.ts` | `examples/astar.ts` |
+| Procedural generation | `perlin`, `perlin3D`, `simplex2D`, `simplex3D`, `worley`, `worleySample` | `procedural/*.ts` | `examples/simplex.ts`, `examples/worley.ts` |
+| Spatial queries & collision | `Quadtree`, `aabbCollision`, `aabbIntersection`, `satCollision`, `circleRayIntersection`, `sweptAABB` | `spatial/*.ts` | `examples/sat.ts` |
+| AI behaviours & crowds | `seek`, `flee`, `arrive`, `pursue`, `wander`, `updateBoids`, `BehaviorTree`, `rvoStep` | `ai/steering.ts`, `ai/boids.ts`, `ai/behaviorTree.ts`, `ai/rvo.ts` | `examples/steering.ts`, `examples/boids.ts`, `examples/rvo.ts` |
+| Web performance & UI | `debounce`, `throttle`, `LRUCache`, `memoize`, `deduplicateRequest`, `clearRequestDedup`, `calculateVirtualRange` | `util/*.ts` | `examples/requestDedup.ts`, `examples/virtualScroll.ts` |
+| Search & text | `fuzzySearch`, `fuzzyScore`, `Trie`, `binarySearch`, `levenshteinDistance` | `search/*.ts` | `tests/search.test.ts` |
+| Data & diff pipelines | `diff`, `deepClone`, `groupBy`, `diffJson`, `applyJsonDiff` | `data/*.ts` | `tests/jsonDiff.test.ts` |
+| Graph algorithms | `graphBFS`, `graphDFS`, `topologicalSort` | `graph/traversal.ts` | `tests/graph.test.ts` |
+| Visual & geometry | `convexHull`, `lineIntersection`, `pointInPolygon`, `easing`, `quadraticBezier`, `cubicBezier` | `geometry/*.ts`, `visual/*.ts` | `tests/geometry.test.ts`, `tests/visual.test.ts` |
 
 ## Scripts
 ```bash
@@ -43,7 +46,7 @@ npm run size        # Enforce bundle size budget
 ```
 
 ## Roadmap Snapshot
-- Milestone 0.2 is tracking a reciprocal velocity obstacles (RVO) crowd steering module to expand the AI suite.
+- Milestone 0.2 next targets crowd-flow integrations (RVO + flow fields) and behaviour-tree decorators for richer AI control.
 
 Examples live under `examples/` and can be executed with `tsx`/`ts-node` or compiled for the browser. See `examples/astar.ts`, `examples/steering.ts`, `examples/boids.ts`, `examples/requestDedup.ts`, `examples/sat.ts`, `examples/simplex.ts`, and `examples/worley.ts` for quick starts.
 
