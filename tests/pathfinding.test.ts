@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { astar, gridFromString, manhattanDistance } from '../src/pathfinding/astar.js';
 import { dijkstra } from '../src/pathfinding/dijkstra.js';
+import { jumpPointSearch } from '../src/pathfinding/jumpPointSearch.js';
 
 describe('A* pathfinding', () => {
   it('finds a valid path on simple grid', () => {
@@ -71,6 +72,54 @@ describe('Dijkstra', () => {
     };
 
     const result = dijkstra({ graph, start: 'A', goal: 'C' });
+    expect(result).toBeNull();
+  });
+});
+
+describe('Jump Point Search', () => {
+  const grid = gridFromString(`
+    00000
+    01110
+    00010
+    01110
+    00000
+  `);
+
+  it('finds shortest route matching A*', () => {
+    const jpsPath = jumpPointSearch({
+      grid,
+      start: { x: 0, y: 0 },
+      goal: { x: 4, y: 4 },
+      allowDiagonal: true,
+    });
+
+    const astarPath = astar({
+      grid,
+      start: { x: 0, y: 0 },
+      goal: { x: 4, y: 4 },
+      allowDiagonal: true,
+    });
+
+    expect(jpsPath).not.toBeNull();
+    expect(astarPath).not.toBeNull();
+    expect(jpsPath?.at(0)).toEqual({ x: 0, y: 0 });
+    expect(jpsPath?.at(-1)).toEqual({ x: 4, y: 4 });
+    expect(jpsPath?.length).toBe(astarPath?.length);
+  });
+
+  it('returns null when goal unreachable', () => {
+    const blocked = gridFromString(`
+      000
+      111
+      000
+    `);
+
+    const result = jumpPointSearch({
+      grid: blocked,
+      start: { x: 0, y: 0 },
+      goal: { x: 2, y: 2 },
+    });
+
     expect(result).toBeNull();
   });
 });
