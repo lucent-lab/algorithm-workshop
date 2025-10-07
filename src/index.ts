@@ -50,6 +50,7 @@ export const examples = {
     generateBspDungeon: 'examples/dungeonBsp.ts',
     generateRecursiveMaze: 'examples/mazeRecursive.ts',
     generatePrimMaze: 'examples/mazePrim.ts',
+    generateKruskalMaze: 'examples/mazeKruskal.ts',
   },
   spatial: {
     Quadtree: 'examples/sat.ts',
@@ -289,6 +290,13 @@ export { generateRecursiveMaze } from './procedural/maze.js';
  * Example file: examples/mazePrim.ts
  */
 export { generatePrimMaze } from './procedural/maze.js';
+
+/**
+ * Kruskal's maze generator for evenly distributed layouts.
+ *
+ * Example file: examples/mazeKruskal.ts
+ */
+export { generateKruskalMaze } from './procedural/maze.js';
 
 // ============================================================================
 // 🎯 SPATIAL & COLLISION
