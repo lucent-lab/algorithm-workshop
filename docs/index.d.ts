@@ -638,6 +638,14 @@ export function generateKruskalMaze(options: MazeOptions): MazeResult;
 export function generateWilsonMaze(options: MazeOptions): MazeResult;
 
 /**
+ * Generates a maze using the Aldous–Broder algorithm.
+ * Use for: unbiased random mazes through random walks.
+ * Performance: O(width × height × visits).
+ * Import: procedural/maze.ts
+ */
+export function generateAldousBroderMaze(options: MazeOptions): MazeResult;
+
+/**
  * Simplex noise generator for smooth gradients without directional artifacts.
  * Use for: large terrain synthesis, animated textures, volumetric noise.
  * Performance: O(n) per sample.
