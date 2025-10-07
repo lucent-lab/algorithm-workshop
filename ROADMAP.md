@@ -45,7 +45,7 @@
   - [ ] Maze algorithms pack (Recursive backtracking ✅, Prim's ✅, Kruskal's ✅, Wilson's ✅, Aldous–Broder ✅, Recursive Division ✅)
 - Gameplay systems & utilities:
   - [x] Fixed-timestep game loop utility with interpolation helpers
-  - [ ] Delta-time manager for frame-independent timing
+  - [x] Delta-time manager for frame-independent timing
   - [x] Object pool helper for reusable entities
   - [x] Weighted random selector (alias method)
   - [x] Fisher–Yates shuffle implementation
