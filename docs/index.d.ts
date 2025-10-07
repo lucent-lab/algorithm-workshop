@@ -48,6 +48,7 @@ export const examples: {
     readonly waveFunctionCollapse: 'examples/waveFunctionCollapse.ts';
     readonly cellularAutomataCave: 'examples/cellularAutomata.ts';
     readonly poissonDiskSampling: 'examples/poissonDisk.ts';
+    readonly computeVoronoiDiagram: 'examples/voronoi.ts';
   };
   readonly spatial: {
     readonly Quadtree: 'examples/sat.ts';
@@ -384,6 +385,58 @@ export interface PoissonDiskOptions {
  * Import: procedural/poissonDisk.ts
  */
 export function poissonDiskSampling(options: PoissonDiskOptions): Point[];
+
+/**
+ * Voronoi site definition.
+ * Use for: labelling regions, associating metadata to cells.
+ * Import: procedural/voronoi.ts
+ */
+export interface VoronoiSite extends Point {
+  id?: string;
+}
+
+/**
+ * Bounding box constraining Voronoi cell clipping.
+ * Use for: enforcing finite diagram extents, map limits, UI layout boxes.
+ * Import: procedural/voronoi.ts
+ */
+export interface BoundingBox {
+  minX: number;
+  maxX: number;
+  minY: number;
+  maxY: number;
+}
+
+/**
+ * Voronoi configuration options.
+ * Use for: padding the inferred bounds, providing explicit clipping boxes.
+ * Import: procedural/voronoi.ts
+ */
+export interface VoronoiOptions {
+  boundingBox?: BoundingBox;
+  padding?: number;
+}
+
+/**
+ * Resulting Voronoi cell containing the generating site and polygon vertices.
+ * Use for: rendering territories, computing adjacency, spawning procedural content.
+ * Import: procedural/voronoi.ts
+ */
+export interface VoronoiCell {
+  site: VoronoiSite;
+  polygon: Point[];
+}
+
+/**
+ * Computes a Voronoi diagram via half-plane clipping.
+ * Use for: territory partitioning, biome assignment, gameplay regions.
+ * Performance: O(n^2 m) where m is retained polygon vertex count.
+ * Import: procedural/voronoi.ts
+ */
+export function computeVoronoiDiagram(
+  sites: ReadonlyArray<VoronoiSite>,
+  options?: VoronoiOptions
+): VoronoiCell[];
 
 /**
  * Simplex noise generator for smooth gradients without directional artifacts.

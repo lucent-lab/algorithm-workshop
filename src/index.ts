@@ -44,6 +44,7 @@ export const examples = {
     waveFunctionCollapse: 'examples/waveFunctionCollapse.ts',
     cellularAutomataCave: 'examples/cellularAutomata.ts',
     poissonDiskSampling: 'examples/poissonDisk.ts',
+    computeVoronoiDiagram: 'examples/voronoi.ts',
   },
   spatial: {
     Quadtree: 'examples/sat.ts',
@@ -241,6 +242,13 @@ export { cellularAutomataCave } from './procedural/cellularAutomata.js';
  * Example file: examples/poissonDisk.ts
  */
 export { poissonDiskSampling } from './procedural/poissonDisk.js';
+
+/**
+ * Voronoi diagram helper returning polygonal cells for each site.
+ *
+ * Example file: examples/voronoi.ts
+ */
+export { computeVoronoiDiagram } from './procedural/voronoi.js';
 
 // ============================================================================
 // 🎯 SPATIAL & COLLISION
