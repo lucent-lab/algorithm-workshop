@@ -24,15 +24,15 @@ CDN usage:
 
 | Goal | Algorithms | Import From | Example |
 | ---- | ---------- | ----------- | ------- |
-| Pathfinding & navigation | `astar`, `dijkstra`, `jumpPointSearch`, `computeFlowField`, `manhattanDistance`, `gridFromString` | `pathfinding/astar.ts`, `pathfinding/dijkstra.ts`, `pathfinding/jumpPointSearch.ts`, `pathfinding/flowField.ts` | `examples/astar.ts` |
-| Procedural generation | `perlin`, `perlin3D`, `simplex2D`, `simplex3D`, `worley`, `worleySample`, `waveFunctionCollapse` | `procedural/*.ts` | `examples/simplex.ts`, `examples/worley.ts`, `examples/waveFunctionCollapse.ts` |
+| Pathfinding & navigation | `astar`, `dijkstra`, `jumpPointSearch`, `computeFlowField`, `buildNavMesh`, `findNavMeshPath`, `manhattanDistance`, `gridFromString` | `pathfinding/astar.ts`, `pathfinding/dijkstra.ts`, `pathfinding/jumpPointSearch.ts`, `pathfinding/flowField.ts`, `pathfinding/navMesh.ts` | `examples/astar.ts`, `examples/flowField.ts`, `examples/navMesh.ts` |
+| Procedural generation | `perlin`, `perlin3D`, `simplex2D`, `simplex3D`, `worley`, `worleySample`, `waveFunctionCollapse`, `cellularAutomataCave`, `poissonDiskSampling` | `procedural/*.ts` | `examples/simplex.ts`, `examples/worley.ts`, `examples/waveFunctionCollapse.ts`, `examples/cellularAutomata.ts`, `examples/poissonDisk.ts` |
 | Spatial queries & collision | `Quadtree`, `aabbCollision`, `aabbIntersection`, `satCollision`, `circleRayIntersection`, `sweptAABB` | `spatial/*.ts` | `examples/sat.ts` |
 | AI behaviours & crowds | `seek`, `flee`, `arrive`, `pursue`, `wander`, `updateBoids`, `BehaviorTree`, `rvoStep` | `ai/steering.ts`, `ai/boids.ts`, `ai/behaviorTree.ts`, `ai/rvo.ts` | `examples/steering.ts`, `examples/boids.ts`, `examples/rvo.ts` |
 | Web performance & UI | `debounce`, `throttle`, `LRUCache`, `memoize`, `deduplicateRequest`, `clearRequestDedup`, `calculateVirtualRange` | `util/*.ts` | `examples/requestDedup.ts`, `examples/virtualScroll.ts` |
-| Search & text | `fuzzySearch`, `fuzzyScore`, `Trie`, `binarySearch`, `levenshteinDistance` | `search/*.ts` | `tests/search.test.ts` |
-| Data & diff pipelines | `diff`, `deepClone`, `groupBy`, `diffJson`, `applyJsonDiff` | `data/*.ts` | `tests/jsonDiff.test.ts` |
-| Graph algorithms | `graphBFS`, `graphDFS`, `topologicalSort` | `graph/traversal.ts` | `tests/graph.test.ts` |
-| Visual & geometry | `convexHull`, `lineIntersection`, `pointInPolygon`, `easing`, `quadraticBezier`, `cubicBezier` | `geometry/*.ts`, `visual/*.ts` | `tests/geometry.test.ts`, `tests/visual.test.ts` |
+| Search & text | `fuzzySearch`, `fuzzyScore`, `Trie`, `binarySearch`, `levenshteinDistance` | `search/*.ts` | `examples/search.ts` |
+| Data & diff pipelines | `diff`, `deepClone`, `groupBy`, `diffJson`, `applyJsonDiff` | `data/*.ts` | `examples/jsonDiff.ts` |
+| Graph algorithms | `graphBFS`, `graphDFS`, `topologicalSort` | `graph/traversal.ts` | `examples/graph.ts` |
+| Visual & geometry | `convexHull`, `lineIntersection`, `pointInPolygon`, `easing`, `quadraticBezier`, `cubicBezier` | `geometry/*.ts`, `visual/*.ts` | `examples/geometry.ts`, `examples/visual.ts` |
 
 ## Scripts
 ```bash
@@ -45,11 +45,14 @@ npm run benchmark   # Compare algorithm variants locally
 npm run size        # Enforce bundle size budget
 ```
 
+## API Reference
+- Full TypeScript signatures with "Use for" and performance notes live in `docs/index.d.ts`. Keep this document in sync with `src/index.ts` so tooling and LLMs can discover the complete surface area.
+
 ## Roadmap Snapshot
 - Milestone 0.2 next targets crowd-flow integrations (RVO + flow fields) and behaviour-tree decorators for richer AI control.
 - Milestone 0.4 plans a procedural + gameplay systems toolkit (Wave Function Collapse, dungeon suite, L-systems, game loop, camera, particles, inventory, combat, save/load, and more).
 
-Examples live under `examples/` and can be executed with `tsx`/`ts-node` or compiled for the browser. See `examples/astar.ts`, `examples/steering.ts`, `examples/boids.ts`, `examples/requestDedup.ts`, `examples/sat.ts`, `examples/simplex.ts`, and `examples/worley.ts` for quick starts.
+Examples live under `examples/` and can be executed with `tsx`/`ts-node` or compiled for the browser. See `examples/astar.ts`, `examples/flowField.ts`, `examples/navMesh.ts`, `examples/cellularAutomata.ts`, `examples/poissonDisk.ts`, `examples/steering.ts`, `examples/boids.ts`, `examples/requestDedup.ts`, `examples/search.ts`, `examples/graph.ts`, `examples/geometry.ts`, `examples/visual.ts`, `examples/sat.ts`, `examples/simplex.ts`, and `examples/worley.ts` for quick starts. The `examples` registry exported from `src/index.ts` provides a typed index you can traverse programmatically.
 
 ## Contributing
 1. Fork the repository.

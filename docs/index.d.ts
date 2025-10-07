@@ -18,6 +18,114 @@
 // tilemaps, FOV, inventory, combat, quest/dialog, lighting, wave spawner, sound, input, save/load, transitions).
 
 // ============================================================================
+// 🔦 DISCOVERY AIDS
+// ============================================================================
+
+/**
+ * Registry of runnable examples bundled with the library.
+ * Use for: quickly locating a script that demonstrates an export.
+ * Import: index (re-exported constant)
+ */
+export const examples: {
+  readonly pathfinding: {
+    readonly astar: 'examples/astar.ts';
+    readonly manhattanDistance: 'examples/astar.ts';
+    readonly gridFromString: 'examples/astar.ts';
+    readonly dijkstra: 'examples/astar.ts';
+    readonly jumpPointSearch: 'examples/astar.ts';
+    readonly computeFlowField: 'examples/flowField.ts';
+    readonly buildNavMesh: 'examples/navMesh.ts';
+    readonly findNavMeshPath: 'examples/navMesh.ts';
+  };
+  readonly procedural: {
+    readonly perlin: 'examples/simplex.ts';
+    readonly perlin3D: 'examples/simplex.ts';
+    readonly simplex2D: 'examples/simplex.ts';
+    readonly simplex3D: 'examples/simplex.ts';
+    readonly SimplexNoise: 'examples/simplex.ts';
+    readonly worley: 'examples/worley.ts';
+    readonly worleySample: 'examples/worley.ts';
+    readonly waveFunctionCollapse: 'examples/waveFunctionCollapse.ts';
+    readonly cellularAutomataCave: 'examples/cellularAutomata.ts';
+    readonly poissonDiskSampling: 'examples/poissonDisk.ts';
+  };
+  readonly spatial: {
+    readonly Quadtree: 'examples/sat.ts';
+    readonly aabbCollision: 'examples/sat.ts';
+    readonly aabbIntersection: 'examples/sat.ts';
+    readonly satCollision: 'examples/sat.ts';
+    readonly circleRayIntersection: 'examples/sat.ts';
+    readonly sweptAABB: 'examples/sweptAabb.ts';
+  };
+  readonly search: {
+    readonly fuzzySearch: 'examples/search.ts';
+    readonly fuzzyScore: 'examples/search.ts';
+    readonly Trie: 'examples/search.ts';
+    readonly binarySearch: 'examples/search.ts';
+    readonly levenshteinDistance: 'examples/search.ts';
+  };
+  readonly data: {
+    readonly diff: 'examples/jsonDiff.ts';
+    readonly deepClone: 'examples/jsonDiff.ts';
+    readonly groupBy: 'examples/jsonDiff.ts';
+    readonly diffJson: 'examples/jsonDiff.ts';
+    readonly applyJsonDiff: 'examples/jsonDiff.ts';
+  };
+  readonly performance: {
+    readonly debounce: 'examples/requestDedup.ts';
+    readonly throttle: 'examples/requestDedup.ts';
+    readonly LRUCache: 'examples/requestDedup.ts';
+    readonly memoize: 'examples/requestDedup.ts';
+    readonly deduplicateRequest: 'examples/requestDedup.ts';
+    readonly clearRequestDedup: 'examples/requestDedup.ts';
+    readonly calculateVirtualRange: 'examples/virtualScroll.ts';
+  };
+  readonly ai: {
+    readonly seek: 'examples/steering.ts';
+    readonly flee: 'examples/steering.ts';
+    readonly pursue: 'examples/steering.ts';
+    readonly wander: 'examples/steering.ts';
+    readonly arrive: 'examples/steering.ts';
+    readonly updateBoids: 'examples/boids.ts';
+    readonly BehaviorTree: 'examples/behaviorTree.ts';
+    readonly rvoStep: 'examples/rvo.ts';
+  };
+  readonly graph: {
+    readonly graphBFS: 'examples/graph.ts';
+    readonly graphDFS: 'examples/graph.ts';
+    readonly topologicalSort: 'examples/graph.ts';
+  };
+  readonly geometry: {
+    readonly convexHull: 'examples/geometry.ts';
+    readonly lineIntersection: 'examples/geometry.ts';
+    readonly pointInPolygon: 'examples/geometry.ts';
+  };
+  readonly visual: {
+    readonly easing: 'examples/visual.ts';
+    readonly quadraticBezier: 'examples/visual.ts';
+    readonly cubicBezier: 'examples/visual.ts';
+  };
+};
+
+/**
+ * Type helper describing the registry shape.
+ * Import: index (type alias)
+ */
+export type ExamplesRegistry = typeof examples;
+
+/**
+ * Union of example categories.
+ * Import: index (type alias)
+ */
+export type ExampleCategory = keyof ExamplesRegistry;
+
+/**
+ * Helper type for narrowing example keys within a category.
+ * Import: index (type alias)
+ */
+export type ExampleName<C extends ExampleCategory = ExampleCategory> = keyof ExamplesRegistry[C];
+
+// ============================================================================
 // 🎮 PATHFINDING & NAVIGATION
 // ============================================================================
 
@@ -87,6 +195,77 @@ export interface FlowFieldResult {
 }
 export function computeFlowField(options: FlowFieldOptions): FlowFieldResult;
 
+/**
+ * Defines a convex polygon within a navigation mesh.
+ * Use for: modelling walkable regions, linking irregular spaces, navigation authoring.
+ * Import: pathfinding/navMesh.ts
+ */
+export interface NavPolygon {
+  id: string;
+  vertices: ReadonlyArray<Point>;
+}
+
+/**
+ * Edge connection between polygons in the navmesh.
+ * Use for: debugging adjacency, portal-based smoothing, editor tooling.
+ * Import: pathfinding/navMesh.ts
+ */
+export interface NavNeighbor {
+  polygonId: string;
+  portal: readonly [Point, Point];
+  cost: number;
+}
+
+/**
+ * Navigation mesh data containing polygons, centroids, and neighbour metadata.
+ * Use for: building navmesh editors, serialising runtime meshes, multi-agent steering.
+ * Import: pathfinding/navMesh.ts
+ */
+export interface NavMesh {
+  polygons: ReadonlyArray<NavPolygon>;
+  neighbors: Record<string, NavNeighbor[]>;
+  centroids: Record<string, Point>;
+}
+
+/**
+ * Result returned by the navmesh pathfinder.
+ * Use for: agent routing, waypoint creation, visualising navmesh traversal.
+ * Import: pathfinding/navMesh.ts
+ */
+export interface NavMeshPath {
+  polygonPath: string[];
+  waypoints: Point[];
+  cost: number;
+}
+
+/**
+ * Optional overrides for navmesh pathfinding behaviour.
+ * Use for: heuristic experimentation, weighted navigation, sandboxes.
+ * Import: pathfinding/navMesh.ts
+ */
+export interface FindNavMeshPathOptions {
+  heuristic?: (from: Point, to: Point) => number;
+}
+
+/**
+ * Builds a navigation mesh from convex polygons, establishing adjacency portals.
+ * Use for: irregular terrain travel, top-down navigation, runtime navmesh baking.
+ * Import: pathfinding/navMesh.ts
+ */
+export function buildNavMesh(polygons: readonly NavPolygon[]): NavMesh;
+
+/**
+ * Computes a waypoint path across a navigation mesh using A*.
+ * Use for: agent steering, patrol creation, directing units through navmesh corridors.
+ * Import: pathfinding/navMesh.ts
+ */
+export function findNavMeshPath(
+  mesh: NavMesh,
+  start: Point,
+  goal: Point,
+  options?: FindNavMeshPathOptions
+): NavMeshPath | null;
+
 // ============================================================================
 // 🌍 PROCEDURAL GENERATION
 // ============================================================================
@@ -151,6 +330,60 @@ export interface WaveFunctionCollapseOptions {
 }
 export type WaveFunctionCollapseResult = string[][];
 export function waveFunctionCollapse(options: WaveFunctionCollapseOptions): WaveFunctionCollapseResult;
+
+/**
+ * Cellular automata options for cave generation.
+ * Use for: cavern layouts, roguelike levels, organic map carving.
+ * Import: procedural/cellularAutomata.ts
+ */
+export interface CellularAutomataOptions {
+  width: number;
+  height: number;
+  fillProbability?: number;
+  birthLimit?: number;
+  survivalLimit?: number;
+  iterations?: number;
+  seed?: number;
+}
+
+/**
+ * Result returned by the cellular automata cave generator.
+ * Use for: sampling spawn points, merging with navigation meshes, instantiating tiles.
+ * Import: procedural/cellularAutomata.ts
+ */
+export interface CellularAutomataResult {
+  grid: number[][];
+  openCells: Point[];
+}
+
+/**
+ * Cellular automata cave generator for organic 2D layouts.
+ * Use for: roguelike maps, cave-like levels, quick prototyping.
+ * Performance: O(width × height × iterations).
+ * Import: procedural/cellularAutomata.ts
+ */
+export function cellularAutomataCave(options: CellularAutomataOptions): CellularAutomataResult;
+
+/**
+ * Options for Poisson disk sampling in a rectangular domain.
+ * Use for: scatter placement, foliage distribution, sampling patterns.
+ * Import: procedural/poissonDisk.ts
+ */
+export interface PoissonDiskOptions {
+  width: number;
+  height: number;
+  radius: number;
+  maxAttempts?: number;
+  seed?: number;
+}
+
+/**
+ * Generates Poisson disk distributed points inside a rectangle.
+ * Use for: even point distribution, procedural placement, blue-noise sampling.
+ * Performance: O(n) expected, where n is the number of samples.
+ * Import: procedural/poissonDisk.ts
+ */
+export function poissonDiskSampling(options: PoissonDiskOptions): Point[];
 
 /**
  * Simplex noise generator for smooth gradients without directional artifacts.

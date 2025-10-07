@@ -18,10 +18,10 @@
 - [x] Implement swept AABB collision checks
 - [x] Document new modules in `docs/index.d.ts` and examples folder
 - [x] Achieve >80% coverage across new modules
-- [ ] Implement reciprocal velocity obstacles (RVO) crowd steering with tests and example
+- [x] Implement reciprocal velocity obstacles (RVO) crowd steering with tests and example
 - [x] Add Jump Point Search optimisation for uniform grids
 - [x] Implement flow-field pathfinding for multi-unit navigation
-- [ ] Provide navigation mesh (navmesh) helper for irregular terrain
+- [x] Provide navigation mesh (navmesh) helper for irregular terrain
 
 ## Milestone 0.3.0 – Web Performance & Data Pipelines
 - [x] Introduce request deduplication helper
@@ -33,8 +33,8 @@
 - ## Milestone 0.4.0 – Procedural Worlds & Game Systems (Planned)
 - Procedural generators:
   - [x] Wave Function Collapse tile solver with options + example
-  - [ ] Cellular automata cave/organic generator utilities
-  - [ ] Poisson disk sampling for even point distribution
+  - [x] Cellular automata cave/organic generator utilities
+  - [x] Poisson disk sampling for even point distribution
   - [ ] Voronoi diagram helpers for biome/territory generation
   - [ ] Diamond-square terrain height map generator
   - [ ] L-system generator for foliage and organic structures
