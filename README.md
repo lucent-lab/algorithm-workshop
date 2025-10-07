@@ -45,6 +45,9 @@ npm run benchmark   # Compare algorithm variants locally
 npm run size        # Enforce bundle size budget
 ```
 
+## API Reference
+- Full TypeScript signatures with "Use for" and performance notes live in `docs/index.d.ts`. Keep this document in sync with `src/index.ts` so tooling and LLMs can discover the complete surface area.
+
 ## Roadmap Snapshot
 - Milestone 0.2 next targets crowd-flow integrations (RVO + flow fields) and behaviour-tree decorators for richer AI control.
 - Milestone 0.4 plans a procedural + gameplay systems toolkit (Wave Function Collapse, dungeon suite, L-systems, game loop, camera, particles, inventory, combat, save/load, and more).
