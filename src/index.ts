@@ -85,6 +85,7 @@ export const examples = {
     deduplicateRequest: 'examples/requestDedup.ts',
     clearRequestDedup: 'examples/requestDedup.ts',
     calculateVirtualRange: 'examples/virtualScroll.ts',
+    createWeightedAliasSampler: 'examples/weightedAlias.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -406,6 +407,13 @@ export { deduplicateRequest, clearRequestDedup } from './util/requestDedup.js';
  * Example file: examples/virtualScroll.ts
  */
 export { calculateVirtualRange } from './util/virtualScroll.js';
+
+/**
+ * Weighted alias sampler for constant-time discrete sampling.
+ *
+ * Example file: examples/weightedAlias.ts
+ */
+export { createWeightedAliasSampler } from './util/weightedAlias.js';
 
 /**
  * Virtual scroll type exports to help define rendering contracts.

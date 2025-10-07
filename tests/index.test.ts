@@ -20,6 +20,7 @@ describe('package entry point', () => {
     expect(examples.procedural.generateWilsonMaze).toBe('examples/mazeWilson.ts');
     expect(examples.procedural.generateAldousBroderMaze).toBe('examples/mazeAldous.ts');
     expect(examples.procedural.generateRecursiveDivisionMaze).toBe('examples/mazeDivision.ts');
+    expect(examples.performance.createWeightedAliasSampler).toBe('examples/weightedAlias.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
   });
