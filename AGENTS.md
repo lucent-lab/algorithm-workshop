@@ -6,6 +6,7 @@ This repository is optimised for collaboration with human developers and code-ge
 - Read `docs/index.d.ts` first. It lists every exported symbol with use cases, performance notes, and import paths.
 - Use `src/index.ts` for ESM imports. Category folders mirror the sections in the type definitions (`procedural`, `spatial`, `ai`, etc.).
 - Examples in `examples/` show runnable TypeScript snippets for quick verification.
+- Find open work in `ROADMAP.md` (milestones + checklists) and on the GitHub issue tracker. treat unchecked roadmap items or open issues as the authoritative task list; confirm scope with the current milestone before starting.
 
 ## 2. Contribution Workflow
 1. Create a feature branch (`feature/<topic>`).
@@ -13,7 +14,8 @@ This repository is optimised for collaboration with human developers and code-ge
    - Implement runtime code in `src/<category>/`.
    - Update `docs/index.d.ts` with the same structure (description, “Use for”, performance, import path).
    - Add or update tests in `tests/` (Vitest) and, when applicable, a runnable example in `examples/`.
-   - Update documentation touchpoints (`README.md`, `PROJECT_DESCRIPTION.md`, `ROADMAP.md`) if scope or roadmap changes.
+- Update documentation touchpoints (`README.md`, `PROJECT_DESCRIPTION.md`, `ROADMAP.md`) if scope or roadmap changes.
+  - Mark relevant roadmap checkboxes and reference/close GitHub issues when tasks are delivered.
 3. Run the full quality gate before committing:
    ```bash
    npm run lint
