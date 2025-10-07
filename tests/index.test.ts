@@ -8,6 +8,7 @@ describe('package entry point', () => {
     expect(examples.pathfinding.astar).toBe('examples/astar.ts');
     expect(examples.performance.calculateVirtualRange).toBe('examples/virtualScroll.ts');
     expect(examples.procedural.SimplexNoise).toBe('examples/simplex.ts');
+    expect(examples.procedural.cellularAutomataCave).toBe('examples/cellularAutomata.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
   });
@@ -46,6 +47,7 @@ describe('package entry point', () => {
       | 'worley'
       | 'worleySample'
       | 'waveFunctionCollapse'
+      | 'cellularAutomataCave'
     >();
   });
 });

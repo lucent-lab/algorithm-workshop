@@ -33,7 +33,7 @@
 - ## Milestone 0.4.0 – Procedural Worlds & Game Systems (Planned)
 - Procedural generators:
   - [x] Wave Function Collapse tile solver with options + example
-  - [ ] Cellular automata cave/organic generator utilities
+  - [x] Cellular automata cave/organic generator utilities
   - [ ] Poisson disk sampling for even point distribution
   - [ ] Voronoi diagram helpers for biome/territory generation
   - [ ] Diamond-square terrain height map generator

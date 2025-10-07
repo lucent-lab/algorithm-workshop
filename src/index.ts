@@ -42,6 +42,7 @@ export const examples = {
     worley: 'examples/worley.ts',
     worleySample: 'examples/worley.ts',
     waveFunctionCollapse: 'examples/waveFunctionCollapse.ts',
+    cellularAutomataCave: 'examples/cellularAutomata.ts',
   },
   spatial: {
     Quadtree: 'examples/sat.ts',
@@ -225,6 +226,13 @@ export { SimplexNoise, simplex2D, simplex3D } from './procedural/simplex.js';
  * Example file: examples/waveFunctionCollapse.ts
  */
 export { waveFunctionCollapse } from './procedural/waveFunctionCollapse.js';
+
+/**
+ * Cellular automata cave generator for organic 2D layouts.
+ *
+ * Example file: examples/cellularAutomata.ts
+ */
+export { cellularAutomataCave } from './procedural/cellularAutomata.js';
 
 // ============================================================================
 // 🎯 SPATIAL & COLLISION

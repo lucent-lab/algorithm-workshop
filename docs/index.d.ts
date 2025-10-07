@@ -46,6 +46,7 @@ export const examples: {
     readonly worley: 'examples/worley.ts';
     readonly worleySample: 'examples/worley.ts';
     readonly waveFunctionCollapse: 'examples/waveFunctionCollapse.ts';
+    readonly cellularAutomataCave: 'examples/cellularAutomata.ts';
   };
   readonly spatial: {
     readonly Quadtree: 'examples/sat.ts';
@@ -328,6 +329,39 @@ export interface WaveFunctionCollapseOptions {
 }
 export type WaveFunctionCollapseResult = string[][];
 export function waveFunctionCollapse(options: WaveFunctionCollapseOptions): WaveFunctionCollapseResult;
+
+/**
+ * Cellular automata options for cave generation.
+ * Use for: cavern layouts, roguelike levels, organic map carving.
+ * Import: procedural/cellularAutomata.ts
+ */
+export interface CellularAutomataOptions {
+  width: number;
+  height: number;
+  fillProbability?: number;
+  birthLimit?: number;
+  survivalLimit?: number;
+  iterations?: number;
+  seed?: number;
+}
+
+/**
+ * Result returned by the cellular automata cave generator.
+ * Use for: sampling spawn points, merging with navigation meshes, instantiating tiles.
+ * Import: procedural/cellularAutomata.ts
+ */
+export interface CellularAutomataResult {
+  grid: number[][];
+  openCells: Point[];
+}
+
+/**
+ * Cellular automata cave generator for organic 2D layouts.
+ * Use for: roguelike maps, cave-like levels, quick prototyping.
+ * Performance: O(width × height × iterations).
+ * Import: procedural/cellularAutomata.ts
+ */
+export function cellularAutomataCave(options: CellularAutomataOptions): CellularAutomataResult;
 
 /**
  * Simplex noise generator for smooth gradients without directional artifacts.
