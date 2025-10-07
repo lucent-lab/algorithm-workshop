@@ -26,6 +26,7 @@ CDN usage:
 - **Spatial:** Quadtree, AABB helpers, SAT polygon intersection, circle-ray intersection, swept AABB
 - **Search & Text:** Fuzzy search/scoring, Trie autocomplete, binary search, Levenshtein distance
 - **Data:** Diff (LCS), deep clone, groupBy
+- **Web performance:** Debounce, throttle, LRU cache, memoize, request deduplication helper
 - **Graph:** BFS distance map, DFS traversal, topological sort
 - **Visual & Geometry:** Convex hull, line intersection, point-in-polygon, easing presets, Bezier helpers
 - **AI Behaviours:** Steering behaviours (seek, flee, arrive, pursue, wander), boids flocking update, behaviour trees
@@ -38,7 +39,7 @@ npm run build       # Emits dist/ with ESM + .d.ts
 npm test            # Vitest suite
 ```
 
-Examples live under `examples/` and can be executed with `tsx`/`ts-node` or compiled for the browser. See `examples/astar.ts`, `examples/steering.ts`, `examples/boids.ts`, `examples/sat.ts`, `examples/simplex.ts`, and `examples/worley.ts` for quick starts.
+Examples live under `examples/` and can be executed with `tsx`/`ts-node` or compiled for the browser. See `examples/astar.ts`, `examples/steering.ts`, `examples/boids.ts`, `examples/requestDedup.ts`, `examples/sat.ts`, `examples/simplex.ts`, and `examples/worley.ts` for quick starts.
 
 ## Contributing
 1. Fork the repository.

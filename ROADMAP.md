@@ -20,7 +20,8 @@
 - [ ] Achieve >80% coverage across new modules
 
 ## Milestone 0.3.0 – Web Performance & Data Pipelines
-- [ ] Introduce request deduplication and virtual scrolling utilities
+- [x] Introduce request deduplication helper
+- [ ] Ship virtual scrolling utilities
 - [ ] Add diff/patch helpers for nested JSON structures
 - [ ] Create benchmarking scripts to compare algorithm variants
 - [ ] Expand CI to include coverage gating and bundle size checks

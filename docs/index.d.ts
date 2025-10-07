@@ -208,6 +208,18 @@ export function memoize<T extends (...args: any[]) => any>(func: T): T & {
   clear(): void;
 };
 
+/**
+ * Request Deduplication
+ * Use for: prevent duplicate API calls, batch requests
+ * Performance: O(1) - Save bandwidth
+ * Import: util/requestDedup.ts
+ */
+export function deduplicateRequest<T>(
+  key: string,
+  fetcher: () => Promise<T>
+): Promise<T>;
+export function clearRequestDedup(key?: string): void;
+
 // ============================================================================
 // 🔍 SEARCH & TEXT
 // ============================================================================
