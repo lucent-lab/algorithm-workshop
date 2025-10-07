@@ -41,7 +41,7 @@
   - [x] Voronoi diagram helpers for biome/territory generation
   - [x] Diamond-square terrain height map generator
   - [x] L-system generator for foliage and organic structures
-  - [ ] Dungeon generation suite (BSP subdivision, rooms & corridors variants)
+  - [x] Dungeon generation suite (BSP subdivision, rooms & corridors variants)
   - [ ] Maze algorithms pack (Recursive backtracking, Prim's, Kruskal's, Wilson's, Aldous–Broder, Recursive Division)
 - Gameplay systems & utilities:
   - [ ] Fixed-timestep game loop utility with interpolation helpers

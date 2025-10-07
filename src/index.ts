@@ -47,6 +47,7 @@ export const examples = {
     computeVoronoiDiagram: 'examples/voronoi.ts',
     diamondSquare: 'examples/diamondSquare.ts',
     generateLSystem: 'examples/lSystem.ts',
+    generateBspDungeon: 'examples/dungeonBsp.ts',
   },
   spatial: {
     Quadtree: 'examples/sat.ts',
@@ -265,6 +266,13 @@ export { diamondSquare } from './procedural/diamondSquare.js';
  * Example file: examples/lSystem.ts
  */
 export { generateLSystem } from './procedural/lSystem.js';
+
+/**
+ * Binary space partition dungeon generator.
+ *
+ * Example file: examples/dungeonBsp.ts
+ */
+export { generateBspDungeon } from './procedural/dungeonBsp.js';
 
 // ============================================================================
 // 🎯 SPATIAL & COLLISION
