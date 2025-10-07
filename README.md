@@ -32,7 +32,7 @@ CDN usage:
 | Search & text | `fuzzySearch`, `fuzzyScore`, `Trie`, `binarySearch`, `levenshteinDistance` | `search/*.ts` | `examples/search.ts` |
 | Data & diff pipelines | `diff`, `deepClone`, `groupBy`, `diffJson`, `applyJsonDiff` | `data/*.ts` | `examples/jsonDiff.ts` |
 | Graph algorithms | `graphBFS`, `graphDFS`, `topologicalSort` | `graph/traversal.ts` | `examples/graph.ts` |
-| Visual & geometry | `convexHull`, `lineIntersection`, `pointInPolygon`, `easing`, `quadraticBezier`, `cubicBezier` | `geometry/*.ts`, `visual/*.ts` | `examples/geometry.ts`, `examples/visual.ts` |
+| Visual & geometry | `convexHull`, `lineIntersection`, `pointInPolygon`, `bresenhamLine`, `easing`, `quadraticBezier`, `cubicBezier` | `geometry/*.ts`, `visual/*.ts` | `examples/geometry.ts`, `examples/bresenham.ts`, `examples/visual.ts` |
 
 ## Scripts
 ```bash
