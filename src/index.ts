@@ -16,6 +16,12 @@ export { throttle } from './util/throttle.js';
 export { LRUCache } from './util/lruCache.js';
 export { memoize } from './util/memoize.js';
 export { deduplicateRequest, clearRequestDedup } from './util/requestDedup.js';
+export { calculateVirtualRange } from './util/virtualScroll.js';
+export type {
+  VirtualRange,
+  VirtualItem,
+  VirtualScrollOptions,
+} from './util/virtualScroll.js';
 
 export { fuzzySearch, fuzzyScore } from './search/fuzzy.js';
 export { Trie } from './search/trie.js';

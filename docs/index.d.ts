@@ -187,6 +187,35 @@ export function throttle<T extends (...args: any[]) => any>(
 ): (...args: Parameters<T>) => void;
 
 /**
+ * Virtual scrolling window calculator for fixed-height lists.
+ * Use for: long lists, chat logs, table virtualization.
+ * Performance: O(visible + overrides) per update.
+ * Import: util/virtualScroll.ts
+ */
+export interface VirtualScrollOptions {
+  itemCount: number;
+  itemHeight: number;
+  scrollOffset: number;
+  viewportHeight: number;
+  overscan?: number;
+  measurements?: ReadonlyArray<number | undefined>;
+}
+export interface VirtualItem {
+  index: number;
+  offset: number;
+  size: number;
+}
+export interface VirtualRange {
+  startIndex: number;
+  endIndex: number;
+  padFront: number;
+  padEnd: number;
+  totalSize: number;
+  items: VirtualItem[];
+}
+export function calculateVirtualRange(options: VirtualScrollOptions): VirtualRange;
+
+/**
  * Least recently used cache.
  * Use for: memoizing responses, data loaders, pagination caches.
  * Performance: O(1) get/set.
