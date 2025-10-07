@@ -52,6 +52,7 @@ export const examples: {
     readonly diamondSquare: 'examples/diamondSquare.ts';
     readonly generateLSystem: 'examples/lSystem.ts';
     readonly generateBspDungeon: 'examples/dungeonBsp.ts';
+    readonly generateRecursiveMaze: 'examples/mazeRecursive.ts';
   };
   readonly spatial: {
     readonly Quadtree: 'examples/sat.ts';
@@ -578,6 +579,36 @@ export interface DungeonBspResult {
  * Import: procedural/dungeonBsp.ts
  */
 export function generateBspDungeon(options: DungeonGeneratorOptions): DungeonBspResult;
+
+/**
+ * Maze generation options for recursive backtracking.
+ * Use for: controlling grid dimensions and deterministic seeding.
+ * Import: procedural/maze.ts
+ */
+export interface MazeOptions {
+  width: number;
+  height: number;
+  seed?: number;
+}
+
+/**
+ * Maze generation result describing walkable grid and terminals.
+ * Use for: pathfinding tests, gameplay layout, puzzle generation.
+ * Import: procedural/maze.ts
+ */
+export interface MazeResult {
+  grid: number[][];
+  start: Point;
+  end: Point;
+}
+
+/**
+ * Generates a maze using recursive backtracking depth-first search.
+ * Use for: grid-based dungeon layouts, puzzles, procedural environments.
+ * Performance: O(width × height).
+ * Import: procedural/maze.ts
+ */
+export function generateRecursiveMaze(options: MazeOptions): MazeResult;
 
 /**
  * Simplex noise generator for smooth gradients without directional artifacts.
