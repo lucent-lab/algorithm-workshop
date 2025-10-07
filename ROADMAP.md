@@ -11,11 +11,11 @@
 
 ## Milestone 0.2.0 – Procedural & AI Expansion (In Progress)
 - [x] Implement Simplex noise generator with tests
-- [ ] Implement Worley noise generator with tests
-- [ ] Add boids flocking simulation and unit coverage
+- [x] Implement Worley noise generator with tests
+- [x] Add boids flocking simulation and unit coverage
 - [x] Add circle-ray intersection helper
-- [ ] Implement swept AABB collision checks
-- [ ] Document new modules in `docs/index.d.ts` and examples folder
+- [x] Implement swept AABB collision checks
+- [x] Document new modules in `docs/index.d.ts` and examples folder
 - [ ] Achieve >80% coverage across new modules
 
 ## Milestone 0.3.0 – Web Performance & Data Pipelines
@@ -39,7 +39,7 @@
 - Authored usage examples to accelerate onboarding
 
 ## Upcoming Focus
-1. Procedural generation enhancements (Simplex, Worley noise)
-2. Behavioural AI additions (boids, behaviour trees)
-3. Advanced collision utilities (circle-ray, swept volumes)
+1. Procedural generation enhancements (Worley refinements, Worley-based effects, upcoming Worley variants like Worley F1/F2)
+2. Behavioural AI additions (behaviour trees, crowd steering, pathflow integration)
+3. Advanced collision utilities (swept volumes with rotation, broad-phase acceleration structures)
 Note: tasks will move to the completed section once merged via the standard branch + PR workflow.

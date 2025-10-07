@@ -62,6 +62,28 @@ export function perlin(options: PerlinOptions): number[][];
 export function perlin3D(x: number, y: number, z: number, seed?: number): number;
 
 /**
+ * Worley (cellular) noise generator.
+ * Use for: cellular textures, biome masks, organic structures.
+ * Performance: O(width × height × points).
+ * Import: procedural/worley.ts
+ */
+export interface WorleyOptions {
+  width: number;
+  height: number;
+  points: number;
+  seed?: number;
+  distanceMetric?: 'euclidean' | 'manhattan';
+  normalize?: boolean;
+}
+export function worley(options: WorleyOptions): number[][];
+export function worleySample(
+  x: number,
+  y: number,
+  points: Array<{ x: number; y: number }>;
+  metric?: 'euclidean' | 'manhattan'
+): number;
+
+/**
  * Simplex noise generator for smooth gradients without directional artifacts.
  * Use for: large terrain synthesis, animated textures, volumetric noise.
  * Performance: O(n) per sample.
@@ -121,6 +143,22 @@ export function satCollision(polygonA: Point[], polygonB: Point[]): CollisionMan
  * Import: spatial/circleRay.ts
  */
 export function circleRayIntersection(ray: Ray, circle: Circle): Point[];
+
+/**
+ * Swept AABB collision detection for moving rectangles.
+ * Use for: continuous collisions, fast projectiles, platformer physics.
+ * Performance: O(1).
+ * Import: spatial/sweptAabb.ts
+ */
+export interface MovingRect extends Rect {
+  velocity: Vector2D;
+}
+export interface SweptResult {
+  collided: boolean;
+  time: number;
+  normal: Vector2D;
+}
+export function sweptAABB(moving: MovingRect, target: Rect): SweptResult;
 
 // ============================================================================
 // ⚡ WEB PERFORMANCE UTILITIES
@@ -412,6 +450,24 @@ export function wander(
     state?: { angle: number };
   }
 ): { force: Vector2D; state: { angle: number } };
+
+/**
+ * Boids flocking update for multiple agents.
+ * Use for: swarms, crowds, schooling fish.
+ * Performance: O(n²) naive (optimise with spatial partitioning if required).
+ * Import: ai/boids.ts
+ */
+export interface BoidOptions {
+  separationDistance: number;
+  alignmentDistance: number;
+  cohesionDistance: number;
+  maxSpeed: number;
+  maxForce: number;
+  separationWeight?: number;
+  alignmentWeight?: number;
+  cohesionWeight?: number;
+}
+export function updateBoids(boids: Boid[], options: BoidOptions): void;
 
 // ============================================================================
 // SHARED TYPES

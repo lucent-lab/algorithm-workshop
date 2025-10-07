@@ -35,14 +35,14 @@ npm run build
 | Need                        | Algorithm(s)                                        | Module                                         |
 | --------------------------- | ---------------------------------------------------- | ---------------------------------------------- |
 | Grid pathfinding            | A* (diagonals optional) / Dijkstra (weighted graphs) | `pathfinding/astar.ts`, `pathfinding/dijkstra.ts` |
-| Procedural textures         | Perlin noise grid / 3D sample / Simplex noise         | `procedural/perlin.ts`, `procedural/simplex.ts` |
-| Spatial queries             | Quadtree partitioning / AABB helpers / SAT / Ray-circle | `spatial/quadtree.ts`, `spatial/aabb.ts`, `spatial/sat.ts`, `spatial/circleRay.ts` |
+| Procedural textures         | Perlin noise grid / 3D sample / Simplex noise / Worley | `procedural/perlin.ts`, `procedural/simplex.ts`, `procedural/worley.ts` |
+| Spatial queries             | Quadtree partitioning / AABB helpers / SAT / Ray-circle / Swept AABB | `spatial/quadtree.ts`, `spatial/aabb.ts`, `spatial/sat.ts`, `spatial/circleRay.ts`, `spatial/sweptAabb.ts` |
 | Web performance             | Debounce / Throttle / LRU Cache / Memoize           | `util/*.ts`                                    |
 | Text & search               | Fuzzy search & score / Trie / Binary search / Levenshtein | `search/*.ts`                              |
 | Data transforms             | Diff (LCS) / Deep clone / Group by                   | `data/*.ts`                                    |
 | Graph traversal             | BFS distances / DFS callbacks / Topological sort     | `graph/traversal.ts`                           |
 | Geometry & visuals          | Convex hull / Segment intersection / Point-in-poly / Bezier / Easings | `geometry/*.ts`, `visual/*.ts` |
-| AI behaviours               | Seek / Flee / Arrive / Pursue / Wander               | `ai/steering.ts`                               |
+| AI behaviours               | Seek / Flee / Arrive / Pursue / Wander / Boids       | `ai/steering.ts`, `ai/boids.ts`                |
 
 ---
 

@@ -2,12 +2,14 @@ export { astar, manhattanDistance, gridFromString } from './pathfinding/astar.js
 export { dijkstra } from './pathfinding/dijkstra.js';
 
 export { perlin, perlin3D } from './procedural/perlin.js';
+export { worley, worleySample } from './procedural/worley.js';
 export { SimplexNoise, simplex2D, simplex3D } from './procedural/simplex.js';
 
 export { Quadtree } from './spatial/quadtree.js';
 export { aabbCollision, aabbIntersection } from './spatial/aabb.js';
 export { satCollision } from './spatial/sat.js';
 export { circleRayIntersection } from './spatial/circleRay.js';
+export { sweptAABB } from './spatial/sweptAabb.js';
 
 export { debounce } from './util/debounce.js';
 export { throttle } from './util/throttle.js';
@@ -33,5 +35,6 @@ export { easing } from './visual/easing.js';
 export { quadraticBezier, cubicBezier } from './visual/bezier.js';
 
 export { seek, flee, pursue, wander, arrive } from './ai/steering.js';
+export { updateBoids } from './ai/boids.js';
 
 export type * from './types.js';
