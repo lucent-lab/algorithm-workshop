@@ -51,6 +51,7 @@ export const examples = {
     generateRecursiveMaze: 'examples/mazeRecursive.ts',
     generatePrimMaze: 'examples/mazePrim.ts',
     generateKruskalMaze: 'examples/mazeKruskal.ts',
+    generateWilsonMaze: 'examples/mazeWilson.ts',
   },
   spatial: {
     Quadtree: 'examples/sat.ts',
@@ -297,6 +298,13 @@ export { generatePrimMaze } from './procedural/maze.js';
  * Example file: examples/mazeKruskal.ts
  */
 export { generateKruskalMaze } from './procedural/maze.js';
+
+/**
+ * Wilson's maze generator using loop-erased random walks.
+ *
+ * Example file: examples/mazeWilson.ts
+ */
+export { generateWilsonMaze } from './procedural/maze.js';
 
 // ============================================================================
 // 🎯 SPATIAL & COLLISION

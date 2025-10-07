@@ -55,6 +55,7 @@ export const examples: {
     readonly generateRecursiveMaze: 'examples/mazeRecursive.ts';
     readonly generatePrimMaze: 'examples/mazePrim.ts';
     readonly generateKruskalMaze: 'examples/mazeKruskal.ts';
+    readonly generateWilsonMaze: 'examples/mazeWilson.ts';
   };
   readonly spatial: {
     readonly Quadtree: 'examples/sat.ts';
@@ -627,6 +628,14 @@ export function generatePrimMaze(options: MazeOptions): MazeResult;
  * Import: procedural/maze.ts
  */
 export function generateKruskalMaze(options: MazeOptions): MazeResult;
+
+/**
+ * Generates a maze using Wilson's loop-erased random walk algorithm.
+ * Use for: unbiased mazes matching uniform spanning trees.
+ * Performance: O(width × height × random walks).
+ * Import: procedural/maze.ts
+ */
+export function generateWilsonMaze(options: MazeOptions): MazeResult;
 
 /**
  * Simplex noise generator for smooth gradients without directional artifacts.
