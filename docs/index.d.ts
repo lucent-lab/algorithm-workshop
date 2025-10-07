@@ -49,6 +49,7 @@ export const examples: {
     readonly cellularAutomataCave: 'examples/cellularAutomata.ts';
     readonly poissonDiskSampling: 'examples/poissonDisk.ts';
     readonly computeVoronoiDiagram: 'examples/voronoi.ts';
+    readonly diamondSquare: 'examples/diamondSquare.ts';
   };
   readonly spatial: {
     readonly Quadtree: 'examples/sat.ts';
@@ -387,6 +388,7 @@ export interface PoissonDiskOptions {
 export function poissonDiskSampling(options: PoissonDiskOptions): Point[];
 
 /**
+<<<<<<< HEAD
  * Voronoi site definition.
  * Use for: labelling regions, associating metadata to cells.
  * Import: procedural/voronoi.ts
@@ -437,6 +439,38 @@ export function computeVoronoiDiagram(
   sites: ReadonlyArray<VoronoiSite>,
   options?: VoronoiOptions
 ): VoronoiCell[];
+=======
+ * Options configuring the diamond-square fractal algorithm.
+ * Use for: tuning roughness, deterministic height map generation.
+ * Import: procedural/diamondSquare.ts
+ */
+export interface DiamondSquareOptions {
+  size: number;
+  roughness?: number;
+  initialAmplitude?: number;
+  seed?: number;
+  normalize?: boolean;
+}
+
+/**
+ * Diamond-square result containing sampled grid values and extrema.
+ * Use for: rendering terrain meshes, post-processing passes, biome assignment.
+ * Import: procedural/diamondSquare.ts
+ */
+export interface DiamondSquareResult {
+  grid: number[][];
+  min: number;
+  max: number;
+}
+
+/**
+ * Generates fractal height maps via the diamond-square algorithm.
+ * Use for: terrain synthesis, cloud height fields, noise layering.
+ * Performance: O(size^2) where size = 2^n + 1.
+ * Import: procedural/diamondSquare.ts
+ */
+export function diamondSquare(options: DiamondSquareOptions): DiamondSquareResult;
+>>>>>>> c977c3c (feat: add diamond-square terrain generator)
 
 /**
  * Simplex noise generator for smooth gradients without directional artifacts.

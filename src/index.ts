@@ -45,6 +45,7 @@ export const examples = {
     cellularAutomataCave: 'examples/cellularAutomata.ts',
     poissonDiskSampling: 'examples/poissonDisk.ts',
     computeVoronoiDiagram: 'examples/voronoi.ts',
+    diamondSquare: 'examples/diamondSquare.ts',
   },
   spatial: {
     Quadtree: 'examples/sat.ts',
@@ -244,11 +245,19 @@ export { cellularAutomataCave } from './procedural/cellularAutomata.js';
 export { poissonDiskSampling } from './procedural/poissonDisk.js';
 
 /**
+<<<<<<< HEAD
  * Voronoi diagram helper returning polygonal cells for each site.
  *
  * Example file: examples/voronoi.ts
  */
 export { computeVoronoiDiagram } from './procedural/voronoi.js';
+=======
+ * Diamond-square fractal terrain generator.
+ *
+ * Example file: examples/diamondSquare.ts
+ */
+export { diamondSquare } from './procedural/diamondSquare.js';
+>>>>>>> c977c3c (feat: add diamond-square terrain generator)
 
 // ============================================================================
 // 🎯 SPATIAL & COLLISION

@@ -11,6 +11,7 @@ describe('package entry point', () => {
     expect(examples.procedural.cellularAutomataCave).toBe('examples/cellularAutomata.ts');
     expect(examples.procedural.poissonDiskSampling).toBe('examples/poissonDisk.ts');
     expect(examples.procedural.computeVoronoiDiagram).toBe('examples/voronoi.ts');
+    expect(examples.procedural.diamondSquare).toBe('examples/diamondSquare.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
   });
@@ -52,6 +53,7 @@ describe('package entry point', () => {
       | 'cellularAutomataCave'
       | 'poissonDiskSampling'
       | 'computeVoronoiDiagram'
+      | 'diamondSquare'
     >();
   });
 });
