@@ -14,6 +14,8 @@ describe('package entry point', () => {
     expect(examples.procedural.diamondSquare).toBe('examples/diamondSquare.ts');
     expect(examples.procedural.generateLSystem).toBe('examples/lSystem.ts');
     expect(examples.procedural.generateBspDungeon).toBe('examples/dungeonBsp.ts');
+    expect(examples.procedural.generateRecursiveMaze).toBe('examples/mazeRecursive.ts');
+    expect(examples.procedural.generatePrimMaze).toBe('examples/mazePrim.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
   });
@@ -58,6 +60,8 @@ describe('package entry point', () => {
       | 'diamondSquare'
       | 'generateLSystem'
       | 'generateBspDungeon'
+      | 'generateRecursiveMaze'
+      | 'generatePrimMaze'
     >();
   });
 });
