@@ -28,7 +28,7 @@ CDN usage:
 - **Data:** Diff (LCS), deep clone, groupBy
 - **Graph:** BFS distance map, DFS traversal, topological sort
 - **Visual & Geometry:** Convex hull, line intersection, point-in-polygon, easing presets, Bezier helpers
-- **AI Behaviours:** Steering behaviours (seek, flee, arrive, pursue, wander), boids flocking update
+- **AI Behaviours:** Steering behaviours (seek, flee, arrive, pursue, wander), boids flocking update, behaviour trees
 
 ## Scripts
 ```bash

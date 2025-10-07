@@ -13,6 +13,7 @@
 - [x] Implement Simplex noise generator with tests
 - [x] Implement Worley noise generator with tests
 - [x] Add boids flocking simulation and unit coverage
+- [x] Implement behaviour tree foundation with tests/examples
 - [x] Add circle-ray intersection helper
 - [x] Implement swept AABB collision checks
 - [x] Document new modules in `docs/index.d.ts` and examples folder
@@ -40,6 +41,6 @@
 
 ## Upcoming Focus
 1. Procedural generation enhancements (Worley refinements, Worley-based effects, upcoming Worley variants like Worley F1/F2)
-2. Behavioural AI additions (behaviour trees, crowd steering, pathflow integration)
+2. Behavioural AI additions (crowd steering, pathflow integration, behaviour tree decorators)
 3. Advanced collision utilities (swept volumes with rotation, broad-phase acceleration structures)
 Note: tasks will move to the completed section once merged via the standard branch + PR workflow.

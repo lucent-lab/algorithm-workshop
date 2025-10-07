@@ -42,7 +42,7 @@ npm run build
 | Data transforms             | Diff (LCS) / Deep clone / Group by                   | `data/*.ts`                                    |
 | Graph traversal             | BFS distances / DFS callbacks / Topological sort     | `graph/traversal.ts`                           |
 | Geometry & visuals          | Convex hull / Segment intersection / Point-in-poly / Bezier / Easings | `geometry/*.ts`, `visual/*.ts` |
-| AI behaviours               | Seek / Flee / Arrive / Pursue / Wander / Boids       | `ai/steering.ts`, `ai/boids.ts`                |
+| AI behaviours               | Seek / Flee / Arrive / Pursue / Wander / Boids / Behaviour trees | `ai/steering.ts`, `ai/boids.ts`, `ai/behaviorTree.ts` |
 
 ---
 

@@ -469,6 +469,28 @@ export interface BoidOptions {
 }
 export function updateBoids(boids: Boid[], options: BoidOptions): void;
 
+/**
+ * Behavior tree orchestrator for AI decision making.
+ * Use for: hierarchical NPC logic, modular behaviour scripting, goal selection.
+ * Performance: O(tree nodes) per tick.
+ * Import: ai/behaviorTree.ts
+ */
+export type BehaviorStatus = 'success' | 'failure' | 'running';
+export class BehaviorTree<TContext> {
+  constructor(root: BehaviorNode<TContext>);
+  tick(context: TContext): BehaviorStatus;
+}
+export interface BehaviorNode<TContext> {
+  tick(context: TContext): BehaviorStatus;
+  reset?(): void;
+}
+export type BehaviorAction<TContext> = (context: TContext) => BehaviorStatus;
+export type BehaviorCondition<TContext> = (context: TContext) => boolean;
+export function sequence<TContext>(...children: BehaviorNode<TContext>[]): BehaviorNode<TContext>;
+export function selector<TContext>(...children: BehaviorNode<TContext>[]): BehaviorNode<TContext>;
+export function action<TContext>(fn: BehaviorAction<TContext>): BehaviorNode<TContext>;
+export function condition<TContext>(fn: BehaviorCondition<TContext>): BehaviorNode<TContext>;
+
 // ============================================================================
 // SHARED TYPES
 // ============================================================================

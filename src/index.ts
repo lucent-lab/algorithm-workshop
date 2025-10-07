@@ -36,5 +36,16 @@ export { quadraticBezier, cubicBezier } from './visual/bezier.js';
 
 export { seek, flee, pursue, wander, arrive } from './ai/steering.js';
 export { updateBoids } from './ai/boids.js';
+export {
+  BehaviorTree,
+  type BehaviorStatus,
+  type BehaviorNode,
+  type BehaviorAction,
+  type BehaviorCondition,
+  sequence,
+  selector,
+  action,
+  condition,
+} from './ai/behaviorTree.js';
 
 export type * from './types.js';
