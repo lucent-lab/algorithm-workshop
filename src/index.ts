@@ -1,6 +1,7 @@
 export { astar, manhattanDistance, gridFromString } from './pathfinding/astar.js';
 export { dijkstra } from './pathfinding/dijkstra.js';
 export { jumpPointSearch } from './pathfinding/jumpPointSearch.js';
+export { computeFlowField } from './pathfinding/flowField.js';
 
 export { perlin, perlin3D } from './procedural/perlin.js';
 export { worley, worleySample } from './procedural/worley.js';

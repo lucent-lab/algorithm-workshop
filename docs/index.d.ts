@@ -70,6 +70,23 @@ export interface JumpPointSearchOptions {
 }
 export function jumpPointSearch(options: JumpPointSearchOptions): Point[] | null;
 
+/**
+ * Flow field builder pointing multiple agents toward a goal.
+ * Use for: RTS flow maps, crowd steering, dynamic navigation hints.
+ * Performance: O(width × height) with uniform costs.
+ * Import: pathfinding/flowField.ts
+ */
+export interface FlowFieldOptions {
+  grid: number[][];
+  goal: Point;
+  allowDiagonal?: boolean;
+}
+export interface FlowFieldResult {
+  cost: number[][];
+  flow: Vector2D[][];
+}
+export function computeFlowField(options: FlowFieldOptions): FlowFieldResult;
+
 // ============================================================================
 // 🌍 PROCEDURAL GENERATION
 // ============================================================================
