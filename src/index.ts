@@ -30,6 +30,8 @@ export const examples = {
     dijkstra: 'examples/astar.ts',
     jumpPointSearch: 'examples/astar.ts',
     computeFlowField: 'examples/flowField.ts',
+    buildNavMesh: 'examples/navMesh.ts',
+    findNavMeshPath: 'examples/navMesh.ts',
   },
   procedural: {
     perlin: 'examples/simplex.ts',
@@ -163,6 +165,20 @@ export { jumpPointSearch } from './pathfinding/jumpPointSearch.js';
  * Example file: examples/flowField.ts
  */
 export { computeFlowField } from './pathfinding/flowField.js';
+
+/**
+ * Navigation mesh builder for irregular walkable regions.
+ *
+ * Example file: examples/navMesh.ts
+ */
+export { buildNavMesh } from './pathfinding/navMesh.js';
+
+/**
+ * Pathfinding helper operating on navigation meshes.
+ *
+ * Example file: examples/navMesh.ts
+ */
+export { findNavMeshPath } from './pathfinding/navMesh.js';
 
 // ============================================================================
 // 🌍 PROCEDURAL GENERATION

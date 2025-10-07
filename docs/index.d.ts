@@ -34,6 +34,8 @@ export const examples: {
     readonly dijkstra: 'examples/astar.ts';
     readonly jumpPointSearch: 'examples/astar.ts';
     readonly computeFlowField: 'examples/flowField.ts';
+    readonly buildNavMesh: 'examples/navMesh.ts';
+    readonly findNavMeshPath: 'examples/navMesh.ts';
   };
   readonly procedural: {
     readonly perlin: 'examples/simplex.ts';
@@ -190,6 +192,77 @@ export interface FlowFieldResult {
   flow: Vector2D[][];
 }
 export function computeFlowField(options: FlowFieldOptions): FlowFieldResult;
+
+/**
+ * Defines a convex polygon within a navigation mesh.
+ * Use for: modelling walkable regions, linking irregular spaces, navigation authoring.
+ * Import: pathfinding/navMesh.ts
+ */
+export interface NavPolygon {
+  id: string;
+  vertices: ReadonlyArray<Point>;
+}
+
+/**
+ * Edge connection between polygons in the navmesh.
+ * Use for: debugging adjacency, portal-based smoothing, editor tooling.
+ * Import: pathfinding/navMesh.ts
+ */
+export interface NavNeighbor {
+  polygonId: string;
+  portal: readonly [Point, Point];
+  cost: number;
+}
+
+/**
+ * Navigation mesh data containing polygons, centroids, and neighbour metadata.
+ * Use for: building navmesh editors, serialising runtime meshes, multi-agent steering.
+ * Import: pathfinding/navMesh.ts
+ */
+export interface NavMesh {
+  polygons: ReadonlyArray<NavPolygon>;
+  neighbors: Record<string, NavNeighbor[]>;
+  centroids: Record<string, Point>;
+}
+
+/**
+ * Result returned by the navmesh pathfinder.
+ * Use for: agent routing, waypoint creation, visualising navmesh traversal.
+ * Import: pathfinding/navMesh.ts
+ */
+export interface NavMeshPath {
+  polygonPath: string[];
+  waypoints: Point[];
+  cost: number;
+}
+
+/**
+ * Optional overrides for navmesh pathfinding behaviour.
+ * Use for: heuristic experimentation, weighted navigation, sandboxes.
+ * Import: pathfinding/navMesh.ts
+ */
+export interface FindNavMeshPathOptions {
+  heuristic?: (from: Point, to: Point) => number;
+}
+
+/**
+ * Builds a navigation mesh from convex polygons, establishing adjacency portals.
+ * Use for: irregular terrain travel, top-down navigation, runtime navmesh baking.
+ * Import: pathfinding/navMesh.ts
+ */
+export function buildNavMesh(polygons: readonly NavPolygon[]): NavMesh;
+
+/**
+ * Computes a waypoint path across a navigation mesh using A*.
+ * Use for: agent steering, patrol creation, directing units through navmesh corridors.
+ * Import: pathfinding/navMesh.ts
+ */
+export function findNavMeshPath(
+  mesh: NavMesh,
+  start: Point,
+  goal: Point,
+  options?: FindNavMeshPathOptions
+): NavMeshPath | null;
 
 // ============================================================================
 // 🌍 PROCEDURAL GENERATION

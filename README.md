@@ -24,7 +24,7 @@ CDN usage:
 
 | Goal | Algorithms | Import From | Example |
 | ---- | ---------- | ----------- | ------- |
-| Pathfinding & navigation | `astar`, `dijkstra`, `jumpPointSearch`, `computeFlowField`, `manhattanDistance`, `gridFromString` | `pathfinding/astar.ts`, `pathfinding/dijkstra.ts`, `pathfinding/jumpPointSearch.ts`, `pathfinding/flowField.ts` | `examples/astar.ts` |
+| Pathfinding & navigation | `astar`, `dijkstra`, `jumpPointSearch`, `computeFlowField`, `buildNavMesh`, `findNavMeshPath`, `manhattanDistance`, `gridFromString` | `pathfinding/astar.ts`, `pathfinding/dijkstra.ts`, `pathfinding/jumpPointSearch.ts`, `pathfinding/flowField.ts`, `pathfinding/navMesh.ts` | `examples/astar.ts`, `examples/flowField.ts`, `examples/navMesh.ts` |
 | Procedural generation | `perlin`, `perlin3D`, `simplex2D`, `simplex3D`, `worley`, `worleySample`, `waveFunctionCollapse` | `procedural/*.ts` | `examples/simplex.ts`, `examples/worley.ts`, `examples/waveFunctionCollapse.ts` |
 | Spatial queries & collision | `Quadtree`, `aabbCollision`, `aabbIntersection`, `satCollision`, `circleRayIntersection`, `sweptAABB` | `spatial/*.ts` | `examples/sat.ts` |
 | AI behaviours & crowds | `seek`, `flee`, `arrive`, `pursue`, `wander`, `updateBoids`, `BehaviorTree`, `rvoStep` | `ai/steering.ts`, `ai/boids.ts`, `ai/behaviorTree.ts`, `ai/rvo.ts` | `examples/steering.ts`, `examples/boids.ts`, `examples/rvo.ts` |
@@ -52,7 +52,7 @@ npm run size        # Enforce bundle size budget
 - Milestone 0.2 next targets crowd-flow integrations (RVO + flow fields) and behaviour-tree decorators for richer AI control.
 - Milestone 0.4 plans a procedural + gameplay systems toolkit (Wave Function Collapse, dungeon suite, L-systems, game loop, camera, particles, inventory, combat, save/load, and more).
 
-Examples live under `examples/` and can be executed with `tsx`/`ts-node` or compiled for the browser. See `examples/astar.ts`, `examples/steering.ts`, `examples/boids.ts`, `examples/requestDedup.ts`, `examples/search.ts`, `examples/graph.ts`, `examples/geometry.ts`, `examples/visual.ts`, `examples/sat.ts`, `examples/simplex.ts`, and `examples/worley.ts` for quick starts. The `examples` registry exported from `src/index.ts` provides a typed index you can traverse programmatically.
+Examples live under `examples/` and can be executed with `tsx`/`ts-node` or compiled for the browser. See `examples/astar.ts`, `examples/flowField.ts`, `examples/navMesh.ts`, `examples/steering.ts`, `examples/boids.ts`, `examples/requestDedup.ts`, `examples/search.ts`, `examples/graph.ts`, `examples/geometry.ts`, `examples/visual.ts`, `examples/sat.ts`, `examples/simplex.ts`, and `examples/worley.ts` for quick starts. The `examples` registry exported from `src/index.ts` provides a typed index you can traverse programmatically.
 
 ## Contributing
 1. Fork the repository.

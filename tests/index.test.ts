@@ -9,6 +9,7 @@ describe('package entry point', () => {
     expect(examples.performance.calculateVirtualRange).toBe('examples/virtualScroll.ts');
     expect(examples.procedural.SimplexNoise).toBe('examples/simplex.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
+    expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
   });
 
   it('provides strong typing for example categories and names', () => {
@@ -32,6 +33,8 @@ describe('package entry point', () => {
       | 'dijkstra'
       | 'jumpPointSearch'
       | 'computeFlowField'
+      | 'buildNavMesh'
+      | 'findNavMeshPath'
     >();
 
     expectTypeOf<ExampleName<'procedural'>>().toEqualTypeOf<
