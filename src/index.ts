@@ -48,6 +48,7 @@ export const examples = {
     diamondSquare: 'examples/diamondSquare.ts',
     generateLSystem: 'examples/lSystem.ts',
     generateBspDungeon: 'examples/dungeonBsp.ts',
+    generateRecursiveMaze: 'examples/mazeRecursive.ts',
   },
   spatial: {
     Quadtree: 'examples/sat.ts',
@@ -273,6 +274,13 @@ export { generateLSystem } from './procedural/lSystem.js';
  * Example file: examples/dungeonBsp.ts
  */
 export { generateBspDungeon } from './procedural/dungeonBsp.js';
+
+/**
+ * Recursive backtracking maze generator for grid layouts.
+ *
+ * Example file: examples/mazeRecursive.ts
+ */
+export { generateRecursiveMaze } from './procedural/maze.js';
 
 // ============================================================================
 // 🎯 SPATIAL & COLLISION
