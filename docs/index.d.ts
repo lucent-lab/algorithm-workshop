@@ -50,6 +50,7 @@ export const examples: {
     readonly poissonDiskSampling: 'examples/poissonDisk.ts';
     readonly computeVoronoiDiagram: 'examples/voronoi.ts';
     readonly diamondSquare: 'examples/diamondSquare.ts';
+    readonly generateLSystem: 'examples/lSystem.ts';
   };
   readonly spatial: {
     readonly Quadtree: 'examples/sat.ts';
@@ -388,7 +389,6 @@ export interface PoissonDiskOptions {
 export function poissonDiskSampling(options: PoissonDiskOptions): Point[];
 
 /**
-<<<<<<< HEAD
  * Voronoi site definition.
  * Use for: labelling regions, associating metadata to cells.
  * Import: procedural/voronoi.ts
@@ -439,7 +439,8 @@ export function computeVoronoiDiagram(
   sites: ReadonlyArray<VoronoiSite>,
   options?: VoronoiOptions
 ): VoronoiCell[];
-=======
+
+/**
  * Options configuring the diamond-square fractal algorithm.
  * Use for: tuning roughness, deterministic height map generation.
  * Import: procedural/diamondSquare.ts
@@ -470,7 +471,60 @@ export interface DiamondSquareResult {
  * Import: procedural/diamondSquare.ts
  */
 export function diamondSquare(options: DiamondSquareOptions): DiamondSquareResult;
->>>>>>> c977c3c (feat: add diamond-square terrain generator)
+
+/**
+ * Stochastic L-system rule with optional weighting.
+ * Use for: probabilistic grammars, varied foliage, randomised growth.
+ * Import: procedural/lSystem.ts
+ */
+export interface StochasticRule {
+  successor: string;
+  weight?: number;
+}
+
+/**
+ * Production rule definition for deterministic or stochastic replacements.
+ * Import: procedural/lSystem.ts
+ */
+export type ProductionRule = string | ReadonlyArray<StochasticRule>;
+
+/**
+ * Lindenmayer system ruleset.
+ * Use for: defining grammar productions.
+ * Import: procedural/lSystem.ts
+ */
+export type LSystemRules = Readonly<Record<string, ProductionRule>>;
+
+/**
+ * L-system options controlling iterations and stochastic behaviour.
+ * Use for: axiom-driven expansions, deterministic or random sequences.
+ * Import: procedural/lSystem.ts
+ */
+export interface LSystemOptions {
+  axiom: string;
+  rules: LSystemRules;
+  iterations: number;
+  seed?: number;
+  trackHistory?: boolean;
+}
+
+/**
+ * L-system generation result containing final string and optional history.
+ * Use for: caching iteration states, debugging expansions.
+ * Import: procedural/lSystem.ts
+ */
+export interface LSystemResult {
+  result: string;
+  history: string[];
+}
+
+/**
+ * Generates an L-system sequence using deterministic or stochastic rules.
+ * Use for: foliage grammars, fractal curves, grammar-based systems.
+ * Performance: O(n × iterations) where n is string length per step.
+ * Import: procedural/lSystem.ts
+ */
+export function generateLSystem(options: LSystemOptions): LSystemResult;
 
 /**
  * Simplex noise generator for smooth gradients without directional artifacts.
