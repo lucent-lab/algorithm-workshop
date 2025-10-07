@@ -49,7 +49,7 @@
   - [x] Object pool helper for reusable entities
   - [x] Weighted random selector (alias method)
   - [x] Fisher–Yates shuffle implementation
-  - [ ] Bresenham line / raster traversal helpers
+  - [x] Bresenham line / raster traversal helpers
 - Real-time systems:
   - [ ] 2D camera system (smooth follow, dead zones, screen shake)
   - [ ] Particle system with configurable emitters

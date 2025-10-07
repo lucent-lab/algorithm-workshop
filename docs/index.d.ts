@@ -1119,6 +1119,14 @@ export function lineIntersection(
 export function pointInPolygon(point: Point, polygon: Point[]): boolean;
 
 /**
+ * Bresenham line rasterisation.
+ * Use for: grid traversal, tile picking, pixel plotting.
+ * Performance: O(max(|dx|, |dy|)).
+ * Import: geometry/bresenham.ts
+ */
+export function bresenhamLine(start: Point, end: Point): Point[];
+
+/**
  * Common easing curves for animation.
  * Use for: UI transitions, motion design, data viz.
  * Performance: O(1).

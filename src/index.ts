@@ -110,6 +110,7 @@ export const examples = {
     convexHull: 'examples/geometry.ts',
     lineIntersection: 'examples/geometry.ts',
     pointInPolygon: 'examples/geometry.ts',
+    bresenhamLine: 'examples/bresenham.ts',
   },
   visual: {
     easing: 'examples/visual.ts',
@@ -546,6 +547,13 @@ export { lineIntersection } from './geometry/lineIntersection.js';
  * Point-in-polygon test for convex and simple polygons.
  */
 export { pointInPolygon } from './geometry/pointInPolygon.js';
+
+/**
+ * Bresenham rasterisation for grid-based line traversal.
+ *
+ * Example file: examples/bresenham.ts
+ */
+export { bresenhamLine } from './geometry/bresenham.js';
 
 // ============================================================================
 // 🎨 VISUAL & ANIMATION
