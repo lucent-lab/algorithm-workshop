@@ -296,6 +296,40 @@ export function generateAldousBroderMaze({
   return { grid, start, end };
 }
 
+/**
+ * Generates a maze using recursive division.
+ * Useful for: structured mazes with nested chambers and corridors.
+ */
+export function generateRecursiveDivisionMaze({
+  width,
+  height,
+  seed = Date.now(),
+}: MazeOptions): MazeResult {
+  validateDimensions(width, height);
+
+  const grid = Array.from({ length: height }, () => Array<number>(width).fill(PATH));
+  const random = createLinearCongruentialGenerator(seed);
+
+  // Surround with walls
+  for (let x = 0; x < width; x += 1) {
+    grid[0][x] = WALL;
+    grid[height - 1][x] = WALL;
+  }
+  for (let y = 0; y < height; y += 1) {
+    grid[y][0] = WALL;
+    grid[y][width - 1] = WALL;
+  }
+
+  divide(grid, 1, 1, width - 2, height - 2, random);
+
+  const start: Cell = { x: 1, y: 1 };
+  const end = findFarthestCell(start, grid);
+  carveCell(grid, start);
+  carveCell(grid, end);
+
+  return { grid, start, end };
+}
+
 function validateDimensions(width: number, height: number): void {
   if (!Number.isInteger(width) || !Number.isInteger(height)) {
     throw new Error('width and height must be integers.');
@@ -458,5 +492,48 @@ function unionSet(parent: Int32Array, a: number, b: number): void {
   } else {
     parent[rootB] -= sizeA;
     parent[rootA] = rootB;
+  }
+}
+
+function divide(
+  grid: number[][],
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  random: () => number
+): void {
+  if (width < 2 || height < 2) {
+    return;
+  }
+
+  const horizontal = width < height ? true : width > height ? false : random() < 0.5;
+
+  if (horizontal) {
+    const wallY = y + (Math.floor(random() * (height / 2)) * 2 + 1);
+    const passageX = x + Math.floor(random() * Math.ceil(width / 2)) * 2;
+    for (let i = x; i < x + width + 1; i += 1) {
+      if (i === passageX) {
+        continue;
+      }
+      if (grid[wallY] && grid[wallY][i] !== undefined) {
+        grid[wallY][i] = WALL;
+      }
+    }
+    divide(grid, x, y, width, wallY - y - 1, random);
+    divide(grid, x, wallY + 1, width, y + height - wallY - 1, random);
+  } else {
+    const wallX = x + (Math.floor(random() * (width / 2)) * 2 + 1);
+    const passageY = y + Math.floor(random() * Math.ceil(height / 2)) * 2;
+    for (let j = y; j < y + height + 1; j += 1) {
+      if (j === passageY) {
+        continue;
+      }
+      if (grid[j] && grid[j][wallX] !== undefined) {
+        grid[j][wallX] = WALL;
+      }
+    }
+    divide(grid, x, y, wallX - x - 1, height, random);
+    divide(grid, wallX + 1, y, x + width - wallX - 1, height, random);
   }
 }

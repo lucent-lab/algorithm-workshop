@@ -56,6 +56,8 @@ export const examples: {
     readonly generatePrimMaze: 'examples/mazePrim.ts';
     readonly generateKruskalMaze: 'examples/mazeKruskal.ts';
     readonly generateWilsonMaze: 'examples/mazeWilson.ts';
+    readonly generateAldousBroderMaze: 'examples/mazeAldous.ts';
+    readonly generateRecursiveDivisionMaze: 'examples/mazeDivision.ts';
   };
   readonly spatial: {
     readonly Quadtree: 'examples/sat.ts';
@@ -644,6 +646,14 @@ export function generateWilsonMaze(options: MazeOptions): MazeResult;
  * Import: procedural/maze.ts
  */
 export function generateAldousBroderMaze(options: MazeOptions): MazeResult;
+
+/**
+ * Generates a maze using recursive division.
+ * Use for: structured mazes with nested chambers.
+ * Performance: O(width × height).
+ * Import: procedural/maze.ts
+ */
+export function generateRecursiveDivisionMaze(options: MazeOptions): MazeResult;
 
 /**
  * Simplex noise generator for smooth gradients without directional artifacts.

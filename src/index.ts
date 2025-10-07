@@ -53,6 +53,7 @@ export const examples = {
     generateKruskalMaze: 'examples/mazeKruskal.ts',
     generateWilsonMaze: 'examples/mazeWilson.ts',
     generateAldousBroderMaze: 'examples/mazeAldous.ts',
+    generateRecursiveDivisionMaze: 'examples/mazeDivision.ts',
   },
   spatial: {
     Quadtree: 'examples/sat.ts',
@@ -313,6 +314,13 @@ export { generateWilsonMaze } from './procedural/maze.js';
  * Example file: examples/mazeAldous.ts
  */
 export { generateAldousBroderMaze } from './procedural/maze.js';
+
+/**
+ * Recursive division maze generator for structured layouts.
+ *
+ * Example file: examples/mazeDivision.ts
+ */
+export { generateRecursiveDivisionMaze } from './procedural/maze.js';
 
 // ============================================================================
 // 🎯 SPATIAL & COLLISION
