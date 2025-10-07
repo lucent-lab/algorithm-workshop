@@ -33,6 +33,29 @@ describe('Quadtree', () => {
     const found = tree.query({ x: 0, y: 0, width: 25, height: 25 });
     expect(found.map((p) => ({ x: p.x, y: p.y }))).toEqual([{ x: 10, y: 10 }]);
   });
+
+  it('subdivides when capacity exceeded and preserves data', () => {
+    const tree = new Quadtree<{ id: number }>({ x: 0, y: 0, width: 40, height: 40 }, 1, 0, 4);
+    tree.insert({ x: 5, y: 5 }, { id: 1 });
+    tree.insert({ x: 30, y: 5 }, { id: 2 });
+    tree.insert({ x: 5, y: 30 }, { id: 3 });
+
+    const results = tree.query({ x: 0, y: 0, width: 40, height: 40 });
+    expect(results).toHaveLength(3);
+    expect(results.map((point) => point.data?.id).sort()).toEqual([1, 2, 3]);
+  });
+
+  it('supports circular queries and validates inputs', () => {
+    const tree = new Quadtree({ x: 0, y: 0, width: 40, height: 40 });
+    tree.insert({ x: 10, y: 10 });
+    tree.insert({ x: 30, y: 10 });
+
+    const circleHits = tree.queryCircle({ x: 8, y: 8 }, 5);
+    expect(circleHits.map((p) => ({ x: p.x, y: p.y }))).toEqual([{ x: 10, y: 10 }]);
+
+    expect(() => tree.queryCircle({ x: 'a' as unknown as number, y: 0 }, 5)).toThrow(TypeError);
+    expect(() => tree.queryCircle({ x: 0, y: 0 }, -1)).toThrow('radius must be a non-negative number.');
+  });
 });
 
 describe('SAT collision', () => {

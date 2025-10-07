@@ -17,7 +17,7 @@
 - [x] Add circle-ray intersection helper
 - [x] Implement swept AABB collision checks
 - [x] Document new modules in `docs/index.d.ts` and examples folder
-- [ ] Achieve >80% coverage across new modules
+- [x] Achieve >80% coverage across new modules
 
 ## Milestone 0.3.0 – Web Performance & Data Pipelines
 - [x] Introduce request deduplication helper
