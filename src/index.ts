@@ -86,6 +86,7 @@ export const examples = {
     clearRequestDedup: 'examples/requestDedup.ts',
     calculateVirtualRange: 'examples/virtualScroll.ts',
     createWeightedAliasSampler: 'examples/weightedAlias.ts',
+    createObjectPool: 'examples/objectPool.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -414,6 +415,13 @@ export { calculateVirtualRange } from './util/virtualScroll.js';
  * Example file: examples/weightedAlias.ts
  */
 export { createWeightedAliasSampler } from './util/weightedAlias.js';
+
+/**
+ * Object pool helper for reusing allocations.
+ *
+ * Example file: examples/objectPool.ts
+ */
+export { createObjectPool } from './util/objectPool.js';
 
 /**
  * Virtual scroll type exports to help define rendering contracts.
