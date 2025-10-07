@@ -52,6 +52,7 @@ export const examples = {
     generatePrimMaze: 'examples/mazePrim.ts',
     generateKruskalMaze: 'examples/mazeKruskal.ts',
     generateWilsonMaze: 'examples/mazeWilson.ts',
+    generateAldousBroderMaze: 'examples/mazeAldous.ts',
   },
   spatial: {
     Quadtree: 'examples/sat.ts',
@@ -305,6 +306,13 @@ export { generateKruskalMaze } from './procedural/maze.js';
  * Example file: examples/mazeWilson.ts
  */
 export { generateWilsonMaze } from './procedural/maze.js';
+
+/**
+ * Aldous–Broder maze generator using random walks.
+ *
+ * Example file: examples/mazeAldous.ts
+ */
+export { generateAldousBroderMaze } from './procedural/maze.js';
 
 // ============================================================================
 // 🎯 SPATIAL & COLLISION

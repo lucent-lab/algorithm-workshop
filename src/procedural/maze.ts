@@ -251,6 +251,51 @@ export function generateWilsonMaze({
   return { grid, start, end };
 }
 
+/**
+ * Generates a maze using the Aldous–Broder random walk algorithm.
+ * Useful for: unbiased mazes with uniform spanning tree distribution.
+ */
+export function generateAldousBroderMaze({
+  width,
+  height,
+  seed = Date.now(),
+}: MazeOptions): MazeResult {
+  validateDimensions(width, height);
+
+  const grid = Array.from({ length: height }, () => Array<number>(width).fill(WALL));
+  const random = createLinearCongruentialGenerator(seed);
+
+  const cells: Cell[] = [];
+  const visited = new Set<string>();
+  for (let y = 1; y < height; y += 2) {
+    for (let x = 1; x < width; x += 2) {
+      cells.push({ x, y });
+    }
+  }
+
+  let current = cells[Math.floor(random() * cells.length)] ?? { x: 1, y: 1 };
+  carveCell(grid, current);
+  visited.add(cellKey(current.x, current.y));
+
+  while (visited.size < cells.length) {
+    const next = randomOddNeighbour(current, grid, random);
+    const key = cellKey(next.x, next.y);
+    if (!visited.has(key)) {
+      carveCorridorBetween(grid, current, next);
+      carveCell(grid, next);
+      visited.add(key);
+    }
+    current = next;
+  }
+
+  const start: Cell = { x: 1, y: 1 };
+  carveCell(grid, start);
+  const end = findFarthestCell(start, grid);
+  carveCell(grid, end);
+
+  return { grid, start, end };
+}
+
 function validateDimensions(width: number, height: number): void {
   if (!Number.isInteger(width) || !Number.isInteger(height)) {
     throw new Error('width and height must be integers.');

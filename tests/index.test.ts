@@ -18,6 +18,7 @@ describe('package entry point', () => {
     expect(examples.procedural.generatePrimMaze).toBe('examples/mazePrim.ts');
     expect(examples.procedural.generateKruskalMaze).toBe('examples/mazeKruskal.ts');
     expect(examples.procedural.generateWilsonMaze).toBe('examples/mazeWilson.ts');
+    expect(examples.procedural.generateAldousBroderMaze).toBe('examples/mazeAldous.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
   });
@@ -66,6 +67,7 @@ describe('package entry point', () => {
       | 'generatePrimMaze'
       | 'generateKruskalMaze'
       | 'generateWilsonMaze'
+      | 'generateAldousBroderMaze'
     >();
   });
 });
