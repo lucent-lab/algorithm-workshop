@@ -36,7 +36,7 @@ npm run build
 | Need | Algorithm(s) | Module | Example |
 | ---- | ------------ | ------ | ------- |
 | Grid pathfinding | `astar`, `dijkstra`, `jumpPointSearch`, `computeFlowField`, `buildNavMesh`, `findNavMeshPath`, `manhattanDistance`, `gridFromString` | `pathfinding/astar.ts`, `pathfinding/dijkstra.ts`, `pathfinding/jumpPointSearch.ts`, `pathfinding/flowField.ts`, `pathfinding/navMesh.ts` | `examples/astar.ts`, `examples/flowField.ts`, `examples/navMesh.ts` |
-| Procedural textures & terrain | `perlin`, `perlin3D`, `simplex2D`, `simplex3D`, `worley`, `worleySample`, `waveFunctionCollapse`, `cellularAutomataCave` | `procedural/*.ts` | `examples/simplex.ts`, `examples/worley.ts`, `examples/waveFunctionCollapse.ts`, `examples/cellularAutomata.ts` |
+| Procedural textures & terrain | `perlin`, `perlin3D`, `simplex2D`, `simplex3D`, `worley`, `worleySample`, `waveFunctionCollapse`, `cellularAutomataCave`, `poissonDiskSampling` | `procedural/*.ts` | `examples/simplex.ts`, `examples/worley.ts`, `examples/waveFunctionCollapse.ts`, `examples/cellularAutomata.ts`, `examples/poissonDisk.ts` |
 | Spatial queries & collision | `Quadtree`, `aabbCollision`, `aabbIntersection`, `satCollision`, `circleRayIntersection`, `sweptAABB` | `spatial/*.ts` | `examples/sat.ts` |
 | Web performance & UI throttling | `debounce`, `throttle`, `LRUCache`, `memoize`, `deduplicateRequest`, `clearRequestDedup`, `calculateVirtualRange` | `util/*.ts` | `examples/requestDedup.ts`, `examples/virtualScroll.ts` |
 | Text & search | `fuzzySearch`, `fuzzyScore`, `Trie`, `binarySearch`, `levenshteinDistance` | `search/*.ts` | `examples/search.ts` |

@@ -34,7 +34,7 @@
 - Procedural generators:
   - [x] Wave Function Collapse tile solver with options + example
   - [x] Cellular automata cave/organic generator utilities
-  - [ ] Poisson disk sampling for even point distribution
+  - [x] Poisson disk sampling for even point distribution
   - [ ] Voronoi diagram helpers for biome/territory generation
   - [ ] Diamond-square terrain height map generator
   - [ ] L-system generator for foliage and organic structures

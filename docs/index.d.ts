@@ -47,6 +47,7 @@ export const examples: {
     readonly worleySample: 'examples/worley.ts';
     readonly waveFunctionCollapse: 'examples/waveFunctionCollapse.ts';
     readonly cellularAutomataCave: 'examples/cellularAutomata.ts';
+    readonly poissonDiskSampling: 'examples/poissonDisk.ts';
   };
   readonly spatial: {
     readonly Quadtree: 'examples/sat.ts';
@@ -362,6 +363,27 @@ export interface CellularAutomataResult {
  * Import: procedural/cellularAutomata.ts
  */
 export function cellularAutomataCave(options: CellularAutomataOptions): CellularAutomataResult;
+
+/**
+ * Options for Poisson disk sampling in a rectangular domain.
+ * Use for: scatter placement, foliage distribution, sampling patterns.
+ * Import: procedural/poissonDisk.ts
+ */
+export interface PoissonDiskOptions {
+  width: number;
+  height: number;
+  radius: number;
+  maxAttempts?: number;
+  seed?: number;
+}
+
+/**
+ * Generates Poisson disk distributed points inside a rectangle.
+ * Use for: even point distribution, procedural placement, blue-noise sampling.
+ * Performance: O(n) expected, where n is the number of samples.
+ * Import: procedural/poissonDisk.ts
+ */
+export function poissonDiskSampling(options: PoissonDiskOptions): Point[];
 
 /**
  * Simplex noise generator for smooth gradients without directional artifacts.

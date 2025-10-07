@@ -1,4 +1,5 @@
 import type { Point } from '../types.js';
+import { createLinearCongruentialGenerator } from '../util/prng.js';
 
 export interface CellularAutomataOptions {
   width: number;
@@ -42,7 +43,7 @@ export function cellularAutomataCave({
     throw new Error('fillProbability must be between 0 and 1 (exclusive)');
   }
 
-  const random = createRng(seed);
+  const random = createLinearCongruentialGenerator(seed);
   let grid = createInitialGrid(width, height, fillProbability, random);
 
   for (let i = 0; i < iterations; i += 1) {
@@ -126,12 +127,4 @@ function countAliveNeighbors(grid: number[][], x: number, y: number): number {
     }
   }
   return count;
-}
-
-function createRng(seed: number): () => number {
-  let value = seed >>> 0;
-  return () => {
-    value = (value * 1664525 + 1013904223) >>> 0;
-    return value / 0xffffffff;
-  };
 }

@@ -43,6 +43,7 @@ export const examples = {
     worleySample: 'examples/worley.ts',
     waveFunctionCollapse: 'examples/waveFunctionCollapse.ts',
     cellularAutomataCave: 'examples/cellularAutomata.ts',
+    poissonDiskSampling: 'examples/poissonDisk.ts',
   },
   spatial: {
     Quadtree: 'examples/sat.ts',
@@ -233,6 +234,13 @@ export { waveFunctionCollapse } from './procedural/waveFunctionCollapse.js';
  * Example file: examples/cellularAutomata.ts
  */
 export { cellularAutomataCave } from './procedural/cellularAutomata.js';
+
+/**
+ * Poisson disk sampling for evenly spaced point sets.
+ *
+ * Example file: examples/poissonDisk.ts
+ */
+export { poissonDiskSampling } from './procedural/poissonDisk.js';
 
 // ============================================================================
 // 🎯 SPATIAL & COLLISION
