@@ -18,6 +18,110 @@
 // tilemaps, FOV, inventory, combat, quest/dialog, lighting, wave spawner, sound, input, save/load, transitions).
 
 // ============================================================================
+// 🔦 DISCOVERY AIDS
+// ============================================================================
+
+/**
+ * Registry of runnable examples bundled with the library.
+ * Use for: quickly locating a script that demonstrates an export.
+ * Import: index (re-exported constant)
+ */
+export const examples: {
+  readonly pathfinding: {
+    readonly astar: 'examples/astar.ts';
+    readonly manhattanDistance: 'examples/astar.ts';
+    readonly gridFromString: 'examples/astar.ts';
+    readonly dijkstra: 'examples/astar.ts';
+    readonly jumpPointSearch: 'examples/astar.ts';
+    readonly computeFlowField: 'examples/flowField.ts';
+  };
+  readonly procedural: {
+    readonly perlin: 'examples/simplex.ts';
+    readonly perlin3D: 'examples/simplex.ts';
+    readonly simplex2D: 'examples/simplex.ts';
+    readonly simplex3D: 'examples/simplex.ts';
+    readonly SimplexNoise: 'examples/simplex.ts';
+    readonly worley: 'examples/worley.ts';
+    readonly worleySample: 'examples/worley.ts';
+    readonly waveFunctionCollapse: 'examples/waveFunctionCollapse.ts';
+  };
+  readonly spatial: {
+    readonly Quadtree: 'examples/sat.ts';
+    readonly aabbCollision: 'examples/sat.ts';
+    readonly aabbIntersection: 'examples/sat.ts';
+    readonly satCollision: 'examples/sat.ts';
+    readonly circleRayIntersection: 'examples/sat.ts';
+    readonly sweptAABB: 'examples/sweptAabb.ts';
+  };
+  readonly search: {
+    readonly fuzzySearch: 'examples/search.ts';
+    readonly fuzzyScore: 'examples/search.ts';
+    readonly Trie: 'examples/search.ts';
+    readonly binarySearch: 'examples/search.ts';
+    readonly levenshteinDistance: 'examples/search.ts';
+  };
+  readonly data: {
+    readonly diff: 'examples/jsonDiff.ts';
+    readonly deepClone: 'examples/jsonDiff.ts';
+    readonly groupBy: 'examples/jsonDiff.ts';
+    readonly diffJson: 'examples/jsonDiff.ts';
+    readonly applyJsonDiff: 'examples/jsonDiff.ts';
+  };
+  readonly performance: {
+    readonly debounce: 'examples/requestDedup.ts';
+    readonly throttle: 'examples/requestDedup.ts';
+    readonly LRUCache: 'examples/requestDedup.ts';
+    readonly memoize: 'examples/requestDedup.ts';
+    readonly deduplicateRequest: 'examples/requestDedup.ts';
+    readonly clearRequestDedup: 'examples/requestDedup.ts';
+    readonly calculateVirtualRange: 'examples/virtualScroll.ts';
+  };
+  readonly ai: {
+    readonly seek: 'examples/steering.ts';
+    readonly flee: 'examples/steering.ts';
+    readonly pursue: 'examples/steering.ts';
+    readonly wander: 'examples/steering.ts';
+    readonly arrive: 'examples/steering.ts';
+    readonly updateBoids: 'examples/boids.ts';
+    readonly BehaviorTree: 'examples/behaviorTree.ts';
+    readonly rvoStep: 'examples/rvo.ts';
+  };
+  readonly graph: {
+    readonly graphBFS: 'examples/graph.ts';
+    readonly graphDFS: 'examples/graph.ts';
+    readonly topologicalSort: 'examples/graph.ts';
+  };
+  readonly geometry: {
+    readonly convexHull: 'examples/geometry.ts';
+    readonly lineIntersection: 'examples/geometry.ts';
+    readonly pointInPolygon: 'examples/geometry.ts';
+  };
+  readonly visual: {
+    readonly easing: 'examples/visual.ts';
+    readonly quadraticBezier: 'examples/visual.ts';
+    readonly cubicBezier: 'examples/visual.ts';
+  };
+};
+
+/**
+ * Type helper describing the registry shape.
+ * Import: index (type alias)
+ */
+export type ExamplesRegistry = typeof examples;
+
+/**
+ * Union of example categories.
+ * Import: index (type alias)
+ */
+export type ExampleCategory = keyof ExamplesRegistry;
+
+/**
+ * Helper type for narrowing example keys within a category.
+ * Import: index (type alias)
+ */
+export type ExampleName<C extends ExampleCategory = ExampleCategory> = keyof ExamplesRegistry[C];
+
+// ============================================================================
 // 🎮 PATHFINDING & NAVIGATION
 // ============================================================================
 

@@ -8,7 +8,8 @@ Curated TypeScript toolkit offering well-documented algorithms that map cleanly 
 
 1. Inspect the TypeScript declarations in `docs/index.d.ts` to discover available algorithms, their signatures, and performance notes.
 2. Pick the function that matches the task using the selection table below.
-3. Import from the published bundle or CDN mirrors:
+3. Use the `examples` registry exported from `src/index.ts` to locate runnable snippets programmatically when guiding an LLM.
+4. Import from the published bundle or CDN mirrors:
 
 ```ts
 import { astar, perlin } from 'llm-algorithms';
@@ -38,10 +39,10 @@ npm run build
 | Procedural textures & terrain | `perlin`, `perlin3D`, `simplex2D`, `simplex3D`, `worley`, `worleySample`, `waveFunctionCollapse` | `procedural/*.ts` | `examples/simplex.ts`, `examples/worley.ts`, `examples/waveFunctionCollapse.ts` |
 | Spatial queries & collision | `Quadtree`, `aabbCollision`, `aabbIntersection`, `satCollision`, `circleRayIntersection`, `sweptAABB` | `spatial/*.ts` | `examples/sat.ts` |
 | Web performance & UI throttling | `debounce`, `throttle`, `LRUCache`, `memoize`, `deduplicateRequest`, `clearRequestDedup`, `calculateVirtualRange` | `util/*.ts` | `examples/requestDedup.ts`, `examples/virtualScroll.ts` |
-| Text & search | `fuzzySearch`, `fuzzyScore`, `Trie`, `binarySearch`, `levenshteinDistance` | `search/*.ts` | `tests/search.test.ts` |
-| Data transforms & diffing | `diff`, `deepClone`, `groupBy`, `diffJson`, `applyJsonDiff` | `data/*.ts` | `tests/jsonDiff.test.ts` |
-| Graph traversal | `graphBFS`, `graphDFS`, `topologicalSort` | `graph/traversal.ts` | `tests/graph.test.ts` |
-| Geometry & visuals | `convexHull`, `lineIntersection`, `pointInPolygon`, `easing`, `quadraticBezier`, `cubicBezier` | `geometry/*.ts`, `visual/*.ts` | `tests/geometry.test.ts`, `tests/visual.test.ts` |
+| Text & search | `fuzzySearch`, `fuzzyScore`, `Trie`, `binarySearch`, `levenshteinDistance` | `search/*.ts` | `examples/search.ts` |
+| Data transforms & diffing | `diff`, `deepClone`, `groupBy`, `diffJson`, `applyJsonDiff` | `data/*.ts` | `examples/jsonDiff.ts` |
+| Graph traversal | `graphBFS`, `graphDFS`, `topologicalSort` | `graph/traversal.ts` | `examples/graph.ts` |
+| Geometry & visuals | `convexHull`, `lineIntersection`, `pointInPolygon`, `easing`, `quadraticBezier`, `cubicBezier` | `geometry/*.ts`, `visual/*.ts` | `examples/geometry.ts`, `examples/visual.ts` |
 | AI behaviours & crowds | `seek`, `flee`, `arrive`, `pursue`, `wander`, `updateBoids`, `BehaviorTree`, `rvoStep` | `ai/steering.ts`, `ai/boids.ts`, `ai/behaviorTree.ts`, `ai/rvo.ts` | `examples/steering.ts`, `examples/boids.ts`, `examples/rvo.ts` |
 
 ---
@@ -67,7 +68,7 @@ llm-algorithms/
 │   ├── types.ts
 │   └── visual/
 ├── tests/                  # Vitest suites covering representative algorithms
-└── examples/               # Runnable TypeScript snippets (astar, steering, sat, simplex)
+└── examples/               # Runnable TypeScript snippets (astar, steering, search, graph, geometry, visual)
 ```
 
 ---
