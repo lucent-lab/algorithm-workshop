@@ -89,6 +89,7 @@ export const examples: {
     readonly deduplicateRequest: 'examples/requestDedup.ts';
     readonly clearRequestDedup: 'examples/requestDedup.ts';
     readonly calculateVirtualRange: 'examples/virtualScroll.ts';
+    readonly createWeightedAliasSampler: 'examples/weightedAlias.ts';
   };
   readonly ai: {
     readonly seek: 'examples/steering.ts';
@@ -786,6 +787,37 @@ export interface VirtualRange {
   items: VirtualItem[];
 }
 export function calculateVirtualRange(options: VirtualScrollOptions): VirtualRange;
+
+/**
+ * Weighted alias sampler entry.
+ * Use for: pairing values with weights for alias method.
+ * Import: util/weightedAlias.ts
+ */
+export interface WeightedAliasEntry<T = string> {
+  value: T;
+  weight: number;
+}
+
+/**
+ * Alias sampler descriptor.
+ * Import: util/weightedAlias.ts
+ */
+export interface WeightedAliasSampler<T = string> {
+  sample(random?: () => number): T;
+  probabilities: number[];
+  aliases: number[];
+  values: T[];
+}
+
+/**
+ * Creates a weighted sampler using Vose's alias method.
+ * Use for: constant-time sampling from discrete weighted distributions.
+ * Performance: O(n) preprocessing, O(1) sampling.
+ * Import: util/weightedAlias.ts
+ */
+export function createWeightedAliasSampler<T>(
+  entries: ReadonlyArray<WeightedAliasEntry<T>>
+): WeightedAliasSampler<T>;
 
 /**
  * Least recently used cache.
