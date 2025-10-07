@@ -91,6 +91,7 @@ export const examples: {
     readonly calculateVirtualRange: 'examples/virtualScroll.ts';
     readonly createWeightedAliasSampler: 'examples/weightedAlias.ts';
     readonly createObjectPool: 'examples/objectPool.ts';
+    readonly fisherYatesShuffle: 'examples/fisherYates.ts';
   };
   readonly ai: {
     readonly seek: 'examples/steering.ts';
@@ -850,6 +851,13 @@ export interface ObjectPool<T> {
  * Import: util/objectPool.ts
  */
 export function createObjectPool<T>(options: ObjectPoolOptions<T>): ObjectPool<T>;
+
+/**
+ * Shuffles an array in place using Fisher–Yates.
+ * Use for: unbiased permutations, testing, random ordering.
+ * Import: util/fisherYates.ts
+ */
+export function fisherYatesShuffle<T>(items: T[], options?: { random?: () => number }): T[];
 
 /**
  * Least recently used cache.

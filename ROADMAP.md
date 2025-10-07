@@ -48,7 +48,7 @@
   - [ ] Delta-time manager for frame-independent timing
   - [x] Object pool helper for reusable entities
   - [x] Weighted random selector (alias method)
-  - [ ] Fisher–Yates shuffle implementation
+  - [x] Fisher–Yates shuffle implementation
   - [ ] Bresenham line / raster traversal helpers
 - Real-time systems:
   - [ ] 2D camera system (smooth follow, dead zones, screen shake)
