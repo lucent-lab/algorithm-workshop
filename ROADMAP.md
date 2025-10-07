@@ -22,7 +22,7 @@
 ## Milestone 0.3.0 – Web Performance & Data Pipelines
 - [x] Introduce request deduplication helper
 - [x] Ship virtual scrolling utilities
-- [ ] Add diff/patch helpers for nested JSON structures
+- [x] Add diff/patch helpers for nested JSON structures
 - [ ] Create benchmarking scripts to compare algorithm variants
 - [ ] Expand CI to include coverage gating and bundle size checks
 
