@@ -35,7 +35,7 @@
   - [x] Wave Function Collapse tile solver with options + example
   - [x] Cellular automata cave/organic generator utilities
   - [x] Poisson disk sampling for even point distribution
-  - [ ] Voronoi diagram helpers for biome/territory generation
+  - [x] Voronoi diagram helpers for biome/territory generation
   - [ ] Diamond-square terrain height map generator
   - [ ] L-system generator for foliage and organic structures
   - [ ] Dungeon generation suite (BSP subdivision, rooms & corridors variants)
