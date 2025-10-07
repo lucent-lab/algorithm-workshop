@@ -35,7 +35,7 @@ npm run build
 | Need | Algorithm(s) | Module | Example |
 | ---- | ------------ | ------ | ------- |
 | Grid pathfinding | `astar`, `dijkstra`, `manhattanDistance`, `gridFromString` | `pathfinding/astar.ts`, `pathfinding/dijkstra.ts` | `examples/astar.ts` |
-| Procedural textures & terrain | `perlin`, `perlin3D`, `simplex2D`, `simplex3D`, `worley`, `worleySample` | `procedural/*.ts` | `examples/simplex.ts`, `examples/worley.ts` |
+| Procedural textures & terrain | `perlin`, `perlin3D`, `simplex2D`, `simplex3D`, `worley`, `worleySample`, `waveFunctionCollapse` | `procedural/*.ts` | `examples/simplex.ts`, `examples/worley.ts`, `examples/waveFunctionCollapse.ts` |
 | Spatial queries & collision | `Quadtree`, `aabbCollision`, `aabbIntersection`, `satCollision`, `circleRayIntersection`, `sweptAABB` | `spatial/*.ts` | `examples/sat.ts` |
 | Web performance & UI throttling | `debounce`, `throttle`, `LRUCache`, `memoize`, `deduplicateRequest`, `clearRequestDedup`, `calculateVirtualRange` | `util/*.ts` | `examples/requestDedup.ts`, `examples/virtualScroll.ts` |
 | Text & search | `fuzzySearch`, `fuzzyScore`, `Trie`, `binarySearch`, `levenshteinDistance` | `search/*.ts` | `tests/search.test.ts` |
@@ -88,7 +88,7 @@ Consistency between runtime code, documentation, and TypeScript declarations kee
 ## ✅ Included Implementations (v0.1.0)
 
 - **Pathfinding:** A*, Dijkstra, Manhattan heuristic, grid string parser.
-- **Procedural:** 2D Perlin grid generator, 3D Perlin sampler.
+- **Procedural:** 2D/3D Perlin, Worley noise, Wave Function Collapse tile synthesis.
 - **Spatial:** Quadtree, AABB helpers, SAT convex polygon collision.
 - **Performance utilities:** Debounce, throttle, LRU cache, memoize, request deduplication, virtual scrolling.
 - **Search:** Fuzzy search + scoring, Trie-based autocomplete, binary search, Levenshtein distance.

@@ -100,6 +100,27 @@ export function worleySample(
 ): number;
 
 /**
+ * Wave Function Collapse synthesiser for constraint-based tiles.
+ * Use for: modular levels, decorative tiling, texture assembly.
+ * Performance: O(width × height × log tiles) average with retries.
+ * Import: procedural/waveFunctionCollapse.ts
+ */
+export interface WfcTile {
+  id: string;
+  weight?: number;
+  rules: Partial<Record<'top' | 'right' | 'bottom' | 'left', string[]>>;
+}
+export interface WaveFunctionCollapseOptions {
+  width: number;
+  height: number;
+  tiles: ReadonlyArray<WfcTile>;
+  seed?: number;
+  maxRetries?: number;
+}
+export type WaveFunctionCollapseResult = string[][];
+export function waveFunctionCollapse(options: WaveFunctionCollapseOptions): WaveFunctionCollapseResult;
+
+/**
  * Simplex noise generator for smooth gradients without directional artifacts.
  * Use for: large terrain synthesis, animated textures, volumetric noise.
  * Performance: O(n) per sample.
