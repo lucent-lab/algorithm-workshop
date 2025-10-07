@@ -5,6 +5,14 @@ export default defineConfig({
     environment: 'node',
     coverage: {
       reporter: ['text', 'lcov'],
+      thresholds: {
+        lines: 80,
+        statements: 80,
+        functions: 80,
+        branches: 70,
+      },
+      include: ['src/**/*.ts'],
+      exclude: ['src/**/*.d.ts'],
     },
   },
 });

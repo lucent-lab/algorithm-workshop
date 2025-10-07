@@ -24,7 +24,7 @@
 - [x] Ship virtual scrolling utilities
 - [x] Add diff/patch helpers for nested JSON structures
 - [x] Create benchmarking scripts to compare algorithm variants
-- [ ] Expand CI to include coverage gating and bundle size checks
+- [x] Expand CI to include coverage gating and bundle size checks
 
 ## Milestone 1.0.0 – Production Readiness
 - [ ] Publish to npm with semver automation and changelog management

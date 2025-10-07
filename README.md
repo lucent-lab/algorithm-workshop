@@ -37,7 +37,9 @@ npm run lint        # ESLint + TypeScript rules
 npm run typecheck   # Strict TypeScript validation
 npm run build       # Emits dist/ with ESM + .d.ts
 npm test            # Vitest suite
+npm run test:coverage  # Enforce coverage thresholds
 npm run benchmark   # Compare algorithm variants locally
+npm run size        # Enforce bundle size budget
 ```
 
 Examples live under `examples/` and can be executed with `tsx`/`ts-node` or compiled for the browser. See `examples/astar.ts`, `examples/steering.ts`, `examples/boids.ts`, `examples/requestDedup.ts`, `examples/sat.ts`, `examples/simplex.ts`, and `examples/worley.ts` for quick starts.
