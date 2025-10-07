@@ -30,32 +30,85 @@
 - [x] Create benchmarking scripts to compare algorithm variants
 - [x] Expand CI to include coverage gating and bundle size checks
 
-## Milestone 0.4.0 – Procedural Worlds & Game Systems (Planned)
-- [ ] Implement Wave Function Collapse tile solver with options + example
-- [ ] Add dungeon generation suite (BSP subdivision, rooms & corridors variants)
-- [ ] Provide L-system generator for foliage/organic structures
-- [ ] Ship diamond-square terrain height map generator
-- [ ] Offer maze algorithms pack (Kruskal, Wilson, Aldous–Broder, Recursive Division)
-- [ ] Add cellular automata cave/organic generator utilities
-- [ ] Deliver fixed-timestep game loop utility with interpolation helpers
-- [ ] Provide object pool helper for rapid reuse of entities
-- [ ] Add weighted random selector (aliasing method) utilities
-- [ ] Implement Bresenham line / raster traversal helpers
-- [ ] Implement 2D camera system (smooth follow, screen shake, dead zones)
-- [ ] Add particle system with configurable emitters
-- [ ] Provide sprite animation controller (frame timing, looping, events)
-- [ ] Implement platformer physics helper (gravity, coyote time, jump buffering)
-- [ ] Ship tile map renderer helpers (chunking, layering)
-- [ ] Add shadowcasting field-of-view (FOV) utilities
-- [ ] Implement inventory system primitives (stacking, filtering, persistence hooks)
-- [ ] Add combat resolution helpers (cooldowns, damage formulas, status effects)
-- [ ] Provide quest/dialog state machine utilities
-- [ ] Implement 2D lighting helpers (light falloff, blending stubs)
-- [ ] Add wave spawner utilities for encounter pacing
-- [ ] Provide sound manager stubs (channel limiting, priority)
-- [ ] Implement input manager abstraction (key remapping, axis curves)
-- [ ] Add save/load serialization helpers (slots, integrity checks)
-- [ ] Provide screen transition utilities (fades, wipes, letterboxing)
+- ## Milestone 0.4.0 – Procedural Worlds & Game Systems (Planned)
+- Procedural generators:
+  - [x] Wave Function Collapse tile solver with options + example
+  - [ ] Cellular automata cave/organic generator utilities
+  - [ ] Poisson disk sampling for even point distribution
+  - [ ] Voronoi diagram helpers for biome/territory generation
+  - [ ] Diamond-square terrain height map generator
+  - [ ] L-system generator for foliage and organic structures
+  - [ ] Dungeon generation suite (BSP subdivision, rooms & corridors variants)
+  - [ ] Maze algorithms pack (Recursive backtracking, Prim's, Kruskal's, Wilson's, Aldous–Broder, Recursive Division)
+- Gameplay systems & utilities:
+  - [ ] Fixed-timestep game loop utility with interpolation helpers
+  - [ ] Delta-time manager for frame-independent timing
+  - [ ] Object pool helper for reusable entities
+  - [ ] Weighted random selector (alias method)
+  - [ ] Fisher–Yates shuffle implementation
+  - [ ] Bresenham line / raster traversal helpers
+- Real-time systems:
+  - [ ] 2D camera system (smooth follow, dead zones, screen shake)
+  - [ ] Particle system with configurable emitters
+  - [ ] Sprite animation controller (frame timing, events)
+  - [ ] Tween/lerp utility for smooth interpolation
+  - [ ] Platformer physics helper (gravity, coyote time, jump buffering)
+  - [ ] Top-down movement helper (8-direction)
+  - [ ] Tile map renderer helpers (chunking, layering, collision tags)
+  - [ ] Shadowcasting field-of-view utilities and minimap helpers
+- **Systems for gameplay loops**
+  - [ ] Inventory system primitives (stacking, filtering, persistence hooks)
+  - [ ] Combat resolution helpers (cooldowns, damage formulas, status effects)
+  - [ ] Quest/dialog state machine utilities
+  - [ ] 2D lighting helpers (falloff, blending stubs)
+  - [ ] Wave spawner utilities for encounter pacing
+  - [ ] Sound manager stubs (channel limiting, priority)
+  - [ ] Input manager abstraction (keyboard/mouse/pad remapping)
+  - [ ] Save/load serialization helpers (slots, integrity checks)
+  - [ ] Screen transition utilities (fades, wipes, letterboxing)
+
+## Milestone 0.5.0 – Algorithm Vault & Data Structures (Planned)
+- **AI & behaviour expansions**
+  - [ ] Finite state machine (FSM) toolkit
+  - [ ] Genetic algorithm utilities
+  - [ ] Influence map computation helpers
+- **Search & string algorithms**
+  - [ ] Knuth–Morris–Pratt (KMP) substring search
+  - [ ] Rabin–Karp multiple pattern matching
+  - [ ] Boyer–Moore fast substring search
+  - [ ] Suffix array construction utilities
+  - [ ] Longest common subsequence (LCS) enhancements and diff helpers
+- **Data pipelines & utilities**
+  - [ ] Flatten/unflatten helpers for nested structures
+  - [ ] Pagination utilities for client-side paging
+  - [ ] Advanced diff tooling (tree diff, selective patches)
+- **Visual & simulation tools**
+  - [ ] Color manipulation helpers (RGB/HSL conversion, blending)
+  - [ ] Force-directed graph layout
+  - [ ] Marching squares contour extraction
+  - [ ] Marching cubes isosurface generation
+- **Graph algorithms**
+  - [ ] Minimum spanning tree (Kruskal)
+  - [ ] Strongly connected components (Tarjan/Kosaraju)
+  - [ ] Maximum flow (Ford–Fulkerson / Edmonds–Karp)
+- **Spatial & collision expansion**
+  - [ ] Octree partitioning for 3D space
+  - [ ] Circle collision helpers
+  - [ ] Raycasting utilities
+  - [ ] Bounding volume hierarchy (BVH) builder
+- **Data structures**
+  - [ ] Binary heap priority queue
+  - [ ] Disjoint set union (union-find)
+  - [ ] Bloom filter probabilistic membership
+  - [ ] Skip list sorted structure
+  - [ ] Segment tree range query helper
+- **Compression & encoding**
+  - [ ] Run-length encoding (RLE)
+  - [ ] Huffman coding utilities
+  - [ ] LZ77 dictionary compression helper
+  - [ ] Base64 encode/decode utilities
+- **Geometric & numeric utilities**
+  - [ ] Closest pair of points solver for geometry toolkit
 
 ## Milestone 1.0.0 – Production Readiness
 - [ ] Publish to npm with semver automation and changelog management

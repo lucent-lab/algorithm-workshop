@@ -4,6 +4,7 @@ export { dijkstra } from './pathfinding/dijkstra.js';
 export { perlin, perlin3D } from './procedural/perlin.js';
 export { worley, worleySample } from './procedural/worley.js';
 export { SimplexNoise, simplex2D, simplex3D } from './procedural/simplex.js';
+export { waveFunctionCollapse } from './procedural/waveFunctionCollapse.js';
 
 export { Quadtree } from './spatial/quadtree.js';
 export { aabbCollision, aabbIntersection } from './spatial/aabb.js';
