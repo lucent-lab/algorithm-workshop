@@ -22,6 +22,7 @@ describe('package entry point', () => {
     expect(examples.procedural.generateRecursiveDivisionMaze).toBe('examples/mazeDivision.ts');
     expect(examples.performance.createWeightedAliasSampler).toBe('examples/weightedAlias.ts');
     expect(examples.performance.createObjectPool).toBe('examples/objectPool.ts');
+    expect(examples.performance.fisherYatesShuffle).toBe('examples/fisherYates.ts');
     expect(examples.performance.createWeightedAliasSampler).toBe('examples/weightedAlias.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
@@ -85,6 +86,7 @@ describe('package entry point', () => {
       | 'calculateVirtualRange'
       | 'createWeightedAliasSampler'
       | 'createObjectPool'
+      | 'fisherYatesShuffle'
     >();
   });
 });

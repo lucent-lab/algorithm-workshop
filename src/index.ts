@@ -87,6 +87,7 @@ export const examples = {
     calculateVirtualRange: 'examples/virtualScroll.ts',
     createWeightedAliasSampler: 'examples/weightedAlias.ts',
     createObjectPool: 'examples/objectPool.ts',
+    fisherYatesShuffle: 'examples/fisherYates.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -422,6 +423,13 @@ export { createWeightedAliasSampler } from './util/weightedAlias.js';
  * Example file: examples/objectPool.ts
  */
 export { createObjectPool } from './util/objectPool.js';
+
+/**
+ * Fisher–Yates shuffling utility for unbiased permutations.
+ *
+ * Example file: examples/fisherYates.ts
+ */
+export { fisherYatesShuffle } from './util/fisherYates.js';
 
 /**
  * Virtual scroll type exports to help define rendering contracts.
