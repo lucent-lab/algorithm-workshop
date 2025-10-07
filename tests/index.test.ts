@@ -16,6 +16,7 @@ describe('package entry point', () => {
     expect(examples.procedural.generateBspDungeon).toBe('examples/dungeonBsp.ts');
     expect(examples.procedural.generateRecursiveMaze).toBe('examples/mazeRecursive.ts');
     expect(examples.procedural.generatePrimMaze).toBe('examples/mazePrim.ts');
+    expect(examples.procedural.generateKruskalMaze).toBe('examples/mazeKruskal.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
   });
@@ -62,6 +63,7 @@ describe('package entry point', () => {
       | 'generateBspDungeon'
       | 'generateRecursiveMaze'
       | 'generatePrimMaze'
+      | 'generateKruskalMaze'
     >();
   });
 });

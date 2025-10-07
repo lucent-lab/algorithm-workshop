@@ -44,11 +44,7 @@ export function generateRecursiveMaze({
 
     const next = neighbours.find((candidate) => isWall(candidate, grid));
     if (next) {
-      const mid = {
-        x: current.x + (next.x - current.x) / 2,
-        y: current.y + (next.y - current.y) / 2,
-      };
-      carveCell(grid, mid);
+      carveCorridorBetween(grid, current, next);
       carveCell(grid, next);
       stack.push(next);
     } else {
@@ -65,7 +61,7 @@ export function generateRecursiveMaze({
 
 /**
  * Generates a maze using randomized Prim's algorithm.
- * Useful for: maze layouts with different structural characteristics than DFS.
+ * Useful for: mazes with branching corridors differing from DFS results.
  */
 export function generatePrimMaze({
   width,
@@ -99,11 +95,76 @@ export function generatePrimMaze({
     if (!neighbour) {
       continue;
     }
+
     carveCorridorBetween(grid, cell, neighbour);
     carveCell(grid, cell);
     addFrontierCells(cell, grid, frontier);
   }
 
+  const end = findFarthestCell(start, grid);
+  carveCell(grid, end);
+
+  return { grid, start, end };
+}
+
+/**
+ * Generates a maze using Kruskal's algorithm with a disjoint-set structure.
+ * Useful for: evenly distributed mazes with minimal bias.
+ */
+export function generateKruskalMaze({
+  width,
+  height,
+  seed = Date.now(),
+}: MazeOptions): MazeResult {
+  validateDimensions(width, height);
+
+  const grid = Array.from({ length: height }, () => Array<number>(width).fill(WALL));
+  const random = createLinearCongruentialGenerator(seed);
+
+  const cells: Cell[] = [];
+  const indexMap = new Map<string, number>();
+  let idx = 0;
+  for (let y = 1; y < height; y += 2) {
+    for (let x = 1; x < width; x += 2) {
+      cells.push({ x, y });
+      indexMap.set(cellKey(x, y), idx);
+      idx += 1;
+      carveCell(grid, { x, y });
+    }
+  }
+
+  const dsu = createDisjointSet(cells.length);
+  const edges: Array<{ a: Cell; b: Cell }> = [];
+
+  for (const cell of cells) {
+    const neighbours: Array<[number, number]> = [
+      [2, 0],
+      [0, 2],
+    ];
+    for (const [dx, dy] of neighbours) {
+      const nx = cell.x + dx;
+      const ny = cell.y + dy;
+      if (nx < width && ny < height) {
+        edges.push({ a: cell, b: { x: nx, y: ny } });
+      }
+    }
+  }
+
+  shuffle(edges, random);
+
+  for (const edge of edges) {
+    const aIndex = indexMap.get(cellKey(edge.a.x, edge.a.y));
+    const bIndex = indexMap.get(cellKey(edge.b.x, edge.b.y));
+    if (aIndex === undefined || bIndex === undefined) {
+      continue;
+    }
+    if (findSet(dsu, aIndex) !== findSet(dsu, bIndex)) {
+      unionSet(dsu, aIndex, bIndex);
+      carveCorridorBetween(grid, edge.a, edge.b);
+    }
+  }
+
+  const start: Cell = { x: 1, y: 1 };
   const end = findFarthestCell(start, grid);
   carveCell(grid, end);
 
@@ -203,4 +264,48 @@ function findFarthestCell(start: Cell, grid: number[][]): Cell {
     }
   }
   return farthest;
+}
+
+function cellKey(x: number, y: number): string {
+  return `${x}:${y}`;
+}
+
+function shuffle<T>(items: T[], random: () => number): void {
+  for (let i = items.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(random() * (i + 1));
+    [items[i], items[j]] = [items[j], items[i]];
+  }
+}
+
+function createDisjointSet(size: number): Int32Array {
+  const parent = new Int32Array(size);
+  for (let i = 0; i < size; i += 1) {
+    parent[i] = -1;
+  }
+  return parent;
+}
+
+function findSet(parent: Int32Array, index: number): number {
+  if (parent[index] < 0) {
+    return index;
+  }
+  parent[index] = findSet(parent, parent[index]);
+  return parent[index];
+}
+
+function unionSet(parent: Int32Array, a: number, b: number): void {
+  const rootA = findSet(parent, a);
+  const rootB = findSet(parent, b);
+  if (rootA === rootB) {
+    return;
+  }
+  const sizeA = -parent[rootA];
+  const sizeB = -parent[rootB];
+  if (sizeA >= sizeB) {
+    parent[rootA] -= sizeB;
+    parent[rootB] = rootA;
+  } else {
+    parent[rootB] -= sizeA;
+    parent[rootA] = rootB;
+  }
 }

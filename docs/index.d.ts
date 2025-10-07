@@ -54,6 +54,7 @@ export const examples: {
     readonly generateBspDungeon: 'examples/dungeonBsp.ts';
     readonly generateRecursiveMaze: 'examples/mazeRecursive.ts';
     readonly generatePrimMaze: 'examples/mazePrim.ts';
+    readonly generateKruskalMaze: 'examples/mazeKruskal.ts';
   };
   readonly spatial: {
     readonly Quadtree: 'examples/sat.ts';
@@ -618,6 +619,14 @@ export function generateRecursiveMaze(options: MazeOptions): MazeResult;
  * Import: procedural/maze.ts
  */
 export function generatePrimMaze(options: MazeOptions): MazeResult;
+
+/**
+ * Generates a maze using Kruskal's algorithm with disjoint sets.
+ * Use for: evenly distributed corridors with minimal bias.
+ * Performance: O(width × height log cells).
+ * Import: procedural/maze.ts
+ */
+export function generateKruskalMaze(options: MazeOptions): MazeResult;
 
 /**
  * Simplex noise generator for smooth gradients without directional artifacts.
