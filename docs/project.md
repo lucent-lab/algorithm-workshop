@@ -108,5 +108,7 @@ Following these steps keeps the documentation aligned with the code and makes th
 - Behaviour-tree decorators and reusable condition/action packs.
 - Additional procedural generators (erosion, domain-warped noise).
 - Expanded example gallery with visualization snippets.
+- Procedural world toolkit (Wave Function Collapse, dungeon suites, L-systems, diamond-square, maze packs).
+- Complete gameplay systems (game loop, camera, particle/sprite systems, platformer physics, tile map renderer, FOV, inventory, combat, quest/dialog, lighting, wave spawner, sound manager, input manager, save/load, screen transitions).
 
 Contributions welcome! Follow conventional commits and keep examples runnable so docs stay in sync.
