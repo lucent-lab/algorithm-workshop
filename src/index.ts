@@ -49,6 +49,7 @@ export const examples = {
     generateLSystem: 'examples/lSystem.ts',
     generateBspDungeon: 'examples/dungeonBsp.ts',
     generateRecursiveMaze: 'examples/mazeRecursive.ts',
+    generatePrimMaze: 'examples/mazePrim.ts',
   },
   spatial: {
     Quadtree: 'examples/sat.ts',
@@ -281,6 +282,13 @@ export { generateBspDungeon } from './procedural/dungeonBsp.js';
  * Example file: examples/mazeRecursive.ts
  */
 export { generateRecursiveMaze } from './procedural/maze.js';
+
+/**
+ * Prim's maze generator for alternative maze structures.
+ *
+ * Example file: examples/mazePrim.ts
+ */
+export { generatePrimMaze } from './procedural/maze.js';
 
 // ============================================================================
 // 🎯 SPATIAL & COLLISION

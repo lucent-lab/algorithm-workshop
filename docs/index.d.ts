@@ -53,6 +53,7 @@ export const examples: {
     readonly generateLSystem: 'examples/lSystem.ts';
     readonly generateBspDungeon: 'examples/dungeonBsp.ts';
     readonly generateRecursiveMaze: 'examples/mazeRecursive.ts';
+    readonly generatePrimMaze: 'examples/mazePrim.ts';
   };
   readonly spatial: {
     readonly Quadtree: 'examples/sat.ts';
@@ -609,6 +610,14 @@ export interface MazeResult {
  * Import: procedural/maze.ts
  */
 export function generateRecursiveMaze(options: MazeOptions): MazeResult;
+
+/**
+ * Generates a maze using Prim's algorithm.
+ * Use for: compact mazes with branching corridors, alternative structures.
+ * Performance: O(width × height).
+ * Import: procedural/maze.ts
+ */
+export function generatePrimMaze(options: MazeOptions): MazeResult;
 
 /**
  * Simplex noise generator for smooth gradients without directional artifacts.
