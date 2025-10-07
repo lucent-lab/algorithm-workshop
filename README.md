@@ -42,6 +42,9 @@ npm run benchmark   # Compare algorithm variants locally
 npm run size        # Enforce bundle size budget
 ```
 
+## Roadmap Snapshot
+- Milestone 0.2 is tracking a reciprocal velocity obstacles (RVO) crowd steering module to expand the AI suite.
+
 Examples live under `examples/` and can be executed with `tsx`/`ts-node` or compiled for the browser. See `examples/astar.ts`, `examples/steering.ts`, `examples/boids.ts`, `examples/requestDedup.ts`, `examples/sat.ts`, `examples/simplex.ts`, and `examples/worley.ts` for quick starts.
 
 ## Contributing

@@ -18,6 +18,7 @@
 - [x] Implement swept AABB collision checks
 - [x] Document new modules in `docs/index.d.ts` and examples folder
 - [x] Achieve >80% coverage across new modules
+- [ ] Implement reciprocal velocity obstacles (RVO) crowd steering with tests and example
 
 ## Milestone 0.3.0 – Web Performance & Data Pipelines
 - [x] Introduce request deduplication helper
@@ -42,6 +43,6 @@
 
 ## Upcoming Focus
 1. Procedural generation enhancements (Worley refinements, Worley-based effects, upcoming Worley variants like Worley F1/F2)
-2. Behavioural AI additions (crowd steering, pathflow integration, behaviour tree decorators)
+2. Behavioural AI additions (crowd steering via RVO, pathflow integration, behaviour tree decorators)
 3. Advanced collision utilities (swept volumes with rotation, broad-phase acceleration structures)
 Note: tasks will move to the completed section once merged via the standard branch + PR workflow.
