@@ -50,6 +50,7 @@ export { quadraticBezier, cubicBezier } from './visual/bezier.js';
 
 export { seek, flee, pursue, wander, arrive } from './ai/steering.js';
 export { updateBoids } from './ai/boids.js';
+export { rvoStep } from './ai/rvo.js';
 export {
   BehaviorTree,
   type BehaviorStatus,

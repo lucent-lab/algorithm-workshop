@@ -50,3 +50,9 @@ export interface SteeringAgent extends Agent {
 export interface Boid extends SteeringAgent {
   acceleration: Vector2D;
 }
+
+export interface RvoAgent extends Agent {
+  id?: string;
+  radius: number;
+  preferredVelocity: Vector2D;
+}

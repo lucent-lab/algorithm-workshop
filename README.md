@@ -29,7 +29,7 @@ CDN usage:
 - **Web performance:** Debounce, throttle, LRU cache, memoize, request deduplication helper, virtual scrolling range calculator
 - **Graph:** BFS distance map, DFS traversal, topological sort
 - **Visual & Geometry:** Convex hull, line intersection, point-in-polygon, easing presets, Bezier helpers
-- **AI Behaviours:** Steering behaviours (seek, flee, arrive, pursue, wander), boids flocking update, behaviour trees
+- **AI Behaviours:** Steering behaviours (seek, flee, arrive, pursue, wander), boids flocking update, behaviour trees, reciprocal velocity obstacles (RVO)
 
 ## Scripts
 ```bash
