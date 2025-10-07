@@ -27,6 +27,7 @@ describe('package entry point', () => {
     expect(examples.gameplay.createDeltaTimeManager).toBe('examples/deltaTime.ts');
     expect(examples.gameplay.createFixedTimestepLoop).toBe('examples/fixedTimestep.ts');
     expect(examples.gameplay.createCamera2D).toBe('examples/camera2D.ts');
+    expect(examples.gameplay.createParticleSystem).toBe('examples/particleSystem.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
   });
@@ -97,6 +98,7 @@ describe('package entry point', () => {
       | 'createDeltaTimeManager'
       | 'createFixedTimestepLoop'
       | 'createCamera2D'
+      | 'createParticleSystem'
     >();
   });
 });
