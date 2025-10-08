@@ -158,6 +158,7 @@ export const examples: {
     readonly hslToRgb: 'examples/color.ts';
     readonly mixRgbColors: 'examples/color.ts';
     readonly computeForceDirectedLayout: 'examples/forceDirected.ts';
+    readonly computeMarchingSquares: 'examples/marchingSquares.ts';
   };
 };
 
@@ -3081,6 +3082,62 @@ export interface ForceDirectedLayoutResult {
 export function computeForceDirectedLayout(
   options: ForceDirectedLayoutOptions
 ): ForceDirectedLayoutResult;
+
+/**
+ * Scalar field for marching squares contour extraction.
+ * Use for: density maps, heatmaps, elevation grids.
+ * Import: visual/marchingSquares.ts
+ */
+export interface ScalarField {
+  data: ReadonlyArray<ReadonlyArray<number>>;
+  cellSize?: number;
+}
+
+/**
+ * Options for marching squares contour extraction.
+ * Use for: generating isolines from scalar fields.
+ * Import: visual/marchingSquares.ts
+ */
+export interface MarchingSquaresOptions {
+  field: ScalarField | ReadonlyArray<ReadonlyArray<number>>;
+  threshold?: number;
+}
+
+/**
+ * 2D point type for marching squares results.
+ * Use for: interoperating with rendering APIs.
+ * Import: visual/marchingSquares.ts
+ */
+export interface Point2D {
+  x: number;
+  y: number;
+}
+
+/**
+ * Line segment returned by marching squares.
+ * Use for: drawing contour polylines.
+ * Import: visual/marchingSquares.ts
+ */
+export interface LineSegment {
+  start: Point2D;
+  end: Point2D;
+}
+
+/**
+ * Marching squares result payload.
+ * Use for: feeding contour segments into renderers.
+ * Import: visual/marchingSquares.ts
+ */
+export interface MarchingSquaresResult {
+  segments: LineSegment[];
+}
+
+/**
+ * Computes contour segments using the marching squares algorithm.
+ * Use for: isolines, heatmap boundaries, scalar field visualisation.
+ * Import: visual/marchingSquares.ts
+ */
+export function computeMarchingSquares(options: MarchingSquaresOptions): MarchingSquaresResult;
 
 // ============================================================================
 // 🤖 STEERING BEHAVIOURS
