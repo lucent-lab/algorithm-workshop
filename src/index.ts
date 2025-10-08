@@ -101,6 +101,8 @@ export const examples = {
     createTileMapController: 'examples/tileMap.ts',
     computeFieldOfView: 'examples/shadowcasting.ts',
     createInventory: 'examples/inventory.ts',
+    calculateDamage: 'examples/combat.ts',
+    createCooldownController: 'examples/combat.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -643,6 +645,29 @@ export type {
   InventorySnapshot,
   AddItemOptions,
 } from './gameplay/inventory.js';
+
+/**
+ * Combat helpers for damage calculation, cooldowns, and status effects.
+ *
+ * Example file: examples/combat.ts
+ */
+export {
+  calculateDamage,
+  applyDamage,
+  createCooldownController,
+  updateStatusEffects,
+  createStatusEffect,
+} from './gameplay/combat.js';
+
+export type {
+  DamageResult,
+  DamageModifiers,
+  DamageType,
+  CombatantStats,
+  CooldownController,
+  StatusEffect,
+  ActiveStatusEffect,
+} from './gameplay/combat.js';
 
 
 // ============================================================================

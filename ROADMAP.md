@@ -61,7 +61,7 @@
   - [x] Shadowcasting field-of-view utilities and minimap helpers
 - **Systems for gameplay loops**
   - [x] Inventory system primitives (stacking, filtering, persistence hooks)
-  - [ ] Combat resolution helpers (cooldowns, damage formulas, status effects)
+  - [x] Combat resolution helpers (cooldowns, damage formulas, status effects)
   - [ ] Quest/dialog state machine utilities
   - [ ] 2D lighting helpers (falloff, blending stubs)
   - [ ] Wave spawner utilities for encounter pacing

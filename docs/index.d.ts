@@ -1574,6 +1574,128 @@ export interface InventoryController<TMeta = unknown> {
 export function createInventory<TMeta>(options: InventoryOptions<TMeta>): InventoryController<TMeta>;
 
 /**
+ * Combatant statistics used for damage calculations.
+ * Use for: providing combat state to helpers.
+ * Import: gameplay/combat.ts
+ */
+export interface CombatantStats {
+  health: number;
+  attack: number;
+  defense: number;
+  resistance: number;
+  critChance?: number;
+  critMultiplier?: number;
+}
+
+/**
+ * Supported damage types.
+ * Use for: distinguishing mitigation paths.
+ * Import: gameplay/combat.ts
+ */
+export type DamageType = 'physical' | 'magical' | 'true';
+
+/**
+ * Damage modifier options.
+ * Use for: tweaking flat bonuses, multipliers, or damage type.
+ * Import: gameplay/combat.ts
+ */
+export interface DamageModifiers {
+  flat?: number;
+  multiplier?: number;
+  type?: DamageType;
+  random?: () => number;
+}
+
+/**
+ * Damage result payload.
+ * Use for: applying damage to targets and reporting crits.
+ * Import: gameplay/combat.ts
+ */
+export interface DamageResult {
+  damage: number;
+  type: DamageType;
+  isCrit: boolean;
+}
+
+/**
+ * Calculates combat damage with optional modifiers.
+ * Use for: resolving attacks in RPG systems.
+ * Import: gameplay/combat.ts
+ */
+export function calculateDamage(
+  attacker: CombatantStats,
+  defender: CombatantStats,
+  modifiers?: DamageModifiers
+): DamageResult;
+
+/**
+ * Applies damage result to a target.
+ * Use for: clamping health and producing new combat state.
+ * Import: gameplay/combat.ts
+ */
+export function applyDamage(target: CombatantStats, result: DamageResult): CombatantStats;
+
+/**
+ * Cooldown controller API for abilities.
+ * Use for: tracking per-ability cooldown timers.
+ * Import: gameplay/combat.ts
+ */
+export interface CooldownController {
+  trigger(id: string, cooldown: number): boolean;
+  update(delta: number): void;
+  reset(): void;
+  getRemaining(id: string): number;
+}
+
+/**
+ * Creates a cooldown controller.
+ * Use for: enforcing ability cooldowns.
+ * Import: gameplay/combat.ts
+ */
+export function createCooldownController(): CooldownController;
+
+/**
+ * Status effect definition.
+ * Use for: describing duration-based effects.
+ * Import: gameplay/combat.ts
+ */
+export interface StatusEffect {
+  id: string;
+  duration: number;
+  tickInterval?: number;
+  onApply?: (target: CombatantStats) => void;
+  onTick?: (target: CombatantStats) => void;
+  onExpire?: (target: CombatantStats) => void;
+}
+
+/**
+ * Active status effect with runtime timers.
+ * Use for: advancing effects over time.
+ * Import: gameplay/combat.ts
+ */
+export interface ActiveStatusEffect extends StatusEffect {
+  remaining: number;
+  tickTimer?: number;
+}
+
+/**
+ * Creates an active status effect instance with timers.
+ * Use for: instantiating status effects in controllers.
+ * Import: gameplay/combat.ts
+ */
+export function createStatusEffect(effect: StatusEffect): ActiveStatusEffect;
+
+/**
+ * Updates active status effects and invokes lifecycle callbacks.
+ * Use for: applying dots, buffs, and expiry hooks.
+ * Import: gameplay/combat.ts
+ */
+export function updateStatusEffects(
+  target: CombatantStats,
+  effects: ActiveStatusEffect[],
+  delta: number
+): ActiveStatusEffect[];
+/**
  * Item insertion payload used by the inventory controller.
  * Use for: adding items with quantity and metadata.
  * Import: gameplay/inventory.ts
