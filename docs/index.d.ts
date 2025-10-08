@@ -1079,6 +1079,79 @@ export interface ParticleSystem {
 export function createParticleSystem(options: ParticleSystemOptions): ParticleSystem;
 
 /**
+ * Sprite animation playback mode.
+ * Use for: switching between looping, single-shot, and ping-pong playback.
+ * Import: gameplay/spriteAnimation.ts
+ */
+export type SpritePlaybackMode = 'loop' | 'once' | 'ping-pong';
+
+/**
+ * Sprite frame definition.
+ * Use for: associating timing, payload, and events with each sprite frame.
+ * Import: gameplay/spriteAnimation.ts
+ */
+export interface SpriteFrame<T = number> {
+  frame: T;
+  duration: number;
+  events?: ReadonlyArray<string>;
+}
+
+/**
+ * Sprite animation configuration options.
+ * Use for: configuring playback mode, speed, and starting state.
+ * Import: gameplay/spriteAnimation.ts
+ */
+export interface SpriteAnimationOptions<T = number> {
+  frames: ReadonlyArray<SpriteFrame<T>>;
+  mode?: SpritePlaybackMode;
+  speed?: number;
+  playOnStart?: boolean;
+  startFrame?: number;
+}
+
+/**
+ * Sprite animation event payload.
+ * Use for: reacting to frame enter, loop, complete, or custom events.
+ * Import: gameplay/spriteAnimation.ts
+ */
+export interface SpriteAnimationEvent<T = number> {
+  type: string;
+  frame: SpriteFrame<T>;
+  frameIndex: number;
+  loopCount: number;
+}
+
+/**
+ * Sprite animation controller runtime API.
+ * Use for: updating time, subscribing to events, changing speed/mode.
+ * Import: gameplay/spriteAnimation.ts
+ */
+export interface SpriteAnimationController<T = number> {
+  update(delta: number): void;
+  getFrame(): SpriteFrame<T>;
+  getFrameIndex(): number;
+  getFrameTime(): number;
+  getProgress(): number;
+  getLoopCount(): number;
+  isPlaying(): boolean;
+  isFinished(): boolean;
+  play(): void;
+  pause(): void;
+  reset(frameIndex?: number): void;
+  setSpeed(speed: number): void;
+  setMode(mode: SpritePlaybackMode): void;
+  on(event: string, handler: (event: SpriteAnimationEvent<T>) => void): () => void;
+}
+
+/**
+ * Creates a sprite animation controller with frame timing and events.
+ * Use for: sprite sheets, UI timelines, icon animations.
+ * Performance: O(k) per update where k is frames advanced.
+ * Import: gameplay/spriteAnimation.ts
+ */
+export function createSpriteAnimation<T>(options: SpriteAnimationOptions<T>): SpriteAnimationController<T>;
+
+/**
  * Least recently used cache.
  * Use for: memoizing responses, data loaders, pagination caches.
  * Performance: O(1) get/set.
