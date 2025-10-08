@@ -1008,6 +1008,77 @@ export interface Camera2D {
 export function createCamera2D(options: Camera2DOptions): Camera2D;
 
 /**
+ * Particle range descriptor.
+ * Use for: defining min/max values for particle properties.
+ * Import: gameplay/particleSystem.ts
+ */
+export interface ParticleRangeOptions {
+  min: number;
+  max: number;
+}
+
+/**
+ * Particle emitter configuration.
+ * Use for: controlling emission rate, lifetime, speed, angles, and size.
+ * Import: gameplay/particleSystem.ts
+ */
+export interface ParticleEmitterOptions {
+  rate?: number;
+  position?: Point;
+  life: ParticleRangeOptions;
+  speed?: ParticleRangeOptions;
+  angle?: ParticleRangeOptions;
+  size?: ParticleRangeOptions;
+  acceleration?: Vector2D;
+}
+
+/**
+ * Particle system creation options.
+ * Use for: configuring emitter and pooling limits.
+ * Import: gameplay/particleSystem.ts
+ */
+export interface ParticleSystemOptions {
+  emitter: ParticleEmitterOptions;
+  maxParticles?: number;
+  random?: () => number;
+}
+
+/**
+ * Particle state information.
+ * Use for: rendering particle positions, velocities, and lifetimes.
+ * Import: gameplay/particleSystem.ts
+ */
+export interface Particle {
+  position: Point;
+  velocity: Vector2D;
+  age: number;
+  life: number;
+  size: number;
+}
+
+/**
+ * Particle system runtime API.
+ * Use for: stepping simulation, bursts, emitter updates, pooling.
+ * Import: gameplay/particleSystem.ts
+ */
+export interface ParticleSystem {
+  update(delta: number): void;
+  burst(count: number): void;
+  getParticles(): readonly Particle[];
+  setEmitter(options: Partial<ParticleEmitterOptions>): void;
+  setPosition(position: Point): void;
+  reset(): void;
+}
+
+/**
+ * Creates a configurable particle system with emitter controls and pooling.
+ * Use for: explosions, weather, ambient effects.
+ * Performance: O(particles) per update.
+ * Import: gameplay/particleSystem.ts
+ */
+export function createParticleSystem(options: ParticleSystemOptions): ParticleSystem;
+
+/**
  * Least recently used cache.
  * Use for: memoizing responses, data loaders, pagination caches.
  * Performance: O(1) get/set.

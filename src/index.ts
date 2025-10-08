@@ -93,6 +93,7 @@ export const examples = {
     createDeltaTimeManager: 'examples/deltaTime.ts',
     createFixedTimestepLoop: 'examples/fixedTimestep.ts',
     createCamera2D: 'examples/camera2D.ts',
+    createParticleSystem: 'examples/particleSystem.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -493,6 +494,24 @@ export type {
   CameraDeadzone,
   CameraShakeOptions,
 } from './gameplay/camera2D.js';
+
+/**
+ * Particle system helper with emitter configuration and pooling.
+ *
+ * Example file: examples/particleSystem.ts
+ */
+export { createParticleSystem } from './gameplay/particleSystem.js';
+
+/**
+ * Particle system configuration and runtime types.
+ */
+export type {
+  RangeOptions as ParticleRangeOptions,
+  ParticleEmitterOptions,
+  ParticleSystemOptions,
+  Particle,
+  ParticleSystem,
+} from './gameplay/particleSystem.js';
 
 
 // ============================================================================

@@ -52,7 +52,7 @@
   - [x] Bresenham line / raster traversal helpers
 - Real-time systems:
   - [x] 2D camera system (smooth follow, dead zones, screen shake)
-  - [ ] Particle system with configurable emitters
+  - [x] Particle system with configurable emitters
   - [ ] Sprite animation controller (frame timing, events)
   - [ ] Tween/lerp utility for smooth interpolation
   - [ ] Platformer physics helper (gravity, coyote time, jump buffering)
