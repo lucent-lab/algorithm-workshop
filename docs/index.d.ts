@@ -1775,6 +1775,68 @@ export function createQuestMachine<
   TContext extends Record<string, unknown>,
   TEvent = unknown
 >(options: QuestMachineOptions<TContext, TEvent>): QuestMachine<TContext, TEvent>;
+
+/**
+ * Lighting falloff mode identifiers.
+ * Use for: controlling light intensity attenuation.
+ * Import: gameplay/lighting.ts
+ */
+export type FalloffMode = 'linear' | 'quadratic' | 'smoothstep';
+
+/**
+ * Point light definition for lighting grids.
+ * Use for: positioning lights with radius and color.
+ * Import: gameplay/lighting.ts
+ */
+export interface PointLight {
+  x: number;
+  y: number;
+  radius: number;
+  intensity?: number;
+  falloff?: FalloffMode;
+  color?: [number, number, number];
+}
+
+/**
+ * Lighting grid configuration.
+ * Use for: computing lightmaps for tile-based scenes.
+ * Import: gameplay/lighting.ts
+ */
+export interface LightingGridOptions {
+  width: number;
+  height: number;
+  tileSize: number;
+  ambient?: number;
+  lights: ReadonlyArray<PointLight>;
+  obstacles?: (x: number, y: number) => boolean;
+}
+
+/**
+ * Lighting cell output containing intensity and blended color.
+ * Import: gameplay/lighting.ts
+ */
+export interface LightingCell {
+  light: number;
+  color: [number, number, number];
+}
+
+/**
+ * Lighting grid computation result.
+ * Import: gameplay/lighting.ts
+ */
+export interface LightingGridResult {
+  width: number;
+  height: number;
+  cells: LightingCell[];
+}
+
+/**
+ * Computes a lighting grid with point lights and ambient light.
+ * Use for: tile map lighting, fog-of-war, and shading overlays.
+ * Performance: O(width × height × lights).
+ * Import: gameplay/lighting.ts
+ */
+export function computeLightingGrid(options: LightingGridOptions): LightingGridResult;
 /**
  * Item insertion payload used by the inventory controller.
  * Use for: adding items with quantity and metadata.

@@ -115,6 +115,7 @@ describe('package entry point', () => {
       | 'calculateDamage'
       | 'createCooldownController'
       | 'createQuestMachine'
+      | 'computeLightingGrid'
     >();
   });
 });

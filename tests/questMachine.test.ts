@@ -6,7 +6,7 @@ describe('createQuestMachine', () => {
   it('advances states based on events and conditions', () => {
     const context = { reputation: 0, reward: 0 };
 
-    const machine = createQuestMachine<typeof context, { hasItem?: boolean }>({
+    const machine = createQuestMachine<{ reputation: number; reward: number }, { hasItem?: boolean }>({
       context,
       initial: 'start',
       states: [
