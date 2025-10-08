@@ -14,10 +14,87 @@ export type JsonDiffOperation =
  * Computes a structural diff between two JSON-compatible values.
  * Useful for: syncing cached state, generating patches, change feeds.
  */
+export interface DiffJsonAdvancedOptions {
+  ignoreKeys?: ReadonlyArray<string>;
+  pathFilter?: (path: JsonPathSegment[]) => boolean;
+}
+
 export function diffJson(previous: JsonValue, next: JsonValue): JsonDiffOperation[] {
+  return diffJsonAdvanced(previous, next, {});
+}
+
+export function diffJsonAdvanced(
+  previous: JsonValue,
+  next: JsonValue,
+  options: DiffJsonAdvancedOptions = {}
+): JsonDiffOperation[] {
+  const ignoreSet = new Set(options.ignoreKeys ?? []);
   const operations: JsonDiffOperation[] = [];
   walkDiff(previous, next, [], operations);
   return operations;
+
+  function walkDiff(
+    prev: JsonValue,
+    nxt: JsonValue,
+    path: JsonPathSegment[],
+    ops: JsonDiffOperation[]
+  ): void {
+    if (options.pathFilter && !options.pathFilter(path)) {
+      return;
+    }
+
+    if (Object.is(prev, nxt)) {
+      return;
+    }
+
+    if (Array.isArray(prev) && Array.isArray(nxt)) {
+      diffArray(prev, nxt, path, ops);
+      return;
+    }
+
+    if (isPlainObject(prev) && isPlainObject(nxt)) {
+      diffObject(prev, nxt, path, ops);
+      return;
+    }
+
+    ops.push({ op: 'replace', path, value: deepClone(nxt) });
+  }
+
+  function diffArray(prev: JsonValue[], nxt: JsonValue[], path: JsonPathSegment[], ops: JsonDiffOperation[]): void {
+    const minLength = Math.min(prev.length, nxt.length);
+
+    for (let index = 0; index < minLength; index += 1) {
+      const prevValue = prev[index];
+      const nextValue = nxt[index];
+      walkDiff(prevValue, nextValue, [...path, index], ops);
+    }
+
+    for (let index = prev.length - 1; index >= nxt.length; index -= 1) {
+      ops.push({ op: 'remove', path: [...path, index] });
+    }
+
+    for (let index = minLength; index < nxt.length; index += 1) {
+      ops.push({ op: 'add', path: [...path, index], value: deepClone(nxt[index]) });
+    }
+  }
+
+  function diffObject(prev: JsonObject, nxt: JsonObject, path: JsonPathSegment[], ops: JsonDiffOperation[]): void {
+    const prevKeys = new Set(Object.keys(prev).filter((key) => !ignoreSet.has(key)));
+    const nextKeys = new Set(Object.keys(nxt).filter((key) => !ignoreSet.has(key)));
+
+    for (const key of nextKeys) {
+      if (prevKeys.has(key)) {
+        walkDiff(prev[key], nxt[key], [...path, key], ops);
+        prevKeys.delete(key);
+      } else {
+        ops.push({ op: 'add', path: [...path, key], value: deepClone(nxt[key]) });
+      }
+    }
+
+    for (const key of prevKeys) {
+      ops.push({ op: 'remove', path: [...path, key] });
+    }
+  }
 }
 
 /**
@@ -30,75 +107,6 @@ export function applyJsonDiff<T extends JsonValue>(value: T, diff: JsonDiffOpera
     result = applyOperation(result, operation);
   }
   return result;
-}
-
-function walkDiff(
-  previous: JsonValue,
-  next: JsonValue,
-  path: JsonPathSegment[],
-  operations: JsonDiffOperation[]
-): void {
-  if (Object.is(previous, next)) {
-    return;
-  }
-
-  if (Array.isArray(previous) && Array.isArray(next)) {
-    diffArray(previous, next, path, operations);
-    return;
-  }
-
-  if (isPlainObject(previous) && isPlainObject(next)) {
-    diffObject(previous, next, path, operations);
-    return;
-  }
-
-  operations.push({ op: 'replace', path, value: deepClone(next) });
-}
-
-function diffArray(
-  previous: JsonValue[],
-  next: JsonValue[],
-  path: JsonPathSegment[],
-  operations: JsonDiffOperation[]
-): void {
-  const minLength = Math.min(previous.length, next.length);
-
-  for (let index = 0; index < minLength; index += 1) {
-    const prevValue = previous[index];
-    const nextValue = next[index];
-    walkDiff(prevValue, nextValue, [...path, index], operations);
-  }
-
-  for (let index = previous.length - 1; index >= next.length; index -= 1) {
-    operations.push({ op: 'remove', path: [...path, index] });
-  }
-
-  for (let index = minLength; index < next.length; index += 1) {
-    operations.push({ op: 'add', path: [...path, index], value: deepClone(next[index]) });
-  }
-}
-
-function diffObject(
-  previous: JsonObject,
-  next: JsonObject,
-  path: JsonPathSegment[],
-  operations: JsonDiffOperation[]
-): void {
-  const previousKeys = new Set(Object.keys(previous));
-  const nextKeys = new Set(Object.keys(next));
-
-  for (const key of nextKeys) {
-    if (previousKeys.has(key)) {
-      walkDiff(previous[key], next[key], [...path, key], operations);
-      previousKeys.delete(key);
-    } else {
-      operations.push({ op: 'add', path: [...path, key], value: deepClone(next[key]) });
-    }
-  }
-
-  for (const key of previousKeys) {
-    operations.push({ op: 'remove', path: [...path, key] });
-  }
 }
 
 function applyOperation(root: JsonValue, operation: JsonDiffOperation): JsonValue {

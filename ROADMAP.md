@@ -64,27 +64,27 @@
   - [x] Combat resolution helpers (cooldowns, damage formulas, status effects)
   - [x] Quest/dialog state machine utilities
   - [x] 2D lighting helpers (falloff, blending stubs)
-  - [ ] Wave spawner utilities for encounter pacing
-  - [ ] Sound manager stubs (channel limiting, priority)
-  - [ ] Input manager abstraction (keyboard/mouse/pad remapping)
-  - [ ] Save/load serialization helpers (slots, integrity checks)
-  - [ ] Screen transition utilities (fades, wipes, letterboxing)
+  - [x] Wave spawner utilities for encounter pacing
+  - [x] Sound manager stubs (channel limiting, priority)
+  - [x] Input manager abstraction (keyboard/mouse/pad remapping)
+  - [x] Save/load serialization helpers (slots, integrity checks)
+  - [x] Screen transition utilities (fades, wipes, letterboxing)
 
 ## Milestone 0.5.0 – Algorithm Vault & Data Structures (Planned)
 
 - **AI & behaviour expansions**
-  - [ ] Finite state machine (FSM) toolkit
-  - [ ] Genetic algorithm utilities
-  - [ ] Influence map computation helpers
+  - [x] Finite state machine (FSM) toolkit
+  - [x] Genetic algorithm utilities
+  - [x] Influence map computation helpers
 - **Search & string algorithms**
-  - [ ] Knuth–Morris–Pratt (KMP) substring search
-  - [ ] Rabin–Karp multiple pattern matching
-  - [ ] Boyer–Moore fast substring search
-  - [ ] Suffix array construction utilities
-  - [ ] Longest common subsequence (LCS) enhancements and diff helpers
+  - [x] Knuth–Morris–Pratt (KMP) substring search
+  - [x] Rabin–Karp multiple pattern matching
+  - [x] Boyer–Moore fast substring search
+  - [x] Suffix array construction utilities
+  - [x] Longest common subsequence (LCS) enhancements and diff helpers
 - **Data pipelines & utilities**
-  - [ ] Flatten/unflatten helpers for nested structures
-  - [ ] Pagination utilities for client-side paging
+  - [x] Flatten/unflatten helpers for nested structures
+  - [x] Pagination utilities for client-side paging
   - [ ] Advanced diff tooling (tree diff, selective patches)
 - **Visual & simulation tools**
   - [ ] Color manipulation helpers (RGB/HSL conversion, blending)
