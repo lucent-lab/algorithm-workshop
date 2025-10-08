@@ -27,6 +27,11 @@ describe('package entry point', () => {
     expect(examples.data.applyJsonDiffSelective).toBe('examples/jsonDiff.ts');
     expect(examples.data.diffTree).toBe('examples/treeDiff.ts');
     expect(examples.data.applyTreeDiff).toBe('examples/treeDiff.ts');
+    expect(examples.visual.hexToRgb).toBe('examples/color.ts');
+    expect(examples.visual.rgbToHex).toBe('examples/color.ts');
+    expect(examples.visual.rgbToHsl).toBe('examples/color.ts');
+    expect(examples.visual.hslToRgb).toBe('examples/color.ts');
+    expect(examples.visual.mixRgbColors).toBe('examples/color.ts');
     expect(examples.gameplay.createDeltaTimeManager).toBe('examples/deltaTime.ts');
     expect(examples.gameplay.createFixedTimestepLoop).toBe('examples/fixedTimestep.ts');
     expect(examples.gameplay.createCamera2D).toBe('examples/camera2D.ts');
@@ -166,6 +171,17 @@ describe('package entry point', () => {
       | 'createFSM'
       | 'createGeneticAlgorithm'
       | 'computeInfluenceMap'
+    >();
+
+    expectTypeOf<ExampleName<'visual'>>().toEqualTypeOf<
+      | 'easing'
+      | 'quadraticBezier'
+      | 'cubicBezier'
+      | 'hexToRgb'
+      | 'rgbToHex'
+      | 'rgbToHsl'
+      | 'hslToRgb'
+      | 'mixRgbColors'
     >();
   });
 });
