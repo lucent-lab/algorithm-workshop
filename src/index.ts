@@ -82,9 +82,12 @@ export const examples = {
     groupBy: 'examples/jsonDiff.ts',
     diffJson: 'examples/jsonDiff.ts',
     applyJsonDiff: 'examples/jsonDiff.ts',
+    applyJsonDiffSelective: 'examples/jsonDiff.ts',
     flatten: 'examples/jsonDiff.ts',
     unflatten: 'examples/jsonDiff.ts',
     paginate: 'examples/pagination.ts',
+    diffTree: 'examples/treeDiff.ts',
+    applyTreeDiff: 'examples/treeDiff.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -932,7 +935,7 @@ export { groupBy } from './data/groupBy.js';
 /**
  * JSON diff and patch helpers for nested structures.
  */
-export { diffJson, diffJsonAdvanced, applyJsonDiff } from './data/jsonDiff.js';
+export { diffJson, diffJsonAdvanced, applyJsonDiff, applyJsonDiffSelective } from './data/jsonDiff.js';
 
 /**
  * Flatten/unflatten nested structures.
@@ -957,7 +960,23 @@ export type {
   JsonPrimitive,
   JsonValue,
   DiffJsonAdvancedOptions,
+  ApplyJsonDiffOptions,
 } from './data/jsonDiff.js';
+
+/**
+ * Tree diff helpers for hierarchical data.
+ */
+export { diffTree, applyTreeDiff } from './data/treeDiff.js';
+
+export type {
+  TreeNode,
+  TreeDiffOperation,
+  TreeInsertOperation,
+  TreeRemoveOperation,
+  TreeMoveOperation,
+  TreeUpdateOperation,
+  TreeDiffOptions,
+} from './data/treeDiff.js';
 
 // ============================================================================
 // 📈 GRAPH ALGORITHMS

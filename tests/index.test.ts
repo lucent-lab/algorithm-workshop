@@ -24,6 +24,9 @@ describe('package entry point', () => {
     expect(examples.performance.createObjectPool).toBe('examples/objectPool.ts');
     expect(examples.performance.fisherYatesShuffle).toBe('examples/fisherYates.ts');
     expect(examples.performance.createWeightedAliasSampler).toBe('examples/weightedAlias.ts');
+    expect(examples.data.applyJsonDiffSelective).toBe('examples/jsonDiff.ts');
+    expect(examples.data.diffTree).toBe('examples/treeDiff.ts');
+    expect(examples.data.applyTreeDiff).toBe('examples/treeDiff.ts');
     expect(examples.gameplay.createDeltaTimeManager).toBe('examples/deltaTime.ts');
     expect(examples.gameplay.createFixedTimestepLoop).toBe('examples/fixedTimestep.ts');
     expect(examples.gameplay.createCamera2D).toBe('examples/camera2D.ts');
@@ -98,6 +101,20 @@ describe('package entry point', () => {
       | 'createWeightedAliasSampler'
       | 'createObjectPool'
       | 'fisherYatesShuffle'
+    >();
+
+    expectTypeOf<ExampleName<'data'>>().toEqualTypeOf<
+      | 'diff'
+      | 'deepClone'
+      | 'groupBy'
+      | 'diffJson'
+      | 'applyJsonDiff'
+      | 'applyJsonDiffSelective'
+      | 'flatten'
+      | 'unflatten'
+      | 'paginate'
+      | 'diffTree'
+      | 'applyTreeDiff'
     >();
 
     expectTypeOf<ExampleName<'search'>>().toEqualTypeOf<

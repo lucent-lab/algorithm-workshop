@@ -85,7 +85,7 @@
 - **Data pipelines & utilities**
   - [x] Flatten/unflatten helpers for nested structures
   - [x] Pagination utilities for client-side paging
-  - [ ] Advanced diff tooling (tree diff, selective patches)
+- [x] Advanced diff tooling (tree diff, selective patches)
 - **Visual & simulation tools**
   - [ ] Color manipulation helpers (RGB/HSL conversion, blending)
   - [ ] Force-directed graph layout

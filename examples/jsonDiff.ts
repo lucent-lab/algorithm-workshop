@@ -1,4 +1,11 @@
-import { applyJsonDiff, diffJson, diffJsonAdvanced, flatten, unflatten } from '../src/index.js';
+import {
+  applyJsonDiff,
+  applyJsonDiffSelective,
+  diffJson,
+  diffJsonAdvanced,
+  flatten,
+  unflatten,
+} from '../src/index.js';
 
 const previous = { status: 'idle', jobs: ['ingest', 'transform'] };
 const next = { status: 'running', jobs: ['ingest', 'transform', 'export'] };
@@ -18,3 +25,8 @@ const selectivePatch = diffJsonAdvanced(previous, next, {
   ignoreKeys: ['jobs'],
 });
 console.log('Selective patch (ignore jobs):', selectivePatch);
+
+const selectivelyApplied = applyJsonDiffSelective(previous, patch, {
+  pathFilter: (path) => path.join('.') !== 'jobs',
+});
+console.log('Selective apply (ignore jobs):', selectivelyApplied);
