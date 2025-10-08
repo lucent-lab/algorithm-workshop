@@ -94,6 +94,7 @@ export const examples = {
     createFixedTimestepLoop: 'examples/fixedTimestep.ts',
     createCamera2D: 'examples/camera2D.ts',
     createParticleSystem: 'examples/particleSystem.ts',
+    createSpriteAnimation: 'examples/spriteAnimation.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -512,6 +513,24 @@ export type {
   Particle,
   ParticleSystem,
 } from './gameplay/particleSystem.js';
+
+/**
+ * Sprite animation controller with frame timing and events.
+ *
+ * Example file: examples/spriteAnimation.ts
+ */
+export { createSpriteAnimation } from './gameplay/spriteAnimation.js';
+
+/**
+ * Sprite animation configuration and event types.
+ */
+export type {
+  SpriteFrame,
+  SpriteAnimationOptions,
+  SpriteAnimationController,
+  SpriteAnimationEvent,
+  SpritePlaybackMode,
+} from './gameplay/spriteAnimation.js';
 
 
 // ============================================================================

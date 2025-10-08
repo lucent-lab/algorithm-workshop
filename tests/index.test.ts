@@ -28,6 +28,7 @@ describe('package entry point', () => {
     expect(examples.gameplay.createFixedTimestepLoop).toBe('examples/fixedTimestep.ts');
     expect(examples.gameplay.createCamera2D).toBe('examples/camera2D.ts');
     expect(examples.gameplay.createParticleSystem).toBe('examples/particleSystem.ts');
+    expect(examples.gameplay.createSpriteAnimation).toBe('examples/spriteAnimation.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
   });
@@ -99,6 +100,7 @@ describe('package entry point', () => {
       | 'createFixedTimestepLoop'
       | 'createCamera2D'
       | 'createParticleSystem'
+      | 'createSpriteAnimation'
     >();
   });
 });
