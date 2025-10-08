@@ -103,6 +103,7 @@ export const examples = {
     createInventory: 'examples/inventory.ts',
     calculateDamage: 'examples/combat.ts',
     createCooldownController: 'examples/combat.ts',
+    createQuestMachine: 'examples/quest.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -668,6 +669,21 @@ export type {
   StatusEffect,
   ActiveStatusEffect,
 } from './gameplay/combat.js';
+
+/**
+ * Quest/dialog state machine utilities.
+ *
+ * Example file: examples/quest.ts
+ */
+export { createQuestMachine } from './gameplay/questMachine.js';
+
+export type {
+  QuestStateNode,
+  QuestTransition,
+  QuestMachineOptions,
+  QuestMachine,
+  QuestMachineSnapshot,
+} from './gameplay/questMachine.js';
 
 
 // ============================================================================
