@@ -52,6 +52,7 @@ Weighted Random Selection - Probability-based selection
 Fisher-Yates Shuffle - Unbiased array randomization
 Bresenham's Line - Grid line drawing
 Marching Squares - Contour generation from scalar fields
+Marching Cubes - 3D isosurface extraction
 Object Pool - Memory optimization for reusable objects
 
 🎮 GAME SYSTEMS

@@ -33,7 +33,7 @@ CDN usage:
 | Search & text | `fuzzySearch`, `fuzzyScore`, `Trie`, `binarySearch`, `levenshteinDistance`, `kmpSearch`, `rabinKarp`, `boyerMooreSearch`, `buildSuffixArray`, `longestCommonSubsequence`, `diffStrings` | `search/*.ts` | `examples/search.ts` |
 | Data & diff pipelines | `diff`, `deepClone`, `groupBy`, `diffJson`, `diffJsonAdvanced`, `applyJsonDiff`, `applyJsonDiffSelective`, `flatten`, `unflatten`, `diffTree`, `applyTreeDiff` | `data/*.ts` | `examples/jsonDiff.ts`, `examples/treeDiff.ts` |
 | Graph algorithms | `graphBFS`, `graphDFS`, `topologicalSort` | `graph/traversal.ts` | `examples/graph.ts` |
-| Visual & geometry | `convexHull`, `lineIntersection`, `pointInPolygon`, `bresenhamLine`, `easing`, `quadraticBezier`, `cubicBezier`, `hexToRgb`, `rgbToHex`, `rgbToHsl`, `hslToRgb`, `mixRgbColors`, `computeForceDirectedLayout`, `computeMarchingSquares` | `geometry/*.ts`, `visual/*.ts` | `examples/geometry.ts`, `examples/bresenham.ts`, `examples/visual.ts`, `examples/color.ts`, `examples/forceDirected.ts`, `examples/marchingSquares.ts` |
+| Visual & geometry | `convexHull`, `lineIntersection`, `pointInPolygon`, `bresenhamLine`, `easing`, `quadraticBezier`, `cubicBezier`, `hexToRgb`, `rgbToHex`, `rgbToHsl`, `hslToRgb`, `mixRgbColors`, `computeForceDirectedLayout`, `computeMarchingSquares`, `computeMarchingCubes` | `geometry/*.ts`, `visual/*.ts` | `examples/geometry.ts`, `examples/bresenham.ts`, `examples/visual.ts`, `examples/color.ts`, `examples/forceDirected.ts`, `examples/marchingSquares.ts`, `examples/marchingCubes.ts` |
 
 ## Scripts
 ```bash

@@ -159,6 +159,7 @@ export const examples: {
     readonly mixRgbColors: 'examples/color.ts';
     readonly computeForceDirectedLayout: 'examples/forceDirected.ts';
     readonly computeMarchingSquares: 'examples/marchingSquares.ts';
+    readonly computeMarchingCubes: 'examples/marchingCubes.ts';
   };
 };
 
@@ -3138,6 +3139,64 @@ export interface MarchingSquaresResult {
  * Import: visual/marchingSquares.ts
  */
 export function computeMarchingSquares(options: MarchingSquaresOptions): MarchingSquaresResult;
+
+/**
+ * Scalar field configuration for marching cubes.
+ * Use for: volumetric data, signed distance fields, density grids.
+ * Import: visual/marchingCubes.ts
+ */
+export interface ScalarField3D {
+  data: ReadonlyArray<ReadonlyArray<ReadonlyArray<number>>>;
+  cellSize?: number | { x: number; y: number; z: number };
+}
+
+/**
+ * Marching cubes configuration options.
+ * Use for: extracting isosurfaces from 3D scalar fields.
+ * Import: visual/marchingCubes.ts
+ */
+export interface MarchingCubesOptions {
+  field: ScalarField3D | ReadonlyArray<ReadonlyArray<ReadonlyArray<number>>>;
+  threshold?: number;
+}
+
+/**
+ * 3D vector representation used by marching cubes.
+ * Use for: triangle vertices, normals, mesh construction.
+ * Import: visual/marchingCubes.ts
+ */
+export interface Vector3 {
+  x: number;
+  y: number;
+  z: number;
+}
+
+/**
+ * Triangle output from marching cubes.
+ * Use for: mesh generation, collision geometry, visualization.
+ * Import: visual/marchingCubes.ts
+ */
+export interface Triangle {
+  a: Vector3;
+  b: Vector3;
+  c: Vector3;
+}
+
+/**
+ * Marching cubes result payload.
+ * Use for: converting scalar fields into triangle meshes.
+ * Import: visual/marchingCubes.ts
+ */
+export interface MarchingCubesResult {
+  triangles: Triangle[];
+}
+
+/**
+ * Computes triangles using the marching cubes algorithm.
+ * Use for: isosurface extraction, voxel rendering, volumetric meshing.
+ * Import: visual/marchingCubes.ts
+ */
+export function computeMarchingCubes(options: MarchingCubesOptions): MarchingCubesResult;
 
 // ============================================================================
 // 🤖 STEERING BEHAVIOURS
