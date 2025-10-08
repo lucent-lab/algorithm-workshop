@@ -100,6 +100,7 @@ export const examples = {
     createTopDownController: 'examples/topDownMovement.ts',
     createTileMapController: 'examples/tileMap.ts',
     computeFieldOfView: 'examples/shadowcasting.ts',
+    createInventory: 'examples/inventory.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -626,6 +627,22 @@ export type {
   FovResult,
   FovGrid,
 } from './gameplay/shadowcasting.js';
+
+/**
+ * Inventory controller for stack-based item management.
+ *
+ * Example file: examples/inventory.ts
+ */
+export { createInventory } from './gameplay/inventory.js';
+
+export type {
+  InventoryOptions,
+  InventoryController,
+  InventoryItem,
+  InventorySlot,
+  InventorySnapshot,
+  AddItemOptions,
+} from './gameplay/inventory.js';
 
 
 // ============================================================================

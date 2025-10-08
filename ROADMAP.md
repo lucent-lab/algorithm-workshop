@@ -60,7 +60,7 @@
   - [x] Tile map renderer helpers (chunking, layering, collision tags)
   - [x] Shadowcasting field-of-view utilities and minimap helpers
 - **Systems for gameplay loops**
-  - [ ] Inventory system primitives (stacking, filtering, persistence hooks)
+  - [x] Inventory system primitives (stacking, filtering, persistence hooks)
   - [ ] Combat resolution helpers (cooldowns, damage formulas, status effects)
   - [ ] Quest/dialog state machine utilities
   - [ ] 2D lighting helpers (falloff, blending stubs)
