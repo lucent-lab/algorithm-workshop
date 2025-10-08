@@ -112,6 +112,8 @@ describe('package entry point', () => {
       | 'createTileMapController'
       | 'computeFieldOfView'
       | 'createInventory'
+      | 'calculateDamage'
+      | 'createCooldownController'
     >();
   });
 });
