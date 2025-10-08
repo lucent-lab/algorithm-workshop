@@ -101,9 +101,26 @@ export function diffJsonAdvanced(
  * Applies a JSON diff to a value and returns a new structure.
  * Useful for: reconstructing snapshots, applying remote patches, optimistic updates.
  */
+export interface ApplyJsonDiffOptions {
+  shouldApply?: (operation: JsonDiffOperation) => boolean;
+  pathFilter?: (path: JsonPathSegment[]) => boolean;
+}
+
 export function applyJsonDiff<T extends JsonValue>(value: T, diff: JsonDiffOperation[]): JsonValue {
+  return applyJsonDiffSelective(value, diff);
+}
+
+export function applyJsonDiffSelective<T extends JsonValue>(
+  value: T,
+  diff: JsonDiffOperation[],
+  options: ApplyJsonDiffOptions = {}
+): JsonValue {
+  const predicate = createDiffPredicate(options);
   let result: JsonValue = deepClone(value);
   for (const operation of diff) {
+    if (!predicate(operation)) {
+      continue;
+    }
     result = applyOperation(result, operation);
   }
   return result;
@@ -195,6 +212,21 @@ function applyObjectOperation(
   }
 
   return root;
+}
+
+function createDiffPredicate(options: ApplyJsonDiffOptions): (operation: JsonDiffOperation) => boolean {
+  if (!options.shouldApply && !options.pathFilter) {
+    return () => true;
+  }
+  return (operation) => {
+    if (options.pathFilter && !options.pathFilter(operation.path)) {
+      return false;
+    }
+    if (options.shouldApply && !options.shouldApply(operation)) {
+      return false;
+    }
+    return true;
+  };
 }
 
 function resolveParent(value: JsonValue, path: JsonPathSegment[], allowCreate: boolean): JsonValue | null {

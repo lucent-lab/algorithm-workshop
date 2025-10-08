@@ -2697,6 +2697,15 @@ export function diffJsonAdvanced(
   next: JsonValue,
   options?: DiffJsonAdvancedOptions
 ): JsonDiffOperation[];
+export interface ApplyJsonDiffOptions {
+  shouldApply?: (operation: JsonDiffOperation) => boolean;
+  pathFilter?: (path: JsonPathSegment[]) => boolean;
+}
+export function applyJsonDiffSelective<T extends JsonValue>(
+  value: T,
+  diff: JsonDiffOperation[],
+  options?: ApplyJsonDiffOptions
+): JsonValue;
 
 /**
  * Flattens nested structures into key/value pairs.
@@ -2742,6 +2751,58 @@ export interface PaginationResult<T> {
   metadata: PaginationMetadata;
 }
 export function paginate<T>(options: PaginateOptions<T>): PaginationResult<T>;
+
+/**
+ * Diffs tree structures while preserving node identity.
+ * Use for: UI virtual DOM reconciliation, scene graphs, hierarchical state.
+ * Import: data/treeDiff.ts
+ */
+export interface TreeNode<TValue = unknown> {
+  id: string;
+  value?: TValue;
+  children?: TreeNode<TValue>[];
+}
+export interface TreeInsertOperation<TValue = unknown> {
+  type: 'insert';
+  id: string;
+  parentId: string | null;
+  index: number;
+  node: TreeNode<TValue>;
+}
+export interface TreeRemoveOperation {
+  type: 'remove';
+  id: string;
+  parentId: string | null;
+}
+export interface TreeMoveOperation {
+  type: 'move';
+  id: string;
+  parentId: string | null;
+  index: number;
+}
+export interface TreeUpdateOperation<TValue = unknown> {
+  type: 'update';
+  id: string;
+  value: TValue | undefined;
+  hasValue: boolean;
+}
+export type TreeDiffOperation<TValue = unknown> =
+  | TreeInsertOperation<TValue>
+  | TreeRemoveOperation
+  | TreeMoveOperation
+  | TreeUpdateOperation<TValue>;
+export interface TreeDiffOptions<TValue = unknown> {
+  isEqual?: (previous: TreeNode<TValue>, next: TreeNode<TValue>) => boolean;
+}
+export function diffTree<TValue = unknown>(
+  previous: ReadonlyArray<TreeNode<TValue>>,
+  next: ReadonlyArray<TreeNode<TValue>>,
+  options?: TreeDiffOptions<TValue>
+): TreeDiffOperation<TValue>[];
+export function applyTreeDiff<TValue = unknown>(
+  tree: ReadonlyArray<TreeNode<TValue>>,
+  diff: ReadonlyArray<TreeDiffOperation<TValue>>
+): TreeNode<TValue>[];
 
 /**
  * Deep clone structured data.

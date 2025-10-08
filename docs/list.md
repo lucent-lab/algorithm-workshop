@@ -104,6 +104,7 @@ Unflatten - Convert flat to nested structure
 Group By - Organize data by property
 Deep Clone - Recursive object copying
 Pagination - Client-side data paging
+Tree Diff - Compare hierarchical structures
 
 🎨 VISUAL & ANIMATION
 

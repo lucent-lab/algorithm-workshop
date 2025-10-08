@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { applyJsonDiff, diffJson, diffJsonAdvanced } from '../src/data/jsonDiff.js';
+import { applyJsonDiff, applyJsonDiffSelective, diffJson, diffJsonAdvanced } from '../src/data/jsonDiff.js';
 
 describe('diffJson', () => {
   it('produces replace operations for primitive changes at root', () => {
@@ -66,5 +66,36 @@ describe('diffJson', () => {
       pathFilter: (path) => !(path.length === 1 && path[0] === 'status'),
     });
     expect(diff).toEqual([{ op: 'replace', path: ['metrics', 'cpu'], value: 15 }]);
+  });
+
+  it('applies patches selectively based on path', () => {
+    const previous = {
+      settings: { theme: 'light', debug: false },
+      counter: 1,
+    };
+    const next = {
+      settings: { theme: 'dark', debug: true },
+      counter: 2,
+    };
+
+    const diff = diffJson(previous, next);
+
+    const filtered = applyJsonDiffSelective(previous, diff, {
+      pathFilter: (path) => !(path.length === 2 && path[0] === 'settings' && path[1] === 'debug'),
+    });
+
+    expect(filtered).toEqual({
+      settings: { theme: 'dark', debug: false },
+      counter: 2,
+    });
+
+    const allowed = applyJsonDiffSelective(previous, diff, {
+      shouldApply: (operation) => operation.path[0] === 'settings',
+    });
+
+    expect(allowed).toEqual({
+      settings: { theme: 'dark', debug: true },
+      counter: 1,
+    });
   });
 });
