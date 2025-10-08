@@ -33,6 +33,7 @@ describe('package entry point', () => {
     expect(examples.gameplay.createPlatformerController).toBe('examples/platformerPhysics.ts');
     expect(examples.gameplay.createTopDownController).toBe('examples/topDownMovement.ts');
     expect(examples.gameplay.createTileMapController).toBe('examples/tileMap.ts');
+    expect(examples.gameplay.computeFieldOfView).toBe('examples/shadowcasting.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
   });
@@ -109,6 +110,7 @@ describe('package entry point', () => {
       | 'createPlatformerController'
       | 'createTopDownController'
       | 'createTileMapController'
+      | 'computeFieldOfView'
     >();
   });
 });

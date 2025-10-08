@@ -99,6 +99,7 @@ export const examples = {
     createPlatformerController: 'examples/platformerPhysics.ts',
     createTopDownController: 'examples/topDownMovement.ts',
     createTileMapController: 'examples/tileMap.ts',
+    computeFieldOfView: 'examples/shadowcasting.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -608,6 +609,23 @@ export type {
   VisibleTile,
   ChunkCoordinate,
 } from './gameplay/tileMap.js';
+
+/**
+ * Shadowcasting field of view helpers.
+ *
+ * Example file: examples/shadowcasting.ts
+ */
+export {
+  computeFieldOfView,
+  transparentFromGrid,
+  transparentFromTileMap,
+} from './gameplay/shadowcasting.js';
+
+export type {
+  ShadowcastOptions,
+  FovResult,
+  FovGrid,
+} from './gameplay/shadowcasting.js';
 
 
 // ============================================================================
