@@ -157,6 +157,7 @@ export const examples = {
     hslToRgb: 'examples/color.ts',
     mixRgbColors: 'examples/color.ts',
     computeForceDirectedLayout: 'examples/forceDirected.ts',
+    computeMarchingSquares: 'examples/marchingSquares.ts',
   },
 } as const;
 
@@ -1052,6 +1053,19 @@ export type {
   ForceDirectedNode,
   ForceDirectedNodeInput,
 } from './visual/forceDirected.js';
+
+/**
+ * Marching squares contour extraction.
+ */
+export { computeMarchingSquares } from './visual/marchingSquares.js';
+
+export type {
+  MarchingSquaresOptions,
+  MarchingSquaresResult,
+  ScalarField,
+  LineSegment,
+  Point2D,
+} from './visual/marchingSquares.js';
 
 // ============================================================================
 // 🤖 AI & BEHAVIOUR

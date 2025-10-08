@@ -89,7 +89,7 @@
 - **Visual & simulation tools**
   - [x] Color manipulation helpers (RGB/HSL conversion, blending)
   - [x] Force-directed graph layout
-  - [ ] Marching squares contour extraction
+  - [x] Marching squares contour extraction
   - [ ] Marching cubes isosurface generation
 - **Graph algorithms**
   - [ ] Minimum spanning tree (Kruskal)
