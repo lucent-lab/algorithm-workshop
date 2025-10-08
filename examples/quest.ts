@@ -1,6 +1,6 @@
 import { createQuestMachine } from '../src/index.js';
 
-const quest = createQuestMachine({
+const quest = createQuestMachine<{ reputation: number; reward: number }, { hasItem?: boolean }>({
   initial: 'start',
   context: { reputation: 0, reward: 0 },
   states: [

@@ -6,7 +6,7 @@ describe('createQuestMachine', () => {
   it('advances states based on events and conditions', () => {
     const context = { reputation: 0, reward: 0 };
 
-    const machine = createQuestMachine({
+    const machine = createQuestMachine<{ reputation: number; reward: number }, { hasItem?: boolean }>({
       context,
       initial: 'start',
       states: [
@@ -50,7 +50,7 @@ describe('createQuestMachine', () => {
   });
 
   it('serializes and resets state', () => {
-    const machine = createQuestMachine({
+    const machine = createQuestMachine<{ progress: number }, unknown>({
       context: { progress: 0 },
       initial: 'start',
       states: [{ id: 'start' }, { id: 'end', terminal: true }],

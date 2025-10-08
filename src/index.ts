@@ -104,6 +104,7 @@ export const examples = {
     calculateDamage: 'examples/combat.ts',
     createCooldownController: 'examples/combat.ts',
     createQuestMachine: 'examples/quest.ts',
+    computeLightingGrid: 'examples/lighting.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -684,6 +685,21 @@ export type {
   QuestMachine,
   QuestMachineSnapshot,
 } from './gameplay/questMachine.js';
+
+/**
+ * 2D lighting helpers for tile maps.
+ *
+ * Example file: examples/lighting.ts
+ */
+export { computeLightingGrid } from './gameplay/lighting.js';
+
+export type {
+  LightingGridOptions,
+  LightingGridResult,
+  LightingCell,
+  PointLight,
+  FalloffMode,
+} from './gameplay/lighting.js';
 
 
 // ============================================================================

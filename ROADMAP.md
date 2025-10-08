@@ -62,8 +62,8 @@
 - **Systems for gameplay loops**
   - [x] Inventory system primitives (stacking, filtering, persistence hooks)
   - [x] Combat resolution helpers (cooldowns, damage formulas, status effects)
-  - [ ] Quest/dialog state machine utilities
-  - [ ] 2D lighting helpers (falloff, blending stubs)
+  - [x] Quest/dialog state machine utilities
+  - [x] 2D lighting helpers (falloff, blending stubs)
   - [ ] Wave spawner utilities for encounter pacing
   - [ ] Sound manager stubs (channel limiting, priority)
   - [ ] Input manager abstraction (keyboard/mouse/pad remapping)
