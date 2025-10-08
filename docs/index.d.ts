@@ -141,6 +141,7 @@ export const examples: {
     readonly graphBFS: 'examples/graph.ts';
     readonly graphDFS: 'examples/graph.ts';
     readonly topologicalSort: 'examples/graph.ts';
+    readonly computeMinimumSpanningTree: 'examples/kruskal.ts';
   };
   readonly geometry: {
     readonly convexHull: 'examples/geometry.ts';
@@ -2862,6 +2863,40 @@ export function graphDFS(
  * Import: graph/traversal.ts
  */
 export function topologicalSort(graph: Graph): string[];
+
+/**
+ * Weighted edge representation for MST computation.
+ * Import: graph/kruskal.ts
+ */
+export interface WeightedEdge {
+  source: string;
+  target: string;
+  weight: number;
+}
+
+/**
+ * Options for computing a minimum spanning tree via Kruskal's algorithm.
+ * Import: graph/kruskal.ts
+ */
+export interface KruskalOptions {
+  nodes: ReadonlyArray<string>;
+  edges: ReadonlyArray<WeightedEdge>;
+}
+
+/**
+ * Result payload for a minimum spanning tree.
+ * Import: graph/kruskal.ts
+ */
+export interface MinimumSpanningTree {
+  edges: WeightedEdge[];
+  totalWeight: number;
+}
+
+/**
+ * Computes a minimum spanning tree using Kruskal's algorithm.
+ * Import: graph/kruskal.ts
+ */
+export function computeMinimumSpanningTree(options: KruskalOptions): MinimumSpanningTree;
 
 // ============================================================================
 // 📐 GEOMETRY & VISUALS
