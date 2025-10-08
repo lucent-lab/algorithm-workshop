@@ -96,6 +96,7 @@ export const examples = {
     createParticleSystem: 'examples/particleSystem.ts',
     createSpriteAnimation: 'examples/spriteAnimation.ts',
     createTweenSystem: 'examples/tween.ts',
+    createPlatformerController: 'examples/platformerPhysics.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -550,6 +551,24 @@ export type {
   TweenSystem,
   TweenStatus,
 } from './gameplay/tween.js';
+
+/**
+ * Platformer physics controller with coyote time and jump buffering.
+ *
+ * Example file: examples/platformerPhysics.ts
+ */
+export { createPlatformerController } from './gameplay/platformerPhysics.js';
+
+/**
+ * Platformer physics options, state, and input types.
+ */
+export type {
+  PlatformerPhysicsOptions,
+  PlatformerController,
+  PlatformerCharacterState,
+  PlatformerInput,
+  PlatformerUpdateOptions,
+} from './gameplay/platformerPhysics.js';
 
 
 // ============================================================================

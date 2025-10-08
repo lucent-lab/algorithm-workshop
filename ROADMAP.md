@@ -55,7 +55,7 @@
   - [x] Particle system with configurable emitters
   - [x] Sprite animation controller (frame timing, events)
   - [x] Tween/lerp utility for smooth interpolation
-  - [ ] Platformer physics helper (gravity, coyote time, jump buffering)
+  - [x] Platformer physics helper (gravity, coyote time, jump buffering)
   - [ ] Top-down movement helper (8-direction)
   - [ ] Tile map renderer helpers (chunking, layering, collision tags)
   - [ ] Shadowcasting field-of-view utilities and minimap helpers

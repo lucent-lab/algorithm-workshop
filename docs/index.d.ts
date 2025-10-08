@@ -1224,6 +1224,79 @@ export interface TweenSystem {
 export function createTweenSystem(options?: TweenSystemOptions): TweenSystem;
 
 /**
+ * Platformer physics configuration options.
+ * Use for: tuning acceleration, gravity, and jump responsiveness.
+ * Import: gameplay/platformerPhysics.ts
+ */
+export interface PlatformerPhysicsOptions {
+  acceleration: number;
+  deceleration: number;
+  maxSpeed: number;
+  gravity: number;
+  jumpVelocity: number;
+  maxFallSpeed?: number;
+  airControl?: number;
+  coyoteTime?: number;
+  jumpBufferTime?: number;
+  jumpCutMultiplier?: number;
+}
+
+/**
+ * Platformer character state snapshot.
+ * Use for: feeding into collision systems and rendering.
+ * Import: gameplay/platformerPhysics.ts
+ */
+export interface PlatformerCharacterState {
+  position: Vector2D;
+  velocity: Vector2D;
+  onGround: boolean;
+}
+
+/**
+ * Platformer player input.
+ * Use for: representing movement axis and jump presses.
+ * Import: gameplay/platformerPhysics.ts
+ */
+export interface PlatformerInput {
+  move: number;
+  jump: boolean;
+}
+
+/**
+ * Platformer update payload.
+ * Use for: advancing physics with delta time and collision info.
+ * Import: gameplay/platformerPhysics.ts
+ */
+export interface PlatformerUpdateOptions {
+  delta: number;
+  input: PlatformerInput;
+  onGround: boolean;
+}
+
+/**
+ * Platformer physics controller API.
+ * Use for: updating motion, resetting state, and retuning options.
+ * Import: gameplay/platformerPhysics.ts
+ */
+export interface PlatformerController {
+  update(options: PlatformerUpdateOptions): PlatformerCharacterState;
+  getState(): PlatformerCharacterState;
+  reset(state?: Partial<PlatformerCharacterState>): void;
+  setOptions(options: Partial<PlatformerPhysicsOptions>): void;
+}
+
+/**
+ * Creates a platformer physics controller with coyote time and jump buffering.
+ * Use for: responsive side-scroller movement and jump handling.
+ * Performance: O(1) per update.
+ * Import: gameplay/platformerPhysics.ts
+ */
+export function createPlatformerController(
+  options: PlatformerPhysicsOptions,
+  initialState?: PlatformerCharacterState
+): PlatformerController;
+
+/**
  * Least recently used cache.
  * Use for: memoizing responses, data loaders, pagination caches.
  * Performance: O(1) get/set.
