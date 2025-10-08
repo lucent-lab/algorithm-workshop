@@ -95,6 +95,7 @@ export const examples = {
     createCamera2D: 'examples/camera2D.ts',
     createParticleSystem: 'examples/particleSystem.ts',
     createSpriteAnimation: 'examples/spriteAnimation.ts',
+    createTweenSystem: 'examples/tween.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -531,6 +532,24 @@ export type {
   SpriteAnimationEvent,
   SpritePlaybackMode,
 } from './gameplay/spriteAnimation.js';
+
+/**
+ * Tween system for interpolating numeric values with easing and repeats.
+ *
+ * Example file: examples/tween.ts
+ */
+export { createTweenSystem } from './gameplay/tween.js';
+
+/**
+ * Tween system configuration, controller, and status types.
+ */
+export type {
+  TweenOptions,
+  TweenController,
+  TweenSystemOptions,
+  TweenSystem,
+  TweenStatus,
+} from './gameplay/tween.js';
 
 
 // ============================================================================

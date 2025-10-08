@@ -54,7 +54,7 @@
   - [x] 2D camera system (smooth follow, dead zones, screen shake)
   - [x] Particle system with configurable emitters
   - [x] Sprite animation controller (frame timing, events)
-  - [ ] Tween/lerp utility for smooth interpolation
+  - [x] Tween/lerp utility for smooth interpolation
   - [ ] Platformer physics helper (gravity, coyote time, jump buffering)
   - [ ] Top-down movement helper (8-direction)
   - [ ] Tile map renderer helpers (chunking, layering, collision tags)
