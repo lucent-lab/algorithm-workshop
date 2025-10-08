@@ -87,7 +87,7 @@
   - [x] Pagination utilities for client-side paging
 - [x] Advanced diff tooling (tree diff, selective patches)
 - **Visual & simulation tools**
-  - [ ] Color manipulation helpers (RGB/HSL conversion, blending)
+  - [x] Color manipulation helpers (RGB/HSL conversion, blending)
   - [ ] Force-directed graph layout
   - [ ] Marching squares contour extraction
   - [ ] Marching cubes isosurface generation

@@ -151,6 +151,11 @@ export const examples = {
     easing: 'examples/visual.ts',
     quadraticBezier: 'examples/visual.ts',
     cubicBezier: 'examples/visual.ts',
+    hexToRgb: 'examples/color.ts',
+    rgbToHex: 'examples/color.ts',
+    rgbToHsl: 'examples/color.ts',
+    hslToRgb: 'examples/color.ts',
+    mixRgbColors: 'examples/color.ts',
   },
 } as const;
 
@@ -1026,6 +1031,13 @@ export { easing } from './visual/easing.js';
  * Quadratic and cubic Bézier helpers for animation curves.
  */
 export { quadraticBezier, cubicBezier } from './visual/bezier.js';
+
+/**
+ * Color conversion and blending utilities.
+ */
+export { hexToRgb, rgbToHex, rgbToHsl, hslToRgb, mixRgbColors } from './visual/color.js';
+
+export type { RGBColor, HSLColor, MixColorOptions } from './visual/color.js';
 
 // ============================================================================
 // 🤖 AI & BEHAVIOUR

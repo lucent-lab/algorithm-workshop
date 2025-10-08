@@ -152,6 +152,11 @@ export const examples: {
     readonly easing: 'examples/visual.ts';
     readonly quadraticBezier: 'examples/visual.ts';
     readonly cubicBezier: 'examples/visual.ts';
+    readonly hexToRgb: 'examples/color.ts';
+    readonly rgbToHex: 'examples/color.ts';
+    readonly rgbToHsl: 'examples/color.ts';
+    readonly hslToRgb: 'examples/color.ts';
+    readonly mixRgbColors: 'examples/color.ts';
   };
 };
 
@@ -2937,6 +2942,74 @@ export function cubicBezier(
   p3: Point,
   t: number
 ): Point;
+
+/**
+ * RGB color representation.
+ * Use for: interop between CSS colors and rendering utilities.
+ * Import: visual/color.ts
+ */
+export interface RGBColor {
+  r: number;
+  g: number;
+  b: number;
+  a?: number;
+}
+
+/**
+ * HSL color representation.
+ * Use for: manipulating saturation and lightness in color tools.
+ * Import: visual/color.ts
+ */
+export interface HSLColor {
+  h: number;
+  s: number;
+  l: number;
+  a?: number;
+}
+
+/**
+ * Options for blending RGB colors.
+ * Use for: creating palette variations and gradients.
+ * Import: visual/color.ts
+ */
+export interface MixColorOptions {
+  ratio?: number;
+}
+
+/**
+ * Converts a hex color string into RGB components.
+ * Use for: parsing palette tokens, shader inputs, CSS colours.
+ * Import: visual/color.ts
+ */
+export function hexToRgb(hex: string): RGBColor;
+
+/**
+ * Converts RGB components into a hex color string.
+ * Use for: serialising computed colours, theme export.
+ * Import: visual/color.ts
+ */
+export function rgbToHex(color: RGBColor): string;
+
+/**
+ * Converts an RGB color to HSL.
+ * Use for: adjusting saturation/lightness while preserving hue.
+ * Import: visual/color.ts
+ */
+export function rgbToHsl(color: RGBColor): HSLColor;
+
+/**
+ * Converts an HSL color back to RGB.
+ * Use for: creating display-ready colors after HSL manipulations.
+ * Import: visual/color.ts
+ */
+export function hslToRgb(color: HSLColor): RGBColor;
+
+/**
+ * Blends two RGB colors together.
+ * Use for: highlight colors, gradients, and hover states.
+ * Import: visual/color.ts
+ */
+export function mixRgbColors(a: RGBColor, b: RGBColor, options?: MixColorOptions): RGBColor;
 
 // ============================================================================
 // 🤖 STEERING BEHAVIOURS
