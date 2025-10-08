@@ -1511,6 +1511,80 @@ export function transparentFromTileMap(
 ): (x: number, y: number) => boolean;
 
 /**
+ * Inventory item representation.
+ * Use for: describing stackable items and metadata.
+ * Import: gameplay/inventory.ts
+ */
+export interface InventoryItem<TMeta = unknown> {
+  id: string;
+  quantity: number;
+  metadata?: TMeta;
+}
+
+/**
+ * Inventory slot container.
+ * Use for: iterating over slots and applying UI bindings.
+ * Import: gameplay/inventory.ts
+ */
+export interface InventorySlot<TMeta = unknown> {
+  item: InventoryItem<TMeta> | null;
+}
+
+/**
+ * Inventory configuration options.
+ * Use for: defining slot capacity, max stack size, and item filters.
+ * Import: gameplay/inventory.ts
+ */
+export interface InventoryOptions<TMeta = unknown> {
+  slots: number;
+  maxStack?: number;
+  filter?: (item: InventoryItem<TMeta>) => boolean;
+}
+
+/**
+ * Inventory snapshot serialisation.
+ * Use for: saving/loading inventory state.
+ * Import: gameplay/inventory.ts
+ */
+export interface InventorySnapshot<TMeta = unknown> {
+  slots: Array<InventoryItem<TMeta> | null>;
+}
+
+/**
+ * Inventory controller API.
+ * Use for: adding/removing items, filtering, and serialising state.
+ * Import: gameplay/inventory.ts
+ */
+export interface InventoryController<TMeta = unknown> {
+  addItem(item: AddItemOptions<TMeta>): number;
+  removeItem(id: string, quantity: number): number;
+  getTotalQuantity(id: string): number;
+  getSlots(): ReadonlyArray<InventorySlot<TMeta>>;
+  clear(): void;
+  filter(predicate: (item: InventoryItem<TMeta>) => boolean): InventoryItem<TMeta>[];
+  toJSON(): InventorySnapshot<TMeta>;
+  load(snapshot: InventorySnapshot<TMeta>): void;
+}
+
+/**
+ * Creates a stack-based inventory.
+ * Use for: RPG inventories, loot systems, crafting requirements.
+ * Import: gameplay/inventory.ts
+ */
+export function createInventory<TMeta>(options: InventoryOptions<TMeta>): InventoryController<TMeta>;
+
+/**
+ * Item insertion payload used by the inventory controller.
+ * Use for: adding items with quantity and metadata.
+ * Import: gameplay/inventory.ts
+ */
+export interface AddItemOptions<TMeta = unknown> {
+  id: string;
+  quantity: number;
+  metadata?: TMeta;
+}
+
+/**
  * Least recently used cache.
  * Use for: memoizing responses, data loaders, pagination caches.
  * Performance: O(1) get/set.
