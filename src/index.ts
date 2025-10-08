@@ -97,6 +97,7 @@ export const examples = {
     createSpriteAnimation: 'examples/spriteAnimation.ts',
     createTweenSystem: 'examples/tween.ts',
     createPlatformerController: 'examples/platformerPhysics.ts',
+    createTopDownController: 'examples/topDownMovement.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -569,6 +570,24 @@ export type {
   PlatformerInput,
   PlatformerUpdateOptions,
 } from './gameplay/platformerPhysics.js';
+
+/**
+ * Top-down movement controller for 8-direction navigation.
+ *
+ * Example file: examples/topDownMovement.ts
+ */
+export { createTopDownController } from './gameplay/topDownMovement.js';
+
+/**
+ * Top-down movement configuration, state, and input types.
+ */
+export type {
+  TopDownMovementOptions,
+  TopDownController,
+  TopDownState,
+  TopDownInput,
+  TopDownUpdateOptions,
+} from './gameplay/topDownMovement.js';
 
 
 // ============================================================================

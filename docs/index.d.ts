@@ -1297,6 +1297,73 @@ export function createPlatformerController(
 ): PlatformerController;
 
 /**
+ * Top-down movement options.
+ * Use for: configuring acceleration, deceleration, and max speed for 2D characters.
+ * Import: gameplay/topDownMovement.ts
+ */
+export interface TopDownMovementOptions {
+  acceleration: number;
+  deceleration: number;
+  maxSpeed: number;
+  drag?: number;
+  normalizeDiagonal?: boolean;
+}
+
+/**
+ * Top-down movement state snapshot.
+ * Use for: rendering and collision updates.
+ * Import: gameplay/topDownMovement.ts
+ */
+export interface TopDownState {
+  position: Vector2D;
+  velocity: Vector2D;
+  facing: Vector2D;
+}
+
+/**
+ * Top-down movement input axes.
+ * Use for: feeding directional input (-1..1).
+ * Import: gameplay/topDownMovement.ts
+ */
+export interface TopDownInput {
+  x: number;
+  y: number;
+}
+
+/**
+ * Top-down movement update payload.
+ * Use for: advancing the controller with delta time and current input.
+ * Import: gameplay/topDownMovement.ts
+ */
+export interface TopDownUpdateOptions {
+  delta: number;
+  input: TopDownInput;
+}
+
+/**
+ * Top-down movement controller API.
+ * Use for: updating state, resetting, and retuning movement parameters.
+ * Import: gameplay/topDownMovement.ts
+ */
+export interface TopDownController {
+  update(options: TopDownUpdateOptions): TopDownState;
+  getState(): TopDownState;
+  reset(state?: Partial<TopDownState>): void;
+  setOptions(options: Partial<TopDownMovementOptions>): void;
+}
+
+/**
+ * Creates a top-down movement controller with acceleration and damping.
+ * Use for: eight-direction movement in action or RPG games.
+ * Performance: O(1) per update.
+ * Import: gameplay/topDownMovement.ts
+ */
+export function createTopDownController(
+  options: TopDownMovementOptions,
+  initialState?: TopDownState
+): TopDownController;
+
+/**
  * Least recently used cache.
  * Use for: memoizing responses, data loaders, pagination caches.
  * Performance: O(1) get/set.

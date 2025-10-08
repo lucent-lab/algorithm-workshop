@@ -31,6 +31,7 @@ describe('package entry point', () => {
     expect(examples.gameplay.createSpriteAnimation).toBe('examples/spriteAnimation.ts');
     expect(examples.gameplay.createTweenSystem).toBe('examples/tween.ts');
     expect(examples.gameplay.createPlatformerController).toBe('examples/platformerPhysics.ts');
+    expect(examples.gameplay.createTopDownController).toBe('examples/topDownMovement.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
   });
@@ -105,6 +106,7 @@ describe('package entry point', () => {
       | 'createSpriteAnimation'
       | 'createTweenSystem'
       | 'createPlatformerController'
+      | 'createTopDownController'
     >();
   });
 });
