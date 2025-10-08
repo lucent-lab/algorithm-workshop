@@ -156,6 +156,7 @@ export const examples = {
     rgbToHsl: 'examples/color.ts',
     hslToRgb: 'examples/color.ts',
     mixRgbColors: 'examples/color.ts',
+    computeForceDirectedLayout: 'examples/forceDirected.ts',
   },
 } as const;
 
@@ -1038,6 +1039,19 @@ export { quadraticBezier, cubicBezier } from './visual/bezier.js';
 export { hexToRgb, rgbToHex, rgbToHsl, hslToRgb, mixRgbColors } from './visual/color.js';
 
 export type { RGBColor, HSLColor, MixColorOptions } from './visual/color.js';
+
+/**
+ * Force-directed graph layout helper.
+ */
+export { computeForceDirectedLayout } from './visual/forceDirected.js';
+
+export type {
+  ForceDirectedLayoutOptions,
+  ForceDirectedLayoutResult,
+  ForceDirectedEdge,
+  ForceDirectedNode,
+  ForceDirectedNodeInput,
+} from './visual/forceDirected.js';
 
 // ============================================================================
 // 🤖 AI & BEHAVIOUR
