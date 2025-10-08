@@ -98,6 +98,7 @@ export const examples = {
     createTweenSystem: 'examples/tween.ts',
     createPlatformerController: 'examples/platformerPhysics.ts',
     createTopDownController: 'examples/topDownMovement.ts',
+    createTileMapController: 'examples/tileMap.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -588,6 +589,25 @@ export type {
   TopDownInput,
   TopDownUpdateOptions,
 } from './gameplay/topDownMovement.js';
+
+/**
+ * Tile map controller for chunked rendering and collision queries.
+ *
+ * Example file: examples/tileMap.ts
+ */
+export { createTileMapController } from './gameplay/tileMap.js';
+
+/**
+ * Tile map configuration, layers, and visibility types.
+ */
+export type {
+  TileMapOptions,
+  TileMapLayer,
+  TileMapViewport,
+  TileMapController,
+  VisibleTile,
+  ChunkCoordinate,
+} from './gameplay/tileMap.js';
 
 
 // ============================================================================

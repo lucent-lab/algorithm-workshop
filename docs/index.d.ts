@@ -1364,6 +1364,91 @@ export function createTopDownController(
 ): TopDownController;
 
 /**
+ * Tile map layer definition.
+ * Use for: storing tile ids per layer with optional collision mask.
+ * Import: gameplay/tileMap.ts
+ */
+export interface TileMapLayer {
+  name: string;
+  data: ReadonlyArray<number>;
+  collision?: ReadonlyArray<boolean>;
+}
+
+/**
+ * Tile map configuration.
+ * Use for: describing map dimensions, tile size, layers, and chunking.
+ * Import: gameplay/tileMap.ts
+ */
+export interface TileMapOptions {
+  width: number;
+  height: number;
+  tileWidth: number;
+  tileHeight: number;
+  layers: ReadonlyArray<TileMapLayer>;
+  chunkWidth?: number;
+  chunkHeight?: number;
+}
+
+/**
+ * Tile map viewport in world coordinates.
+ * Use for: determining visible tiles/chunks.
+ * Import: gameplay/tileMap.ts
+ */
+export interface TileMapViewport {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+/**
+ * Tile chunk coordinate.
+ * Use for: referencing chunks during rendering or streaming.
+ * Import: gameplay/tileMap.ts
+ */
+export interface ChunkCoordinate {
+  cx: number;
+  cy: number;
+}
+
+/**
+ * Visible tile description.
+ * Use for: rendering visible tiles with layer and world coordinates.
+ * Import: gameplay/tileMap.ts
+ */
+export interface VisibleTile {
+  layer: string;
+  tileIndex: number;
+  tileId: number;
+  mapX: number;
+  mapY: number;
+  worldX: number;
+  worldY: number;
+}
+
+/**
+ * Tile map controller API.
+ * Use for: querying tiles, collisions, visible tiles/chunks.
+ * Import: gameplay/tileMap.ts
+ */
+export interface TileMapController {
+  getTile(layerName: string, x: number, y: number): number;
+  setTile(layerName: string, x: number, y: number, tileId: number): void;
+  isCollidable(x: number, y: number): boolean;
+  getVisibleTiles(viewport: TileMapViewport): VisibleTile[];
+  getVisibleChunks(viewport: TileMapViewport): ChunkCoordinate[];
+  getChunkSize(): Vector2D;
+}
+
+/**
+ * Creates a tile map controller for chunked rendering and collision checks.
+ * Use for: tile map streaming, layering, and collision tagging.
+ * Performance: O(visible tiles) per query.
+ * Import: gameplay/tileMap.ts
+ */
+export function createTileMapController(options: TileMapOptions): TileMapController;
+
+/**
  * Least recently used cache.
  * Use for: memoizing responses, data loaders, pagination caches.
  * Performance: O(1) get/set.
