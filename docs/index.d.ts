@@ -1449,6 +1449,68 @@ export interface TileMapController {
 export function createTileMapController(options: TileMapOptions): TileMapController;
 
 /**
+ * Shadowcasting options for field-of-view calculation.
+ * Use for: tuning radius, transparency, and callbacks during FOV computation.
+ * Import: gameplay/shadowcasting.ts
+ */
+export interface ShadowcastOptions {
+  radius: number;
+  transparent: (x: number, y: number) => boolean;
+  reveal?: (x: number, y: number) => void;
+}
+
+/**
+ * Field-of-view computation result.
+ * Use for: checking visibility of tiles.
+ * Import: gameplay/shadowcasting.ts
+ */
+export interface FovResult {
+  visible: Set<string>;
+  isVisible(x: number, y: number): boolean;
+}
+
+/**
+ * Boolean grid describing transparency.
+ * Use for: building transparency callbacks for shadowcasting.
+ * Import: gameplay/shadowcasting.ts
+ */
+export interface FovGrid {
+  width: number;
+  height: number;
+  tiles: ReadonlyArray<boolean>;
+}
+
+/**
+ * Computes field of view using recursive shadowcasting.
+ * Use for: roguelike FOV, fog-of-war, and lighting probes.
+ * Performance: O(radius^2) in practice.
+ * Import: gameplay/shadowcasting.ts
+ */
+export function computeFieldOfView(
+  originX: number,
+  originY: number,
+  options: ShadowcastOptions
+): FovResult;
+
+/**
+ * Creates a transparency function from a boolean grid.
+ * Use for: quick FOV prototypes.
+ * Import: gameplay/shadowcasting.ts
+ */
+export function transparentFromGrid(grid: FovGrid): (x: number, y: number) => boolean;
+
+/**
+ * Creates a transparency function backed by a tile map controller.
+ * Use for: integrating tile maps with shadowcasting FOV.
+ * Import: gameplay/shadowcasting.ts
+ */
+export function transparentFromTileMap(
+  map: TileMapController,
+  layerName: string,
+  passable: (tileId: number) => boolean
+): (x: number, y: number) => boolean;
+
+/**
  * Least recently used cache.
  * Use for: memoizing responses, data loaders, pagination caches.
  * Performance: O(1) get/set.

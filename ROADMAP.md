@@ -58,7 +58,7 @@
   - [x] Platformer physics helper (gravity, coyote time, jump buffering)
   - [x] Top-down movement helper (8-direction)
   - [x] Tile map renderer helpers (chunking, layering, collision tags)
-  - [ ] Shadowcasting field-of-view utilities and minimap helpers
+  - [x] Shadowcasting field-of-view utilities and minimap helpers
 - **Systems for gameplay loops**
   - [ ] Inventory system primitives (stacking, filtering, persistence hooks)
   - [ ] Combat resolution helpers (cooldowns, damage formulas, status effects)
