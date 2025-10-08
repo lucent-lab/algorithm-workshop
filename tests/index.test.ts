@@ -114,6 +114,7 @@ describe('package entry point', () => {
       | 'createInventory'
       | 'calculateDamage'
       | 'createCooldownController'
+      | 'updateStatusEffects'
       | 'createQuestMachine'
     >();
   });
