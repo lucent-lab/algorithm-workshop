@@ -157,6 +157,7 @@ export const examples: {
     readonly rgbToHsl: 'examples/color.ts';
     readonly hslToRgb: 'examples/color.ts';
     readonly mixRgbColors: 'examples/color.ts';
+    readonly computeForceDirectedLayout: 'examples/forceDirected.ts';
   };
 };
 
@@ -3010,6 +3011,76 @@ export function hslToRgb(color: HSLColor): RGBColor;
  * Import: visual/color.ts
  */
 export function mixRgbColors(a: RGBColor, b: RGBColor, options?: MixColorOptions): RGBColor;
+
+/**
+ * Node definition for force-directed layout input.
+ * Use for: positioning graph vertices in 2D space.
+ * Import: visual/forceDirected.ts
+ */
+export interface ForceDirectedNodeInput {
+  id: string;
+  x?: number;
+  y?: number;
+  fixed?: boolean;
+}
+
+/**
+ * Resulting node with resolved coordinates after layout.
+ * Use for: rendering graphs, network diagrams, simulations.
+ * Import: visual/forceDirected.ts
+ */
+export interface ForceDirectedNode extends ForceDirectedNodeInput {
+  x: number;
+  y: number;
+}
+
+/**
+ * Edge definition for force-directed layout.
+ * Use for: describing relationships between nodes.
+ * Import: visual/forceDirected.ts
+ */
+export interface ForceDirectedEdge {
+  source: string;
+  target: string;
+  weight?: number;
+}
+
+/**
+ * Configuration options for the force-directed layout.
+ * Use for: tuning iteration count, repulsion, gravity, and bounds.
+ * Import: visual/forceDirected.ts
+ */
+export interface ForceDirectedLayoutOptions {
+  nodes: ReadonlyArray<ForceDirectedNodeInput>;
+  edges: ReadonlyArray<ForceDirectedEdge>;
+  width?: number;
+  height?: number;
+  iterations?: number;
+  repulsion?: number;
+  attraction?: number;
+  damping?: number;
+  gravity?: number;
+  initialTemperature?: number;
+  random?: () => number;
+}
+
+/**
+ * Result payload from the force-directed layout computation.
+ * Use for: feeding coordinates into rendering pipelines.
+ * Import: visual/forceDirected.ts
+ */
+export interface ForceDirectedLayoutResult {
+  nodes: ForceDirectedNode[];
+}
+
+/**
+ * Computes 2D coordinates for a graph using a force-directed method.
+ * Use for: network visualisation, relationship mapping, graph diagrams.
+ * Import: visual/forceDirected.ts
+ */
+export function computeForceDirectedLayout(
+  options: ForceDirectedLayoutOptions
+): ForceDirectedLayoutResult;
 
 // ============================================================================
 // 🤖 STEERING BEHAVIOURS

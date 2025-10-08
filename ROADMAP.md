@@ -88,7 +88,7 @@
 - [x] Advanced diff tooling (tree diff, selective patches)
 - **Visual & simulation tools**
   - [x] Color manipulation helpers (RGB/HSL conversion, blending)
-  - [ ] Force-directed graph layout
+  - [x] Force-directed graph layout
   - [ ] Marching squares contour extraction
   - [ ] Marching cubes isosurface generation
 - **Graph algorithms**
