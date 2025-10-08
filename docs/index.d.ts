@@ -1695,6 +1695,86 @@ export function updateStatusEffects(
   effects: ActiveStatusEffect[],
   delta: number
 ): ActiveStatusEffect[];
+
+/**
+ * Quest state node definition.
+ * Use for: describing quest/dialog states with hooks.
+ * Import: gameplay/questMachine.ts
+ */
+export interface QuestStateNode<TContext extends Record<string, unknown>> {
+  id: string;
+  terminal?: boolean;
+  onEnter?: (context: TContext, payload?: unknown) => void;
+  onExit?: (context: TContext, payload?: unknown) => void;
+}
+
+/**
+ * Quest transition definition.
+ * Use for: wiring events to state transitions in quests/dialogs.
+ * Import: gameplay/questMachine.ts
+ */
+export interface QuestTransition<
+  TContext extends Record<string, unknown>,
+  TEvent = unknown
+> {
+  from: string;
+  to: string;
+  event: string;
+  condition?: (context: TContext, event: TEvent) => boolean;
+  action?: (context: TContext, event: TEvent) => void;
+}
+
+/**
+ * Quest machine configuration options.
+ * Use for: instantiating a quest/dialog state machine.
+ * Import: gameplay/questMachine.ts
+ */
+export interface QuestMachineOptions<
+  TContext extends Record<string, unknown>,
+  TEvent = unknown
+> {
+  states: ReadonlyArray<QuestStateNode<TContext>>;
+  transitions: ReadonlyArray<QuestTransition<TContext, TEvent>>;
+  initial: string;
+  context: TContext;
+}
+
+/**
+ * Quest machine snapshot payload.
+ * Use for: serialising quest progress.
+ * Import: gameplay/questMachine.ts
+ */
+export interface QuestMachineSnapshot<TContext extends Record<string, unknown>> {
+  state: string;
+  context: TContext;
+}
+
+/**
+ * Quest machine controller API.
+ * Use for: driving quest/dialog progression.
+ * Import: gameplay/questMachine.ts
+ */
+export interface QuestMachine<
+  TContext extends Record<string, unknown>,
+  TEvent = unknown
+> {
+  send(event: string, payload?: TEvent): boolean;
+  getState(): string;
+  getContext(): TContext;
+  isCompleted(): boolean;
+  reset(snapshot?: QuestMachineSnapshot<TContext>): void;
+  toJSON(): QuestMachineSnapshot<TContext>;
+}
+
+/**
+ * Creates a quest/dialog state machine.
+ * Use for: branching dialogue, quest progression, narrative scripting.
+ * Import: gameplay/questMachine.ts
+ */
+export function createQuestMachine<
+  TContext extends Record<string, unknown>,
+  TEvent = unknown
+>(options: QuestMachineOptions<TContext, TEvent>): QuestMachine<TContext, TEvent>;
 /**
  * Item insertion payload used by the inventory controller.
  * Use for: adding items with quantity and metadata.
