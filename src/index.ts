@@ -140,6 +140,7 @@ export const examples = {
     graphBFS: 'examples/graph.ts',
     graphDFS: 'examples/graph.ts',
     topologicalSort: 'examples/graph.ts',
+    computeMinimumSpanningTree: 'examples/kruskal.ts',
   },
   geometry: {
     convexHull: 'examples/geometry.ts',
@@ -994,6 +995,13 @@ export type {
  * Breadth-first and depth-first traversal helpers plus topological sort.
  */
 export { graphBFS, graphDFS, topologicalSort } from './graph/traversal.js';
+
+/**
+ * Minimum spanning tree computation via Kruskal's algorithm.
+ */
+export { computeMinimumSpanningTree } from './graph/kruskal.js';
+
+export type { KruskalOptions, MinimumSpanningTree, WeightedEdge } from './graph/kruskal.js';
 
 // ============================================================================
 // 📐 GEOMETRY UTILITIES

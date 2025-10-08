@@ -92,7 +92,7 @@
   - [x] Marching squares contour extraction
   - [x] Marching cubes isosurface generation
 - **Graph algorithms**
-  - [ ] Minimum spanning tree (Kruskal)
+  - [x] Minimum spanning tree (Kruskal)
   - [ ] Strongly connected components (Tarjan/Kosaraju)
   - [ ] Maximum flow (Ford–Fulkerson / Edmonds–Karp)
 - **Spatial & collision expansion**
