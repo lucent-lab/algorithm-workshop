@@ -73,7 +73,7 @@ Quest/Dialog System - Story progression and missions
 Save/Load System - Game state persistence
 2D Lighting System - Dynamic lights and shadows
 Wave Spawner - Enemy wave management
-Sound Manager - Audio playback with pooling
+Sound Manager - Channel limiting and priority playback
 Input Manager - Keyboard, mouse, gamepad handling
 Screen Transitions - Fade, slide effects
 

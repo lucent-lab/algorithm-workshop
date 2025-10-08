@@ -73,6 +73,12 @@ export const examples: {
     readonly Trie: 'examples/search.ts';
     readonly binarySearch: 'examples/search.ts';
     readonly levenshteinDistance: 'examples/search.ts';
+    readonly kmpSearch: 'examples/search.ts';
+    readonly rabinKarp: 'examples/search.ts';
+    readonly boyerMooreSearch: 'examples/search.ts';
+    readonly buildSuffixArray: 'examples/search.ts';
+    readonly longestCommonSubsequence: 'examples/search.ts';
+    readonly diffStrings: 'examples/search.ts';
   };
   readonly data: {
     readonly diff: 'examples/jsonDiff.ts';
@@ -80,6 +86,9 @@ export const examples: {
     readonly groupBy: 'examples/jsonDiff.ts';
     readonly diffJson: 'examples/jsonDiff.ts';
     readonly applyJsonDiff: 'examples/jsonDiff.ts';
+    readonly flatten: 'examples/jsonDiff.ts';
+    readonly unflatten: 'examples/jsonDiff.ts';
+    readonly paginate: 'examples/pagination.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -92,7 +101,28 @@ export const examples: {
     readonly createWeightedAliasSampler: 'examples/weightedAlias.ts';
     readonly createObjectPool: 'examples/objectPool.ts';
     readonly fisherYatesShuffle: 'examples/fisherYates.ts';
+  };
+  readonly gameplay: {
+    readonly createDeltaTimeManager: 'examples/deltaTime.ts';
     readonly createFixedTimestepLoop: 'examples/fixedTimestep.ts';
+    readonly createCamera2D: 'examples/camera2D.ts';
+    readonly createParticleSystem: 'examples/particleSystem.ts';
+    readonly createSpriteAnimation: 'examples/spriteAnimation.ts';
+    readonly createTweenSystem: 'examples/tween.ts';
+    readonly createPlatformerController: 'examples/platformerPhysics.ts';
+    readonly createTopDownController: 'examples/topDownMovement.ts';
+    readonly createTileMapController: 'examples/tileMap.ts';
+    readonly computeFieldOfView: 'examples/shadowcasting.ts';
+    readonly createInventory: 'examples/inventory.ts';
+    readonly calculateDamage: 'examples/combat.ts';
+    readonly createCooldownController: 'examples/combat.ts';
+    readonly createQuestMachine: 'examples/quest.ts';
+    readonly computeLightingGrid: 'examples/lighting.ts';
+    readonly createWaveSpawner: 'examples/waveSpawner.ts';
+    readonly createSoundManager: 'examples/soundManager.ts';
+    readonly createInputManager: 'examples/inputManager.ts';
+    readonly createSaveManager: 'examples/saveManager.ts';
+    readonly createScreenTransition: 'examples/screenTransitions.ts';
   };
   readonly ai: {
     readonly seek: 'examples/steering.ts';
@@ -103,6 +133,9 @@ export const examples: {
     readonly updateBoids: 'examples/boids.ts';
     readonly BehaviorTree: 'examples/behaviorTree.ts';
     readonly rvoStep: 'examples/rvo.ts';
+    readonly createFSM: 'examples/fsm.ts';
+    readonly createGeneticAlgorithm: 'examples/genetic.ts';
+    readonly computeInfluenceMap: 'examples/influenceMap.ts';
   };
   readonly graph: {
     readonly graphBFS: 'examples/graph.ts';
@@ -113,6 +146,7 @@ export const examples: {
     readonly convexHull: 'examples/geometry.ts';
     readonly lineIntersection: 'examples/geometry.ts';
     readonly pointInPolygon: 'examples/geometry.ts';
+    readonly bresenhamLine: 'examples/bresenham.ts';
   };
   readonly visual: {
     readonly easing: 'examples/visual.ts';
@@ -1837,6 +1871,622 @@ export interface LightingGridResult {
  * Import: gameplay/lighting.ts
  */
 export function computeLightingGrid(options: LightingGridOptions): LightingGridResult;
+
+/**
+ * Wave definition describing spawn count and timing.
+ * Use for: scheduling enemy or event waves.
+ * Import: gameplay/waveSpawner.ts
+ */
+export interface WaveDefinition<T> {
+  delay: number;
+  count: number;
+  template: T;
+  interval?: number;
+}
+
+/**
+ * Wave spawner configuration options.
+ * Use for: configuring waves and looping behaviour.
+ * Import: gameplay/waveSpawner.ts
+ */
+export interface WaveSpawnerOptions<T> {
+  waves: ReadonlyArray<WaveDefinition<T>>;
+  loop?: boolean;
+}
+
+/**
+ * Spawn payload emitted by wave spawner updates.
+ * Import: gameplay/waveSpawner.ts
+ */
+export interface SpawnPayload<T> {
+  waveIndex: number;
+  entityIndex: number;
+  template: T;
+}
+
+/**
+ * Wave spawner snapshot for serialization.
+ * Import: gameplay/waveSpawner.ts
+ */
+export interface WaveSpawnerSnapshot {
+  waveIndex: number;
+  timeUntilNextSpawn: number;
+  spawnedInWave: number;
+  looped: number;
+}
+
+/**
+ * Wave spawner controller API.
+ * Use for: advancing time and retrieving spawn payloads.
+ * Import: gameplay/waveSpawner.ts
+ */
+export interface WaveSpawner<T> {
+  update(delta: number): SpawnPayload<T>[];
+  isFinished(): boolean;
+  reset(snapshot?: WaveSpawnerSnapshot): void;
+  toJSON(): WaveSpawnerSnapshot;
+}
+
+/**
+ * Creates a wave spawner for timed encounters.
+ * Use for: spawning enemies or events in waves.
+ * Import: gameplay/waveSpawner.ts
+ */
+export function createWaveSpawner<T>(options: WaveSpawnerOptions<T>): WaveSpawner<T>;
+
+/**
+ * Sound manager configuration options.
+ * Use for: budgeting audio channels and optional per-channel limits.
+ * Import: gameplay/soundManager.ts
+ */
+export interface SoundManagerOptions {
+  maxChannels: number;
+  channelLimits?: Record<string, number>;
+  getTime?: () => number;
+}
+
+/**
+ * Options to request playback of a sound.
+ * Use for: requesting sounds with priority, duration, and metadata.
+ * Import: gameplay/soundManager.ts
+ */
+export interface PlaySoundOptions<TMetadata = unknown> {
+  soundId: string;
+  duration: number;
+  priority?: number;
+  channel?: string;
+  metadata?: TMetadata;
+  time?: number;
+}
+
+/**
+ * Handle representing an active sound.
+ * Use for: tracking playing sounds, metadata, and expiry.
+ * Import: gameplay/soundManager.ts
+ */
+export interface SoundHandle<TMetadata = unknown> {
+  handleId: number;
+  soundId: string;
+  channel: string;
+  priority: number;
+  startedAt: number;
+  endsAt: number;
+  metadata?: TMetadata;
+}
+
+/**
+ * Result of attempting to play a sound.
+ * Use for: determining whether playback was accepted or preempted another.
+ * Import: gameplay/soundManager.ts
+ */
+export interface PlaySoundResult<TMetadata = unknown> {
+  accepted: boolean;
+  handle?: SoundHandle<TMetadata>;
+  evicted?: SoundHandle<TMetadata>;
+  reason?: 'channel-limit';
+}
+
+/**
+ * Sound manager API.
+ * Use for: coordinating channel usage and expiring sounds.
+ * Import: gameplay/soundManager.ts
+ */
+export interface SoundManager<TMetadata = unknown> {
+  play(options: PlaySoundOptions<TMetadata>): PlaySoundResult<TMetadata>;
+  stop(handleId: number): SoundHandle<TMetadata> | null;
+  update(time?: number): SoundHandle<TMetadata>[];
+  getActive(): ReadonlyArray<SoundHandle<TMetadata>>;
+  setMaxChannels(count: number): void;
+  getMaxChannels(): number;
+  reset(): SoundHandle<TMetadata>[];
+}
+
+/**
+ * Creates a sound manager with channel limiting and priority controls.
+ * Use for: orchestrating audio playback requests in games.
+ * Import: gameplay/soundManager.ts
+ */
+export function createSoundManager<TMetadata = unknown>(
+  options: SoundManagerOptions
+): SoundManager<TMetadata>;
+
+/**
+ * Enumerates input action signal types.
+ * Use for: distinguishing between digital toggles and analog axes.
+ * Import: gameplay/inputManager.ts
+ */
+export type InputActionType = 'digital' | 'analog';
+
+/**
+ * Keyboard binding descriptor.
+ * Use for: mapping keys (with optional modifiers) to actions.
+ * Import: gameplay/inputManager.ts
+ */
+export interface KeyboardBinding {
+  device: 'keyboard';
+  key: string;
+  ctrlKey?: boolean;
+  shiftKey?: boolean;
+  altKey?: boolean;
+  metaKey?: boolean;
+}
+
+/**
+ * Mouse binding descriptor.
+ * Use for: connecting pointer buttons to actions.
+ * Import: gameplay/inputManager.ts
+ */
+export interface MouseBinding {
+  device: 'mouse';
+  button: number;
+}
+
+/**
+ * Gamepad button binding descriptor.
+ * Use for: linking controller buttons to actions.
+ * Import: gameplay/inputManager.ts
+ */
+export interface GamepadButtonBinding {
+  device: 'gamepad-button';
+  button: string | number;
+  gamepadId?: string;
+}
+
+/**
+ * Gamepad axis binding descriptor.
+ * Use for: connecting analog stick axes to actions.
+ * Import: gameplay/inputManager.ts
+ */
+export interface GamepadAxisBinding {
+  device: 'gamepad-axis';
+  axis: number;
+  direction?: 'positive' | 'negative' | 'both';
+  threshold?: number;
+  gamepadId?: string;
+}
+
+/**
+ * Union describing supported input bindings.
+ * Import: gameplay/inputManager.ts
+ */
+export type InputBinding =
+  | KeyboardBinding
+  | MouseBinding
+  | GamepadButtonBinding
+  | GamepadAxisBinding;
+
+/**
+ * Action definition used when creating the input manager.
+ * Use for: declaring action ids and default bindings.
+ * Import: gameplay/inputManager.ts
+ */
+export interface InputActionDefinition {
+  id: string;
+  bindings: ReadonlyArray<InputBinding>;
+  type?: InputActionType;
+  deadzone?: number;
+}
+
+/**
+ * Input manager configuration options.
+ * Use for: supplying action definitions and time sources.
+ * Import: gameplay/inputManager.ts
+ */
+export interface InputManagerOptions {
+  actions: ReadonlyArray<InputActionDefinition>;
+  getTime?: () => number;
+  defaultAxisThreshold?: number;
+}
+
+/**
+ * Runtime state snapshot for an action.
+ * Import: gameplay/inputManager.ts
+ */
+export interface InputActionState {
+  id: string;
+  active: boolean;
+  value: number;
+  changedAt: number;
+  type: InputActionType;
+}
+
+/**
+ * Keyboard event payload accepted by the manager.
+ * Import: gameplay/inputManager.ts
+ */
+export interface KeyInputEvent {
+  type: 'down' | 'up';
+  key: string;
+  ctrlKey?: boolean;
+  shiftKey?: boolean;
+  altKey?: boolean;
+  metaKey?: boolean;
+  time?: number;
+}
+
+/**
+ * Pointer event payload accepted by the manager.
+ * Import: gameplay/inputManager.ts
+ */
+export interface PointerInputEvent {
+  type: 'down' | 'up';
+  button: number;
+  time?: number;
+}
+
+/**
+ * Gamepad button event payload accepted by the manager.
+ * Import: gameplay/inputManager.ts
+ */
+export interface GamepadButtonEvent {
+  type: 'down' | 'up';
+  button: string | number;
+  value?: number;
+  gamepadId?: string;
+  time?: number;
+}
+
+/**
+ * Gamepad axis event payload accepted by the manager.
+ * Import: gameplay/inputManager.ts
+ */
+export interface GamepadAxisEvent {
+  axis: number;
+  value: number;
+  gamepadId?: string;
+  time?: number;
+}
+
+/**
+ * Input manager controller API.
+ * Use for: handling events and querying remappable action states.
+ * Import: gameplay/inputManager.ts
+ */
+export interface InputManager {
+  handleKeyEvent(event: KeyInputEvent): boolean;
+  handlePointerEvent(event: PointerInputEvent): boolean;
+  handleGamepadButton(event: GamepadButtonEvent): boolean;
+  handleGamepadAxis(event: GamepadAxisEvent): boolean;
+  isActive(actionId: string): boolean;
+  getValue(actionId: string): number;
+  getState(actionId: string): InputActionState | undefined;
+  getActions(): ReadonlyArray<InputActionState>;
+  getBindings(actionId: string): ReadonlyArray<InputBinding>;
+  setBindings(actionId: string, bindings: ReadonlyArray<InputBinding>): void;
+  reset(): void;
+}
+
+/**
+ * Creates an input manager for keyboard, mouse, and gamepad remapping.
+ * Use for: abstracting input handling across devices.
+ * Import: gameplay/inputManager.ts
+ */
+export function createInputManager(options: InputManagerOptions): InputManager;
+
+/**
+ * Metadata describing a saved slot entry.
+ * Import: gameplay/saveManager.ts
+ */
+export interface SaveSlotMetadata {
+  slotId: string;
+  checksum: string;
+  updatedAt: number;
+  size: number;
+  version?: number;
+}
+
+/**
+ * Result returned after saving a slot.
+ * Import: gameplay/saveManager.ts
+ */
+export interface SaveResult {
+  metadata: SaveSlotMetadata;
+  overwritten?: SaveSlotMetadata;
+  evicted?: ReadonlyArray<SaveSlotMetadata>;
+}
+
+/**
+ * Load failure reasons.
+ * Import: gameplay/saveManager.ts
+ */
+export type LoadError = 'not-found' | 'corrupted' | 'parse-error';
+
+/**
+ * Result returned when loading a slot.
+ * Import: gameplay/saveManager.ts
+ */
+export interface LoadResult<T> {
+  ok: boolean;
+  slotId: string;
+  data?: T;
+  metadata?: SaveSlotMetadata;
+  error?: LoadError;
+}
+
+/**
+ * Minimal storage adapter contract for persistence.
+ * Import: gameplay/saveManager.ts
+ */
+export interface SaveStorageAdapter {
+  getItem(key: string): string | null;
+  setItem(key: string, value: string): void;
+  removeItem(key: string): void;
+  keys(): Iterable<string>;
+}
+
+/**
+ * Configuration options for the save manager.
+ * Import: gameplay/saveManager.ts
+ */
+export interface SaveManagerOptions<T> {
+  prefix?: string;
+  storage?: SaveStorageAdapter;
+  serializer?: (data: T) => string;
+  deserializer?: (raw: string) => T;
+  checksum?: (raw: string) => string;
+  getTime?: () => number;
+  version?: number;
+  maxSlots?: number;
+}
+
+/**
+ * Save manager API for slot-based persistence.
+ * Import: gameplay/saveManager.ts
+ */
+export interface SaveManager<T> {
+  save(slotId: string, data: T, time?: number): SaveResult;
+  load(slotId: string): LoadResult<T>;
+  delete(slotId: string): SaveSlotMetadata | null;
+  list(): ReadonlyArray<SaveSlotMetadata>;
+  get(slotId: string): SaveSlotMetadata | null;
+  verify(slotId: string): boolean;
+  clear(): ReadonlyArray<SaveSlotMetadata>;
+  getStorage(): SaveStorageAdapter;
+}
+
+/**
+ * Creates an in-memory storage adapter useful for tests.
+ * Import: gameplay/saveManager.ts
+ */
+export function createMemorySaveStorage(): SaveStorageAdapter;
+
+/**
+ * Creates a save manager with slot metadata and checksum verification.
+ * Import: gameplay/saveManager.ts
+ */
+export function createSaveManager<T>(options: SaveManagerOptions<T>): SaveManager<T>;
+
+/**
+ * Screen transition configuration.
+ * Use for: defining fade-in/out durations and easing.
+ * Import: gameplay/screenTransitions.ts
+ */
+export interface ScreenTransitionOptions {
+  durationIn: number;
+  durationOut: number;
+  hold?: number;
+  easingIn?: (t: number) => number;
+  easingOut?: (t: number) => number;
+}
+
+/**
+ * Snapshot of transition progress.
+ * Import: gameplay/screenTransitions.ts
+ */
+export interface ScreenTransitionState {
+  phase: 'idle' | 'in' | 'hold' | 'out' | 'completed';
+  progress: number;
+  value: number;
+  elapsed: number;
+  totalDuration: number;
+}
+
+/**
+ * Controller for screen transitions.
+ * Import: gameplay/screenTransitions.ts
+ */
+export interface ScreenTransitionController {
+  start(): void;
+  update(delta: number): ScreenTransitionState;
+  getState(): ScreenTransitionState;
+  reset(): void;
+  isActive(): boolean;
+  isCompleted(): boolean;
+}
+
+/**
+ * Creates a transition controller for fades/letterboxing/wipes.
+ * Import: gameplay/screenTransitions.ts
+ */
+export function createScreenTransition(options: ScreenTransitionOptions): ScreenTransitionController;
+
+/**
+ * Fade effect helper returning current opacity.
+ * Import: gameplay/screenTransitions.ts
+ */
+export interface FadeResult {
+  opacity: number;
+}
+export function computeFade(state: ScreenTransitionState): FadeResult;
+
+/**
+ * Horizontal wipe effect helper.
+ * Import: gameplay/screenTransitions.ts
+ */
+export interface WipeResult {
+  offset: number;
+  direction: 'left' | 'right';
+}
+export function computeHorizontalWipe(state: ScreenTransitionState, direction?: 'left' | 'right'): WipeResult;
+
+/**
+ * Letterbox effect helper returning bar size.
+ * Import: gameplay/screenTransitions.ts
+ */
+export interface LetterboxResult {
+  barSize: number;
+}
+export function computeLetterbox(state: ScreenTransitionState, maxBar: number): LetterboxResult;
+
+/**
+ * FSM state definition.
+ * Import: ai/fsm.ts
+ */
+export interface StateDefinition<TContext, TEvent> {
+  id: string;
+  onEnter?: (context: TContext, event?: TEvent) => void;
+  onExit?: (context: TContext, event?: TEvent) => void;
+  onUpdate?: (context: TContext, delta: number) => void;
+}
+
+/**
+ * FSM transition definition.
+ * Import: ai/fsm.ts
+ */
+export interface TransitionDefinition<TContext, TEvent> {
+  from: string;
+  to: string;
+  event: string;
+  condition?: (context: TContext, event: TEvent) => boolean;
+  action?: (context: TContext, event: TEvent) => void;
+}
+
+/**
+ * Finite state machine configuration options.
+ * Import: ai/fsm.ts
+ */
+export interface FSMOptions<TContext, TEvent> {
+  initial: string;
+  context: TContext;
+  states: ReadonlyArray<StateDefinition<TContext, TEvent>>;
+  transitions?: ReadonlyArray<TransitionDefinition<TContext, TEvent>>;
+}
+
+/**
+ * Finite state machine controller API.
+ * Import: ai/fsm.ts
+ */
+export interface FSMController<TContext, TEvent> {
+  send(eventName: string, payload: TEvent): boolean;
+  update(delta: number): void;
+  getState(): string;
+  getContext(): TContext;
+  reset(stateId?: string): void;
+}
+
+/**
+ * Creates a finite state machine.
+ * Import: ai/fsm.ts
+ */
+export function createFSM<TContext, TEvent>(options: FSMOptions<TContext, TEvent>): FSMController<TContext, TEvent>;
+
+/**
+ * Parent selection function signature for the GA helper.
+ * Import: ai/genetic.ts
+ */
+export type ParentSelector<T> = (
+  population: ReadonlyArray<T>,
+  fitnesses: ReadonlyArray<number>,
+  random: () => number,
+  maximize: boolean
+) => number;
+
+/**
+ * Genetic algorithm configuration options.
+ * Import: ai/genetic.ts
+ */
+export interface GeneticAlgorithmOptions<T> {
+  population: ReadonlyArray<T>;
+  fitness: (individual: T) => number;
+  mutate: (individual: T, random: () => number) => T;
+  crossover?: (a: T, b: T, random: () => number) => T;
+  selection?: ParentSelector<T>;
+  elitism?: number;
+  maximize?: boolean;
+  random?: () => number;
+}
+
+/**
+ * Genetic algorithm controller.
+ * Import: ai/genetic.ts
+ */
+export interface GeneticAlgorithmController<T> {
+  step(): void;
+  run(generations: number): void;
+  getPopulation(): ReadonlyArray<T>;
+  getBest(): { individual: T; fitness: number };
+  getGeneration(): number;
+}
+
+/**
+ * Creates a genetic algorithm helper for evolutionary optimisation.
+ * Import: ai/genetic.ts
+ */
+export function createGeneticAlgorithm<T>(
+  options: GeneticAlgorithmOptions<T>
+): GeneticAlgorithmController<T>;
+
+/**
+ * Influence map source definition.
+ * Import: ai/influenceMap.ts
+ */
+export interface InfluenceSource {
+  position: { x: number; y: number };
+  strength: number;
+  radius?: number;
+  falloff?: 'linear' | 'inverse' | 'constant';
+}
+
+/**
+ * Influence map configuration options.
+ * Import: ai/influenceMap.ts
+ */
+export interface InfluenceMapOptions {
+  width: number;
+  height: number;
+  cellSize?: number;
+  sources: ReadonlyArray<InfluenceSource>;
+  obstacles?: (x: number, y: number) => boolean;
+  /** Optional [0, 1] smoothing factor applied after contributions. */
+  decay?: number;
+}
+
+/**
+ * Influence map result payload.
+ * Import: ai/influenceMap.ts
+ */
+export interface InfluenceMapResult {
+  width: number;
+  height: number;
+  cellSize: number;
+  values: Float32Array;
+}
+
+/**
+ * Computes an influence map for AI positioning.
+ * Import: ai/influenceMap.ts
+ */
+export function computeInfluenceMap(options: InfluenceMapOptions): InfluenceMapResult;
 /**
  * Item insertion payload used by the inventory controller.
  * Use for: adding items with quantity and metadata.
@@ -1920,12 +2570,88 @@ export function binarySearch<T>(
 ): number;
 
 /**
+ * Knuth–Morris–Pratt substring search.
+ * Use for: searching within large texts with linear complexity.
+ * Performance: O(n + m) where n = text length, m = pattern length.
+ * Import: search/kmp.ts
+ */
+export interface KMPSearchOptions {
+  text: string;
+  pattern: string;
+  caseSensitive?: boolean;
+}
+export function kmpSearch(options: KMPSearchOptions): number[];
+
+/**
+ * Rabin–Karp substring search supporting multiple patterns.
+ * Use for: scanning texts for multiple signatures with rolling hashes.
+ * Performance: O(n + m) expected, depending on hash collisions.
+ * Import: search/rabinKarp.ts
+ */
+export interface RabinKarpOptions {
+  text: string;
+  patterns: ReadonlyArray<string>;
+  prime?: number;
+  base?: number;
+  caseSensitive?: boolean;
+}
+export function rabinKarp(options: RabinKarpOptions): Record<string, number[]>;
+
+/**
+ * Boyer–Moore substring search with bad-character and good-suffix heuristics.
+ * Use for: efficient single-pattern searches on large texts.
+ * Performance: O(n) average case.
+ * Import: search/boyerMoore.ts
+ */
+export interface BoyerMooreOptions {
+  text: string;
+  pattern: string;
+  caseSensitive?: boolean;
+}
+export function boyerMooreSearch(options: BoyerMooreOptions): number[];
+
+/**
  * Levenshtein edit distance between two strings.
  * Use for: spellcheck, similarity scoring, diff tools.
  * Performance: O(n × m).
  * Import: search/levenshtein.ts
  */
 export function levenshteinDistance(a: string, b: string): number;
+
+/**
+ * Suffix array construction with LCP computation.
+ * Use for: substring queries, suffix automata, indexing.
+ * Performance: O(n log n) for suffix array, O(n) for LCP.
+ * Import: search/suffixArray.ts
+ */
+export interface SuffixArrayOptions {
+  text: string;
+  caseSensitive?: boolean;
+}
+export interface SuffixArrayResult {
+  suffixArray: number[];
+  lcpArray: number[];
+}
+export function buildSuffixArray(options: SuffixArrayOptions): SuffixArrayResult;
+
+/**
+ * Longest common subsequence helpers.
+ * Import: search/lcs.ts
+ */
+export interface LCSOptions {
+  a: string;
+  b: string;
+}
+export interface LCSResult {
+  length: number;
+  sequence: string;
+}
+export interface DiffOp {
+  type: 'equal' | 'insert' | 'delete';
+  value: string;
+}
+export function longestCommonSubsequence(options: LCSOptions): LCSResult;
+export function diffStrings(options: LCSOptions): DiffOp[];
 
 // ============================================================================
 // 📊 DATA TOOLS
@@ -1962,6 +2688,60 @@ export type JsonDiffOperation =
   | { op: 'replace'; path: JsonPathSegment[]; value: JsonValue };
 export function diffJson(previous: JsonValue, next: JsonValue): JsonDiffOperation[];
 export function applyJsonDiff<T extends JsonValue>(value: T, diff: JsonDiffOperation[]): JsonValue;
+export interface DiffJsonAdvancedOptions {
+  ignoreKeys?: ReadonlyArray<string>;
+  pathFilter?: (path: JsonPathSegment[]) => boolean;
+}
+export function diffJsonAdvanced(
+  previous: JsonValue,
+  next: JsonValue,
+  options?: DiffJsonAdvancedOptions
+): JsonDiffOperation[];
+
+/**
+ * Flattens nested structures into key/value pairs.
+ * Use for: serialising nested configs, diffing deeply nested settings.
+ * Import: data/flatten.ts
+ */
+export interface FlattenOptions {
+  delimiter?: string;
+}
+export function flatten(value: unknown, options?: FlattenOptions): Record<string, unknown>;
+
+/**
+ * Expands flattened key/value pairs back into nested structures.
+ * Use for: restoring configuration objects, merging patches.
+ * Import: data/flatten.ts
+ */
+export interface UnflattenOptions {
+  delimiter?: string;
+}
+export function unflatten(entries: Record<string, unknown>, options?: UnflattenOptions): unknown;
+
+/**
+ * Paginates arrays with metadata describing the slice.
+ * Use for: client-side paging, infinite scroll, batching exports.
+ * Performance: O(pageSize) for slicing.
+ * Import: data/pagination.ts
+ */
+export interface PaginateOptions<T> {
+  items: ReadonlyArray<T>;
+  page: number;
+  pageSize: number;
+}
+export interface PaginationMetadata {
+  page: number;
+  pageSize: number;
+  totalItems: number;
+  totalPages: number;
+  hasPrevious: boolean;
+  hasNext: boolean;
+}
+export interface PaginationResult<T> {
+  items: T[];
+  metadata: PaginationMetadata;
+}
+export function paginate<T>(options: PaginateOptions<T>): PaginationResult<T>;
 
 /**
  * Deep clone structured data.

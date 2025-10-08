@@ -100,6 +100,20 @@ describe('package entry point', () => {
       | 'fisherYatesShuffle'
     >();
 
+    expectTypeOf<ExampleName<'search'>>().toEqualTypeOf<
+      | 'fuzzySearch'
+      | 'fuzzyScore'
+      | 'Trie'
+      | 'binarySearch'
+      | 'levenshteinDistance'
+      | 'kmpSearch'
+      | 'rabinKarp'
+      | 'boyerMooreSearch'
+      | 'buildSuffixArray'
+      | 'longestCommonSubsequence'
+      | 'diffStrings'
+    >();
+
     expectTypeOf<ExampleName<'gameplay'>>().toEqualTypeOf<
       | 'createDeltaTimeManager'
       | 'createFixedTimestepLoop'
@@ -116,6 +130,25 @@ describe('package entry point', () => {
       | 'createCooldownController'
       | 'createQuestMachine'
       | 'computeLightingGrid'
+      | 'createWaveSpawner'
+      | 'createSoundManager'
+      | 'createInputManager'
+      | 'createSaveManager'
+      | 'createScreenTransition'
+    >();
+
+    expectTypeOf<ExampleName<'ai'>>().toEqualTypeOf<
+      | 'seek'
+      | 'flee'
+      | 'pursue'
+      | 'wander'
+      | 'arrive'
+      | 'updateBoids'
+      | 'BehaviorTree'
+      | 'rvoStep'
+      | 'createFSM'
+      | 'createGeneticAlgorithm'
+      | 'computeInfluenceMap'
     >();
   });
 });

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { applyJsonDiff, diffJson } from '../src/data/jsonDiff.js';
+import { applyJsonDiff, diffJson, diffJsonAdvanced } from '../src/data/jsonDiff.js';
 
 describe('diffJson', () => {
   it('produces replace operations for primitive changes at root', () => {
@@ -56,5 +56,15 @@ describe('diffJson', () => {
     const diff = diffJson(value, { nested: ['a', { n: 1 }] });
     expect(diff).toEqual([]);
     expect(applyJsonDiff(value, diff)).toEqual(value);
+  });
+
+  it('supports ignoreKeys and path filters', () => {
+    const previous = { status: 'idle', metrics: { cpu: 10, mem: 20 } };
+    const next = { status: 'running', metrics: { cpu: 15, mem: 20 } };
+    const diff = diffJsonAdvanced(previous, next, {
+      ignoreKeys: ['mem'],
+      pathFilter: (path) => !(path.length === 1 && path[0] === 'status'),
+    });
+    expect(diff).toEqual([{ op: 'replace', path: ['metrics', 'cpu'], value: 15 }]);
   });
 });

@@ -69,6 +69,12 @@ export const examples = {
     Trie: 'examples/search.ts',
     binarySearch: 'examples/search.ts',
     levenshteinDistance: 'examples/search.ts',
+    kmpSearch: 'examples/search.ts',
+    rabinKarp: 'examples/search.ts',
+    boyerMooreSearch: 'examples/search.ts',
+    buildSuffixArray: 'examples/search.ts',
+    longestCommonSubsequence: 'examples/search.ts',
+    diffStrings: 'examples/search.ts',
   },
   data: {
     diff: 'examples/jsonDiff.ts',
@@ -76,6 +82,9 @@ export const examples = {
     groupBy: 'examples/jsonDiff.ts',
     diffJson: 'examples/jsonDiff.ts',
     applyJsonDiff: 'examples/jsonDiff.ts',
+    flatten: 'examples/jsonDiff.ts',
+    unflatten: 'examples/jsonDiff.ts',
+    paginate: 'examples/pagination.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -105,6 +114,11 @@ export const examples = {
     createCooldownController: 'examples/combat.ts',
     createQuestMachine: 'examples/quest.ts',
     computeLightingGrid: 'examples/lighting.ts',
+    createWaveSpawner: 'examples/waveSpawner.ts',
+    createSoundManager: 'examples/soundManager.ts',
+    createInputManager: 'examples/inputManager.ts',
+    createSaveManager: 'examples/saveManager.ts',
+    createScreenTransition: 'examples/screenTransitions.ts',
   },
   ai: {
     seek: 'examples/steering.ts',
@@ -115,6 +129,9 @@ export const examples = {
     updateBoids: 'examples/boids.ts',
     BehaviorTree: 'examples/behaviorTree.ts',
     rvoStep: 'examples/rvo.ts',
+    createFSM: 'examples/fsm.ts',
+    createGeneticAlgorithm: 'examples/genetic.ts',
+    computeInfluenceMap: 'examples/influenceMap.ts',
   },
   graph: {
     graphBFS: 'examples/graph.ts',
@@ -701,6 +718,138 @@ export type {
   FalloffMode,
 } from './gameplay/lighting.js';
 
+/**
+ * Wave spawner helper for timed encounters.
+ *
+ * Example file: examples/waveSpawner.ts
+ */
+export { createWaveSpawner } from './gameplay/waveSpawner.js';
+
+export type {
+  WaveSpawner,
+  WaveSpawnerOptions,
+  WaveDefinition,
+  SpawnPayload,
+  WaveSpawnerSnapshot,
+} from './gameplay/waveSpawner.js';
+
+/**
+ * Sound manager helper for channel limiting and priority-based playback.
+ *
+ * Example file: examples/soundManager.ts
+ */
+export { createSoundManager } from './gameplay/soundManager.js';
+
+export type {
+  SoundManager,
+  SoundManagerOptions,
+  PlaySoundOptions,
+  SoundHandle,
+  PlaySoundResult,
+} from './gameplay/soundManager.js';
+
+/**
+ * Input manager abstraction for keyboard, mouse, and gamepad remapping.
+ *
+ * Example file: examples/inputManager.ts
+ */
+export { createInputManager } from './gameplay/inputManager.js';
+
+export type {
+  InputManager,
+  InputManagerOptions,
+  InputActionDefinition,
+  InputActionState,
+  InputActionType,
+  InputBinding,
+  KeyboardBinding,
+  MouseBinding,
+  GamepadButtonBinding,
+  GamepadAxisBinding,
+  KeyInputEvent,
+  PointerInputEvent,
+  GamepadButtonEvent,
+  GamepadAxisEvent,
+} from './gameplay/inputManager.js';
+
+/**
+ * Save/load helper for slot-based persistence with checksums.
+ *
+ * Example file: examples/saveManager.ts
+ */
+export { createSaveManager, createMemorySaveStorage } from './gameplay/saveManager.js';
+
+export type {
+  SaveManager,
+  SaveManagerOptions,
+  SaveSlotMetadata,
+  SaveResult,
+  LoadResult,
+  LoadError,
+  SaveStorageAdapter,
+} from './gameplay/saveManager.js';
+
+/**
+ * Screen transition helpers (fade, wipes, letterboxing).
+ *
+ * Example file: examples/screenTransitions.ts
+ */
+export {
+  createScreenTransition,
+  computeFade,
+  computeHorizontalWipe,
+  computeLetterbox,
+} from './gameplay/screenTransitions.js';
+
+export type {
+  ScreenTransitionOptions,
+  ScreenTransitionState,
+  ScreenTransitionController,
+  FadeResult,
+  WipeResult,
+  LetterboxResult,
+} from './gameplay/screenTransitions.js';
+
+/**
+ * Finite state machine toolkit for stateful AI.
+ *
+ * Example file: examples/fsm.ts
+ */
+export { createFSM } from './ai/fsm.js';
+
+export type {
+  StateDefinition,
+  TransitionDefinition,
+  FSMOptions,
+  FSMController,
+} from './ai/fsm.js';
+
+/**
+ * Genetic algorithm helper for evolving solutions.
+ *
+ * Example file: examples/genetic.ts
+ */
+export { createGeneticAlgorithm } from './ai/genetic.js';
+
+export type {
+  GeneticAlgorithmOptions,
+  GeneticAlgorithmController,
+  ParentSelector,
+} from './ai/genetic.js';
+
+/**
+ * Influence map computation for tactical AI.
+ *
+ * Example file: examples/influenceMap.ts
+ */
+export { computeInfluenceMap } from './ai/influenceMap.js';
+
+export type {
+  InfluenceSource,
+  InfluenceMapOptions,
+  InfluenceMapResult,
+} from './ai/influenceMap.js';
+
 
 // ============================================================================
 // 🔍 SEARCH & STRING UTILITIES
@@ -720,6 +869,41 @@ export { Trie } from './search/trie.js';
  * Binary search helper for sorted arrays.
  */
 export { binarySearch } from './search/binarySearch.js';
+
+/**
+ * Knuth–Morris–Pratt substring search helper.
+ */
+export { kmpSearch } from './search/kmp.js';
+
+export type { KMPSearchOptions } from './search/kmp.js';
+
+/**
+ * Rabin–Karp multiple pattern matcher.
+ */
+export { rabinKarp } from './search/rabinKarp.js';
+
+export type { RabinKarpOptions } from './search/rabinKarp.js';
+
+/**
+ * Boyer–Moore substring matcher.
+ */
+export { boyerMooreSearch } from './search/boyerMoore.js';
+
+export type { BoyerMooreOptions } from './search/boyerMoore.js';
+
+/**
+ * Suffix array construction utilities.
+ */
+export { buildSuffixArray } from './search/suffixArray.js';
+
+export type { SuffixArrayOptions, SuffixArrayResult } from './search/suffixArray.js';
+
+/**
+ * Longest common subsequence and diff helpers.
+ */
+export { longestCommonSubsequence, diffStrings } from './search/lcs.js';
+
+export type { LCSOptions, LCSResult, DiffOp } from './search/lcs.js';
 
 /**
  * Levenshtein distance computation for strings.
@@ -748,7 +932,21 @@ export { groupBy } from './data/groupBy.js';
 /**
  * JSON diff and patch helpers for nested structures.
  */
-export { diffJson, applyJsonDiff } from './data/jsonDiff.js';
+export { diffJson, diffJsonAdvanced, applyJsonDiff } from './data/jsonDiff.js';
+
+/**
+ * Flatten/unflatten nested structures.
+ */
+export { flatten, unflatten } from './data/flatten.js';
+
+export type { FlattenOptions, UnflattenOptions } from './data/flatten.js';
+
+/**
+ * Pagination helper for slicing arrays with metadata.
+ */
+export { paginate } from './data/pagination.js';
+
+export type { PaginateOptions, PaginationResult, PaginationMetadata } from './data/pagination.js';
 
 /**
  * JSON diff related type exports.
@@ -758,6 +956,7 @@ export type {
   JsonPathSegment,
   JsonPrimitive,
   JsonValue,
+  DiffJsonAdvancedOptions,
 } from './data/jsonDiff.js';
 
 // ============================================================================

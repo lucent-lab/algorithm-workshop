@@ -1,11 +1,14 @@
-export interface QuestStateNode<TContext> {
+export interface QuestStateNode<TContext extends Record<string, unknown>> {
   id: string;
   terminal?: boolean;
   onEnter?: (context: TContext, payload?: unknown) => void;
   onExit?: (context: TContext, payload?: unknown) => void;
 }
 
-export interface QuestTransition<TContext, TEvent = unknown> {
+export interface QuestTransition<
+  TContext extends Record<string, unknown>,
+  TEvent = unknown
+> {
   from: string;
   to: string;
   event: string;
@@ -23,7 +26,7 @@ export interface QuestMachineOptions<
   context: TContext;
 }
 
-export interface QuestMachineSnapshot<TContext> {
+export interface QuestMachineSnapshot<TContext extends Record<string, unknown>> {
   state: string;
   context: TContext;
 }
