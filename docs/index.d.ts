@@ -1152,6 +1152,78 @@ export interface SpriteAnimationController<T = number> {
 export function createSpriteAnimation<T>(options: SpriteAnimationOptions<T>): SpriteAnimationController<T>;
 
 /**
+ * Tween status lifecycle.
+ * Use for: checking if a tween is idle, running, or completed.
+ * Import: gameplay/tween.ts
+ */
+export type TweenStatus = 'idle' | 'running' | 'completed';
+
+/**
+ * Tween configuration options.
+ * Use for: defining interpolation ranges, delay, repeats, and callbacks.
+ * Import: gameplay/tween.ts
+ */
+export interface TweenOptions {
+  duration: number;
+  delay?: number;
+  from: number;
+  to: number;
+  easing?: (t: number) => number;
+  onUpdate?: (value: number, progress: number) => void;
+  onComplete?: () => void;
+  repeat?: number;
+  yoyo?: boolean;
+}
+
+/**
+ * Tween controller API.
+ * Use for: updating individual tweens, pausing, resetting, and inspecting progress.
+ * Import: gameplay/tween.ts
+ */
+export interface TweenController {
+  update(delta: number): void;
+  getValue(): number;
+  getProgress(): number;
+  getStatus(): TweenStatus;
+  getElapsed(): number;
+  play(): void;
+  pause(): void;
+  reset(): void;
+  setSpeed(multiplier: number): void;
+  isPlaying(): boolean;
+}
+
+/**
+ * Tween system configuration options.
+ * Use for: setting a global speed multiplier.
+ * Import: gameplay/tween.ts
+ */
+export interface TweenSystemOptions {
+  speed?: number;
+}
+
+/**
+ * Tween system interface.
+ * Use for: creating tweens, updating all active tweens, and adjusting global speed.
+ * Import: gameplay/tween.ts
+ */
+export interface TweenSystem {
+  create(options: TweenOptions): TweenController;
+  update(delta: number): void;
+  setGlobalSpeed(multiplier: number): void;
+  getGlobalSpeed(): number;
+  clear(): void;
+}
+
+/**
+ * Creates a tween system with optional global speed control.
+ * Use for: coordinating UI transitions and gameplay feedback animations.
+ * Performance: O(active tweens) per update.
+ * Import: gameplay/tween.ts
+ */
+export function createTweenSystem(options?: TweenSystemOptions): TweenSystem;
+
+/**
  * Least recently used cache.
  * Use for: memoizing responses, data loaders, pagination caches.
  * Performance: O(1) get/set.
