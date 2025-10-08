@@ -158,6 +158,7 @@ export const examples = {
     mixRgbColors: 'examples/color.ts',
     computeForceDirectedLayout: 'examples/forceDirected.ts',
     computeMarchingSquares: 'examples/marchingSquares.ts',
+    computeMarchingCubes: 'examples/marchingCubes.ts',
   },
 } as const;
 
@@ -1066,6 +1067,19 @@ export type {
   LineSegment,
   Point2D,
 } from './visual/marchingSquares.js';
+
+/**
+ * Marching cubes isosurface extraction.
+ */
+export { computeMarchingCubes } from './visual/marchingCubes.js';
+
+export type {
+  MarchingCubesOptions,
+  MarchingCubesResult,
+  ScalarField3D,
+  Vector3,
+  Triangle,
+} from './visual/marchingCubes.js';
 
 // ============================================================================
 // 🤖 AI & BEHAVIOUR

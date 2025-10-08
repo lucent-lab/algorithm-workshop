@@ -34,6 +34,7 @@ describe('package entry point', () => {
     expect(examples.visual.mixRgbColors).toBe('examples/color.ts');
     expect(examples.visual.computeForceDirectedLayout).toBe('examples/forceDirected.ts');
     expect(examples.visual.computeMarchingSquares).toBe('examples/marchingSquares.ts');
+    expect(examples.visual.computeMarchingCubes).toBe('examples/marchingCubes.ts');
     expect(examples.gameplay.createDeltaTimeManager).toBe('examples/deltaTime.ts');
     expect(examples.gameplay.createFixedTimestepLoop).toBe('examples/fixedTimestep.ts');
     expect(examples.gameplay.createCamera2D).toBe('examples/camera2D.ts');
@@ -186,6 +187,7 @@ describe('package entry point', () => {
       | 'mixRgbColors'
       | 'computeForceDirectedLayout'
       | 'computeMarchingSquares'
+      | 'computeMarchingCubes'
     >();
   });
 });

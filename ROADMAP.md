@@ -90,7 +90,7 @@
   - [x] Color manipulation helpers (RGB/HSL conversion, blending)
   - [x] Force-directed graph layout
   - [x] Marching squares contour extraction
-  - [ ] Marching cubes isosurface generation
+  - [x] Marching cubes isosurface generation
 - **Graph algorithms**
   - [ ] Minimum spanning tree (Kruskal)
   - [ ] Strongly connected components (Tarjan/Kosaraju)
