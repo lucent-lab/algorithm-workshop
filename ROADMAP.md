@@ -56,7 +56,7 @@
   - [x] Sprite animation controller (frame timing, events)
   - [x] Tween/lerp utility for smooth interpolation
   - [x] Platformer physics helper (gravity, coyote time, jump buffering)
-  - [ ] Top-down movement helper (8-direction)
+  - [x] Top-down movement helper (8-direction)
   - [ ] Tile map renderer helpers (chunking, layering, collision tags)
   - [ ] Shadowcasting field-of-view utilities and minimap helpers
 - **Systems for gameplay loops**
