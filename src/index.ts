@@ -95,6 +95,7 @@ export const examples = {
     diffTree: 'examples/treeDiff.ts',
     applyTreeDiff: 'examples/treeDiff.ts',
     UnionFind: 'examples/graph.ts',
+    BinaryHeap: 'examples/binaryHeap.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1026,6 +1027,12 @@ export { diffTree, applyTreeDiff } from './data/treeDiff.js';
  * Example file: examples/graph.ts
  */
 export { UnionFind } from './data/unionFind.js';
+/**
+ * Binary heap (priority queue) with custom comparator.
+ *
+ * Example file: examples/binaryHeap.ts
+ */
+export { BinaryHeap } from './data/binaryHeap.js';
 
 export type {
   TreeNode,

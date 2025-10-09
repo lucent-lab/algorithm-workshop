@@ -97,6 +97,7 @@ export const examples: {
     readonly diffTree: 'examples/treeDiff.ts';
     readonly applyTreeDiff: 'examples/treeDiff.ts';
     readonly UnionFind: 'examples/graph.ts';
+    readonly BinaryHeap: 'examples/binaryHeap.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -2928,6 +2929,19 @@ export function groupBy<T>(
   array: readonly T[],
   key: keyof T | ((item: T) => string)
 ): Record<string, T[]>;
+
+/**
+ * Binary heap (priority queue) with custom comparator.
+ * Use for: A*/Dijkstra, schedulers, real-time queues.
+ * Import: data/binaryHeap.ts
+ */
+export class BinaryHeap<T> {
+  constructor(compare: (a: T, b: T) => number, items?: Iterable<T>);
+  readonly size: number;
+  peek(): T | undefined;
+  push(value: T): void;
+  pop(): T | undefined;
+}
 
 /**
  * Disjoint Set Union (Union-Find) with path compression and union by size.
