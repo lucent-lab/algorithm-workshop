@@ -128,6 +128,8 @@ describe('package entry point', () => {
       | 'BloomFilter'
       | 'SegmentTree'
       | 'SkipList'
+      | 'runLengthEncode'
+      | 'runLengthDecode'
     >();
 
     expectTypeOf<ExampleName<'search'>>().toEqualTypeOf<

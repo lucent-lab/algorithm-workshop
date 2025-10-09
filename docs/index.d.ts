@@ -101,6 +101,8 @@ export const examples: {
     readonly BloomFilter: 'examples/bloomFilter.ts';
     readonly SegmentTree: 'examples/segmentTree.ts';
     readonly SkipList: 'examples/skipList.ts';
+    readonly runLengthEncode: 'examples/rle.ts';
+    readonly runLengthDecode: 'examples/rle.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -2997,6 +2999,15 @@ export class SkipList<T> {
   remove(value: T): boolean;
   values(): IterableIterator<T>;
 }
+
+/**
+ * Run-length encoding for strings.
+ * Use for: simple compression of repetitive text.
+ * Import: data/rle.ts
+ */
+export interface RlePair { char: string; count: number }
+export function runLengthEncode(input: string): RlePair[];
+export function runLengthDecode(pairs: ReadonlyArray<RlePair>): string;
 
 /**
  * Disjoint Set Union (Union-Find) with path compression and union by size.
