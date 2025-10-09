@@ -98,6 +98,7 @@ export const examples: {
     readonly applyTreeDiff: 'examples/treeDiff.ts';
     readonly UnionFind: 'examples/graph.ts';
     readonly BinaryHeap: 'examples/binaryHeap.ts';
+    readonly BloomFilter: 'examples/bloomFilter.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -2941,6 +2942,23 @@ export class BinaryHeap<T> {
   peek(): T | undefined;
   push(value: T): void;
   pop(): T | undefined;
+}
+
+/**
+ * Bloom filter (probabilistic set with no false negatives).
+ * Use for: quick membership checks, caching fronts, anti-spam.
+ * Import: data/bloomFilter.ts
+ */
+export interface BloomFilterOptions {
+  size: number;
+  hashes: number;
+  seed?: number;
+}
+export class BloomFilter {
+  constructor(options: BloomFilterOptions);
+  add(value: string | number | Uint8Array): void;
+  has(value: string | number | Uint8Array): boolean;
+  static fromCapacity(capacity: number, errorRate?: number, seed?: number): BloomFilter;
 }
 
 /**

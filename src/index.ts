@@ -96,6 +96,7 @@ export const examples = {
     applyTreeDiff: 'examples/treeDiff.ts',
     UnionFind: 'examples/graph.ts',
     BinaryHeap: 'examples/binaryHeap.ts',
+    BloomFilter: 'examples/bloomFilter.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1033,6 +1034,12 @@ export { UnionFind } from './data/unionFind.js';
  * Example file: examples/binaryHeap.ts
  */
 export { BinaryHeap } from './data/binaryHeap.js';
+/**
+ * Bloom filter (probabilistic membership, no false negatives).
+ *
+ * Example file: examples/bloomFilter.ts
+ */
+export { BloomFilter } from './data/bloomFilter.js';
 
 export type {
   TreeNode,
