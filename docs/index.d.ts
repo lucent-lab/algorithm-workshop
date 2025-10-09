@@ -142,6 +142,7 @@ export const examples: {
     readonly graphDFS: 'examples/graph.ts';
     readonly topologicalSort: 'examples/graph.ts';
     readonly computeMinimumSpanningTree: 'examples/kruskal.ts';
+    readonly computeStronglyConnectedComponents: 'examples/scc.ts';
   };
   readonly geometry: {
     readonly convexHull: 'examples/geometry.ts';
@@ -2897,6 +2898,26 @@ export interface MinimumSpanningTree {
  * Import: graph/kruskal.ts
  */
 export function computeMinimumSpanningTree(options: KruskalOptions): MinimumSpanningTree;
+
+/**
+ * Strongly connected components result payload.
+ * Import: graph/scc.ts
+ */
+export interface SCCResult {
+  components: string[][];
+}
+
+/**
+ * Computes strongly connected components via Tarjan's algorithm.
+ * Import: graph/scc.ts
+ */
+export function computeStronglyConnectedComponents(graph: Graph): SCCResult;
+
+/**
+ * Builds a condensation DAG from SCCs where nodes are component indices.
+ * Import: graph/scc.ts
+ */
+export function buildCondensationGraph(graph: Graph, components: string[][]): Graph;
 
 // ============================================================================
 // 📐 GEOMETRY & VISUALS
