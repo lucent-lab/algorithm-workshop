@@ -98,6 +98,9 @@ export const examples: {
     readonly applyTreeDiff: 'examples/treeDiff.ts';
     readonly UnionFind: 'examples/graph.ts';
     readonly BinaryHeap: 'examples/binaryHeap.ts';
+    readonly BloomFilter: 'examples/bloomFilter.ts';
+    readonly SegmentTree: 'examples/segmentTree.ts';
+    readonly SkipList: 'examples/skipList.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -2941,6 +2944,58 @@ export class BinaryHeap<T> {
   peek(): T | undefined;
   push(value: T): void;
   pop(): T | undefined;
+}
+
+/**
+ * Bloom filter (probabilistic set with no false negatives).
+ * Use for: quick membership checks, caching fronts, anti-spam.
+ * Import: data/bloomFilter.ts
+ */
+export interface BloomFilterOptions {
+  size: number;
+  hashes: number;
+  seed?: number;
+}
+export class BloomFilter {
+  constructor(options: BloomFilterOptions);
+  add(value: string | number | Uint8Array): void;
+  has(value: string | number | Uint8Array): boolean;
+  static fromCapacity(capacity: number, errorRate?: number, seed?: number): BloomFilter;
+}
+
+/**
+ * Segment tree for range queries with point updates.
+ * Use for: range sums/min/max and similar associative operations.
+ * Import: data/segmentTree.ts
+ */
+export interface SegmentTreeOptions<T> {
+  values: ReadonlyArray<T>;
+  combine?: (a: T, b: T) => T;
+  identity?: T;
+}
+export class SegmentTree<T = number> {
+  constructor(options: SegmentTreeOptions<T>);
+  update(index: number, value: T): void;
+  query(left: number, right: number): T;
+}
+
+/**
+ * Skip list (probabilistic ordered set) with seeded RNG.
+ * Use for: ordered sets/maps with expected O(log n) ops.
+ * Import: data/skipList.ts
+ */
+export interface SkipListOptions<T> {
+  compare?: (a: T, b: T) => number;
+  p?: number;
+  maxLevel?: number;
+  seed?: number;
+}
+export class SkipList<T> {
+  constructor(options?: SkipListOptions<T>);
+  has(value: T): boolean;
+  insert(value: T): void;
+  remove(value: T): boolean;
+  values(): IterableIterator<T>;
 }
 
 /**

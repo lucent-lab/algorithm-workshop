@@ -96,6 +96,9 @@ export const examples = {
     applyTreeDiff: 'examples/treeDiff.ts',
     UnionFind: 'examples/graph.ts',
     BinaryHeap: 'examples/binaryHeap.ts',
+    BloomFilter: 'examples/bloomFilter.ts',
+    SegmentTree: 'examples/segmentTree.ts',
+    SkipList: 'examples/skipList.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1033,6 +1036,14 @@ export { UnionFind } from './data/unionFind.js';
  * Example file: examples/binaryHeap.ts
  */
 export { BinaryHeap } from './data/binaryHeap.js';
+// BloomFilter and SegmentTree exports land via their feature branches
+// and are available on main after merge.
+/**
+ * Skip list (probabilistic ordered set) with seeded RNG.
+ *
+ * Example file: examples/skipList.ts
+ */
+export { SkipList } from './data/skipList.js';
 
 export type {
   TreeNode,
