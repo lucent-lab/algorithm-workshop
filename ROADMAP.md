@@ -42,7 +42,7 @@
   - [x] Diamond-square terrain height map generator
   - [x] L-system generator for foliage and organic structures
   - [x] Dungeon generation suite (BSP subdivision, rooms & corridors variants)
-  - [ ] Maze algorithms pack (Recursive backtracking ✅, Prim's ✅, Kruskal's ✅, Wilson's ✅, Aldous–Broder ✅, Recursive Division ✅)
+  - [x] Maze algorithms pack (Recursive backtracking ✅, Prim's ✅, Kruskal's ✅, Wilson's ✅, Aldous–Broder ✅, Recursive Division ✅)
 - Gameplay systems & utilities:
   - [x] Fixed-timestep game loop utility with interpolation helpers
   - [x] Delta-time manager for frame-independent timing
@@ -95,15 +95,15 @@
 **Graph algorithms**
   - [x] Minimum spanning tree (Kruskal)
   - [x] Strongly connected components (Tarjan/Kosaraju)
-  - [ ] Maximum flow (Dinic preferred; Edmonds–Karp fallback)
+  - [x] Maximum flow (Dinic preferred; Edmonds–Karp fallback)
 **Spatial & collision expansion**
   - [ ] Octree partitioning for 3D space
-  - [ ] Circle collision helpers
-  - [ ] Raycasting utilities
+  - [x] Circle collision helpers
+  - [x] Raycasting utilities
   - [ ] Bounding volume hierarchy (BVH) builder
 **Data structures**
   - [ ] Binary heap priority queue
-  - [ ] Disjoint set union (union-find)
+  - [x] Disjoint set union (union-find)
   - [ ] Bloom filter probabilistic membership
   - [ ] Skip list sorted structure
   - [ ] Segment tree range query helper

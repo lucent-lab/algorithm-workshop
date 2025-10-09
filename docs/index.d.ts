@@ -94,6 +94,9 @@ export const examples: {
     readonly flatten: 'examples/jsonDiff.ts';
     readonly unflatten: 'examples/jsonDiff.ts';
     readonly paginate: 'examples/pagination.ts';
+    readonly diffTree: 'examples/treeDiff.ts';
+    readonly applyTreeDiff: 'examples/treeDiff.ts';
+    readonly UnionFind: 'examples/graph.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -2925,6 +2928,20 @@ export function groupBy<T>(
   array: readonly T[],
   key: keyof T | ((item: T) => string)
 ): Record<string, T[]>;
+
+/**
+ * Disjoint Set Union (Union-Find) with path compression and union by size.
+ * Use for: connectivity queries, Kruskal MST, clustering.
+ * Import: data/unionFind.ts
+ */
+export class UnionFind<T = number> {
+  constructor(elements?: Iterable<T>);
+  makeSet(x: T): void;
+  find(x: T): T;
+  union(a: T, b: T): boolean;
+  connected(a: T, b: T): boolean;
+  size(x: T): number;
+}
 
 // ============================================================================
 // 📈 GRAPH ALGORITHMS

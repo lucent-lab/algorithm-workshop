@@ -123,6 +123,7 @@ describe('package entry point', () => {
       | 'paginate'
       | 'diffTree'
       | 'applyTreeDiff'
+      | 'UnionFind'
     >();
 
     expectTypeOf<ExampleName<'search'>>().toEqualTypeOf<

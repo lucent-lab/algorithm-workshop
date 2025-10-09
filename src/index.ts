@@ -94,6 +94,7 @@ export const examples = {
     paginate: 'examples/pagination.ts',
     diffTree: 'examples/treeDiff.ts',
     applyTreeDiff: 'examples/treeDiff.ts',
+    UnionFind: 'examples/graph.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -412,7 +413,6 @@ export { satCollision } from './spatial/sat.js';
  */
 export { circleRayIntersection } from './spatial/circleRay.js';
 /**
-<<<<<<< HEAD
  * Fast circle-circle overlap test.
  *
  * Example file: examples/circle.ts
@@ -430,7 +430,7 @@ export { circleAabbCollision } from './spatial/circleCollision.js';
  * Example file: examples/circle.ts
  */
 export { circleSegmentIntersection } from './spatial/circleCollision.js';
-=======
+/**
  * Ray vs. segment intersection test returning closest hit.
  *
  * Example file: examples/raycast.ts
@@ -442,7 +442,6 @@ export { raycastSegment } from './spatial/raycast.js';
  * Example file: examples/raycast.ts
  */
 export { raycastAabb } from './spatial/raycast.js';
->>>>>>> 83f962b (feat(spatial): add raycasting utilities (raycastSegment, raycastAabb); docs + tests + example)
 
 /**
  * Continuous swept AABB collision detection for moving boxes.
@@ -1021,6 +1020,12 @@ export type {
  * Tree diff helpers for hierarchical data.
  */
 export { diffTree, applyTreeDiff } from './data/treeDiff.js';
+/**
+ * Disjoint Set Union (Union-Find) with path compression and union by size.
+ *
+ * Example file: examples/graph.ts
+ */
+export { UnionFind } from './data/unionFind.js';
 
 export type {
   TreeNode,
