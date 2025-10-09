@@ -143,6 +143,7 @@ export const examples: {
     readonly topologicalSort: 'examples/graph.ts';
     readonly computeMinimumSpanningTree: 'examples/kruskal.ts';
     readonly computeStronglyConnectedComponents: 'examples/scc.ts';
+    readonly computeMaximumFlowDinic: 'examples/maxflow.ts';
   };
   readonly geometry: {
     readonly convexHull: 'examples/geometry.ts';
@@ -2918,6 +2919,42 @@ export function computeStronglyConnectedComponents(graph: Graph): SCCResult;
  * Import: graph/scc.ts
  */
 export function buildCondensationGraph(graph: Graph, components: string[][]): Graph;
+
+/**
+ * Edge description for capacity graphs.
+ * Import: graph/maxflow.ts
+ */
+export interface FlowEdge {
+  source: string;
+  target: string;
+  capacity: number;
+}
+
+/**
+ * Dinic maximum flow configuration.
+ * Import: graph/maxflow.ts
+ */
+export interface MaxFlowOptions {
+  nodes: ReadonlyArray<string>;
+  edges: ReadonlyArray<FlowEdge>;
+  source: string;
+  sink: string;
+}
+
+/**
+ * Maximum flow result with per-edge flows.
+ * Import: graph/maxflow.ts
+ */
+export interface MaxFlowResult {
+  maxFlow: number;
+  flows: Array<{ source: string; target: string; flow: number }>;
+}
+
+/**
+ * Computes maximum flow using Dinic's algorithm with residual network.
+ * Import: graph/maxflow.ts
+ */
+export function computeMaximumFlowDinic(options: MaxFlowOptions): MaxFlowResult;
 
 // ============================================================================
 // 📐 GEOMETRY & VISUALS

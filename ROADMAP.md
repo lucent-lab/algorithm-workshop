@@ -93,7 +93,7 @@
   - [x] Marching cubes isosurface generation
 **Graph algorithms**
   - [x] Minimum spanning tree (Kruskal)
-  - [ ] Strongly connected components (Tarjan/Kosaraju)
+  - [x] Strongly connected components (Tarjan/Kosaraju)
   - [ ] Maximum flow (Dinic preferred; Edmonds–Karp fallback)
 **Spatial & collision expansion**
   - [ ] Octree partitioning for 3D space

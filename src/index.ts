@@ -142,6 +142,7 @@ export const examples = {
     topologicalSort: 'examples/graph.ts',
     computeMinimumSpanningTree: 'examples/kruskal.ts',
     computeStronglyConnectedComponents: 'examples/scc.ts',
+    computeMaximumFlowDinic: 'examples/maxflow.ts',
   },
   geometry: {
     convexHull: 'examples/geometry.ts',
@@ -1010,6 +1011,13 @@ export type { KruskalOptions, MinimumSpanningTree, WeightedEdge } from './graph/
 export { computeStronglyConnectedComponents, buildCondensationGraph } from './graph/scc.js';
 
 export type { SCCResult } from './graph/scc.js';
+
+/**
+ * Maximum flow via Dinic with residual network and edge flows.
+ */
+export { computeMaximumFlowDinic } from './graph/maxflow.js';
+
+export type { MaxFlowOptions, MaxFlowResult, FlowEdge } from './graph/maxflow.js';
 
 // ============================================================================
 // 📐 GEOMETRY UTILITIES
