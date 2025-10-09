@@ -65,6 +65,9 @@ export const examples: {
     readonly aabbIntersection: 'examples/sat.ts';
     readonly satCollision: 'examples/sat.ts';
     readonly circleRayIntersection: 'examples/sat.ts';
+    readonly circleCollision: 'examples/circle.ts';
+    readonly circleAabbCollision: 'examples/circle.ts';
+    readonly circleSegmentIntersection: 'examples/circle.ts';
     readonly sweptAABB: 'examples/sweptAabb.ts';
   };
   readonly search: {
@@ -188,6 +191,34 @@ export type ExampleName<C extends ExampleCategory = ExampleCategory> = keyof Exa
 // ============================================================================
 // 🎮 PATHFINDING & NAVIGATION
 // ============================================================================
+
+// ============================================================================
+// 🎯 SPATIAL & COLLISION – Circle Helpers
+// ============================================================================
+
+/**
+ * Circle vs circle overlap test.
+ * Use for: simple collision checks, proximity triggers.
+ * Performance: O(1).
+ * Import: spatial/circleCollision.ts
+ */
+export function circleCollision(a: Circle, b: Circle): boolean;
+
+/**
+ * Circle vs axis-aligned rectangle (AABB) intersection.
+ * Use for: tile collisions, UI hit-tests, broad-phase pruning.
+ * Performance: O(1).
+ * Import: spatial/circleCollision.ts
+ */
+export function circleAabbCollision(circle: Circle, rect: Rect): boolean;
+
+/**
+ * Circle vs line segment intersection test.
+ * Use for: ray/segment hits, visibility checks, bullet tests.
+ * Performance: O(1).
+ * Import: spatial/circleCollision.ts
+ */
+export function circleSegmentIntersection(circle: Circle, a: Point, b: Point): boolean;
 
 /**
  * A* pathfinding algorithm for grid-based navigation.

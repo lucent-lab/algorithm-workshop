@@ -61,6 +61,9 @@ export const examples = {
     aabbIntersection: 'examples/sat.ts',
     satCollision: 'examples/sat.ts',
     circleRayIntersection: 'examples/sat.ts',
+    circleCollision: 'examples/circle.ts',
+    circleAabbCollision: 'examples/circle.ts',
+    circleSegmentIntersection: 'examples/circle.ts',
     sweptAABB: 'examples/sweptAabb.ts',
   },
   search: {
@@ -406,6 +409,24 @@ export { satCollision } from './spatial/sat.js';
  * Example file: examples/sat.ts
  */
 export { circleRayIntersection } from './spatial/circleRay.js';
+/**
+ * Fast circle-circle overlap test.
+ *
+ * Example file: examples/circle.ts
+ */
+export { circleCollision } from './spatial/circleCollision.js';
+/**
+ * Circle vs. AABB intersection test.
+ *
+ * Example file: examples/circle.ts
+ */
+export { circleAabbCollision } from './spatial/circleCollision.js';
+/**
+ * Circle vs. line segment intersection test.
+ *
+ * Example file: examples/circle.ts
+ */
+export { circleSegmentIntersection } from './spatial/circleCollision.js';
 
 /**
  * Continuous swept AABB collision detection for moving boxes.
