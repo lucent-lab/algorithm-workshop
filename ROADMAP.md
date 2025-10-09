@@ -102,16 +102,16 @@
   - [x] Raycasting utilities
   - [ ] Bounding volume hierarchy (BVH) builder
 **Data structures**
-  - [ ] Binary heap priority queue
+  - [x] Binary heap priority queue
   - [x] Disjoint set union (union-find)
-  - [ ] Bloom filter probabilistic membership
-  - [ ] Skip list sorted structure
-  - [ ] Segment tree range query helper
+  - [x] Bloom filter probabilistic membership
+  - [x] Skip list sorted structure
+  - [x] Segment tree range query helper
 **Compression & encoding**
-  - [ ] Run-length encoding (RLE)
+  - [x] Run-length encoding (RLE)
   - [ ] Huffman coding utilities
   - [ ] LZ77 dictionary compression helper
-  - [ ] Base64 encode/decode utilities
+  - [x] Base64 encode/decode utilities
 **Geometric & numeric utilities**
   - [ ] Closest pair of points solver for geometry toolkit
 
