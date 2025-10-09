@@ -79,6 +79,7 @@ export const examples: {
     readonly buildSuffixArray: 'examples/search.ts';
     readonly longestCommonSubsequence: 'examples/search.ts';
     readonly diffStrings: 'examples/search.ts';
+    readonly createAhoCorasick: 'examples/search.ts';
   };
   readonly data: {
     readonly diff: 'examples/jsonDiff.ts';
@@ -2663,6 +2664,21 @@ export interface DiffOp {
 }
 export function longestCommonSubsequence(options: LCSOptions): LCSResult;
 export function diffStrings(options: LCSOptions): DiffOp[];
+
+/**
+ * Aho–Corasick multi-pattern automaton.
+ * Use for: scanning texts for many patterns efficiently with overlaps.
+ * Performance: O(n + m + z) where n=text length, m=total pattern length, z=matches.
+ * Import: search/ahoCorasick.ts
+ */
+export interface AhoBuildOptions {
+  patterns: ReadonlyArray<string>;
+  caseSensitive?: boolean;
+}
+export interface AhoAutomaton {
+  search(text: string): Record<string, number[]>;
+}
+export function createAhoCorasick(options: AhoBuildOptions): AhoAutomaton;
 
 // ============================================================================
 // 📊 DATA TOOLS

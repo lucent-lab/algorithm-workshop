@@ -75,6 +75,7 @@ export const examples = {
     buildSuffixArray: 'examples/search.ts',
     longestCommonSubsequence: 'examples/search.ts',
     diffStrings: 'examples/search.ts',
+    createAhoCorasick: 'examples/search.ts',
   },
   data: {
     diff: 'examples/jsonDiff.ts',
@@ -923,6 +924,11 @@ export type { LCSOptions, LCSResult, DiffOp } from './search/lcs.js';
  * Levenshtein distance computation for strings.
  */
 export { levenshteinDistance } from './search/levenshtein.js';
+
+/**
+ * Aho–Corasick multi-pattern automaton.
+ */
+export { createAhoCorasick } from './search/ahoCorasick.js';
 
 // ============================================================================
 // 📊 DATA PROCESSING
