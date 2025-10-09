@@ -141,6 +141,7 @@ export const examples = {
     graphDFS: 'examples/graph.ts',
     topologicalSort: 'examples/graph.ts',
     computeMinimumSpanningTree: 'examples/kruskal.ts',
+    computeStronglyConnectedComponents: 'examples/scc.ts',
   },
   geometry: {
     convexHull: 'examples/geometry.ts',
@@ -1002,6 +1003,13 @@ export { graphBFS, graphDFS, topologicalSort } from './graph/traversal.js';
 export { computeMinimumSpanningTree } from './graph/kruskal.js';
 
 export type { KruskalOptions, MinimumSpanningTree, WeightedEdge } from './graph/kruskal.js';
+
+/**
+ * Strongly connected components and condensation graph helpers.
+ */
+export { computeStronglyConnectedComponents, buildCondensationGraph } from './graph/scc.js';
+
+export type { SCCResult } from './graph/scc.js';
 
 // ============================================================================
 // 📐 GEOMETRY UTILITIES

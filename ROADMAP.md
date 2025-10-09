@@ -33,7 +33,7 @@
 - [x] Create benchmarking scripts to compare algorithm variants
 - [x] Expand CI to include coverage gating and bundle size checks
 
-- ## Milestone 0.4.0 – Procedural Worlds & Game Systems (Planned)
+## Milestone 0.4.0 – Procedural Worlds & Game Systems (Planned)
 - Procedural generators:
   - [x] Wave Function Collapse tile solver with options + example
   - [x] Cellular automata cave/organic generator utilities
@@ -82,36 +82,36 @@
   - [x] Boyer–Moore fast substring search
   - [x] Suffix array construction utilities
   - [x] Longest common subsequence (LCS) enhancements and diff helpers
-- **Data pipelines & utilities**
+**Data pipelines & utilities**
   - [x] Flatten/unflatten helpers for nested structures
   - [x] Pagination utilities for client-side paging
   - [x] Advanced diff tooling (tree diff, selective patches)
-- **Visual & simulation tools**
+**Visual & simulation tools**
   - [x] Color manipulation helpers (RGB/HSL conversion, blending)
   - [x] Force-directed graph layout
   - [x] Marching squares contour extraction
   - [x] Marching cubes isosurface generation
-- **Graph algorithms**
+**Graph algorithms**
   - [x] Minimum spanning tree (Kruskal)
   - [ ] Strongly connected components (Tarjan/Kosaraju)
   - [ ] Maximum flow (Dinic preferred; Edmonds–Karp fallback)
-- **Spatial & collision expansion**
+**Spatial & collision expansion**
   - [ ] Octree partitioning for 3D space
   - [ ] Circle collision helpers
   - [ ] Raycasting utilities
   - [ ] Bounding volume hierarchy (BVH) builder
-- **Data structures**
+**Data structures**
   - [ ] Binary heap priority queue
   - [ ] Disjoint set union (union-find)
   - [ ] Bloom filter probabilistic membership
   - [ ] Skip list sorted structure
   - [ ] Segment tree range query helper
-- **Compression & encoding**
+**Compression & encoding**
   - [ ] Run-length encoding (RLE)
   - [ ] Huffman coding utilities
   - [ ] LZ77 dictionary compression helper
   - [ ] Base64 encode/decode utilities
-- **Geometric & numeric utilities**
+**Geometric & numeric utilities**
   - [ ] Closest pair of points solver for geometry toolkit
 
 ### LLM‑Optimised Additions (Priority Rationale)
