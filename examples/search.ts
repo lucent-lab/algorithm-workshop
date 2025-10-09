@@ -10,6 +10,7 @@ import {
   buildSuffixArray,
   longestCommonSubsequence,
   diffStrings,
+  createAhoCorasick,
 } from '../src/index.js';
 
 const items = ['alpha', 'beta', 'delta', 'epsilon', 'gamma'];
@@ -43,3 +44,6 @@ console.log('LCS of dynamic/programming:', lcs);
 
 const diff = diffStrings({ a: 'kitten', b: 'sitting' });
 console.log('Diff between kitten and sitting:', diff);
+
+const automaton = createAhoCorasick({ patterns: ['abra', 'cad'] });
+console.log('Aho–Corasick matches in abracadabra:', automaton.search('abracadabra'));

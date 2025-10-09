@@ -137,6 +137,7 @@ describe('package entry point', () => {
       | 'buildSuffixArray'
       | 'longestCommonSubsequence'
       | 'diffStrings'
+      | 'createAhoCorasick'
     >();
 
     expectTypeOf<ExampleName<'gameplay'>>().toEqualTypeOf<

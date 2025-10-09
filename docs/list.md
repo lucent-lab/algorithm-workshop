@@ -129,6 +129,7 @@ Maximum Flow (Ford-Fulkerson) - Network flow
 
 Rabin-Karp - Multiple pattern matching
 Boyer-Moore - Fast single pattern search
+Aho–Corasick - Multi-pattern automaton
 Longest Common Subsequence - Diff algorithms
 Suffix Array - Advanced pattern matching
 

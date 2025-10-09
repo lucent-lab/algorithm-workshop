@@ -82,6 +82,7 @@
   - [x] Boyer–Moore fast substring search
   - [x] Suffix array construction utilities
   - [x] Longest common subsequence (LCS) enhancements and diff helpers
+  - [x] Aho–Corasick multi-pattern automaton
 **Data pipelines & utilities**
   - [x] Flatten/unflatten helpers for nested structures
   - [x] Pagination utilities for client-side paging
