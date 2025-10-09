@@ -85,7 +85,7 @@
 - **Data pipelines & utilities**
   - [x] Flatten/unflatten helpers for nested structures
   - [x] Pagination utilities for client-side paging
-- [x] Advanced diff tooling (tree diff, selective patches)
+  - [x] Advanced diff tooling (tree diff, selective patches)
 - **Visual & simulation tools**
   - [x] Color manipulation helpers (RGB/HSL conversion, blending)
   - [x] Force-directed graph layout
@@ -94,7 +94,7 @@
 - **Graph algorithms**
   - [x] Minimum spanning tree (Kruskal)
   - [ ] Strongly connected components (Tarjan/Kosaraju)
-  - [ ] Maximum flow (Ford–Fulkerson / Edmonds–Karp)
+  - [ ] Maximum flow (Dinic preferred; Edmonds–Karp fallback)
 - **Spatial & collision expansion**
   - [ ] Octree partitioning for 3D space
   - [ ] Circle collision helpers
@@ -113,6 +113,28 @@
   - [ ] Base64 encode/decode utilities
 - **Geometric & numeric utilities**
   - [ ] Closest pair of points solver for geometry toolkit
+
+### LLM‑Optimised Additions (Priority Rationale)
+
+These items offer the largest context and correctness savings for LLM users. Prioritize when bandwidth is limited:
+
+1) Aho–Corasick automaton (string search)
+   - Deterministic trie with failure links; long to hand-roll; great for lexing and multi‑pattern filters.
+
+2) Dinic maximum flow (graph)
+   - Level graph + blocking flow; reusable for min‑cut, image segmentation, bipartite matching.
+
+3) Suffix Automaton or Ukkonen Suffix Tree (string index)
+   - Advanced indexing primitive enabling substring queries and LCS; compact but intricate to implement.
+
+4) Delaunay Triangulation (Bowyer–Watson) + KD‑Tree (geometry)
+   - Robust triangulation and fast nearest neighbour queries are both lengthy and widely reused.
+
+5) BVH (SAH) builder (spatial)
+   - Non‑trivial tree construction with cost heuristics; useful for ray queries and collision.
+
+6) Polygon clipping (Greiner–Hormann / Weiler–Atherton)
+   - Complex boolean operations for polygons (union/intersect/diff); many edge cases.
 
 ## Milestone 1.0.0 – Production Readiness
 

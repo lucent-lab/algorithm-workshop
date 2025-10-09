@@ -153,3 +153,13 @@ Convex Hull (Graham Scan) - Boundary point detection
 Line Intersection - Check if lines cross
 Point in Polygon - Containment testing
 Closest Pair of Points - Find nearest points
+
+Planned (High LLM Value)
+
+Aho–Corasick Automaton - Multi‑pattern string matching
+Suffix Automaton - Compact substring index
+Maximum Flow (Dinic) - Network flow and min‑cut
+Delaunay Triangulation - Robust 2D triangulation
+KD‑Tree - Fast nearest neighbour queries
+BVH (SAH) - Spatial hierarchy for ray/collision
+Polygon Clipping - Boolean ops (union/intersect/diff)

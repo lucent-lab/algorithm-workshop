@@ -86,6 +86,25 @@ When requesting a new algorithm from an LLM:
 
 Consistency between runtime code, documentation, and TypeScript declarations keeps generated code trustworthy for both humans and LLMs.
 
+### Choosing High-Value Algorithms for LLMs
+
+We prioritise algorithms that are:
+
+- Complex enough to burn tokens if generated ad‑hoc (e.g., max‑flow, automata, triangulation),
+- Reusable primitives across domains (search/text, graph, geometry, spatial), and
+- Stable with many edge cases better covered by tests than by prompt iteration.
+
+Shortlist for upcoming “LLM‑optimised” modules:
+
+- Aho–Corasick (multi‑pattern)
+- Dinic (maximum flow) + min‑cut export
+- Suffix Automaton (or Ukkonen suffix tree)
+- Delaunay Triangulation (Bowyer–Watson) + KD‑Tree nearest neighbour
+- BVH (SAH) builder
+- Polygon clipping (Greiner–Hormann / Weiler–Atherton)
+
+If you’re proposing a new module, include a brief note on token savings and typical usage scenarios to keep scope aligned with this principle.
+
 ---
 
 ## ✅ Included Implementations (v0.1.0)
