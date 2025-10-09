@@ -97,6 +97,8 @@ export const examples: {
     readonly diffTree: 'examples/treeDiff.ts';
     readonly applyTreeDiff: 'examples/treeDiff.ts';
     readonly UnionFind: 'examples/graph.ts';
+    readonly BinaryHeap: 'examples/binaryHeap.ts';
+    readonly BloomFilter: 'examples/bloomFilter.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -2928,6 +2930,36 @@ export function groupBy<T>(
   array: readonly T[],
   key: keyof T | ((item: T) => string)
 ): Record<string, T[]>;
+
+/**
+ * Binary heap (priority queue) with custom comparator.
+ * Use for: A*/Dijkstra, schedulers, real-time queues.
+ * Import: data/binaryHeap.ts
+ */
+export class BinaryHeap<T> {
+  constructor(compare: (a: T, b: T) => number, items?: Iterable<T>);
+  readonly size: number;
+  peek(): T | undefined;
+  push(value: T): void;
+  pop(): T | undefined;
+}
+
+/**
+ * Bloom filter (probabilistic set with no false negatives).
+ * Use for: quick membership checks, caching fronts, anti-spam.
+ * Import: data/bloomFilter.ts
+ */
+export interface BloomFilterOptions {
+  size: number;
+  hashes: number;
+  seed?: number;
+}
+export class BloomFilter {
+  constructor(options: BloomFilterOptions);
+  add(value: string | number | Uint8Array): void;
+  has(value: string | number | Uint8Array): boolean;
+  static fromCapacity(capacity: number, errorRate?: number, seed?: number): BloomFilter;
+}
 
 /**
  * Disjoint Set Union (Union-Find) with path compression and union by size.
