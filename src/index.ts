@@ -94,6 +94,7 @@ export const examples = {
     paginate: 'examples/pagination.ts',
     diffTree: 'examples/treeDiff.ts',
     applyTreeDiff: 'examples/treeDiff.ts',
+    UnionFind: 'examples/graph.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1027,6 +1028,12 @@ export type {
  * Tree diff helpers for hierarchical data.
  */
 export { diffTree, applyTreeDiff } from './data/treeDiff.js';
+/**
+ * Disjoint Set Union (Union-Find) with path compression and union by size.
+ *
+ * Example file: examples/graph.ts
+ */
+export { UnionFind } from './data/unionFind.js';
 
 export type {
   TreeNode,
