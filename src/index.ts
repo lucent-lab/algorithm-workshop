@@ -99,6 +99,10 @@ export const examples = {
     BloomFilter: 'examples/bloomFilter.ts',
     SegmentTree: 'examples/segmentTree.ts',
     SkipList: 'examples/skipList.ts',
+    runLengthEncode: 'examples/rle.ts',
+    runLengthDecode: 'examples/rle.ts',
+    base64Encode: 'examples/base64.ts',
+    base64Decode: 'examples/base64.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1044,6 +1048,18 @@ export { BinaryHeap } from './data/binaryHeap.js';
  * Example file: examples/skipList.ts
  */
 export { SkipList } from './data/skipList.js';
+/**
+ * Run-length encoding helpers for strings.
+ *
+ * Example file: examples/rle.ts
+ */
+export { runLengthEncode, runLengthDecode } from './data/rle.js';
+/**
+ * Base64 encode/decode helpers for strings and bytes.
+ *
+ * Example file: examples/base64.ts
+ */
+export { base64Encode, base64Decode } from './data/base64.js';
 
 export type {
   TreeNode,
