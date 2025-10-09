@@ -64,6 +64,8 @@ export const examples = {
     circleCollision: 'examples/circle.ts',
     circleAabbCollision: 'examples/circle.ts',
     circleSegmentIntersection: 'examples/circle.ts',
+    raycastSegment: 'examples/raycast.ts',
+    raycastAabb: 'examples/raycast.ts',
     sweptAABB: 'examples/sweptAabb.ts',
   },
   search: {
@@ -410,6 +412,7 @@ export { satCollision } from './spatial/sat.js';
  */
 export { circleRayIntersection } from './spatial/circleRay.js';
 /**
+<<<<<<< HEAD
  * Fast circle-circle overlap test.
  *
  * Example file: examples/circle.ts
@@ -427,6 +430,19 @@ export { circleAabbCollision } from './spatial/circleCollision.js';
  * Example file: examples/circle.ts
  */
 export { circleSegmentIntersection } from './spatial/circleCollision.js';
+=======
+ * Ray vs. segment intersection test returning closest hit.
+ *
+ * Example file: examples/raycast.ts
+ */
+export { raycastSegment } from './spatial/raycast.js';
+/**
+ * Ray vs. AABB intersection using slabs method.
+ *
+ * Example file: examples/raycast.ts
+ */
+export { raycastAabb } from './spatial/raycast.js';
+>>>>>>> 83f962b (feat(spatial): add raycasting utilities (raycastSegment, raycastAabb); docs + tests + example)
 
 /**
  * Continuous swept AABB collision detection for moving boxes.

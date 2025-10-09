@@ -5,6 +5,7 @@
 // - 🎮 Pathfinding & Navigation → astar, dijkstra (examples/astar.ts)
 // - 🌍 Procedural Generation → perlin, simplex2D/3D, worley (examples/simplex.ts, examples/worley.ts)
 // - 🎯 Spatial & Collision → quadtree, aabb, sat, circleRayIntersection, sweptAABB (examples/sat.ts)
+//   plus circleCollision, circleAabbCollision, circleSegmentIntersection (examples/circle.ts), raycastSegment/Aabb (examples/raycast.ts)
 // - 🤖 AI & Behaviour → seek/flee/arrive/pursue/wander, updateBoids, BehaviorTree, rvoStep (examples/steering.ts, examples/boids.ts, examples/rvo.ts)
 // - ⚡ Web Performance → debounce, throttle, LRUCache, memoize, deduplicateRequest, virtual scroll (examples/requestDedup.ts, examples/virtualScroll.ts)
 // - 🔍 Search & Text → fuzzySearch, fuzzyScore, Trie, binarySearch, levenshteinDistance
@@ -796,6 +797,50 @@ export function satCollision(polygonA: Point[], polygonB: Point[]): CollisionMan
  * Import: spatial/circleRay.ts
  */
 export function circleRayIntersection(ray: Ray, circle: Circle): Point[];
+
+/**
+ * Circle vs circle overlap test.
+ * Use for: simple collision checks, proximity triggers.
+ * Performance: O(1).
+ * Import: spatial/circleCollision.ts
+ */
+export function circleCollision(a: Circle, b: Circle): boolean;
+
+/**
+ * Circle vs axis-aligned rectangle (AABB) intersection.
+ * Use for: tile collisions, UI hit-tests, broad-phase pruning.
+ * Performance: O(1).
+ * Import: spatial/circleCollision.ts
+ */
+export function circleAabbCollision(circle: Circle, rect: Rect): boolean;
+
+/**
+ * Circle vs line segment intersection test.
+ * Use for: ray/segment hits, visibility checks, bullet tests.
+ * Performance: O(1).
+ * Import: spatial/circleCollision.ts
+ */
+export function circleSegmentIntersection(circle: Circle, a: Point, b: Point): boolean;
+
+/**
+ * Ray vs segment intersection returning closest hit.
+ * Use for: visibility checks, line-of-sight, editor picking.
+ * Performance: O(1).
+ * Import: spatial/raycast.ts
+ */
+export interface RaycastHit {
+  point: Point;
+  distance: number;
+}
+export function raycastSegment(ray: Ray, a: Point, b: Point): RaycastHit | null;
+
+/**
+ * Ray vs AABB intersection using slabs method.
+ * Use for: fast occlusion tests, spatial queries, physics sweeps.
+ * Performance: O(1).
+ * Import: spatial/raycast.ts
+ */
+export function raycastAabb(ray: Ray, rect: Rect): RaycastHit | null;
 
 /**
  * Swept AABB collision detection for moving rectangles.
