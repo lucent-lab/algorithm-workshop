@@ -49,6 +49,28 @@ npm run size        # Enforce bundle size budget
 ## API Reference
 - Full TypeScript signatures with "Use for" and performance notes live in `docs/index.d.ts`. Keep this document in sync with `src/index.ts` so tooling and LLMs can discover the complete surface area.
 
+## Why This Library Helps LLMs
+
+Generating long, stateful algorithms inside prompts is error‑prone and wastes context window. This project intentionally ships implementations that are:
+
+- Big enough to be annoying for an LLM to re‑generate each time (reducing token burn),
+- Deterministic with parameterized options and strong typing, and
+- Covered by tests and examples so agents can compose them confidently.
+
+High‑value algorithms for LLM workflows include complex matchers, graph solvers, and geometry builders that are long, fiddly, and easy to get wrong. The roadmap highlights these under “LLM‑Optimised Additions”.
+
+### LLM‑Optimised Additions (Highlights)
+
+- Aho–Corasick multi‑pattern automaton (string matcher; long to implement, widely useful)
+- Dinic / Push‑Relabel maximum flow (network flow; many moving parts and edge cases)
+- Suffix Automaton or Ukkonen’s Suffix Tree (advanced indexing; compact surface, complex internals)
+- Delaunay Triangulation (Bowyer–Watson) + fast nearest neighbour structures (KD‑Tree)
+- BVH (SAH) or R‑Tree builders (robust spatial indexes that are non‑trivial to code)
+- Polygon clipping (Greiner–Hormann or Weiler–Atherton) for boolean ops (very token‑heavy)
+- Tarjan / Kosaraju SCC (graph decomposition; lower complexity but frequently reused)
+
+See the roadmap for the full list and status.
+
 ## Roadmap Snapshot
 - Milestone 0.2 next targets crowd-flow integrations (RVO + flow fields) and behaviour-tree decorators for richer AI control.
 - Milestone 0.4 plans a procedural + gameplay systems toolkit (Wave Function Collapse, dungeon suite, L-systems, game loop, camera, particles, inventory, combat, save/load, and more).
