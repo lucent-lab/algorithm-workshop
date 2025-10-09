@@ -97,6 +97,7 @@ export const examples = {
     UnionFind: 'examples/graph.ts',
     BinaryHeap: 'examples/binaryHeap.ts',
     BloomFilter: 'examples/bloomFilter.ts',
+    SegmentTree: 'examples/segmentTree.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1040,6 +1041,12 @@ export { BinaryHeap } from './data/binaryHeap.js';
  * Example file: examples/bloomFilter.ts
  */
 export { BloomFilter } from './data/bloomFilter.js';
+/**
+ * Segment tree for range queries with point updates.
+ *
+ * Example file: examples/segmentTree.ts
+ */
+export { SegmentTree } from './data/segmentTree.js';
 
 export type {
   TreeNode,

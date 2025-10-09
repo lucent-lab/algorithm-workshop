@@ -99,6 +99,7 @@ export const examples: {
     readonly UnionFind: 'examples/graph.ts';
     readonly BinaryHeap: 'examples/binaryHeap.ts';
     readonly BloomFilter: 'examples/bloomFilter.ts';
+    readonly SegmentTree: 'examples/segmentTree.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -2959,6 +2960,22 @@ export class BloomFilter {
   add(value: string | number | Uint8Array): void;
   has(value: string | number | Uint8Array): boolean;
   static fromCapacity(capacity: number, errorRate?: number, seed?: number): BloomFilter;
+}
+
+/**
+ * Segment tree for range queries with point updates.
+ * Use for: range sums/min/max and similar associative operations.
+ * Import: data/segmentTree.ts
+ */
+export interface SegmentTreeOptions<T> {
+  values: ReadonlyArray<T>;
+  combine?: (a: T, b: T) => T;
+  identity?: T;
+}
+export class SegmentTree<T = number> {
+  constructor(options: SegmentTreeOptions<T>);
+  update(index: number, value: T): void;
+  query(left: number, right: number): T;
 }
 
 /**

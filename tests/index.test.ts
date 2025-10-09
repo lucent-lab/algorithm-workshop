@@ -126,6 +126,7 @@ describe('package entry point', () => {
       | 'UnionFind'
       | 'BinaryHeap'
       | 'BloomFilter'
+      | 'SegmentTree'
     >();
 
     expectTypeOf<ExampleName<'search'>>().toEqualTypeOf<
