@@ -27,6 +27,9 @@ describe('package entry point', () => {
     expect(examples.data.applyJsonDiffSelective).toBe('examples/jsonDiff.ts');
     expect(examples.data.diffTree).toBe('examples/treeDiff.ts');
     expect(examples.data.applyTreeDiff).toBe('examples/treeDiff.ts');
+    expect(examples.data.createHuffmanTable).toBe('examples/huffman.ts');
+    expect(examples.data.huffmanEncode).toBe('examples/huffman.ts');
+    expect(examples.data.huffmanDecode).toBe('examples/huffman.ts');
     expect(examples.visual.hexToRgb).toBe('examples/color.ts');
     expect(examples.visual.rgbToHex).toBe('examples/color.ts');
     expect(examples.visual.rgbToHsl).toBe('examples/color.ts');
@@ -136,6 +139,9 @@ describe('package entry point', () => {
       | 'runLengthDecode'
       | 'base64Encode'
       | 'base64Decode'
+      | 'createHuffmanTable'
+      | 'huffmanEncode'
+      | 'huffmanDecode'
     >();
 
     expectTypeOf<ExampleName<'search'>>().toEqualTypeOf<

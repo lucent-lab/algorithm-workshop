@@ -109,6 +109,9 @@ export const examples: {
     readonly runLengthDecode: 'examples/rle.ts';
     readonly base64Encode: 'examples/base64.ts';
     readonly base64Decode: 'examples/base64.ts';
+    readonly createHuffmanTable: 'examples/huffman.ts';
+    readonly huffmanEncode: 'examples/huffman.ts';
+    readonly huffmanDecode: 'examples/huffman.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -3071,6 +3074,17 @@ export function runLengthDecode(pairs: ReadonlyArray<RlePair>): string;
  */
 export function base64Encode(input: string | Uint8Array): string;
 export function base64Decode(b64: string): Uint8Array;
+
+/**
+ * Huffman coding utilities for entropy compression.
+ * Use for: building compact prefix codes for textual payloads.
+ * Import: data/huffman.ts
+ */
+export interface HuffmanEncodedResult { bitString: string; table: HuffmanTable }
+export type HuffmanTable = Record<string, string>;
+export function createHuffmanTable(input: string): HuffmanTable;
+export function huffmanEncode(input: string): HuffmanEncodedResult;
+export function huffmanDecode(encoded: string, table: Readonly<HuffmanTable>): string;
 
 /**
  * Disjoint Set Union (Union-Find) with path compression and union by size.
