@@ -112,6 +112,8 @@ export const examples: {
     readonly createHuffmanTable: 'examples/huffman.ts';
     readonly huffmanEncode: 'examples/huffman.ts';
     readonly huffmanDecode: 'examples/huffman.ts';
+    readonly lz77Compress: 'examples/lz77.ts';
+    readonly lz77Decompress: 'examples/lz77.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -3085,6 +3087,16 @@ export type HuffmanTable = Record<string, string>;
 export function createHuffmanTable(input: string): HuffmanTable;
 export function huffmanEncode(input: string): HuffmanEncodedResult;
 export function huffmanDecode(encoded: string, table: Readonly<HuffmanTable>): string;
+
+/**
+ * LZ77 dictionary compression helper.
+ * Use for: streaming compression with sliding window back-references.
+ * Import: data/lz77.ts
+ */
+export interface Lz77Token { offset: number; length: number; next: string }
+export interface Lz77Options { windowSize?: number; lookaheadSize?: number }
+export function lz77Compress(input: string, options?: Lz77Options): Lz77Token[];
+export function lz77Decompress(tokens: ReadonlyArray<Lz77Token>): string;
 
 /**
  * Disjoint Set Union (Union-Find) with path compression and union by size.

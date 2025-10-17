@@ -30,6 +30,8 @@ describe('package entry point', () => {
     expect(examples.data.createHuffmanTable).toBe('examples/huffman.ts');
     expect(examples.data.huffmanEncode).toBe('examples/huffman.ts');
     expect(examples.data.huffmanDecode).toBe('examples/huffman.ts');
+    expect(examples.data.lz77Compress).toBe('examples/lz77.ts');
+    expect(examples.data.lz77Decompress).toBe('examples/lz77.ts');
     expect(examples.visual.hexToRgb).toBe('examples/color.ts');
     expect(examples.visual.rgbToHex).toBe('examples/color.ts');
     expect(examples.visual.rgbToHsl).toBe('examples/color.ts');
@@ -142,6 +144,8 @@ describe('package entry point', () => {
       | 'createHuffmanTable'
       | 'huffmanEncode'
       | 'huffmanDecode'
+      | 'lz77Compress'
+      | 'lz77Decompress'
     >();
 
     expectTypeOf<ExampleName<'search'>>().toEqualTypeOf<
