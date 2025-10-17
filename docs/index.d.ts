@@ -117,6 +117,7 @@ export const examples: {
   };
   readonly physics: {
     readonly createFoldConstraintRegistry: 'examples/foldSetup.ts';
+    readonly createCubicBarrier: 'examples/foldCubicBarrier.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -3298,6 +3299,19 @@ export function closestPair(points: ReadonlyArray<Point>): ClosestPairResult;
  * Import: physics/fold/index.ts
  */
 export function createFoldConstraintRegistry(): FoldConstraintRegistry;
+
+/**
+ * Factory for the cubic barrier potential described in Fold.
+ * Use for: enforcing inequality constraints with C^2 continuity.
+ * Import: physics/fold/cubicBarrier.ts
+ */
+export interface CubicBarrierOptions {
+  id?: string;
+  stiffness?: number;
+  maxGap?: number;
+  direction?: Vector3D;
+}
+export function createCubicBarrier(options?: CubicBarrierOptions): FoldConstraint;
 
 export type FoldConstraintType =
   | 'cubic-barrier'
