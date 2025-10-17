@@ -118,6 +118,7 @@ export const examples: {
   readonly physics: {
     readonly createFoldConstraintRegistry: 'examples/foldSetup.ts';
     readonly createCubicBarrier: 'examples/foldCubicBarrier.ts';
+    readonly computeFrozenStiffness: 'examples/foldStiffness.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -3312,6 +3313,24 @@ export interface CubicBarrierOptions {
   direction?: Vector3D;
 }
 export function createCubicBarrier(options?: CubicBarrierOptions): FoldConstraint;
+
+/**
+ * Stiffness design principle helper for frozen Fold barriers.
+ * Use for: computing \bar\kappa using mass and Hessian terms.
+ * Import: physics/fold/stiffness.ts
+ */
+export interface StiffnessDesignInput {
+  gap: number;
+  effectiveMass: number;
+  direction: Vector3D;
+  hessian: Matrix3x3;
+}
+export interface StiffnessDesignOptions {
+  epsilon?: number;
+  min?: number;
+  max?: number;
+}
+export function computeFrozenStiffness(input: StiffnessDesignInput, options?: StiffnessDesignOptions): number;
 
 export type FoldConstraintType =
   | 'cubic-barrier'
