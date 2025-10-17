@@ -48,6 +48,9 @@ describe('package entry point', () => {
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
     expect(examples.spatial.Octree).toBe('examples/octree.ts');
+    expect(examples.spatial.buildBvh).toBe('examples/bvh.ts');
+    expect(examples.spatial.queryBvh).toBe('examples/bvh.ts');
+    expect(examples.spatial.raycastBvh).toBe('examples/bvh.ts');
   });
 
   it('provides strong typing for example categories and names', () => {

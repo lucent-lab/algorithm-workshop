@@ -100,7 +100,7 @@
   - [x] Octree partitioning for 3D space
   - [x] Circle collision helpers
   - [x] Raycasting utilities
-  - [ ] Bounding volume hierarchy (BVH) builder
+  - [x] Bounding volume hierarchy (BVH) builder
 **Data structures**
   - [x] Binary heap priority queue
   - [x] Disjoint set union (union-find)
