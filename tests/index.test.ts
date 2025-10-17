@@ -58,6 +58,7 @@ describe('package entry point', () => {
     expect(examples.spatial.queryBvh).toBe('examples/bvh.ts');
     expect(examples.spatial.raycastBvh).toBe('examples/bvh.ts');
     expect(examples.physics.createFoldConstraintRegistry).toBe('examples/foldSetup.ts');
+    expect(examples.physics.createCubicBarrier).toBe('examples/foldCubicBarrier.ts');
   });
 
   it('provides strong typing for example categories and names', () => {
@@ -198,7 +199,8 @@ describe('package entry point', () => {
     >();
 
     expectTypeOf<ExampleName<'physics'>>().toEqualTypeOf<
-      'createFoldConstraintRegistry'
+      | 'createFoldConstraintRegistry'
+      | 'createCubicBarrier'
     >();
 
     expectTypeOf<ExampleName<'ai'>>().toEqualTypeOf<
