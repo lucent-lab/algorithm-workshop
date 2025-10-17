@@ -110,7 +110,7 @@
 **Compression & encoding**
   - [x] Run-length encoding (RLE)
   - [x] Huffman coding utilities
-  - [ ] LZ77 dictionary compression helper
+  - [x] LZ77 dictionary compression helper
   - [x] Base64 encode/decode utilities
 **Geometric & numeric utilities**
   - [ ] Closest pair of points solver for geometry toolkit

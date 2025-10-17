@@ -110,6 +110,8 @@ export const examples = {
     createHuffmanTable: 'examples/huffman.ts',
     huffmanEncode: 'examples/huffman.ts',
     huffmanDecode: 'examples/huffman.ts',
+    lz77Compress: 'examples/lz77.ts',
+    lz77Decompress: 'examples/lz77.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1096,6 +1098,13 @@ export { base64Encode, base64Decode } from './data/base64.js';
  */
 export { createHuffmanTable, huffmanEncode, huffmanDecode } from './data/huffman.js';
 export type { HuffmanTable, HuffmanEncodedResult } from './data/huffman.js';
+/**
+ * LZ77 dictionary compression helpers for sliding window encoding.
+ *
+ * Example file: examples/lz77.ts
+ */
+export { lz77Compress, lz77Decompress } from './data/lz77.js';
+export type { Lz77Token, Lz77Options } from './data/lz77.js';
 
 export type {
   TreeNode,
