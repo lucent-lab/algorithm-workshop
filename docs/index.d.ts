@@ -115,6 +115,9 @@ export const examples: {
     readonly lz77Compress: 'examples/lz77.ts';
     readonly lz77Decompress: 'examples/lz77.ts';
   };
+  readonly physics: {
+    readonly createFoldConstraintRegistry: 'examples/foldSetup.ts';
+  };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
     readonly throttle: 'examples/requestDedup.ts';
@@ -3285,6 +3288,80 @@ export function bresenhamLine(start: Point, end: Point): Point[];
 export interface ClosestPairResult { distance: number; pair: [Point, Point] | null }
 export function closestPair(points: ReadonlyArray<Point>): ClosestPairResult;
 
+// ============================================================================
+// ⚙️ PHYSICS & FOLD BARRIERS
+// ============================================================================
+
+/**
+ * Registry for Fold constraint factory implementations.
+ * Use for: hooking cubic/contact/wall barrier evaluators into the solver.
+ * Import: physics/fold/index.ts
+ */
+export function createFoldConstraintRegistry(): FoldConstraintRegistry;
+
+export type FoldConstraintType =
+  | 'cubic-barrier'
+  | 'contact-barrier'
+  | 'pin-barrier'
+  | 'wall-barrier'
+  | 'strain-barrier'
+  | 'friction'
+  | 'assembly'
+  | 'gap-evaluator';
+
+export interface FoldConstraintState {
+  gap: number;
+  maxGap: number;
+  stiffness: number;
+  direction: Vector3D;
+  extendedDirection?: Vector3D;
+  effectiveMass?: number;
+  metadata?: Record<string, unknown>;
+}
+
+export interface FoldComputationContext {
+  deltaTime: number;
+  iteration?: number;
+  time?: number;
+}
+
+export interface FoldConstraintEvaluation {
+  energy: number;
+  gradient: Vector3D;
+  hessian: Matrix3x3;
+}
+
+export interface FoldConstraint<TState = FoldConstraintState, TResult = FoldConstraintEvaluation> {
+  readonly type: FoldConstraintType;
+  readonly id?: string;
+  enabled: boolean;
+  evaluate(state: TState, context: FoldComputationContext): TResult;
+}
+
+export interface FoldConstraintFactory<TConfig, TState = FoldConstraintState, TResult = FoldConstraintEvaluation> {
+  readonly type: FoldConstraintType;
+  create(config: TConfig): FoldConstraint<TState, TResult>;
+}
+
+export interface FoldConstraintRegistry {
+  register<TConfig>(factory: FoldConstraintFactory<TConfig>): void;
+  get(type: FoldConstraintType): FoldConstraintFactory<unknown> | undefined;
+  list(): ReadonlyArray<FoldConstraintFactory<unknown>>;
+}
+
+export interface FoldSolverSettings {
+  maxIterations: number;
+  tolerance: number;
+  allowEarlyExit?: boolean;
+}
+
+export interface FoldSystemState {
+  positions: Array<Vector3D>;
+  velocities: Array<Vector3D>;
+  constraints: Array<FoldConstraint>;
+  settings: FoldSolverSettings;
+}
+
 /**
  * Common easing curves for animation.
  * Use for: UI transitions, motion design, data viz.
@@ -3716,6 +3793,12 @@ export interface Vector3D {
   y: number;
   z: number;
 }
+
+export type Matrix3x3 = [
+  [number, number, number],
+  [number, number, number],
+  [number, number, number]
+];
 
 export interface Rect {
   x: number;
