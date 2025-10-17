@@ -97,7 +97,7 @@
   - [x] Strongly connected components (Tarjan/Kosaraju)
   - [x] Maximum flow (Dinic preferred; Edmonds–Karp fallback)
 **Spatial & collision expansion**
-  - [ ] Octree partitioning for 3D space
+  - [x] Octree partitioning for 3D space
   - [x] Circle collision helpers
   - [x] Raycasting utilities
   - [ ] Bounding volume hierarchy (BVH) builder

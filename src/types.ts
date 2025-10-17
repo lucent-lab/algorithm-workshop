@@ -19,6 +19,15 @@ export interface Rect {
   height: number;
 }
 
+export interface Box3 {
+  x: number;
+  y: number;
+  z: number;
+  width: number;
+  height: number;
+  depth: number;
+}
+
 export interface Circle {
   x: number;
   y: number;
