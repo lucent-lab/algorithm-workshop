@@ -116,6 +116,7 @@ export const examples = {
   physics: {
     createFoldConstraintRegistry: 'examples/foldSetup.ts',
     createCubicBarrier: 'examples/foldCubicBarrier.ts',
+    computeFrozenStiffness: 'examples/foldStiffness.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1188,7 +1189,7 @@ export type { ClosestPairResult } from './geometry/closestPair.js';
 // ⚙️ PHYSICS & FOLD BARRIERS
 // ============================================================================
 
-export { createFoldConstraintRegistry, createCubicBarrier } from './physics/fold/index.js';
+export { createFoldConstraintRegistry, createCubicBarrier, computeFrozenStiffness } from './physics/fold/index.js';
 
 export type {
   CubicBarrierOptions,
@@ -1201,6 +1202,8 @@ export type {
   FoldConstraintRegistry,
   FoldSolverSettings,
   FoldSystemState,
+  StiffnessDesignInput,
+  StiffnessDesignOptions,
 } from './physics/fold/index.js';
 
 // ============================================================================
