@@ -18,6 +18,12 @@ export interface Vector3D {
   z: number;
 }
 
+export type Matrix3x3 = [
+  [number, number, number],
+  [number, number, number],
+  [number, number, number]
+];
+
 export interface Rect {
   x: number;
   y: number;

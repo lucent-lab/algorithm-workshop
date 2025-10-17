@@ -57,6 +57,7 @@ describe('package entry point', () => {
     expect(examples.spatial.buildBvh).toBe('examples/bvh.ts');
     expect(examples.spatial.queryBvh).toBe('examples/bvh.ts');
     expect(examples.spatial.raycastBvh).toBe('examples/bvh.ts');
+    expect(examples.physics.createFoldConstraintRegistry).toBe('examples/foldSetup.ts');
   });
 
   it('provides strong typing for example categories and names', () => {
@@ -71,6 +72,7 @@ describe('package entry point', () => {
       | 'gameplay'
       | 'graph'
       | 'geometry'
+      | 'physics'
       | 'visual'
     >();
 
@@ -193,6 +195,10 @@ describe('package entry point', () => {
       | 'pointInPolygon'
       | 'bresenhamLine'
       | 'closestPair'
+    >();
+
+    expectTypeOf<ExampleName<'physics'>>().toEqualTypeOf<
+      'createFoldConstraintRegistry'
     >();
 
     expectTypeOf<ExampleName<'ai'>>().toEqualTypeOf<

@@ -113,6 +113,9 @@ export const examples = {
     lz77Compress: 'examples/lz77.ts',
     lz77Decompress: 'examples/lz77.ts',
   },
+  physics: {
+    createFoldConstraintRegistry: 'examples/foldSetup.ts',
+  },
   performance: {
     debounce: 'examples/requestDedup.ts',
     throttle: 'examples/requestDedup.ts',
@@ -1179,6 +1182,24 @@ export { bresenhamLine } from './geometry/bresenham.js';
  */
 export { closestPair } from './geometry/closestPair.js';
 export type { ClosestPairResult } from './geometry/closestPair.js';
+
+// ============================================================================
+// ⚙️ PHYSICS & FOLD BARRIERS
+// ============================================================================
+
+export { createFoldConstraintRegistry } from './physics/fold/index.js';
+
+export type {
+  FoldConstraintType,
+  FoldConstraintState,
+  FoldComputationContext,
+  FoldConstraintEvaluation,
+  FoldConstraint,
+  FoldConstraintFactory,
+  FoldConstraintRegistry,
+  FoldSolverSettings,
+  FoldSystemState,
+} from './physics/fold/index.js';
 
 // ============================================================================
 // 🎨 VISUAL & ANIMATION

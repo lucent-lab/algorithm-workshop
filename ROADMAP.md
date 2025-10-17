@@ -116,7 +116,7 @@
   - [ ] Closest pair of points solver for geometry toolkit
 
 ## Milestone 0.6.0 – Fold Barrier Physics Suite (Planned)
-- [ ] Align Fold barrier scope with the paper and define shared constraint interfaces in `src/physics/fold`
+- [x] Align Fold barrier scope with the paper and define shared constraint interfaces in `src/physics/fold`
 - **Barrier primitives** (each item: runtime module + `docs/index.d.ts` entry + Vitest coverage + runnable example when feasible)
   - [ ] Cubic barrier potential (energy, gradient, Hessian evaluation)
   - [ ] Stiffness design principle for frozen barrier stiffness
