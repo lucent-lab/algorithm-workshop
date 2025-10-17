@@ -130,6 +130,8 @@ describe('package entry point', () => {
       | 'SkipList'
       | 'runLengthEncode'
       | 'runLengthDecode'
+      | 'base64Encode'
+      | 'base64Decode'
     >();
 
     expectTypeOf<ExampleName<'search'>>().toEqualTypeOf<

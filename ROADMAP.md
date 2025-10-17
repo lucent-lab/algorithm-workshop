@@ -102,18 +102,39 @@
   - [x] Raycasting utilities
   - [ ] Bounding volume hierarchy (BVH) builder
 **Data structures**
-  - [ ] Binary heap priority queue
+  - [x] Binary heap priority queue
   - [x] Disjoint set union (union-find)
-  - [ ] Bloom filter probabilistic membership
-  - [ ] Skip list sorted structure
-  - [ ] Segment tree range query helper
+  - [x] Bloom filter probabilistic membership
+  - [x] Skip list sorted structure
+  - [x] Segment tree range query helper
 **Compression & encoding**
-  - [ ] Run-length encoding (RLE)
+  - [x] Run-length encoding (RLE)
   - [ ] Huffman coding utilities
   - [ ] LZ77 dictionary compression helper
-  - [ ] Base64 encode/decode utilities
+  - [x] Base64 encode/decode utilities
 **Geometric & numeric utilities**
   - [ ] Closest pair of points solver for geometry toolkit
+
+## Milestone 0.6.0 – Fold Barrier Physics Suite (Planned)
+- [ ] Align Fold barrier scope with the paper and define shared constraint interfaces in `src/physics/fold`
+- **Barrier primitives** (each item: runtime module + `docs/index.d.ts` entry + Vitest coverage + runnable example when feasible)
+  - [ ] Cubic barrier potential (energy, gradient, Hessian evaluation)
+  - [ ] Stiffness design principle for frozen barrier stiffness
+  - [ ] Contact barrier with extended direction handling
+  - [ ] Pin constraint barrier using cubic barrier formulation
+  - [ ] Wall constraint barrier for plane collisions
+  - [ ] Triangle strain-limiting barrier driven by deformation singular values
+- **Integrator and solver**
+  - [ ] Inexact Newton integrator with beta accumulation
+  - [ ] Constraint-only line search with extended direction scaling
+  - [ ] Semi-implicit freeze schedule for barrier stiffness updates
+  - [ ] Error-reduction pass leveraging beta-delta time refinement
+  - [ ] Linear solver pipeline (PCG with 3x3 block-Jacobi preconditioner)
+- **Contact and friction infrastructure**
+  - [ ] Friction potential tied to contact force magnitude
+  - [ ] Matrix assembly with cached contact index tables
+  - [ ] Gap evaluators for point/triangle, edge/edge, and wall constraints
+  - [ ] SPD enforcement pass for elasticity Hessian blocks
 
 ### LLM‑Optimised Additions (Priority Rationale)
 

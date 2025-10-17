@@ -103,6 +103,8 @@ export const examples: {
     readonly SkipList: 'examples/skipList.ts';
     readonly runLengthEncode: 'examples/rle.ts';
     readonly runLengthDecode: 'examples/rle.ts';
+    readonly base64Encode: 'examples/base64.ts';
+    readonly base64Decode: 'examples/base64.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -3008,6 +3010,14 @@ export class SkipList<T> {
 export interface RlePair { char: string; count: number }
 export function runLengthEncode(input: string): RlePair[];
 export function runLengthDecode(pairs: ReadonlyArray<RlePair>): string;
+
+/**
+ * Base64 encode/decode utilities (UTF-8 strings and bytes).
+ * Use for: compact textual transport, data URIs, wire formats.
+ * Import: data/base64.ts
+ */
+export function base64Encode(input: string | Uint8Array): string;
+export function base64Decode(b64: string): Uint8Array;
 
 /**
  * Disjoint Set Union (Union-Find) with path compression and union by size.
