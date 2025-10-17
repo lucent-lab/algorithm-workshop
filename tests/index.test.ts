@@ -52,6 +52,7 @@ describe('package entry point', () => {
     expect(examples.gameplay.computeFieldOfView).toBe('examples/shadowcasting.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
+    expect(examples.geometry.closestPair).toBe('examples/closestPair.ts');
     expect(examples.spatial.Octree).toBe('examples/octree.ts');
     expect(examples.spatial.buildBvh).toBe('examples/bvh.ts');
     expect(examples.spatial.queryBvh).toBe('examples/bvh.ts');
@@ -184,6 +185,14 @@ describe('package entry point', () => {
       | 'createInputManager'
       | 'createSaveManager'
       | 'createScreenTransition'
+    >();
+
+    expectTypeOf<ExampleName<'geometry'>>().toEqualTypeOf<
+      | 'convexHull'
+      | 'lineIntersection'
+      | 'pointInPolygon'
+      | 'bresenhamLine'
+      | 'closestPair'
     >();
 
     expectTypeOf<ExampleName<'ai'>>().toEqualTypeOf<

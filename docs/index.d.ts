@@ -175,6 +175,7 @@ export const examples: {
     readonly lineIntersection: 'examples/geometry.ts';
     readonly pointInPolygon: 'examples/geometry.ts';
     readonly bresenhamLine: 'examples/bresenham.ts';
+    readonly closestPair: 'examples/closestPair.ts';
   };
   readonly visual: {
     readonly easing: 'examples/visual.ts';
@@ -3274,6 +3275,15 @@ export function pointInPolygon(point: Point, polygon: Point[]): boolean;
  * Import: geometry/bresenham.ts
  */
 export function bresenhamLine(start: Point, end: Point): Point[];
+
+/**
+ * Closest pair of points in 2D space.
+ * Use for: nearest neighbour queries, clustering seeds, geometric stats.
+ * Performance: O(n log n).
+ * Import: geometry/closestPair.ts
+ */
+export interface ClosestPairResult { distance: number; pair: [Point, Point] | null }
+export function closestPair(points: ReadonlyArray<Point>): ClosestPairResult;
 
 /**
  * Common easing curves for animation.

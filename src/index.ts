@@ -173,6 +173,7 @@ export const examples = {
     lineIntersection: 'examples/geometry.ts',
     pointInPolygon: 'examples/geometry.ts',
     bresenhamLine: 'examples/bresenham.ts',
+    closestPair: 'examples/closestPair.ts',
   },
   visual: {
     easing: 'examples/visual.ts',
@@ -1171,6 +1172,13 @@ export { pointInPolygon } from './geometry/pointInPolygon.js';
  * Example file: examples/bresenham.ts
  */
 export { bresenhamLine } from './geometry/bresenham.js';
+/**
+ * Closest pair of points in the plane via divide-and-conquer.
+ *
+ * Example file: examples/closestPair.ts
+ */
+export { closestPair } from './geometry/closestPair.js';
+export type { ClosestPairResult } from './geometry/closestPair.js';
 
 // ============================================================================
 // 🎨 VISUAL & ANIMATION
