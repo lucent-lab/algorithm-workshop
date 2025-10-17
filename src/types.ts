@@ -12,6 +12,12 @@ export interface Vector2D {
   y: number;
 }
 
+export interface Vector3D {
+  x: number;
+  y: number;
+  z: number;
+}
+
 export interface Rect {
   x: number;
   y: number;
@@ -37,6 +43,11 @@ export interface Circle {
 export interface Ray {
   origin: Point;
   direction: Vector2D;
+}
+
+export interface Ray3D {
+  origin: Point3D;
+  direction: Vector3D;
 }
 
 export interface GraphEdge {

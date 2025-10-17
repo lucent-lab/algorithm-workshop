@@ -71,6 +71,9 @@ export const examples: {
     readonly circleAabbCollision: 'examples/circle.ts';
     readonly circleSegmentIntersection: 'examples/circle.ts';
     readonly sweptAABB: 'examples/sweptAabb.ts';
+    readonly buildBvh: 'examples/bvh.ts';
+    readonly queryBvh: 'examples/bvh.ts';
+    readonly raycastBvh: 'examples/bvh.ts';
   };
   readonly search: {
     readonly fuzzySearch: 'examples/search.ts';
@@ -792,6 +795,42 @@ export class Octree<T = unknown> {
   query(range: Box3): Array<Point3D & { data?: T }>;
   querySphere(center: Point3D, radius: number): Array<Point3D & { data?: T }>;
 }
+
+/**
+ * Bounding volume hierarchy for accelerating 3D spatial queries.
+ * Use for: ray picking, collision broad-phase, visibility culling.
+ * Performance: O(log n) traversal for balanced trees.
+ * Import: spatial/bvh.ts
+ */
+export type BvhAxis = 'x' | 'y' | 'z';
+export interface BvhEntry<T> { item: T; bounds: Box3 }
+export interface BvhLeaf<T> { type: 'leaf'; bounds: Box3; entries: ReadonlyArray<BvhEntry<T>> }
+export interface BvhBranch<T> {
+  type: 'branch';
+  bounds: Box3;
+  axis: BvhAxis;
+  left: BvhNode<T>;
+  right: BvhNode<T>;
+}
+export type BvhNode<T> = BvhLeaf<T> | BvhBranch<T>;
+export interface BuildBvhOptions<T> {
+  getBounds(item: T): Box3;
+  maxLeafSize?: number;
+  maxDepth?: number;
+}
+export interface BvhRaycastHit<T> { entry: BvhEntry<T>; distance: number }
+export function buildBvh<T>(items: ReadonlyArray<T>, options: BuildBvhOptions<T>): BvhNode<T> | null;
+export function queryBvh<T>(
+  node: BvhNode<T> | null,
+  query: Box3,
+  results?: Array<BvhEntry<T>>
+): Array<BvhEntry<T>>;
+export function raycastBvh<T>(
+  node: BvhNode<T> | null,
+  ray: Ray3D,
+  intersect: (entry: BvhEntry<T>, ray: Ray3D) => number | null,
+  maxDistance?: number
+): BvhRaycastHit<T> | null;
 
 /**
  * Axis-aligned bounding box helpers.
@@ -3636,6 +3675,12 @@ export interface Vector2D {
   y: number;
 }
 
+export interface Vector3D {
+  x: number;
+  y: number;
+  z: number;
+}
+
 export interface Rect {
   x: number;
   y: number;
@@ -3650,6 +3695,11 @@ export interface Box3 {
   width: number;
   height: number;
   depth: number;
+}
+
+export interface Ray3D {
+  origin: Point3D;
+  direction: Vector3D;
 }
 
 export interface Graph {

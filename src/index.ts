@@ -68,6 +68,9 @@ export const examples = {
     raycastSegment: 'examples/raycast.ts',
     raycastAabb: 'examples/raycast.ts',
     sweptAABB: 'examples/sweptAabb.ts',
+    buildBvh: 'examples/bvh.ts',
+    queryBvh: 'examples/bvh.ts',
+    raycastBvh: 'examples/bvh.ts',
   },
   search: {
     fuzzySearch: 'examples/search.ts',
@@ -407,6 +410,21 @@ export { Quadtree } from './spatial/quadtree.js';
  * Example file: examples/octree.ts
  */
 export { Octree } from './spatial/octree.js';
+
+/**
+ * Bounding volume hierarchy builder for accelerating spatial queries.
+ *
+ * Example file: examples/bvh.ts
+ */
+export { buildBvh, queryBvh, raycastBvh } from './spatial/bvh.js';
+export type {
+  BvhNode,
+  BvhLeaf,
+  BvhBranch,
+  BvhEntry,
+  BvhAxis,
+  BvhRaycastHit,
+} from './spatial/bvh.js';
 
 /**
  * Axis-aligned bounding box collision detection helpers.
