@@ -107,6 +107,9 @@ export const examples = {
     runLengthDecode: 'examples/rle.ts',
     base64Encode: 'examples/base64.ts',
     base64Decode: 'examples/base64.ts',
+    createHuffmanTable: 'examples/huffman.ts',
+    huffmanEncode: 'examples/huffman.ts',
+    huffmanDecode: 'examples/huffman.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1086,6 +1089,13 @@ export { runLengthEncode, runLengthDecode } from './data/rle.js';
  * Example file: examples/base64.ts
  */
 export { base64Encode, base64Decode } from './data/base64.js';
+/**
+ * Huffman coding utilities for entropy compression.
+ *
+ * Example file: examples/huffman.ts
+ */
+export { createHuffmanTable, huffmanEncode, huffmanDecode } from './data/huffman.js';
+export type { HuffmanTable, HuffmanEncodedResult } from './data/huffman.js';
 
 export type {
   TreeNode,

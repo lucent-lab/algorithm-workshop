@@ -109,7 +109,7 @@
   - [x] Segment tree range query helper
 **Compression & encoding**
   - [x] Run-length encoding (RLE)
-  - [ ] Huffman coding utilities
+  - [x] Huffman coding utilities
   - [ ] LZ77 dictionary compression helper
   - [x] Base64 encode/decode utilities
 **Geometric & numeric utilities**
