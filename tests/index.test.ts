@@ -47,6 +47,7 @@ describe('package entry point', () => {
     expect(examples.gameplay.computeFieldOfView).toBe('examples/shadowcasting.ts');
     expect(examples.search.Trie).toBe('examples/search.ts');
     expect(examples.pathfinding.buildNavMesh).toBe('examples/navMesh.ts');
+    expect(examples.spatial.Octree).toBe('examples/octree.ts');
   });
 
   it('provides strong typing for example categories and names', () => {

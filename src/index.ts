@@ -57,6 +57,7 @@ export const examples = {
   },
   spatial: {
     Quadtree: 'examples/sat.ts',
+    Octree: 'examples/octree.ts',
     aabbCollision: 'examples/sat.ts',
     aabbIntersection: 'examples/sat.ts',
     satCollision: 'examples/sat.ts',
@@ -399,6 +400,13 @@ export { generateRecursiveDivisionMaze } from './procedural/maze.js';
  * Example file: examples/sat.ts
  */
 export { Quadtree } from './spatial/quadtree.js';
+
+/**
+ * 3D octree spatial partitioning structure.
+ *
+ * Example file: examples/octree.ts
+ */
+export { Octree } from './spatial/octree.js';
 
 /**
  * Axis-aligned bounding box collision detection helpers.

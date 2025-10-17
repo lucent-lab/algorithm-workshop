@@ -62,6 +62,7 @@ export const examples: {
   };
   readonly spatial: {
     readonly Quadtree: 'examples/sat.ts';
+    readonly Octree: 'examples/octree.ts';
     readonly aabbCollision: 'examples/sat.ts';
     readonly aabbIntersection: 'examples/sat.ts';
     readonly satCollision: 'examples/sat.ts';
@@ -777,6 +778,19 @@ export class Quadtree<T = unknown> {
   insert(point: Point, data?: T): boolean;
   query(range: Rect): Array<Point & { data?: T }>;
   queryCircle(center: Point, radius: number): Array<Point & { data?: T }>;
+}
+
+/**
+ * Octree for 3D spatial partitioning.
+ * Use for: broad-phase culling, proximity queries, volumetric indexing.
+ * Performance: O(log n) typical query.
+ * Import: spatial/octree.ts
+ */
+export class Octree<T = unknown> {
+  constructor(bounds: Box3, capacity?: number, depth?: number, maxDepth?: number);
+  insert(point: Point3D, data?: T): boolean;
+  query(range: Box3): Array<Point3D & { data?: T }>;
+  querySphere(center: Point3D, radius: number): Array<Point3D & { data?: T }>;
 }
 
 /**
@@ -3613,6 +3627,10 @@ export interface Point {
   y: number;
 }
 
+export interface Point3D extends Point {
+  z: number;
+}
+
 export interface Vector2D {
   x: number;
   y: number;
@@ -3623,6 +3641,15 @@ export interface Rect {
   y: number;
   width: number;
   height: number;
+}
+
+export interface Box3 {
+  x: number;
+  y: number;
+  z: number;
+  width: number;
+  height: number;
+  depth: number;
 }
 
 export interface Graph {
