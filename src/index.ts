@@ -118,6 +118,7 @@ export const examples = {
     createCubicBarrier: 'examples/foldCubicBarrier.ts',
     computeFrozenStiffness: 'examples/foldStiffness.ts',
     createContactBarrier: 'examples/foldContactBarrier.ts',
+    createPinBarrier: 'examples/foldPinBarrier.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1195,6 +1196,7 @@ export {
   createCubicBarrier,
   computeFrozenStiffness,
   createContactBarrier,
+  createPinBarrier,
 } from './physics/fold/index.js';
 
 export type {
@@ -1211,6 +1213,7 @@ export type {
   StiffnessDesignInput,
   StiffnessDesignOptions,
   ContactBarrierOptions,
+  PinBarrierOptions,
 } from './physics/fold/index.js';
 
 // ============================================================================
