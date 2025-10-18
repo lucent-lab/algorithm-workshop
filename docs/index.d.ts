@@ -123,6 +123,7 @@ export const examples: {
     readonly createPinBarrier: 'examples/foldPinBarrier.ts';
     readonly createWallBarrier: 'examples/foldWallBarrier.ts';
     readonly createStrainBarrier: 'examples/foldStrainBarrier.ts';
+    readonly createFrictionPotential: 'examples/foldFriction.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -3390,6 +3391,18 @@ export interface StrainBarrierOptions {
   direction?: Vector3D;
 }
 export function createStrainBarrier(options?: StrainBarrierOptions): FoldConstraint;
+
+/**
+ * Friction potential tied to contact force magnitude.
+ * Use for: tangential friction response in Fold contact solver.
+ * Import: physics/fold/frictionPotential.ts
+ */
+export interface FrictionOptions {
+  id?: string;
+  coefficient?: number;
+  epsilon?: number;
+}
+export function createFrictionPotential(options?: FrictionOptions): FoldConstraint;
 
 export type FoldConstraintType =
   | 'cubic-barrier'

@@ -64,6 +64,7 @@ describe('package entry point', () => {
     expect(examples.physics.createPinBarrier).toBe('examples/foldPinBarrier.ts');
     expect(examples.physics.createWallBarrier).toBe('examples/foldWallBarrier.ts');
     expect(examples.physics.createStrainBarrier).toBe('examples/foldStrainBarrier.ts');
+    expect(examples.physics.createFrictionPotential).toBe('examples/foldFriction.ts');
   });
 
   it('provides strong typing for example categories and names', () => {
@@ -211,6 +212,7 @@ describe('package entry point', () => {
       | 'createPinBarrier'
       | 'createWallBarrier'
       | 'createStrainBarrier'
+      | 'createFrictionPotential'
     >();
 
     expectTypeOf<ExampleName<'ai'>>().toEqualTypeOf<

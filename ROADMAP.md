@@ -131,7 +131,7 @@
   - [ ] Error-reduction pass leveraging beta-delta time refinement
   - [ ] Linear solver pipeline (PCG with 3x3 block-Jacobi preconditioner)
 - **Contact and friction infrastructure**
-  - [ ] Friction potential tied to contact force magnitude
+  - [x] Friction potential tied to contact force magnitude
   - [ ] Matrix assembly with cached contact index tables
   - [ ] Gap evaluators for point/triangle, edge/edge, and wall constraints
   - [ ] SPD enforcement pass for elasticity Hessian blocks
