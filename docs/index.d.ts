@@ -121,6 +121,7 @@ export const examples: {
     readonly computeFrozenStiffness: 'examples/foldStiffness.ts';
     readonly createContactBarrier: 'examples/foldContactBarrier.ts';
     readonly createPinBarrier: 'examples/foldPinBarrier.ts';
+    readonly createWallBarrier: 'examples/foldWallBarrier.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -3360,6 +3361,20 @@ export interface PinBarrierOptions {
   direction?: Vector3D;
 }
 export function createPinBarrier(options?: PinBarrierOptions): FoldConstraint;
+
+/**
+ * Wall constraint barrier for plane contacts.
+ * Use for: enforcing collision against static planes with Fold guarantees.
+ * Import: physics/fold/wallBarrier.ts
+ */
+export interface WallBarrierOptions {
+  id?: string;
+  stiffnessOverride?: number;
+  maxGap?: number;
+  normal?: Vector3D;
+  planePoint?: Vector3D;
+}
+export function createWallBarrier(options?: WallBarrierOptions): FoldConstraint;
 
 export type FoldConstraintType =
   | 'cubic-barrier'

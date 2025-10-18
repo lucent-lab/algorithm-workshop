@@ -122,7 +122,7 @@
   - [x] Stiffness design principle for frozen barrier stiffness
   - [x] Contact barrier with extended direction handling
   - [x] Pin constraint barrier using cubic barrier formulation
-  - [ ] Wall constraint barrier for plane collisions
+  - [x] Wall constraint barrier for plane collisions
   - [ ] Triangle strain-limiting barrier driven by deformation singular values
 - **Integrator and solver**
   - [ ] Inexact Newton integrator with beta accumulation
