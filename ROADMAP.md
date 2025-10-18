@@ -123,7 +123,7 @@
   - [x] Contact barrier with extended direction handling
   - [x] Pin constraint barrier using cubic barrier formulation
   - [x] Wall constraint barrier for plane collisions
-  - [ ] Triangle strain-limiting barrier driven by deformation singular values
+  - [x] Triangle strain-limiting barrier driven by deformation singular values
 - **Integrator and solver**
   - [ ] Inexact Newton integrator with beta accumulation
   - [ ] Constraint-only line search with extended direction scaling
