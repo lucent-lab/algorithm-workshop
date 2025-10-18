@@ -62,7 +62,7 @@
     {
       "name": "bundle",
       "path": "dist/index.js",
-      "limit": "46 KB"
+      "limit": "48 KB"
     }
   ]
 }

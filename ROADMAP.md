@@ -132,7 +132,7 @@
   - [ ] Linear solver pipeline (PCG with 3x3 block-Jacobi preconditioner)
 - **Contact and friction infrastructure**
   - [x] Friction potential tied to contact force magnitude
-  - [ ] Matrix assembly with cached contact index tables
+  - [x] Matrix assembly with cached contact index tables
   - [ ] Gap evaluators for point/triangle, edge/edge, and wall constraints
   - [ ] SPD enforcement pass for elasticity Hessian blocks
 

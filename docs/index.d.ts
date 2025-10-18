@@ -124,6 +124,7 @@ export const examples: {
     readonly createWallBarrier: 'examples/foldWallBarrier.ts';
     readonly createStrainBarrier: 'examples/foldStrainBarrier.ts';
     readonly createFrictionPotential: 'examples/foldFriction.ts';
+    readonly assembleContactMatrix: 'examples/foldMatrixAssembly.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -3403,6 +3404,18 @@ export interface FrictionOptions {
   epsilon?: number;
 }
 export function createFrictionPotential(options?: FrictionOptions): FoldConstraint;
+
+/**
+ * Assemble contact matrices with cached index tables.
+ * Use for: efficient Fold barrier matrix assembly with deterministic block reuse.
+ * Import: physics/fold/matrixAssembly.ts
+ */
+export interface ContactBlock { constraintId: string; matrix: Matrix3x3 }
+export interface ContactAssemblyInput { contactId: string; blocks: ReadonlyArray<ContactBlock> }
+export interface MatrixAssemblyOptions { size?: number; symmetry?: boolean }
+export interface CachedAssembly { readonly contactId: string; readonly baseIndices: number[] }
+export interface MatrixAssemblyResult { matrix: number[][]; cache: CachedAssembly[] }
+export function assembleContactMatrix(entries: ReadonlyArray<ContactAssemblyInput>, options?: MatrixAssemblyOptions): MatrixAssemblyResult;
 
 export type FoldConstraintType =
   | 'cubic-barrier'

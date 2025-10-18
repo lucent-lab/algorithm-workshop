@@ -122,6 +122,7 @@ export const examples = {
     createWallBarrier: 'examples/foldWallBarrier.ts',
     createStrainBarrier: 'examples/foldStrainBarrier.ts',
     createFrictionPotential: 'examples/foldFriction.ts',
+    assembleContactMatrix: 'examples/foldMatrixAssembly.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1203,6 +1204,7 @@ export {
   createWallBarrier,
   createStrainBarrier,
   createFrictionPotential,
+  assembleContactMatrix,
 } from './physics/fold/index.js';
 
 export type {
@@ -1223,6 +1225,11 @@ export type {
   WallBarrierOptions,
   StrainBarrierOptions,
   FrictionOptions,
+  ContactAssemblyInput,
+  ContactBlock,
+  MatrixAssemblyOptions,
+  MatrixAssemblyResult,
+  CachedAssembly,
 } from './physics/fold/index.js';
 
 // ============================================================================
