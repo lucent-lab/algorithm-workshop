@@ -120,6 +120,7 @@ export const examples = {
     createContactBarrier: 'examples/foldContactBarrier.ts',
     createPinBarrier: 'examples/foldPinBarrier.ts',
     createWallBarrier: 'examples/foldWallBarrier.ts',
+    createStrainBarrier: 'examples/foldStrainBarrier.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1199,6 +1200,7 @@ export {
   createContactBarrier,
   createPinBarrier,
   createWallBarrier,
+  createStrainBarrier,
 } from './physics/fold/index.js';
 
 export type {
@@ -1217,6 +1219,7 @@ export type {
   ContactBarrierOptions,
   PinBarrierOptions,
   WallBarrierOptions,
+  StrainBarrierOptions,
 } from './physics/fold/index.js';
 
 // ============================================================================

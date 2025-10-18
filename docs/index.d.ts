@@ -122,6 +122,7 @@ export const examples: {
     readonly createContactBarrier: 'examples/foldContactBarrier.ts';
     readonly createPinBarrier: 'examples/foldPinBarrier.ts';
     readonly createWallBarrier: 'examples/foldWallBarrier.ts';
+    readonly createStrainBarrier: 'examples/foldStrainBarrier.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -3375,6 +3376,20 @@ export interface WallBarrierOptions {
   planePoint?: Vector3D;
 }
 export function createWallBarrier(options?: WallBarrierOptions): FoldConstraint;
+
+/**
+ * Triangle strain-limiting barrier using deformation singular values.
+ * Use for: preventing excessive stretch/compression in Fold primitives.
+ * Import: physics/fold/strainBarrier.ts
+ */
+export interface StrainBarrierOptions {
+  id?: string;
+  stiffnessOverride?: number;
+  maxStretch?: number;
+  minCompression?: number;
+  direction?: Vector3D;
+}
+export function createStrainBarrier(options?: StrainBarrierOptions): FoldConstraint;
 
 export type FoldConstraintType =
   | 'cubic-barrier'
