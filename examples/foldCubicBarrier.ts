@@ -1,6 +1,6 @@
 import { createCubicBarrier } from '../src/index.js';
 
-const cubicBarrier = createCubicBarrier({ stiffness: 50 });
+const cubicBarrier = createCubicBarrier({ stiffnessOverride: 50 });
 
 const evaluation = cubicBarrier.evaluate(
   {

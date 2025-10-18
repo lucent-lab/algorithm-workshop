@@ -8,7 +8,7 @@ import type {
 
 export interface CubicBarrierOptions {
   id?: string;
-  stiffness?: number;
+  stiffnessOverride?: number;
   maxGap?: number;
   direction?: Vector3D;
 }
@@ -28,7 +28,7 @@ export function createCubicBarrier(options: CubicBarrierOptions = {}): FoldConst
     evaluate(state: FoldConstraintState, context: FoldComputationContext): FoldConstraintEvaluation {
       void context;
       const maxGap = options.maxGap ?? state.maxGap;
-      const stiffness = options.stiffness ?? state.stiffness;
+      const stiffness = options.stiffnessOverride ?? state.stiffness;
       const direction = options.direction ?? state.direction;
 
       if (stiffness <= 0) {

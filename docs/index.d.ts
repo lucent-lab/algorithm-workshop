@@ -119,6 +119,7 @@ export const examples: {
     readonly createFoldConstraintRegistry: 'examples/foldSetup.ts';
     readonly createCubicBarrier: 'examples/foldCubicBarrier.ts';
     readonly computeFrozenStiffness: 'examples/foldStiffness.ts';
+    readonly createContactBarrier: 'examples/foldContactBarrier.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -3331,6 +3332,20 @@ export interface StiffnessDesignOptions {
   max?: number;
 }
 export function computeFrozenStiffness(input: StiffnessDesignInput, options?: StiffnessDesignOptions): number;
+
+/**
+ * Contact barrier leveraging Fold extended direction scaling.
+ * Use for: point-triangle and edge-edge contact inequality enforcement.
+ * Import: physics/fold/contactBarrier.ts
+ */
+export interface ContactBarrierOptions {
+  id?: string;
+  stiffnessOverride?: number;
+  maxGap?: number;
+  direction?: Vector3D;
+  extendedDirectionScale?: number;
+}
+export function createContactBarrier(options?: ContactBarrierOptions): FoldConstraint;
 
 export type FoldConstraintType =
   | 'cubic-barrier'
