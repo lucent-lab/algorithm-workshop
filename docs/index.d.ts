@@ -120,6 +120,7 @@ export const examples: {
     readonly createCubicBarrier: 'examples/foldCubicBarrier.ts';
     readonly computeFrozenStiffness: 'examples/foldStiffness.ts';
     readonly createContactBarrier: 'examples/foldContactBarrier.ts';
+    readonly createPinBarrier: 'examples/foldPinBarrier.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -3346,6 +3347,19 @@ export interface ContactBarrierOptions {
   extendedDirectionScale?: number;
 }
 export function createContactBarrier(options?: ContactBarrierOptions): FoldConstraint;
+
+/**
+ * Pin constraint barrier using cubic barrier formulation.
+ * Use for: soft positional pinning with Fold barrier guarantees.
+ * Import: physics/fold/pinBarrier.ts
+ */
+export interface PinBarrierOptions {
+  id?: string;
+  stiffnessOverride?: number;
+  maxGap?: number;
+  direction?: Vector3D;
+}
+export function createPinBarrier(options?: PinBarrierOptions): FoldConstraint;
 
 export type FoldConstraintType =
   | 'cubic-barrier'
