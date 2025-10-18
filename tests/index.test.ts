@@ -60,6 +60,7 @@ describe('package entry point', () => {
     expect(examples.physics.createFoldConstraintRegistry).toBe('examples/foldSetup.ts');
     expect(examples.physics.createCubicBarrier).toBe('examples/foldCubicBarrier.ts');
     expect(examples.physics.computeFrozenStiffness).toBe('examples/foldStiffness.ts');
+    expect(examples.physics.createContactBarrier).toBe('examples/foldContactBarrier.ts');
   });
 
   it('provides strong typing for example categories and names', () => {
@@ -203,6 +204,7 @@ describe('package entry point', () => {
       | 'createFoldConstraintRegistry'
       | 'createCubicBarrier'
       | 'computeFrozenStiffness'
+      | 'createContactBarrier'
     >();
 
     expectTypeOf<ExampleName<'ai'>>().toEqualTypeOf<

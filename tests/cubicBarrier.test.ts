@@ -4,7 +4,7 @@ import { createCubicBarrier } from '../src/physics/fold/cubicBarrier.js';
 
 describe('cubic barrier potential', () => {
   it('returns zero output when constraint is satisfied', () => {
-    const barrier = createCubicBarrier({ stiffness: 10 });
+    const barrier = createCubicBarrier({ stiffnessOverride: 10 });
     const evaluation = barrier.evaluate(
       {
         gap: 0.5,
