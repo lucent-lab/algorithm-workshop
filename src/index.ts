@@ -121,6 +121,7 @@ export const examples = {
     createPinBarrier: 'examples/foldPinBarrier.ts',
     createWallBarrier: 'examples/foldWallBarrier.ts',
     createStrainBarrier: 'examples/foldStrainBarrier.ts',
+    createFrictionPotential: 'examples/foldFriction.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1201,6 +1202,7 @@ export {
   createPinBarrier,
   createWallBarrier,
   createStrainBarrier,
+  createFrictionPotential,
 } from './physics/fold/index.js';
 
 export type {
@@ -1220,6 +1222,7 @@ export type {
   PinBarrierOptions,
   WallBarrierOptions,
   StrainBarrierOptions,
+  FrictionOptions,
 } from './physics/fold/index.js';
 
 // ============================================================================
