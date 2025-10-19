@@ -134,7 +134,7 @@
   - [x] Friction potential tied to contact force magnitude
   - [x] Matrix assembly with cached contact index tables
   - [x] Gap evaluators for point/triangle, edge/edge, and wall constraints
-  - [ ] SPD enforcement pass for elasticity Hessian blocks
+  - [x] SPD enforcement pass for elasticity Hessian blocks
 
 ### LLM‑Optimised Additions (Priority Rationale)
 

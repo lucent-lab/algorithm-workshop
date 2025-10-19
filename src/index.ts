@@ -126,6 +126,7 @@ export const examples = {
     computePointTriangleGap: 'examples/foldGapEvaluators.ts',
     computeEdgeEdgeGap: 'examples/foldGapEvaluators.ts',
     computePointPlaneGap: 'examples/foldGapEvaluators.ts',
+    enforceSpd: 'examples/foldSpd.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1211,6 +1212,7 @@ export {
   computePointTriangleGap,
   computeEdgeEdgeGap,
   computePointPlaneGap,
+  enforceSpd,
 } from './physics/fold/index.js';
 
 export type {
@@ -1239,6 +1241,7 @@ export type {
   PointTriangleGapResult,
   EdgeEdgeGapResult,
   PointPlaneGapResult,
+  SpdEnforcementOptions,
 } from './physics/fold/index.js';
 
 // ============================================================================

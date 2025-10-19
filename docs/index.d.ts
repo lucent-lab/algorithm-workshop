@@ -128,6 +128,7 @@ export const examples: {
     readonly computePointTriangleGap: 'examples/foldGapEvaluators.ts';
     readonly computeEdgeEdgeGap: 'examples/foldGapEvaluators.ts';
     readonly computePointPlaneGap: 'examples/foldGapEvaluators.ts';
+    readonly enforceSpd: 'examples/foldSpd.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -3443,6 +3444,18 @@ export function computeEdgeEdgeGap(edgeA: readonly [Point3D, Point3D], edgeB: re
  */
 export interface PointPlaneGapResult { gap: number; projectedPoint: Point3D; normal: Vector3D }
 export function computePointPlaneGap(point: Point3D, planePoint: Point3D, planeNormal: Vector3D): PointPlaneGapResult;
+
+/**
+ * Enforce SPD on a symmetric 3x3 matrix via diagonal shifts.
+ * Use for: Fold Hessian regularisation and solver stability.
+ * Import: physics/fold/spd.ts
+ */
+export interface SpdEnforcementOptions {
+  epsilon?: number;
+  maxIterations?: number;
+  initialShift?: number;
+}
+export function enforceSpd(matrix: Matrix3x3, options?: SpdEnforcementOptions): Matrix3x3;
 
 export type FoldConstraintType =
   | 'cubic-barrier'
