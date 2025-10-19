@@ -8,3 +8,4 @@ export * from './strainBarrier.js';
 export * from './frictionPotential.js';
 export * from './matrixAssembly.js';
 export * from './gapEvaluators.js';
+export * from './spd.js';

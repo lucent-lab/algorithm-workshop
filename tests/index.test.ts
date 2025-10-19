@@ -69,6 +69,7 @@ describe('package entry point', () => {
     expect(examples.physics.computePointTriangleGap).toBe('examples/foldGapEvaluators.ts');
     expect(examples.physics.computeEdgeEdgeGap).toBe('examples/foldGapEvaluators.ts');
     expect(examples.physics.computePointPlaneGap).toBe('examples/foldGapEvaluators.ts');
+    expect(examples.physics.enforceSpd).toBe('examples/foldSpd.ts');
   });
 
   it('provides strong typing for example categories and names', () => {
@@ -221,6 +222,7 @@ describe('package entry point', () => {
       | 'computePointTriangleGap'
       | 'computeEdgeEdgeGap'
       | 'computePointPlaneGap'
+      | 'enforceSpd'
     >();
 
     expectTypeOf<ExampleName<'ai'>>().toEqualTypeOf<
