@@ -125,6 +125,9 @@ export const examples: {
     readonly createStrainBarrier: 'examples/foldStrainBarrier.ts';
     readonly createFrictionPotential: 'examples/foldFriction.ts';
     readonly assembleContactMatrix: 'examples/foldMatrixAssembly.ts';
+    readonly computePointTriangleGap: 'examples/foldGapEvaluators.ts';
+    readonly computeEdgeEdgeGap: 'examples/foldGapEvaluators.ts';
+    readonly computePointPlaneGap: 'examples/foldGapEvaluators.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -3416,6 +3419,30 @@ export interface MatrixAssemblyOptions { size?: number; symmetry?: boolean }
 export interface CachedAssembly { readonly contactId: string; readonly baseIndices: number[] }
 export interface MatrixAssemblyResult { matrix: number[][]; cache: CachedAssembly[] }
 export function assembleContactMatrix(entries: ReadonlyArray<ContactAssemblyInput>, options?: MatrixAssemblyOptions): MatrixAssemblyResult;
+
+/**
+ * Point-triangle gap with closest point and normal.
+ * Use for: character contacts, Fold barrier estimation.
+ * Import: physics/fold/gapEvaluators.ts
+ */
+export interface PointTriangleGapResult { gap: number; closestPoint: Point3D; normal: Vector3D }
+export function computePointTriangleGap(point: Point3D, triangle: readonly [Point3D, Point3D, Point3D]): PointTriangleGapResult;
+
+/**
+ * Edge-edge gap with closest points.
+ * Use for: edge-edge collision in Fold contacts.
+ * Import: physics/fold/gapEvaluators.ts
+ */
+export interface EdgeEdgeGapResult { gap: number; closestPointA: Point3D; closestPointB: Point3D; normal: Vector3D }
+export function computeEdgeEdgeGap(edgeA: readonly [Point3D, Point3D], edgeB: readonly [Point3D, Point3D]): EdgeEdgeGapResult;
+
+/**
+ * Point-plane gap helper with projection.
+ * Use for: wall contacts, Fold barrier plane constraints.
+ * Import: physics/fold/gapEvaluators.ts
+ */
+export interface PointPlaneGapResult { gap: number; projectedPoint: Point3D; normal: Vector3D }
+export function computePointPlaneGap(point: Point3D, planePoint: Point3D, planeNormal: Vector3D): PointPlaneGapResult;
 
 export type FoldConstraintType =
   | 'cubic-barrier'

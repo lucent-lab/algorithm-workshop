@@ -66,6 +66,9 @@ describe('package entry point', () => {
     expect(examples.physics.createStrainBarrier).toBe('examples/foldStrainBarrier.ts');
     expect(examples.physics.createFrictionPotential).toBe('examples/foldFriction.ts');
     expect(examples.physics.assembleContactMatrix).toBe('examples/foldMatrixAssembly.ts');
+    expect(examples.physics.computePointTriangleGap).toBe('examples/foldGapEvaluators.ts');
+    expect(examples.physics.computeEdgeEdgeGap).toBe('examples/foldGapEvaluators.ts');
+    expect(examples.physics.computePointPlaneGap).toBe('examples/foldGapEvaluators.ts');
   });
 
   it('provides strong typing for example categories and names', () => {
@@ -215,6 +218,9 @@ describe('package entry point', () => {
       | 'createStrainBarrier'
       | 'createFrictionPotential'
       | 'assembleContactMatrix'
+      | 'computePointTriangleGap'
+      | 'computeEdgeEdgeGap'
+      | 'computePointPlaneGap'
     >();
 
     expectTypeOf<ExampleName<'ai'>>().toEqualTypeOf<

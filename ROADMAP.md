@@ -133,7 +133,7 @@
 - **Contact and friction infrastructure**
   - [x] Friction potential tied to contact force magnitude
   - [x] Matrix assembly with cached contact index tables
-  - [ ] Gap evaluators for point/triangle, edge/edge, and wall constraints
+  - [x] Gap evaluators for point/triangle, edge/edge, and wall constraints
   - [ ] SPD enforcement pass for elasticity Hessian blocks
 
 ### LLM‑Optimised Additions (Priority Rationale)

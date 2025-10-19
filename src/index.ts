@@ -123,6 +123,9 @@ export const examples = {
     createStrainBarrier: 'examples/foldStrainBarrier.ts',
     createFrictionPotential: 'examples/foldFriction.ts',
     assembleContactMatrix: 'examples/foldMatrixAssembly.ts',
+    computePointTriangleGap: 'examples/foldGapEvaluators.ts',
+    computeEdgeEdgeGap: 'examples/foldGapEvaluators.ts',
+    computePointPlaneGap: 'examples/foldGapEvaluators.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1205,6 +1208,9 @@ export {
   createStrainBarrier,
   createFrictionPotential,
   assembleContactMatrix,
+  computePointTriangleGap,
+  computeEdgeEdgeGap,
+  computePointPlaneGap,
 } from './physics/fold/index.js';
 
 export type {
@@ -1230,6 +1236,9 @@ export type {
   MatrixAssemblyOptions,
   MatrixAssemblyResult,
   CachedAssembly,
+  PointTriangleGapResult,
+  EdgeEdgeGapResult,
+  PointPlaneGapResult,
 } from './physics/fold/index.js';
 
 // ============================================================================
