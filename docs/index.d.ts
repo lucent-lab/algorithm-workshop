@@ -129,6 +129,9 @@ export const examples: {
     readonly computeEdgeEdgeGap: 'examples/foldGapEvaluators.ts';
     readonly computePointPlaneGap: 'examples/foldGapEvaluators.ts';
     readonly enforceSpd: 'examples/foldSpd.ts';
+    readonly stepInexactNewton: 'examples/foldIntegrator.ts';
+    readonly constraintLineSearch: 'examples/foldIntegrator.ts';
+    readonly applyFreezeSchedule: 'examples/foldIntegrator.ts';
   };
   readonly performance: {
     readonly debounce: 'examples/requestDedup.ts';
@@ -3456,6 +3459,38 @@ export interface SpdEnforcementOptions {
   initialShift?: number;
 }
 export function enforceSpd(matrix: Matrix3x3, options?: SpdEnforcementOptions): Matrix3x3;
+
+/**
+ * Inexact Newton integrator with beta accumulation.
+ * Use for: Fold barrier solver integration steps.
+ * Import: physics/fold/integrator.ts
+ */
+export interface FoldIntegratorState {
+  positions: Array<Vector3D>;
+  velocities: Array<Vector3D>;
+  constraints: Array<FoldConstraint>;
+  settings: FoldSolverSettings;
+  beta: number;
+}
+export interface IntegratorStepOptions { deltaTime: number; lineSearchScale?: number }
+export interface IntegratorResult { positions: Array<Vector3D>; velocities: Array<Vector3D>; beta: number; iterations: number }
+export function stepInexactNewton(state: FoldIntegratorState, options: IntegratorStepOptions): IntegratorResult;
+
+/**
+ * Constraint-only line search with extended direction scaling.
+ * Use for: Fold line search loop over constraint energies.
+ * Import: physics/fold/lineSearch.ts
+ */
+export interface LineSearchOptions { maxIterations?: number; scale?: number; tolerance?: number }
+export function constraintLineSearch(evaluations: ReadonlyArray<FoldConstraintEvaluation>, options?: LineSearchOptions): number;
+
+/**
+ * Semi-implicit freeze schedule for barrier stiffness updates.
+ * Use for: damping Fold stiffness between Newton steps.
+ * Import: physics/fold/freezeSchedule.ts
+ */
+export interface FreezeScheduleOptions { damping?: number; minStiffness?: number }
+export function applyFreezeSchedule(state: FoldConstraintState, evaluation: FoldConstraintEvaluation, options?: FreezeScheduleOptions): FoldConstraintState;
 
 export type FoldConstraintType =
   | 'cubic-barrier'
