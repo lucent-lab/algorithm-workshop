@@ -70,6 +70,9 @@ describe('package entry point', () => {
     expect(examples.physics.computeEdgeEdgeGap).toBe('examples/foldGapEvaluators.ts');
     expect(examples.physics.computePointPlaneGap).toBe('examples/foldGapEvaluators.ts');
     expect(examples.physics.enforceSpd).toBe('examples/foldSpd.ts');
+    expect(examples.physics.stepInexactNewton).toBe('examples/foldIntegrator.ts');
+    expect(examples.physics.constraintLineSearch).toBe('examples/foldIntegrator.ts');
+    expect(examples.physics.applyFreezeSchedule).toBe('examples/foldIntegrator.ts');
   });
 
   it('provides strong typing for example categories and names', () => {
@@ -223,6 +226,9 @@ describe('package entry point', () => {
       | 'computeEdgeEdgeGap'
       | 'computePointPlaneGap'
       | 'enforceSpd'
+      | 'stepInexactNewton'
+      | 'constraintLineSearch'
+      | 'applyFreezeSchedule'
     >();
 
     expectTypeOf<ExampleName<'ai'>>().toEqualTypeOf<

@@ -125,9 +125,9 @@
   - [x] Wall constraint barrier for plane collisions
   - [x] Triangle strain-limiting barrier driven by deformation singular values
 - **Integrator and solver**
-  - [ ] Inexact Newton integrator with beta accumulation
-  - [ ] Constraint-only line search with extended direction scaling
-  - [ ] Semi-implicit freeze schedule for barrier stiffness updates
+  - [x] Inexact Newton integrator with beta accumulation
+  - [x] Constraint-only line search with extended direction scaling
+  - [x] Semi-implicit freeze schedule for barrier stiffness updates
   - [ ] Error-reduction pass leveraging beta-delta time refinement
   - [ ] Linear solver pipeline (PCG with 3x3 block-Jacobi preconditioner)
 - **Contact and friction infrastructure**

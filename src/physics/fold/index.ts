@@ -9,3 +9,6 @@ export * from './frictionPotential.js';
 export * from './matrixAssembly.js';
 export * from './gapEvaluators.js';
 export * from './spd.js';
+export * from './integrator.js';
+export * from './lineSearch.js';
+export * from './freezeSchedule.js';

@@ -127,6 +127,9 @@ export const examples = {
     computeEdgeEdgeGap: 'examples/foldGapEvaluators.ts',
     computePointPlaneGap: 'examples/foldGapEvaluators.ts',
     enforceSpd: 'examples/foldSpd.ts',
+    stepInexactNewton: 'examples/foldIntegrator.ts',
+    constraintLineSearch: 'examples/foldIntegrator.ts',
+    applyFreezeSchedule: 'examples/foldIntegrator.ts',
   },
   performance: {
     debounce: 'examples/requestDedup.ts',
@@ -1213,6 +1216,9 @@ export {
   computeEdgeEdgeGap,
   computePointPlaneGap,
   enforceSpd,
+  stepInexactNewton,
+  constraintLineSearch,
+  applyFreezeSchedule,
 } from './physics/fold/index.js';
 
 export type {
@@ -1242,6 +1248,11 @@ export type {
   EdgeEdgeGapResult,
   PointPlaneGapResult,
   SpdEnforcementOptions,
+  FoldIntegratorState,
+  IntegratorStepOptions,
+  IntegratorResult,
+  LineSearchOptions,
+  FreezeScheduleOptions,
 } from './physics/fold/index.js';
 
 // ============================================================================
